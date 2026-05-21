@@ -130,7 +130,25 @@
   }
   .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
 
-  @media (max-width: 860px) { .nav-links a:not(.nav-cta) { display: none; } }
+  .nav-pubmed {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #fff !important;
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none;
+  }
+  .nav-pubmed:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .nav-pubmed::after { display: none !important; }
+  .nav-pubmed svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  @media (max-width: 860px) { .nav-links a:not(.nav-cta):not(.nav-pubmed) { display: none; } }
 
   /* ============ HERO ============ */
   .hero {
@@ -893,6 +911,7 @@
       <a href="#ambiti">Ambiti</a>
       <a href="#news">News</a>
       <a href="#documenti">Documenti</a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener" class="nav-pubmed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>PubMed</a>
       <a href="adesione.html" class="nav-cta">Associati</a>
     </div>
   </div>
