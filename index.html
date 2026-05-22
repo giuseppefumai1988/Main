@@ -354,6 +354,8 @@
     margin-top: 56px; position: relative; z-index: 2;
   }
   @media (max-width: 760px) { .manifesto-cards { grid-template-columns: 1fr; gap: 16px; } }
+  .manifesto-doc { display: inline-flex; align-items: center; gap: 8px; margin-top: 36px; padding: 12px 22px; background: var(--accent); color: #FBFAF6; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 100px; transition: background .25s, transform .2s; }
+  .manifesto-doc:hover { background: var(--accent-deep); transform: translateY(-1px); }
   .mcard {
     border: 1px solid rgba(244,242,236,0.16);
     border-radius: 8px;
@@ -544,11 +546,9 @@
   .ctx-link:hover { background: var(--accent-deep); transform: translateY(-1px); }
 
   /* QR del sito — badge fisso in basso a destra */
-  .site-qr { position: fixed; right: 20px; bottom: 20px; z-index: 60; background: #FBFAF6; border: 1px solid var(--rule); border-radius: 12px; padding: 11px; box-shadow: 0 12px 34px rgba(20,18,14,0.20); text-align: center; }
-  .site-qr a { display: block; text-decoration: none; }
-  .site-qr img { width: 96px; height: 96px; display: block; }
-  .site-qr span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.03em; color: var(--ink-mute); margin-top: 6px; }
-  @media (max-width: 900px) { .site-qr { display: none; } }
+  .site-qr { display: inline-block; margin-top: 24px; background: #FBFAF6; border: 1px solid var(--rule); border-radius: 12px; padding: 11px; text-align: center; text-decoration: none; }
+  .site-qr img { width: 104px; height: 104px; display: block; }
+  .site-qr span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.03em; color: var(--ink-mute); margin-top: 7px; }
 
   /* ============ ASSOCIATI / CTA ============ */
   .join-card {
@@ -992,7 +992,7 @@
 
     <div class="hero-actions">
       <a href="#associati" class="btn btn-primary">Associati <span class="arrow">→</span></a>
-      <a href="#manifesto" class="btn btn-ghost">Il manifesto</a>
+      <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Il manifesto</a>
     </div>
   </div>
 </header>
@@ -1038,6 +1038,7 @@
         <a class="mcard-mail" href="mailto:giuseppe.colonna@aniqrc.it">Scrivi a&nbsp;giuseppe.colonna@<span style="color:var(--accent);">aniqrc</span>.it</a>
       </div>
     </div>
+    <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="manifesto-doc">Leggi il manifesto completo (PDF) <span>&rarr;</span></a>
   </div>
 </section>
 
@@ -1419,6 +1420,7 @@
           </div>
         </div>
         <p>Comunità scientifica degli infermieri italiani per la qualità, il rischio clinico e la ricerca sulla sicurezza delle cure.</p>
+        <a class="site-qr" href="https://www.aniqrc.it" target="_blank" rel="noopener"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0AQMAAAAJrVAQAAAABlBMVEUKCgr7+vYi7aBDAAABXUlEQVR42u2bwQ3DIAwArS7A/luyAVUEGENwgL7a6lAeJNyrOhkbU0lHIwo8PDw8PPy38FF0XPOQynxYul5fcjbg/5uXzrpY/MmTcQl/4D1/Ygk+2ZMcgsqrLuEP/NKfGm3mS/gDv4o/1/6ViD/wH+U/dfOaLuEP/NQfW38ND/UX/MKf23CX8Afe2b/G7/kgKJjsCH/gH+JPTX6aTqHlQjmpxh/4qT+t5jKV1xiF8Afe80eDTOwT6bEc4/eE9/NnbV6Ydgb1O/xu/W5ODkvYCSYvwh94z5/Q97xMOdZ2NPyB9+r3KLbg0kZG9wV/4H1/tP7qemHmLAh/4Bf5s9nL7O0y/IHfyp/FHPvYXhj1F/zz/mXvH4rcW/Dkz/DL/Ln13G3nQvAH/syf7hQ6JfyB3/WntsP04fwH/iD/0XZYaHeBuL8Bf1B/mc5F6WjQf4ffPP/h/5Xw8PDw8D/AvwGJ4dwQRJAqbAAAAABJRU5ErkJggg==" alt="QR www.aniqrc.it" width="104" height="104"><span>www.aniqrc.it</span></a>
       </div>
 
       <div class="foot-col">
@@ -1681,9 +1683,5 @@
   document.getElementById('nlOverlay').addEventListener('click',function(e){if(e.target===this)closeNews();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNews();});
 </script>
-<!-- ============ QR DEL SITO ============ -->
-<div class="site-qr" aria-label="QR del sito ANIQRC">
-  <a href="https://www.aniqrc.it" target="_blank" rel="noopener"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0AQMAAAAJrVAQAAAABlBMVEUKCgr7+vYi7aBDAAABXUlEQVR42u2bwQ3DIAwArS7A/luyAVUEGENwgL7a6lAeJNyrOhkbU0lHIwo8PDw8PPy38FF0XPOQynxYul5fcjbg/5uXzrpY/MmTcQl/4D1/Ygk+2ZMcgsqrLuEP/NKfGm3mS/gDv4o/1/6ViD/wH+U/dfOaLuEP/NQfW38ND/UX/MKf23CX8Afe2b/G7/kgKJjsCH/gH+JPTX6aTqHlQjmpxh/4qT+t5jKV1xiF8Afe80eDTOwT6bEc4/eE9/NnbV6Ydgb1O/xu/W5ODkvYCSYvwh94z5/Q97xMOdZ2NPyB9+r3KLbg0kZG9wV/4H1/tP7qemHmLAh/4Bf5s9nL7O0y/IHfyp/FHPvYXhj1F/zz/mXvH4rcW/Dkz/DL/Ln13G3nQvAH/syf7hQ6JfyB3/WntsP04fwH/iD/0XZYaHeBuL8Bf1B/mc5F6WjQf4ffPP/h/5Xw8PDw8D/AvwGJ4dwQRJAqbAAAAABJRU5ErkJggg==" alt="QR www.aniqrc.it" width="96" height="96"><span>www.aniqrc.it</span></a>
-</div>
 </body>
 </html>
