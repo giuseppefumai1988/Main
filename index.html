@@ -194,6 +194,22 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* logo assembly */
+  .lg-bar-v { transform-box: fill-box; transform-origin: center; animation: lgBarV 0.7s cubic-bezier(0.16,1,0.3,1) 0.85s both; }
+  .lg-bar-h { transform-box: fill-box; transform-origin: center; animation: lgBarH 0.7s cubic-bezier(0.16,1,0.3,1) 1.0s both; }
+  .lens { transform-box: view-box; transform-origin: 200px 200px; animation: lgLens 0.75s cubic-bezier(0.34,1.56,0.64,1) 1.2s both; }
+  .lg-dot { transform-box: fill-box; transform-origin: center; animation: lgDot 0.6s cubic-bezier(0.34,1.56,0.64,1) 1.45s both; }
+  .lg-halo { transform-box: view-box; transform-origin: 200px 200px; animation: lgHalo 5s ease-in-out 2.2s infinite; }
+  @keyframes lgBarV { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes lgBarH { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes lgLens { 0% { transform: scale(0); opacity: 0; } 55% { opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes lgDot { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+  @keyframes lgHalo { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mark, .lg-bar-v, .lg-bar-h, .lens, .lg-dot, .lg-halo, .cycle-ring { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
   .hero-text {
     border-left: 3px solid var(--accent);
     padding-left: 48px;
@@ -932,6 +948,17 @@
   .js .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
+  /* special effects */
+  .fx-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); will-change: transform; }
+  .fx-card { position: relative; }
+  .fx-lens { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(230,57,70,0.10), rgba(230,57,70,0.04) 35%, transparent 62%); }
+  .fx-card:hover > .fx-lens { opacity: 1; }
+  .fx-title.reveal { opacity: 1 !important; transform: none !important; }
+  .fx-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0; margin: -0.06em 0; }
+  .fx-wi { display: inline-block; transform: translateY(110%); opacity: 0; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease; }
+  .fx-title.in .fx-wi { transform: none; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .fx-lens { display: none; } .fx-wi { transform: none; opacity: 1; } }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes markIn { from { opacity: 0; transform: scale(0.88) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 </style>
@@ -980,16 +1007,16 @@
               <stop offset="100%" stop-color="#E63946" stop-opacity="0.16"/>
             </radialGradient>
           </defs>
-          <circle cx="200" cy="200" r="184" fill="url(#halo)"/>
+          <circle cx="200" cy="200" r="184" fill="url(#halo)" class="lg-halo"/>
           <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
           <g class="cycle-ring">
             <circle cx="200" cy="200" r="130" fill="none" stroke="#F4F2EC" stroke-width="1" opacity="0.5"/>
             <path d="M 196,66 L 204,70 L 196,74" fill="none" stroke="#F4F2EC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
           </g>
-          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
-          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
-          <circle cx="200" cy="200" r="9" fill="#E63946"/>
-          <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC" class="lg-bar-v"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC" class="lg-bar-h"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946" class="lg-dot"/>
+          <g class="lens"><g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g></g>
         </svg>
       </div>
 
@@ -1173,7 +1200,7 @@
     <p class="sec-intro reveal">Due strumenti vivi al servizio della comunità: un osservatorio che legge la qualità delle cure in Italia attraverso i dati ufficiali, e un toolkit operativo per chi misura, valuta e fa ricerca.</p>
 
     <div class="manifesto-cards reveal" style="margin-top:52px;">
-      <a href="osservatorio.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+      <a data-fx href="osservatorio.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
         <span style="position:absolute;bottom:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(230,57,70,0.18) 0%,transparent 70%);pointer-events:none;"></span>
         <span style="position:relative;z-index:2;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">01 — OSSERVATORIO</span>
         <span style="position:relative;z-index:2;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;">Osservatorio Nazionale<br>Qualità &amp; Rischio Clinico</span>
@@ -1181,7 +1208,7 @@
         <span style="position:relative;z-index:2;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Esplora i dati &rarr;</span>
       </a>
 
-      <a href="toolkit.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s,border-color .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';this.style.borderColor='var(--accent)';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--rule)';">
+      <a data-fx href="toolkit.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s,border-color .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';this.style.borderColor='var(--accent)';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--rule)';">
         <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">02 — TOOLKIT</span>
         <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;color:var(--ink);">Il Toolkit<br>della qualità</span>
         <span style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Calcolatori che funzionano nel browser (Kappa di Cohen, dimensione del campione), una libreria di strumenti validati (PROM, PREM, Q-DIO, MMAT, PRISMA-ScR) e le 19 Raccomandazioni ministeriali per la sicurezza dei pazienti.</span>
@@ -1502,14 +1529,108 @@
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Scroll reveal
+  // Scroll reveal (with stagger among siblings)
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        // stagger: delay based on position among reveal siblings
+        if (!reduceMotion) {
+          const sibs = Array.from(el.parentElement ? el.parentElement.children : []).filter(c => c.classList.contains('reveal'));
+          const idx = sibs.indexOf(el);
+          if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 80 + 'ms';
+        }
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Safety net: reveal everything after 3s in case observer misses anything
   setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 3000);
+
+  // Subtle parallax on hero mark
+  (function () {
+    if (reduceMotion) return;
+    const svg = document.querySelector('.hero-mark svg');
+    if (!svg) return;
+    let ticking = false;
+    function upd() {
+      const y = window.scrollY;
+      if (y < 760) svg.style.transform = 'translateY(' + (y * 0.11).toFixed(1) + 'px)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+  })();
+
+  // Special effects: scroll progress bar + lens spotlight on cards
+  (function () {
+    // progress bar
+    var bar = document.createElement('div');
+    bar.className = 'fx-progress';
+    document.body.appendChild(bar);
+    var t = false;
+    function up() {
+      var h = document.documentElement;
+      var max = (h.scrollHeight - h.clientHeight) || 1;
+      bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, h.scrollTop / max)) + ')';
+      t = false;
+    }
+    window.addEventListener('scroll', function () { if (!t) { requestAnimationFrame(up); t = true; } }, { passive: true });
+    up();
+
+    // lens spotlight
+    if (reduceMotion || !(matchMedia && matchMedia('(hover: hover)').matches)) return;
+    var sel = '.mcard, .dir-card, .doc-card, .news-card, .video-card, .pod-card, .join-card, .nl-card, [data-fx]';
+    document.querySelectorAll(sel).forEach(function (card) {
+      if (card.querySelector(':scope > .fx-lens')) return;
+      card.classList.add('fx-card');
+      var lens = document.createElement('span');
+      lens.className = 'fx-lens'; lens.setAttribute('aria-hidden', 'true');
+      card.appendChild(lens);
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    });
+  })();
+
+  // Word-by-word title reveal
+  (function () {
+    if (reduceMotion) return;
+    function splitTitle(el) {
+      if (el.dataset.fxSplit) return; el.dataset.fxSplit = '1';
+      var c = { n: 0 };
+      function process(node) {
+        var kids = Array.prototype.slice.call(node.childNodes), frag = [];
+        kids.forEach(function (ch) {
+          if (ch.nodeType === 3) {
+            ch.textContent.split(/(\s+)/).forEach(function (p) {
+              if (p === '') return;
+              if (/^\s+$/.test(p)) { frag.push(document.createTextNode(p)); return; }
+              var w = document.createElement('span'); w.className = 'fx-w';
+              var i = document.createElement('span'); i.className = 'fx-wi'; i.textContent = p;
+              i.style.transitionDelay = (c.n * 55) + 'ms'; c.n++;
+              w.appendChild(i); frag.push(w);
+            });
+          } else if (ch.nodeType === 1) { process(ch); frag.push(ch); }
+          else { frag.push(ch); }
+        });
+        node.innerHTML = ''; frag.forEach(function (n) { node.appendChild(n); });
+      }
+      process(el); el.classList.add('fx-title');
+    }
+    var titles = document.querySelectorAll('.sec-title');
+    titles.forEach(splitTitle);
+    var tio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); tio.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    titles.forEach(function (t) { tio.observe(t); });
+    setTimeout(function () { titles.forEach(function (t) { t.classList.add('in'); }); }, 3000);
+  })();
 
   /* ============ NEWSFEED ============ */
   const NEWS_FEEDS = [
