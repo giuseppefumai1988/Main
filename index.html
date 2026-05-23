@@ -266,6 +266,15 @@
   .btn-outline:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,57,70,0.24); }
   .btn .arrow { transition: transform 0.3s; }
   .btn:hover .arrow { transform: translateX(4px); }
+  .hero-extra {
+    margin-top: 22px; max-width: 620px;
+    font-size: 15px; line-height: 1.6; color: var(--ink-soft);
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.95s forwards;
+  }
+  .hero-extra .he-lead { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); display: inline-block; margin-right: 4px; }
+  .hero-extra .he-and { color: var(--ink-mute); }
+  .hero-extra a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--rule); transition: border-color 0.25s; }
+  .hero-extra a:hover { border-color: var(--accent); }
 
   /* ============ MARQUEE ============ */
   .marquee {
@@ -1001,6 +1010,12 @@
       <a href="toolkit.html" class="btn btn-outline">Toolkit <span class="arrow">→</span></a>
       <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Il manifesto</a>
     </div>
+    <p class="hero-extra">
+      <span class="he-lead">Qualcosa che gli altri non hanno:</span>
+      <a href="osservatorio.html">l'Osservatorio qualità e rischio clinico infermieristico</a>
+      <span class="he-and">e</span>
+      <a href="toolkit.html">il Toolkit</a>.
+    </p>
   </div>
 </header>
 

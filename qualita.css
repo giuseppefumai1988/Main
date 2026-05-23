@@ -238,6 +238,10 @@ nav.scrolled { border-bottom-color: var(--rule); }
 .kbar { display: inline-block; height: 10px; border-radius: 100px; flex-shrink: 0; }
 
 /* ============ LIVE LITERATURE ============ */
+.upd-badge { flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-mute); background: var(--bg-warm); border: 1px solid var(--rule); border-radius: 100px; padding: 4px 11px; white-space: nowrap; align-self: flex-start; }
+.live-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: var(--accent-deep); background: rgba(230,57,70,0.10); border: 1px solid rgba(230,57,70,0.25); border-radius: 100px; padding: 6px 14px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
 .lit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
 @media (max-width: 980px) { .lit-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .lit-grid { grid-template-columns: 1fr; } }
