@@ -266,15 +266,14 @@
   .btn-outline:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,57,70,0.24); }
   .btn .arrow { transition: transform 0.3s; }
   .btn:hover .arrow { transform: translateX(4px); }
-  .hero-extra {
-    margin-top: 22px; max-width: 620px;
-    font-size: 15px; line-height: 1.6; color: var(--ink-soft);
+  .hero-pride {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.5; color: var(--ink-soft); font-weight: 300;
+    max-width: 720px; margin-top: 42px;
     opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.95s forwards;
   }
-  .hero-extra .he-lead { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); display: inline-block; margin-right: 4px; }
-  .hero-extra .he-and { color: var(--ink-mute); }
-  .hero-extra a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--rule); transition: border-color 0.25s; }
-  .hero-extra a:hover { border-color: var(--accent); }
+  .hero-pride .q { color: var(--accent); font-weight: 600; }
+  .hero-actions-2 { margin-top: 18px; animation-delay: 1.05s; }
 
   /* ============ MARQUEE ============ */
   .marquee {
@@ -1006,16 +1005,15 @@
 
     <div class="hero-actions">
       <a href="#associati" class="btn btn-primary">Associati <span class="arrow">→</span></a>
-      <a href="osservatorio.html" class="btn btn-dark">Osservatorio <span class="arrow">→</span></a>
-      <a href="toolkit.html" class="btn btn-outline">Toolkit <span class="arrow">→</span></a>
       <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Il manifesto</a>
     </div>
-    <p class="hero-extra">
-      <span class="he-lead">Qualcosa che gli altri non hanno:</span>
-      <a href="osservatorio.html">l'Osservatorio qualità e rischio clinico infermieristico</a>
-      <span class="he-and">e</span>
-      <a href="toolkit.html">il Toolkit</a>.
-    </p>
+
+    <p class="hero-pride">Qualcosa di cui noi di ANI<span class="q">Q</span>RC andiamo fieri.</p>
+
+    <div class="hero-actions hero-actions-2">
+      <a href="osservatorio.html" class="btn btn-dark">Osservatorio <span class="arrow">→</span></a>
+      <a href="toolkit.html" class="btn btn-outline">Toolkit <span class="arrow">→</span></a>
+    </div>
   </div>
 </header>
 
