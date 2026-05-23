@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calcolatore Kappa — concordanza inter-osservatore | ANIQRC</title>
+<meta name="description" content="Calcolatore di concordanza inter-osservatore: Cohen's kappa, accordo percentuale, intervallo di confidenza al 95%, matrice di confusione e interpretazione secondo Landis & Koch. Gira interamente nel browser.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="qualita.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="nm">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="ANIQRC">
+          <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946"/>
+          <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+        </svg>
+      </span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html" class="active">Toolkit</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">ANIQRC</a><span class="sep">/</span><a href="toolkit.html">Toolkit</a><span class="sep">/</span>Kappa</div>
+    <h1 class="page-title">Concordanza <span class="accent">inter-osservatore</span></h1>
+    <p class="page-lead">Misura l'accordo tra due valutatori — per la doppia codifica negli screening delle revisioni sistematiche, negli audit clinici e nella validazione di strumenti. Calcola il <b>Cohen's kappa</b>, l'accordo percentuale, l'intervallo di confidenza al 95% e l'interpretazione secondo Landis &amp; Koch.</p>
+    <div class="databanner reveal"><span class="ic">i</span><p>Tutti i calcoli avvengono <b>nel tuo browser</b>: nessun dato viene trasmesso. Per più di due valutatori serve il <b>Fleiss' kappa</b> (vedi nota a fondo pagina).</p></div>
+  </div>
+</header>
+
+<section class="sec-pad" style="padding-top:24px;">
+  <div class="wrap">
+    <div class="calc-grid">
+      <div class="calc-panel reveal">
+        <h3>1 · Inserisci le valutazioni</h3>
+        <div class="field">
+          <label>Coppie di giudizi <span class="hint">— una riga per soggetto: valore del Valutatore A e del Valutatore B, separati da virgola, tab o spazio.</span></label>
+          <textarea id="data" spellcheck="false" placeholder="Esempio (Include / Exclude):
+include, include
+include, exclude
+exclude, exclude
+include, include
+exclude, exclude"></textarea>
+        </div>
+        <div class="field">
+          <label>Oppure usa un set di esempio</label>
+          <select id="example">
+            <option value="">— seleziona —</option>
+            <option value="screening">Screening revisione (Sì/No)</option>
+            <option value="triage">Codice triage (4 categorie)</option>
+            <option value="braden">Rischio LdP — fasce Braden (3 categorie)</option>
+          </select>
+        </div>
+        <button class="btn-calc" id="run">Calcola la concordanza</button>
+        <p id="err" style="color:var(--accent);font-size:13px;margin-top:14px;min-height:18px;"></p>
+      </div>
+
+      <div class="calc-panel reveal" style="background:transparent;border:none;padding:0;">
+        <div class="result-box">
+          <div class="result-lbl">Cohen's Kappa (κ)</div>
+          <div class="result-big" id="kVal">—</div>
+          <div class="result-detail" id="detail" style="display:none;">
+            <div class="row"><span>Accordo osservato (Po)</span><span id="po">—</span></div>
+            <div class="row"><span>Accordo atteso (Pe)</span><span id="pe">—</span></div>
+            <div class="row"><span>Errore standard (SE)</span><span id="se">—</span></div>
+            <div class="row"><span>IC 95%</span><span id="ci">—</span></div>
+            <div class="row"><span>Soggetti (N)</span><span id="n">—</span></div>
+            <div class="row"><span>Categorie</span><span id="cats">—</span></div>
+          </div>
+          <div class="result-interp" id="interp" style="display:none;"></div>
+        </div>
+
+        <div class="kappa-scale" id="scale"></div>
+      </div>
+    </div>
+
+    <div class="table-card reveal" id="matrixCard" style="display:none;">
+      <div class="tbl-head"><div class="chart-title">Matrice di confusione</div><div class="chart-sub">Righe = Valutatore A · Colonne = Valutatore B. La diagonale rappresenta gli accordi.</div></div>
+      <div style="overflow-x:auto;"><table class="dtable" id="matrix"></table></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Come si legge</div>
+    <h2 class="sec-title reveal">Le soglie di <span class="accent">Landis &amp; Koch</span>.</h2>
+    <p class="sec-intro reveal">Il kappa corregge l'accordo osservato per quello atteso dal caso. Valori sotto 0,40 indicano una concordanza debole; per la doppia codifica nelle revisioni si punta in genere ad almeno «substantial» (≥0,61).</p>
+    <div class="reveal" style="max-width:760px;font-size:14px;color:var(--ink-soft);line-height:1.7;margin-top:18px;">
+      <p style="margin-bottom:12px;"><b>Formula.</b> κ = (P<sub>o</sub> − P<sub>e</sub>) / (1 − P<sub>e</sub>), dove P<sub>o</sub> è la proporzione di accordo osservato e P<sub>e</sub> quella attesa per caso. L'IC 95% usa SE = √[P<sub>o</sub>(1−P<sub>o</sub>)] / [√N · (1−P<sub>e</sub>)].</p>
+      <p style="margin-bottom:12px;"><b>Più di due valutatori.</b> Per concordanza tra 3+ codificatori serve il Fleiss' kappa; per dati ordinali si preferisce il weighted kappa. Questo strumento implementa il Cohen's kappa non pesato (due valutatori, categorie nominali).</p>
+      <p><b>Riferimento.</b> Landis JR, Koch GG. <i>The measurement of observer agreement for categorical data.</i> Biometrics 1977;33(1):159–174.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="margin-top:0;border-top:none;padding-top:0;">
+      <span>© MMXXVI ANIQRC · <a href="toolkit.html" style="color:inherit;">torna al Toolkit</a></span>
+      <span>Calcolo locale nel browser · nessun dato trasmesso</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const SCALE = [
+  { lo: -1, hi: 0,    lbl: "Nessun accordo (poor)",        col: "#C0202E" },
+  { lo: 0,  hi: 0.20, lbl: "Lieve (slight)",                col: "#D9694E" },
+  { lo: 0.20, hi: 0.40, lbl: "Discreto (fair)",             col: "#C98A1E" },
+  { lo: 0.40, hi: 0.60, lbl: "Moderato (moderate)",         col: "#B0A53E" },
+  { lo: 0.60, hi: 0.80, lbl: "Sostanziale (substantial)",   col: "#5BA45B" },
+  { lo: 0.80, hi: 1.01, lbl: "Quasi perfetto (almost perfect)", col: "#2F8F5B" }
+];
+
+const EXAMPLES = {
+  screening: "include, include\ninclude, exclude\nexclude, exclude\ninclude, include\nexclude, exclude\ninclude, include\nexclude, include\nexclude, exclude\ninclude, include\nexclude, exclude\ninclude, include\nexclude, exclude\ninclude, include\nexclude, exclude\ninclude, include\ninclude, include\nexclude, exclude\nexclude, exclude\ninclude, include\nexclude, exclude",
+  triage: "verde, verde\ngiallo, giallo\nrosso, rosso\nverde, giallo\ngiallo, giallo\nrosso, rosso\nbianco, bianco\ngiallo, verde\nrosso, rosso\nverde, verde\ngiallo, giallo\nbianco, bianco\nrosso, giallo\ngiallo, giallo\nverde, verde\nrosso, rosso\ngiallo, giallo\nverde, verde\nbianco, bianco\ngiallo, giallo",
+  braden: "alto, alto\nmedio, medio\nbasso, basso\nalto, medio\nmedio, medio\nbasso, basso\nalto, alto\nmedio, basso\nbasso, basso\nalto, alto\nmedio, medio\nbasso, basso\nalto, alto\nmedio, medio\nbasso, medio\nalto, alto\nmedio, medio\nbasso, basso\nalto, medio\nmedio, medio"
+};
+
+const num = (x, d=3) => x.toLocaleString('it-IT', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+function parseData(raw) {
+  const rows = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const pairs = [];
+  for (const r of rows) {
+    const parts = r.split(/[,\t;]+|\s{2,}|\s+/).map(s => s.trim()).filter(Boolean);
+    if (parts.length < 2) throw new Error("Riga non valida: «" + r + "». Servono due valori per riga.");
+    pairs.push([parts[0].toLowerCase(), parts[1].toLowerCase()]);
+  }
+  if (pairs.length < 2) throw new Error("Inserisci almeno due coppie di giudizi.");
+  return pairs;
+}
+
+function compute(pairs) {
+  const cats = [...new Set(pairs.flat())].sort();
+  const idx = Object.fromEntries(cats.map((c,i) => [c,i]));
+  const k = cats.length;
+  const M = Array.from({length:k}, () => Array(k).fill(0));
+  pairs.forEach(([a,b]) => M[idx[a]][idx[b]]++);
+  const N = pairs.length;
+  let diag = 0; const rowT = Array(k).fill(0), colT = Array(k).fill(0);
+  for (let i=0;i<k;i++) for (let j=0;j<k;j++){ rowT[i]+=M[i][j]; colT[j]+=M[i][j]; if(i===j) diag+=M[i][j]; }
+  const Po = diag / N;
+  let Pe = 0; for (let i=0;i<k;i++) Pe += (rowT[i]/N) * (colT[i]/N);
+  const kappa = (Pe === 1) ? 1 : (Po - Pe) / (1 - Pe);
+  const SE = (Pe === 1) ? 0 : Math.sqrt(Po*(1-Po)) / (Math.sqrt(N) * (1 - Pe));
+  const lo = kappa - 1.96*SE, hi = kappa + 1.96*SE;
+  return { cats, M, N, Po, Pe, kappa, SE, lo, hi, rowT, colT };
+}
+
+function band(k) { return SCALE.find(s => k >= s.lo && k < s.hi) || SCALE[SCALE.length-1]; }
+
+function renderScale(activeBand) {
+  document.getElementById('scale').innerHTML = SCALE.map(s => {
+    const active = activeBand && s.lbl === activeBand.lbl;
+    const rng = (s.lo < 0 ? "< 0,00" : num(s.lo,2)) + " – " + (s.hi > 1 ? "1,00" : num(s.hi,2));
+    return '<div class="kappa-row' + (active ? ' active' : '') + '">' +
+      '<span class="kr-range">' + rng + '</span>' +
+      '<div style="display:flex;align-items:center;gap:10px;"><span class="kbar" style="width:' + Math.max(12,(s.hi-Math.max(0,s.lo))*150) + 'px;background:' + s.col + ';"></span><span>' + s.lbl + '</span></div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderMatrix(R) {
+  const t = document.getElementById('matrix');
+  let head = '<thead><tr><th>A \\ B</th>' + R.cats.map(c => '<th>' + c + '</th>').join('') + '<th>Tot. A</th></tr></thead>';
+  let body = '<tbody>';
+  for (let i=0;i<R.cats.length;i++) {
+    body += '<tr><td><b>' + R.cats[i] + '</b></td>';
+    for (let j=0;j<R.cats.length;j++) {
+      const diag = i===j;
+      body += '<td class="num"' + (diag ? ' style="background:rgba(47,143,91,0.12);color:var(--good);"' : '') + '>' + R.M[i][j] + '</td>';
+    }
+    body += '<td class="num">' + R.rowT[i] + '</td></tr>';
+  }
+  body += '<tr><td><b>Tot. B</b></td>' + R.colT.map(c => '<td class="num">' + c + '</td>').join('') + '<td class="num">' + R.N + '</td></tr>';
+  body += '</tbody>';
+  t.innerHTML = head + body;
+}
+
+function run() {
+  const err = document.getElementById('err'); err.textContent = '';
+  try {
+    const R = compute(parseData(document.getElementById('data').value));
+    const b = band(R.kappa);
+    document.getElementById('kVal').textContent = num(R.kappa);
+    document.getElementById('po').textContent = num(R.Po);
+    document.getElementById('pe').textContent = num(R.Pe);
+    document.getElementById('se').textContent = num(R.SE);
+    document.getElementById('ci').textContent = num(R.lo) + " — " + num(R.hi);
+    document.getElementById('n').textContent = R.N;
+    document.getElementById('cats').textContent = R.cats.length + " (" + R.cats.join(", ") + ")";
+    document.getElementById('detail').style.display = 'block';
+    const interp = document.getElementById('interp');
+    interp.style.display = 'block';
+    interp.innerHTML = '<b>Interpretazione:</b> concordanza <b style="color:#fff;">' + b.lbl + '</b>. ' +
+      'L\'accordo osservato è del ' + num(R.Po*100,1) + '%, di cui ' + num(R.Pe*100,1) + '% atteso per caso.';
+    renderScale(b);
+    renderMatrix(R);
+    document.getElementById('matrixCard').style.display = 'block';
+  } catch (e) {
+    err.textContent = e.message;
+  }
+}
+
+document.getElementById('run').addEventListener('click', run);
+document.getElementById('example').addEventListener('change', e => {
+  if (EXAMPLES[e.target.value]) { document.getElementById('data').value = EXAMPLES[e.target.value]; run(); }
+});
+renderScale(null);
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

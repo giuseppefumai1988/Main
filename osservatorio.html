@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osservatorio Nazionale — Qualità e Rischio Clinico | ANIQRC</title>
+<meta name="description" content="L'Osservatorio ANIQRC: dati ufficiali italiani su qualità delle cure, esiti ospedalieri (PNE-AGENAS), eventi sentinella, infezioni correlate all'assistenza e LEA, con il divario Nord-Sud.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Osservatorio Nazionale Qualità e Rischio Clinico — ANIQRC">
+<meta property="og:description" content="Dati ufficiali italiani su qualità ed esiti delle cure, eventi sentinella e sicurezza dei pazienti.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="qualita.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="nm">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="ANIQRC">
+          <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946"/>
+          <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+        </svg>
+      </span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="index.html#ambiti">Ambiti</a>
+      <a href="osservatorio.html" class="active">Osservatorio</a>
+      <a href="toolkit.html">Toolkit</a>
+      <a href="index.html#documenti">Documenti</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">ANIQRC</a><span class="sep">/</span>Osservatorio</div>
+    <h1 class="page-title">Osservatorio Nazionale<br>Qualità & <span class="accent">Rischio Clinico</span></h1>
+    <p class="page-lead">I dati ufficiali della sicurezza delle cure in Italia, letti con la lente infermieristica. Esiti ospedalieri, eventi sentinella, infezioni e adempimento dei LEA — e il divario Nord-Sud che li attraversa. Una fotografia viva, da aggiornare a ogni nuovo rapporto.</p>
+
+    <div class="databanner reveal">
+      <span class="ic">i</span>
+      <p>Tutti i valori provengono da <b>fonti ufficiali</b> — AGENAS (Programma Nazionale Esiti), Ministero della Salute (Monitoraggio Eventi Sentinella / SIMES e LEA-NSG), ECDC e OCSE — e sono <b>citati sotto ogni grafico</b>. I dati riflettono l'ultima edizione disponibile e vengono aggiornati a ogni nuova pubblicazione. Per le note metodologiche e i limiti dei dati, vedi in fondo alla pagina.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ KPI ============ -->
+<section class="sec-pad" style="padding-top:24px;">
+  <div class="wrap">
+    <div class="sec-label reveal">Indicatori chiave</div>
+    <h2 class="sec-title reveal">Lo stato dell'arte, <span class="accent">in quattro numeri</span>.</h2>
+    <div class="kpi-grid reveal" id="kpiGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ESITI ============ -->
+<section class="sec-pad" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Esiti delle cure · PNE-AGENAS</div>
+    <h2 class="sec-title reveal">Quando il <span class="accent">tempo</span> è cura.</h2>
+    <p class="sec-intro reveal">Gli indicatori tempo-dipendenti misurano l'efficienza organizzativa e la qualità del percorso assistenziale: dalla frattura di femore operata entro 48 ore alla mortalità a 30 giorni dopo l'infarto.</p>
+
+    <div class="cols-2">
+      <div class="chart-card reveal">
+        <div class="chart-head">
+          <div>
+            <div class="chart-title" id="femoreTitle"></div>
+            <div class="chart-sub" id="femoreSub"></div>
+          </div>
+        </div>
+        <div class="chart-box"><canvas id="femoreChart"></canvas></div>
+        <div class="chart-src" id="femoreSrc"></div>
+      </div>
+
+      <div class="chart-card reveal">
+        <div class="chart-head">
+          <div>
+            <div class="chart-title" id="mortTitle"></div>
+            <div class="chart-sub" id="mortSub"></div>
+          </div>
+        </div>
+        <div class="chart-box"><canvas id="mortChart"></canvas></div>
+        <div class="chart-src" id="mortSrc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTO ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-label reveal">Appropriatezza · il parto</div>
+    <h2 class="sec-title reveal">Il taglio cesareo come <span class="accent">termometro</span>.</h2>
+    <p class="sec-intro reveal">Il ricorso al cesareo è un classico indicatore di (in)appropriatezza organizzativa. In Italia è in lento calo, ma con un divario territoriale e tra tipologie di struttura tra i più ampi d'Europa.</p>
+
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div>
+          <div class="chart-title" id="cesTitle"></div>
+          <div class="chart-sub" id="cesSub"></div>
+        </div>
+      </div>
+      <div class="chart-box"><canvas id="cesChart"></canvas></div>
+      <div class="chart-src" id="cesSrc"></div>
+    </div>
+
+    <div class="cols-2">
+      <div class="chart-card reveal">
+        <div class="chart-head"><div><div class="chart-title" id="cesAreaTitle"></div><div class="chart-sub" id="cesAreaSub"></div></div></div>
+        <div class="chart-box"><canvas id="cesAreaChart"></canvas></div>
+        <div class="chart-src" id="cesAreaSrc"></div>
+      </div>
+      <div class="chart-card reveal">
+        <div class="chart-head"><div><div class="chart-title" id="cesStrTitle"></div><div class="chart-sub" id="cesStrSub"></div></div></div>
+        <div class="chart-box"><canvas id="cesStrChart"></canvas></div>
+        <div class="chart-src" id="cesStrSrc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTI SENTINELLA ============ -->
+<section class="sec-pad" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Rischio clinico · eventi sentinella</div>
+    <h2 class="sec-title reveal">8.974 eventi in <span class="accent">16 anni</span>.</h2>
+    <p class="sec-intro reveal">Il 6° Rapporto del Ministero della Salute (2005–2020) raccoglie gli eventi sentinella validati attraverso il sistema SIMES. La caduta del paziente è la prima causa in assoluto — un dominio in cui l'assistenza infermieristica è decisiva.</p>
+
+    <div class="cols-2">
+      <div class="chart-card reveal" style="grid-column:1 / -1;">
+        <div class="chart-head"><div><div class="chart-title" id="sentTitle"></div><div class="chart-sub" id="sentSub"></div></div></div>
+        <div class="chart-box" style="height:380px;"><canvas id="sentChart"></canvas></div>
+        <div class="chart-src" id="sentSrc"></div>
+      </div>
+    </div>
+    <div class="cols-2">
+      <div class="chart-card reveal">
+        <div class="chart-head"><div><div class="chart-title" id="sentEsTitle"></div><div class="chart-sub" id="sentEsSub"></div></div></div>
+        <div class="chart-box"><canvas id="sentEsChart"></canvas></div>
+        <div class="chart-src" id="sentEsSrc"></div>
+      </div>
+      <div class="chart-card reveal">
+        <div class="chart-head"><div><div class="chart-title" id="icaTitle"></div><div class="chart-sub" id="icaSub"></div></div></div>
+        <div class="chart-box"><canvas id="icaChart"></canvas></div>
+        <div class="chart-src" id="icaSrc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEA / NSG TABLE ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-label reveal">Equità · LEA 2022</div>
+    <h2 class="sec-title reveal">Un Paese a <span class="accent">due velocità</span>.</h2>
+    <p class="sec-intro reveal">Il Nuovo Sistema di Garanzia valuta ogni Regione su tre macro-aree (Prevenzione, Distrettuale, Ospedaliera). Solo 13 Regioni superano la soglia in tutte e tre. Clicca le intestazioni per ordinare, o filtra per area geografica.</p>
+
+    <div class="chart-controls reveal" id="nsgFilters" style="margin-top:26px;">
+      <button class="chip on" data-area="all">Tutte</button>
+      <button class="chip" data-area="Nord">Nord</button>
+      <button class="chip" data-area="Centro">Centro</button>
+      <button class="chip" data-area="Sud">Sud</button>
+      <button class="chip" data-area="Isole">Isole</button>
+    </div>
+
+    <div class="table-card reveal">
+      <div class="tbl-head"><div class="chart-title" id="nsgTitle"></div><div class="chart-sub" id="nsgSub"></div></div>
+      <div style="overflow-x:auto;">
+        <table class="dtable" id="nsgTable">
+          <thead>
+            <tr>
+              <th data-k="regione">Regione ▲▼</th>
+              <th data-k="area">Area ▲▼</th>
+              <th data-k="aree_ok">Aree superate (su 3) ▲▼</th>
+              <th data-k="stato">Esito ▲▼</th>
+            </tr>
+          </thead>
+          <tbody id="nsgBody"></tbody>
+        </table>
+      </div>
+      <div class="chart-src" id="nsgSrc" style="padding:14px 28px 22px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERSONALE ============ -->
+<section class="sec-pad" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Risorse · personale infermieristico</div>
+    <h2 class="sec-title reveal">Pochi infermieri, <span class="accent">più rischio</span>.</h2>
+    <p class="sec-intro reveal">La densità infermieristica è un determinante riconosciuto degli esiti nursing-sensitive (cadute, lesioni da pressione, infezioni, mortalità intra-ospedaliera). L'Italia è sotto la media europea e OCSE.</p>
+    <div class="chart-card reveal">
+      <div class="chart-head"><div><div class="chart-title" id="infTitle"></div><div class="chart-sub" id="infSub"></div></div></div>
+      <div class="chart-box"><canvas id="infChart"></canvas></div>
+      <div class="chart-src" id="infSrc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTE METODOLOGICHE ============ -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-label reveal">Note metodologiche e limiti</div>
+    <h2 class="sec-title reveal">Leggere i dati con <span class="accent">onestà</span>.</h2>
+    <div class="reveal" style="max-width:820px;font-size:14.5px;color:var(--ink-soft);line-height:1.75;">
+      <p style="margin-bottom:14px;"><b>Sotto-segnalazione SIMES.</b> Gli eventi sentinella riflettono la cultura della segnalazione più che l'incidenza reale: 8.974 eventi in 16 anni sono certamente una sottostima, e le Regioni con poche segnalazioni possono avere semplicemente una minore sensibilità segnalativa.</p>
+      <p style="margin-bottom:14px;"><b>Variabilità intra-regionale.</b> Le mediane regionali del PNE nascondono ampie differenze tra strutture (la mortalità a 30 giorni da IMA può variare dal 3% al 16% nello stesso ambito). Il dato aggregato serve alle policy, non al confronto tra singoli ospedali.</p>
+      <p style="margin-bottom:14px;"><b>Indicatori infermieristici.</b> L'Italia non dispone di un registro nazionale unico di prevalenza di lesioni da pressione e cadute: è la più importante carenza informativa del dominio infermieristico, e una delle ragioni d'essere di questo Osservatorio.</p>
+      <p style="margin-bottom:14px;"><b>Confronti internazionali.</b> Il dato OCSE «infermieri per 1.000» include per l'Italia gli infermieri «professionally active»: le differenze metodologiche tra Paesi vanno tenute presenti nei confronti.</p>
+      <p><b>Latenza dei dati.</b> NSG-LEA copre l'attività 2022 (validata a giugno 2024); il PNE l'attività 2023–2024. C'è una fisiologica latenza di 1–2 anni tra l'evento e la pubblicazione ufficiale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-lockup">
+          <div class="fb-mark">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+              <circle cx="200" cy="200" r="130" fill="none" stroke="#F4F2EC" stroke-width="1.2" opacity="0.5"/>
+              <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+              <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+              <circle cx="200" cy="200" r="9" fill="#E63946"/>
+              <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+            </svg>
+          </div>
+          <div class="fb-text">
+            <div class="fb-acr">ANI<span class="q">Q</span>RC</div>
+            <div class="fb-full">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</div>
+          </div>
+        </div>
+        <p>Comunità scientifica degli infermieri italiani per la qualità, il rischio clinico e la ricerca sulla sicurezza delle cure.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Sezioni</h4>
+        <a href="index.html#manifesto">Manifesto</a>
+        <a href="index.html#ambiti">Ambiti</a>
+        <a href="osservatorio.html">Osservatorio</a>
+        <a href="toolkit.html">Toolkit</a>
+        <a href="index.html#documenti">Documenti</a>
+      </div>
+      <div class="foot-col">
+        <h4>Fonti dell'Osservatorio</h4>
+        <a href="https://pne.agenas.it" target="_blank" rel="noopener">AGENAS — Programma Nazionale Esiti ↗</a>
+        <a href="https://www.salute.gov.it/portale/temi/p2_6.jsp?area=qualita&id=238&menu=sicurezza" target="_blank" rel="noopener">Min. Salute — Eventi sentinella ↗</a>
+        <a href="https://www.salute.gov.it/portale/lea/dettaglioContenutiLea.jsp?id=5238" target="_blank" rel="noopener">Min. Salute — LEA / NSG ↗</a>
+        <a href="https://www.ecdc.europa.eu" target="_blank" rel="noopener">ECDC — Point Prevalence Survey ↗</a>
+        <a href="https://www.oecd.org/health/health-at-a-glance/" target="_blank" rel="noopener">OECD — Health at a Glance ↗</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© MMXXVI ANIQRC · Tutti i diritti riservati</span>
+      <span>Dati da fonti pubbliche ufficiali · Associazione in costituzione</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+/* ---- Dati di fallback (la pagina funziona anche offline / file://).
+   Se presente, qualita-data.json sovrascrive questi valori. ---- */
+const FALLBACK = {
+  kpi: [
+    { tag: "Frattura femore ≥65 — op. entro 48h", val: "59", u: "%", desc: "Valore mediano nazionale 2023 (standard DM 70/2015: 60%).", trend: "up", trendtxt: "+6 pt vs 2022 (53%)" },
+    { tag: "Mortalità 30gg post-IMA", val: "6,3", u: "%", desc: "Mediana nazionale 2024 (era 7,9% nel 2019 pre-pandemia).", trend: "up", trendtxt: "in calo, –1,6 pt vs 2019" },
+    { tag: "Tagli cesarei primari (NTSV)", val: "22", u: "%", desc: "Mediana nazionale 2024 (rif. OMS ~15%). Forte divario Nord-Sud.", trend: "up", trendtxt: "–3 pt vs 2015 (25%)" },
+    { tag: "Infermieri ogni 1.000 abitanti", val: "6,2", u: "", desc: "Italia 2021. Media OCSE 9,2 — circa un quarto sotto la media UE (8,5).", trend: "down", trendtxt: "sotto media OCSE/UE" }
+  ],
+  femore: { titolo:"Frattura del femore operata entro 48 ore (≥65 anni)", sub:"Indicatore PNE n.128 — valore mediano nazionale. Standard DM 70/2015: ≥60%.", unita:"%", fonte:"AGENAS — PNE ed. 2024 (attività 2023)", url:"https://pne.agenas.it", anni:["2021","2022","2023","2024"], serie:[{nome:"Mediana nazionale",valori:[48,53,59,61],colore:"#0A0A0A"},{nome:"Standard DM 70/2015",valori:[60,60,60,60],colore:"#E63946",dash:true}] },
+  mortalita: { titolo:"Mortalità a 30 giorni — esiti tempo-dipendenti", sub:"Mediane nazionali PNE. L'IMA è in calo costante.", unita:"%", fonte:"AGENAS — PNE 2024/2025; EpiCentro ISS", url:"https://pne.agenas.it", anni:["2012","2019","2020","2022","2024"], serie:[{nome:"IMA",valori:[10.0,7.9,8.4,8.0,6.3],colore:"#E63946"},{nome:"Ictus ischemico",valori:[null,null,null,null,8.4],colore:"#C98A1E"}] },
+  cesarei: { titolo:"Tagli cesarei e medicalizzazione del parto", sub:"Andamento nazionale 2015→2024.", unita:"%", fonte:"Min. Salute — CeDAP 2024; AGENAS PNE 2025", url:"https://www.salute.gov.it", anni:["2015","2024"], serie:[{nome:"Cesarei primari (mediana)",valori:[25,22],colore:"#0A0A0A"},{nome:"Cesarei totali",valori:[34,29.8],colore:"#E63946"},{nome:"Episiotomia",valori:[24,9],colore:"#C98A1E"}] },
+  cesarei_regioni: { titolo:"Cesarei totali — variabilità per area (2024)", sub:"Il divario tra estremi regionali supera i 28 punti.", unita:"%", fonte:"Min. Salute — CeDAP 2024", url:"https://www.salute.gov.it", categorie:["Toscana","Media Italia","Campania"], valori:[16.5,29.8,44.6], colore:"#E63946" },
+  cesarei_struttura: { titolo:"Cesarei totali per tipologia di struttura (2024)", sub:"Il ricorso cresce nel privato accreditato e puro.", unita:"%", fonte:"Min. Salute — CeDAP 2024", url:"https://www.salute.gov.it", categorie:["Ospedali pubblici","Presidi accreditati","Privato puro"], valori:[28.3,44.9,54.6], colore:"#0A0A0A" },
+  sentinella: { titolo:"Eventi sentinella per tipologia — cumulato 2005–2020", sub:"8.974 eventi validati in 16 anni (6° Rapporto).", unita:"% sul totale", fonte:"Min. Salute — 6° Rapporto Eventi Sentinella (2023)", url:"https://www.salute.gov.it/imgs/C_17_pubblicazioni_3356_allegato.pdf", categorie:["Caduta del paziente","Altro evento avverso grave","Violenza su operatore","Suicidio / tentato suicidio","Garze/strumenti in sito chirurgico","Errori in terapia farmacologica"], valori:[33.25,14.0,13.9,7.0,4.5,4.0], colore:"#E63946" },
+  sentinella_esito: { titolo:"Esito decesso negli eventi sentinella", sub:"Quota di eventi con decesso del paziente: in calo tra 5° e 6° Rapporto.", unita:"%", fonte:"Min. Salute — 5° e 6° Rapporto", url:"https://www.salute.gov.it", categorie:["5° Rapporto (2005–2012)","6° Rapporto (2005–2020)"], valori:[35.6,25.1], colore:"#0A0A0A" },
+  ica: { titolo:"Infezioni correlate all'assistenza — prevalenza", sub:"Quota di pazienti con ≥1 ICA. Dato nazionale 2016–17: 8,03%.", unita:"%", fonte:"ECDC PPS; studi regionali 2022–2024", url:"https://www.ecdc.europa.eu", categorie:["Italia 2016–17","Puglia 2022","Lombardia 2022"], valori:[8.03,9.9,10.1], colore:"#C98A1E" },
+  infermieri: { titolo:"Densità infermieristica — confronto internazionale", sub:"Infermieri praticanti / 1.000 ab. (2021).", unita:"/1.000 ab.", fonte:"OECD — Health at a Glance 2023", url:"https://www.oecd.org/health/health-at-a-glance/", categorie:["Italia","Media UE","Media OCSE"], valori:[6.2,8.5,9.2], colore:"#E63946" },
+  nsg: { titolo:"LEA 2022 — esito Nuovo Sistema di Garanzia per Regione", sub:"Aree CORE superate (Prevenzione, Distrettuale, Ospedaliera) su 3. Soglia 60.", fonte:"Min. Salute — NSG anno 2022 (validato giu. 2024)", url:"https://www.salute.gov.it/portale/lea/dettaglioContenutiLea.jsp?id=5238", righe:[
+    {regione:"Emilia-Romagna",area:"Nord",aree_ok:3,stato:"good"},{regione:"Veneto",area:"Nord",aree_ok:3,stato:"good"},{regione:"Toscana",area:"Centro",aree_ok:3,stato:"good"},{regione:"Piemonte",area:"Nord",aree_ok:3,stato:"good"},{regione:"Lombardia",area:"Nord",aree_ok:3,stato:"good"},{regione:"P.A. Trento",area:"Nord",aree_ok:3,stato:"good"},{regione:"Friuli Venezia Giulia",area:"Nord",aree_ok:3,stato:"good"},{regione:"Liguria",area:"Nord",aree_ok:3,stato:"good"},{regione:"Umbria",area:"Centro",aree_ok:3,stato:"good"},{regione:"Marche",area:"Centro",aree_ok:3,stato:"good"},{regione:"Lazio",area:"Centro",aree_ok:3,stato:"good"},{regione:"Puglia",area:"Sud",aree_ok:3,stato:"good"},{regione:"Basilicata",area:"Sud",aree_ok:3,stato:"good"},{regione:"P.A. Bolzano",area:"Nord",aree_ok:2,stato:"warn"},{regione:"Abruzzo",area:"Sud",aree_ok:2,stato:"warn"},{regione:"Molise",area:"Sud",aree_ok:2,stato:"warn"},{regione:"Campania",area:"Sud",aree_ok:2,stato:"warn"},{regione:"Calabria",area:"Sud",aree_ok:1,stato:"bad"},{regione:"Sicilia",area:"Isole",aree_ok:1,stato:"bad"},{regione:"Sardegna",area:"Isole",aree_ok:1,stato:"bad"},{regione:"Valle d'Aosta",area:"Nord",aree_ok:0,stato:"bad"}
+  ] }
+};
+
+let D = FALLBACK;
+
+/* Chart.js defaults coerenti col brand */
+function setDefaults() {
+  if (!window.Chart) return;
+  Chart.defaults.font.family = "'Manrope', sans-serif";
+  Chart.defaults.font.size = 12;
+  Chart.defaults.color = "#75736B";
+  Chart.defaults.plugins.legend.labels.usePointStyle = true;
+  Chart.defaults.plugins.legend.labels.boxWidth = 8;
+  Chart.defaults.plugins.legend.labels.padding = 16;
+  Chart.defaults.plugins.tooltip.backgroundColor = "#0A0A0A";
+  Chart.defaults.plugins.tooltip.padding = 12;
+  Chart.defaults.plugins.tooltip.cornerRadius = 8;
+  Chart.defaults.plugins.tooltip.titleFont = { family: "'JetBrains Mono', monospace", size: 11 };
+  Chart.defaults.plugins.tooltip.bodyFont = { family: "'Manrope', sans-serif", size: 13 };
+}
+const GRID = { color: "rgba(20,18,14,0.06)" };
+const fmtPct = (u) => (v) => v + (u || "");
+
+function setText(id, t) { const e = document.getElementById(id); if (e) e.textContent = t; }
+function setSrc(id, fonte, url) {
+  const e = document.getElementById(id); if (!e) return;
+  e.innerHTML = "Fonte: " + fonte + (url ? ' · <a href="' + url + '" target="_blank" rel="noopener">vai alla fonte ↗</a>' : '');
+}
+
+/* ---------- KPI ---------- */
+function renderKpi() {
+  const arrow = { up: "↗", down: "↘", flat: "→" };
+  document.getElementById('kpiGrid').innerHTML = D.kpi.map(k =>
+    '<div class="kpi"><div class="kpi-tag">' + k.tag + '</div>' +
+    '<div class="kpi-val">' + k.val + (k.u ? '<span class="u">' + k.u + '</span>' : '') + '</div>' +
+    '<div class="kpi-desc">' + k.desc + '</div>' +
+    '<div class="kpi-trend ' + k.trend + '">' + (arrow[k.trend] || '') + ' ' + k.trendtxt + '</div></div>'
+  ).join('');
+}
+
+/* ---------- LINE ---------- */
+function lineChart(cv, d) {
+  return new Chart(document.getElementById(cv), {
+    type: 'line',
+    data: { labels: d.anni, datasets: d.serie.map(s => ({
+      label: s.nome, data: s.valori, borderColor: s.colore,
+      backgroundColor: s.colore, borderWidth: s.dash ? 1.5 : 2.5,
+      borderDash: s.dash ? [6,5] : [], pointRadius: s.dash ? 0 : 4,
+      pointHoverRadius: 6, tension: 0.25, spanGaps: true
+    })) },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: d.serie.length > 1, position: 'bottom' },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.parsed.y + (d.unita || '') } } },
+      scales: { y: { grid: GRID, ticks: { callback: fmtPct(d.unita) } }, x: { grid: { display:false } } }
+    }
+  });
+}
+
+/* ---------- BAR (verticale o orizzontale) ---------- */
+function barChart(cv, d, horizontal) {
+  const isMulti = !!d.serie;
+  const labels = isMulti ? d.anni : d.categorie;
+  const datasets = isMulti
+    ? d.serie.map(s => ({ label: s.nome, data: s.valori, backgroundColor: s.colore, borderRadius: 5, maxBarThickness: 46 }))
+    : [{ label: d.titolo, data: d.valori, backgroundColor: d.categorie.map((_,i)=>shade(d.colore,i,d.categorie.length)), borderRadius: 6, maxBarThickness: 54 }];
+  return new Chart(document.getElementById(cv), {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      indexAxis: horizontal ? 'y' : 'x',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: isMulti, position: 'bottom' },
+        tooltip: { callbacks: { label: c => (isMulti ? c.dataset.label + ': ' : '') + c.parsed[horizontal ? 'x' : 'y'] + (d.unita || '') } } },
+      scales: horizontal
+        ? { x: { grid: GRID, ticks: { callback: fmtPct(d.unita) } }, y: { grid: { display:false } } }
+        : { y: { grid: GRID, ticks: { callback: fmtPct(d.unita) } }, x: { grid: { display:false } } }
+    }
+  });
+}
+/* sfuma un colore base per le barre singole */
+function shade(hex, i, n) {
+  if (n <= 1) return hex;
+  const t = i / (n - 1);
+  const c = hex.replace('#',''); const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);
+  const mix = (x) => Math.round(x + (245 - x) * t * 0.55);
+  return 'rgb(' + mix(r) + ',' + mix(g) + ',' + mix(b) + ')';
+}
+
+/* ---------- NSG TABLE ---------- */
+let nsgSort = { k: 'aree_ok', dir: 1 };
+let nsgArea = 'all';
+function renderNsg() {
+  setText('nsgTitle', D.nsg.titolo); setText('nsgSub', D.nsg.sub); setSrc('nsgSrc', D.nsg.fonte, D.nsg.url);
+  const lbl = { good: 'Promossa (3/3)', warn: 'Parziale', bad: 'Insufficiente' };
+  let rows = D.nsg.righe.filter(r => nsgArea === 'all' || r.area === nsgArea);
+  rows.sort((a,b) => {
+    let va = a[nsgSort.k], vb = b[nsgSort.k];
+    if (typeof va === 'string') return va.localeCompare(vb) * nsgSort.dir;
+    return (va - vb) * nsgSort.dir;
+  });
+  document.getElementById('nsgBody').innerHTML = rows.map(r =>
+    '<tr><td><b>' + r.regione + '</b></td><td>' + r.area + '</td>' +
+    '<td class="num">' + r.aree_ok + ' / 3</td>' +
+    '<td><span class="pill ' + r.stato + '">' + lbl[r.stato] + '</span></td></tr>'
+  ).join('');
+}
+function bindNsg() {
+  document.querySelectorAll('#nsgTable th').forEach(th => th.addEventListener('click', () => {
+    const k = th.dataset.k; nsgSort.dir = (nsgSort.k === k) ? -nsgSort.dir : 1; nsgSort.k = k; renderNsg();
+  }));
+  document.querySelectorAll('#nsgFilters .chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#nsgFilters .chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on'); nsgArea = c.dataset.area; renderNsg();
+  }));
+}
+
+/* ---------- RENDER ALL ---------- */
+function renderAll() {
+  renderKpi();
+  setText('femoreTitle', D.femore.titolo); setText('femoreSub', D.femore.sub); setSrc('femoreSrc', D.femore.fonte, D.femore.url); lineChart('femoreChart', D.femore);
+  setText('mortTitle', D.mortalita.titolo); setText('mortSub', D.mortalita.sub); setSrc('mortSrc', D.mortalita.fonte, D.mortalita.url); lineChart('mortChart', D.mortalita);
+  setText('cesTitle', D.cesarei.titolo); setText('cesSub', D.cesarei.sub); setSrc('cesSrc', D.cesarei.fonte, D.cesarei.url); barChart('cesChart', D.cesarei, false);
+  setText('cesAreaTitle', D.cesarei_regioni.titolo); setText('cesAreaSub', D.cesarei_regioni.sub); setSrc('cesAreaSrc', D.cesarei_regioni.fonte, D.cesarei_regioni.url); barChart('cesAreaChart', D.cesarei_regioni, true);
+  setText('cesStrTitle', D.cesarei_struttura.titolo); setText('cesStrSub', D.cesarei_struttura.sub); setSrc('cesStrSrc', D.cesarei_struttura.fonte, D.cesarei_struttura.url); barChart('cesStrChart', D.cesarei_struttura, true);
+  setText('sentTitle', D.sentinella.titolo); setText('sentSub', D.sentinella.sub); setSrc('sentSrc', D.sentinella.fonte, D.sentinella.url); barChart('sentChart', D.sentinella, true);
+  setText('sentEsTitle', D.sentinella_esito.titolo); setText('sentEsSub', D.sentinella_esito.sub); setSrc('sentEsSrc', D.sentinella_esito.fonte, D.sentinella_esito.url); barChart('sentEsChart', D.sentinella_esito, false);
+  setText('icaTitle', D.ica.titolo); setText('icaSub', D.ica.sub); setSrc('icaSrc', D.ica.fonte, D.ica.url); barChart('icaChart', D.ica, false);
+  setText('infTitle', D.infermieri.titolo); setText('infSub', D.infermieri.sub); setSrc('infSrc', D.infermieri.fonte, D.infermieri.url); barChart('infChart', D.infermieri, false);
+  renderNsg(); bindNsg();
+}
+
+/* prova a caricare il JSON esterno; se non c'è, usa il fallback */
+async function boot() {
+  setDefaults();
+  try {
+    const r = await fetch('qualita-data.json', { cache: 'no-store' });
+    if (r.ok) { const j = await r.json(); D = Object.assign({}, FALLBACK, j); }
+  } catch (e) { /* file:// o assente → fallback */ }
+  renderAll();
+}
+boot();
+
+/* nav + reveal */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 2500);
+</script>
+</body>
+</html>

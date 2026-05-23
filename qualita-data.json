@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "titolo": "Osservatorio Nazionale Qualità e Rischio Clinico Infermieristico — dataset",
+    "nota": "Dati da fonti ufficiali (PNE-AGENAS, Ministero della Salute/SIMES, NSG-LEA, ECDC, OECD). Aggiornare i valori qui: l'Osservatorio li legge automaticamente. Ultima compilazione: maggio 2026.",
+    "ultimo_aggiornamento": "2026-05"
+  },
+
+  "kpi": [
+    { "tag": "Frattura femore ≥65 — op. entro 48h", "val": "59", "u": "%", "desc": "Valore mediano nazionale 2023 (standard DM 70/2015: 60%).", "trend": "up", "trendtxt": "+6 pt vs 2022 (53%)" },
+    { "tag": "Mortalità 30gg post-IMA", "val": "6,3", "u": "%", "desc": "Mediana nazionale 2024 (era 7,9% nel 2019 pre-pandemia).", "trend": "up", "trendtxt": "in calo, –1,6 pt vs 2019" },
+    { "tag": "Tagli cesarei primari (NTSV)", "val": "22", "u": "%", "desc": "Mediana nazionale 2024 (rif. OMS ~15%). Forte divario Nord-Sud.", "trend": "up", "trendtxt": "–3 pt vs 2015 (25%)" },
+    { "tag": "Infermieri ogni 1.000 abitanti", "val": "6,2", "u": "", "desc": "Italia 2021. Media OCSE 9,2 — circa un quarto sotto la media UE (8,5).", "trend": "down", "trendtxt": "sotto media OCSE/UE" }
+  ],
+
+  "femore": {
+    "titolo": "Frattura del collo del femore operata entro 48 ore (≥65 anni)",
+    "sub": "Indicatore PNE n. 128 — valore mediano nazionale. Standard DM 70/2015: ≥60%.",
+    "unita": "%",
+    "fonte": "AGENAS — Programma Nazionale Esiti, ed. 2024 (attività 2023)",
+    "url": "https://pne.agenas.it",
+    "anni": ["2021", "2022", "2023", "2024"],
+    "serie": [
+      { "nome": "Mediana nazionale", "valori": [48, 53, 59, 61], "colore": "#0A0A0A" },
+      { "nome": "Standard DM 70/2015", "valori": [60, 60, 60, 60], "colore": "#E63946", "dash": true }
+    ]
+  },
+
+  "mortalita": {
+    "titolo": "Mortalità a 30 giorni — esiti ospedalieri tempo-dipendenti",
+    "sub": "Mediane nazionali PNE. L'IMA è in calo costante; persiste forte variabilità tra strutture.",
+    "unita": "%",
+    "fonte": "AGENAS — PNE ed. 2024/2025; EpiCentro ISS (PNE 2020)",
+    "url": "https://pne.agenas.it",
+    "anni": ["2012", "2019", "2020", "2022", "2024"],
+    "serie": [
+      { "nome": "IMA (infarto miocardico acuto)", "valori": [10.0, 7.9, 8.4, 8.0, 6.3], "colore": "#E63946" },
+      { "nome": "Ictus ischemico", "valori": [null, null, null, null, 8.4], "colore": "#C98A1E" }
+    ]
+  },
+
+  "cesarei": {
+    "titolo": "Tagli cesarei e medicalizzazione del parto",
+    "sub": "Andamento nazionale 2015→2024. Il cesareo primario è l'indicatore di appropriatezza; episiotomia in forte calo.",
+    "unita": "%",
+    "fonte": "Ministero della Salute — CeDAP 2024; AGENAS PNE 2025",
+    "url": "https://www.salute.gov.it",
+    "anni": ["2015", "2024"],
+    "serie": [
+      { "nome": "Cesarei primari (mediana)", "valori": [25, 22], "colore": "#0A0A0A" },
+      { "nome": "Cesarei totali", "valori": [34, 29.8], "colore": "#E63946" },
+      { "nome": "Episiotomia", "valori": [24, 9], "colore": "#C98A1E" }
+    ]
+  },
+
+  "cesarei_regioni": {
+    "titolo": "Tagli cesarei totali — variabilità per area (2024)",
+    "sub": "Il divario tra estremi regionali supera i 28 punti percentuali.",
+    "unita": "%",
+    "fonte": "Ministero della Salute — CeDAP 2024",
+    "url": "https://www.salute.gov.it",
+    "categorie": ["Toscana", "Media Italia", "Campania"],
+    "valori": [16.5, 29.8, 44.6],
+    "colore": "#E63946"
+  },
+
+  "cesarei_struttura": {
+    "titolo": "Tagli cesarei totali per tipologia di struttura (2024)",
+    "sub": "Il ricorso al cesareo cresce nettamente nel privato accreditato e puro.",
+    "unita": "%",
+    "fonte": "Ministero della Salute — CeDAP 2024",
+    "url": "https://www.salute.gov.it",
+    "categorie": ["Ospedali pubblici", "Presidi accreditati", "Privato puro"],
+    "valori": [28.3, 44.9, 54.6],
+    "colore": "#0A0A0A"
+  },
+
+  "sentinella": {
+    "titolo": "Eventi sentinella per tipologia — cumulato 2005–2020",
+    "sub": "8.974 eventi validati in 16 anni nel 6° Rapporto. La caduta del paziente è la prima causa.",
+    "unita": "% sul totale",
+    "fonte": "Ministero della Salute — 6° Rapporto di Monitoraggio Eventi Sentinella (set. 2023)",
+    "url": "https://www.salute.gov.it/imgs/C_17_pubblicazioni_3356_allegato.pdf",
+    "categorie": [
+      "Caduta del paziente",
+      "Altro evento avverso grave",
+      "Violenza su operatore",
+      "Suicidio / tentato suicidio",
+      "Garze/strumenti in sito chirurgico",
+      "Errori in terapia farmacologica"
+    ],
+    "valori": [33.25, 14.0, 13.9, 7.0, 4.5, 4.0],
+    "colore": "#E63946"
+  },
+
+  "sentinella_esito": {
+    "titolo": "Esito decesso negli eventi sentinella",
+    "sub": "Quota di eventi con decesso del paziente: in netto calo tra il 5° e il 6° Rapporto.",
+    "unita": "%",
+    "fonte": "Ministero della Salute — 5° e 6° Rapporto Eventi Sentinella",
+    "url": "https://www.salute.gov.it",
+    "categorie": ["5° Rapporto (2005–2012)", "6° Rapporto (2005–2020)"],
+    "valori": [35.6, 25.1],
+    "colore": "#0A0A0A"
+  },
+
+  "nsg": {
+    "titolo": "LEA 2022 — esito Nuovo Sistema di Garanzia per Regione",
+    "sub": "Punteggio CORE nelle 3 macro-aree (Prevenzione, Distrettuale, Ospedaliera). Soglia di sufficienza: 60. Stato = numero di aree superate su 3.",
+    "fonte": "Ministero della Salute — Monitoraggio LEA / NSG, anno 2022 (validato giu. 2024)",
+    "url": "https://www.salute.gov.it/portale/lea/dettaglioContenutiLea.jsp?id=5238",
+    "righe": [
+      { "regione": "Emilia-Romagna", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Veneto", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Toscana", "area": "Centro", "aree_ok": 3, "stato": "good" },
+      { "regione": "Piemonte", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Lombardia", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "P.A. Trento", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Friuli Venezia Giulia", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Liguria", "area": "Nord", "aree_ok": 3, "stato": "good" },
+      { "regione": "Umbria", "area": "Centro", "aree_ok": 3, "stato": "good" },
+      { "regione": "Marche", "area": "Centro", "aree_ok": 3, "stato": "good" },
+      { "regione": "Lazio", "area": "Centro", "aree_ok": 3, "stato": "good" },
+      { "regione": "Puglia", "area": "Sud", "aree_ok": 3, "stato": "good" },
+      { "regione": "Basilicata", "area": "Sud", "aree_ok": 3, "stato": "good" },
+      { "regione": "P.A. Bolzano", "area": "Nord", "aree_ok": 2, "stato": "warn" },
+      { "regione": "Abruzzo", "area": "Sud", "aree_ok": 2, "stato": "warn" },
+      { "regione": "Molise", "area": "Sud", "aree_ok": 2, "stato": "warn" },
+      { "regione": "Campania", "area": "Sud", "aree_ok": 2, "stato": "warn" },
+      { "regione": "Calabria", "area": "Sud", "aree_ok": 1, "stato": "bad" },
+      { "regione": "Sicilia", "area": "Isole", "aree_ok": 1, "stato": "bad" },
+      { "regione": "Sardegna", "area": "Isole", "aree_ok": 1, "stato": "bad" },
+      { "regione": "Valle d'Aosta", "area": "Nord", "aree_ok": 0, "stato": "bad" }
+    ]
+  },
+
+  "ica": {
+    "titolo": "Infezioni correlate all'assistenza (ICA) — prevalenza puntuale",
+    "sub": "Quota di pazienti con almeno una ICA. PPS ECDC: il dato nazionale 2016–17 era 8,03%; le survey regionali 2022 mostrano valori più alti.",
+    "unita": "%",
+    "fonte": "ECDC Point Prevalence Survey; studi regionali peer-reviewed 2022–2024",
+    "url": "https://www.ecdc.europa.eu",
+    "categorie": ["Italia 2016–17", "Puglia 2022", "Lombardia 2022"],
+    "valori": [8.03, 9.9, 10.1],
+    "colore": "#C98A1E"
+  },
+
+  "infermieri": {
+    "titolo": "Densità infermieristica — confronto internazionale",
+    "sub": "Infermieri praticanti ogni 1.000 abitanti (2021). L'Italia è sotto la media UE e OCSE: un fattore-chiave per gli esiti nursing-sensitive.",
+    "unita": "/1.000 ab.",
+    "fonte": "OECD — Health at a Glance 2023, Italy Country Note",
+    "url": "https://www.oecd.org/health/health-at-a-glance/",
+    "categorie": ["Italia", "Media UE", "Media OCSE"],
+    "valori": [6.2, 8.5, 9.2],
+    "colore": "#E63946"
+  }
+}

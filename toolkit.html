@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolkit — Strumenti per la qualità e il rischio clinico | ANIQRC</title>
+<meta name="description" content="Il Toolkit ANIQRC: libreria di strumenti validati (PROM, PREM, Q-DIO, MMAT, PRISMA-ScR), le 19 Raccomandazioni ministeriali per la sicurezza dei pazienti, i metodi di risk management e calcolatori operativi.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Toolkit — Strumenti per qualità e rischio clinico | ANIQRC">
+<meta property="og:description" content="Strumenti validati, raccomandazioni ministeriali e calcolatori per gli infermieri della qualità.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="qualita.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <span class="nm">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="ANIQRC">
+          <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946"/>
+          <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+        </svg>
+      </span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="index.html#ambiti">Ambiti</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html" class="active">Toolkit</a>
+      <a href="index.html#documenti">Documenti</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">ANIQRC</a><span class="sep">/</span>Toolkit</div>
+    <h1 class="page-title">Il <span class="accent">Toolkit</span> della qualità</h1>
+    <p class="page-lead">Strumenti pronti all'uso per chi misura, previene e migliora. Una libreria di strumenti validati (PROM, PREM, strumenti infermieristici e metodologici), le 19 Raccomandazioni ministeriali per la sicurezza dei pazienti, i metodi del risk management e calcolatori che funzionano direttamente nel browser.</p>
+  </div>
+</header>
+
+<!-- ============ CALCOLATORI ============ -->
+<section class="sec-pad" style="padding-top:24px;">
+  <div class="wrap">
+    <div class="sec-label reveal">Calcolatori operativi</div>
+    <h2 class="sec-title reveal">Strumenti che <span class="accent">calcolano</span>, non solo descrivono.</h2>
+    <p class="sec-intro reveal">Girano interamente nel tuo browser: nessun dato lascia il dispositivo. Pensati per audit, validazioni e protocolli di ricerca infermieristica.</p>
+    <div class="tool-grid reveal">
+      <a class="tool-card" href="strumenti-kappa.html">
+        <div class="tool-num">01 — AGREEMENT</div>
+        <div class="tool-h">Calcolatore Kappa</div>
+        <div class="tool-p">Concordanza inter-osservatore (Cohen e Fleiss), accordo percentuale e interpretazione secondo Landis &amp; Koch. Per la doppia codifica negli screening e negli audit.</div>
+        <span class="tool-go">Apri lo strumento →</span>
+      </a>
+      <a class="tool-card" href="strumenti-campione.html">
+        <div class="tool-num">02 — SAMPLING</div>
+        <div class="tool-h">Dimensione del campione</div>
+        <div class="tool-p">Calcolo della numerosità per stime di prevalenza (Cochran) e per il confronto tra due proporzioni, con correzione per popolazione finita.</div>
+        <span class="tool-go">Apri lo strumento →</span>
+      </a>
+      <a class="tool-card" href="#raccomandazioni" style="background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);">
+        <div class="tool-num" style="color:var(--accent);">03 — SAFETY</div>
+        <div class="tool-h">19 Raccomandazioni</div>
+        <div class="tool-p" style="color:var(--ink-soft);">Le Raccomandazioni ministeriali per la sicurezza dei pazienti, da consultare e applicare. Vai alla sezione dedicata più in basso.</div>
+        <span class="tool-go">Vai all'elenco →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRERIA STRUMENTI ============ -->
+<section class="sec-pad" style="background:var(--bg-warm);" id="libreria">
+  <div class="wrap">
+    <div class="sec-label reveal">Libreria strumenti validati</div>
+    <h2 class="sec-title reveal">PROM, PREM e <span class="accent">metodi</span>.</h2>
+    <p class="sec-intro reveal">Schede sintetiche di strumenti validati per misurare esiti, esperienza e qualità dell'assistenza. Solo metadati descrittivi: gli item dei questionari restano sui siti ufficiali degli editori, nel rispetto del copyright. Filtra per tipo o cerca per nome.</p>
+
+    <div class="filterbar reveal">
+      <input class="search-in" id="instSearch" type="text" placeholder="Cerca uno strumento (es. EQ-5D, esperienza, oncologia, Q-DIO)…">
+    </div>
+    <div class="chart-controls reveal" id="instFilters" style="margin-top:14px;">
+      <button class="chip on" data-t="all">Tutti</button>
+      <button class="chip" data-t="prom">PROM · Esiti</button>
+      <button class="chip" data-t="prem">PREM · Esperienza</button>
+      <button class="chip" data-t="nurse">Infermieristici</button>
+      <button class="chip" data-t="method">Metodologici</button>
+    </div>
+
+    <div class="inst-grid" id="instGrid"></div>
+  </div>
+</section>
+
+<!-- ============ RACCOMANDAZIONI ============ -->
+<section class="sec-pad" id="raccomandazioni">
+  <div class="wrap">
+    <div class="sec-label reveal">Sicurezza dei pazienti</div>
+    <h2 class="sec-title reveal">Le <span class="accent">19 Raccomandazioni</span> ministeriali.</h2>
+    <p class="sec-intro reveal">Emanate dal Ministero della Salute tra il 2005 e il 2019, sono il riferimento operativo per la prevenzione degli eventi avversi. AGENAS ne monitora l'applicazione.</p>
+    <div class="table-card reveal" style="margin-top:26px;">
+      <div style="overflow-x:auto;">
+        <table class="dtable" id="raccTable">
+          <thead><tr><th style="width:60px;">N°</th><th>Raccomandazione</th></tr></thead>
+          <tbody id="raccBody"></tbody>
+        </table>
+      </div>
+      <div class="chart-src" style="padding:14px 28px 22px;">Fonte: Ministero della Salute — Direzione Generale della Programmazione Sanitaria · <a href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">elenco completo AGENAS ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METODI ============ -->
+<section class="sec-pad" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Metodi del risk management</div>
+    <h2 class="sec-title reveal">Gli strumenti del <span class="accent">mestiere</span>.</h2>
+    <p class="sec-intro reveal">I metodi consolidati per identificare, analizzare e prevenire il rischio clinico — con i riferimenti canonici.</p>
+    <div class="inst-grid" id="metodiGrid" style="margin-top:26px;"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-lockup">
+          <div class="fb-mark">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+              <circle cx="200" cy="200" r="130" fill="none" stroke="#F4F2EC" stroke-width="1.2" opacity="0.5"/>
+              <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+              <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+              <circle cx="200" cy="200" r="9" fill="#E63946"/>
+              <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+            </svg>
+          </div>
+          <div class="fb-text">
+            <div class="fb-acr">ANI<span class="q">Q</span>RC</div>
+            <div class="fb-full">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</div>
+          </div>
+        </div>
+        <p>Comunità scientifica degli infermieri italiani per la qualità, il rischio clinico e la ricerca sulla sicurezza delle cure.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Sezioni</h4>
+        <a href="index.html#manifesto">Manifesto</a>
+        <a href="index.html#ambiti">Ambiti</a>
+        <a href="osservatorio.html">Osservatorio</a>
+        <a href="toolkit.html">Toolkit</a>
+        <a href="index.html#documenti">Documenti</a>
+      </div>
+      <div class="foot-col">
+        <h4>Nel Toolkit</h4>
+        <a href="#libreria">Libreria strumenti</a>
+        <a href="strumenti-kappa.html">Calcolatore Kappa</a>
+        <a href="strumenti-campione.html">Dimensione del campione</a>
+        <a href="#raccomandazioni">19 Raccomandazioni</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© MMXXVI ANIQRC · Tutti i diritti riservati</span>
+      <span>Metadati descrittivi · gli strumenti restano dei rispettivi editori</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const FALLBACK = {
+  strumenti: [
+    {acr:"EQ-5D",nome:"EuroQol 5 Dimensions (3L/5L)",tipo:"prom",cat:"Generico",costrutto:"Qualità di vita correlata alla salute (preference-based) + VAS",item:"5 + VAS",dev:"EuroQol Research Foundation",it:"Sì",lic:"Gratuita per ricerca non-commerciale (registrazione)",rif:"Herdman et al., Qual Life Res 2011",url:"https://euroqol.org"},
+    {acr:"SF-36 / SF-12",nome:"Short Form Health Survey",tipo:"prom",cat:"Generico",costrutto:"HRQoL: 8 domini → componente fisica e mentale",item:"36 / 12",dev:"RAND / MOS; QualityMetric",it:"Sì",lic:"Commerciale (RAND-36 gratuita)",rif:"Ware & Sherbourne, Med Care 1992",url:"https://www.rand.org/health-care/surveys_tools/mos/36-item-short-form.html"},
+    {acr:"PROMIS",nome:"Patient-Reported Outcomes Measurement Information System",tipo:"prom",cat:"Generico",costrutto:"Item bank IRT multidominio (CAT)",item:"Variabile (4–29)",dev:"NIH / HealthMeasures",it:"Sì (vari domini)",lic:"Gratuito (registrazione)",rif:"Cella et al., J Clin Epidemiol 2010",url:"https://www.healthmeasures.net"},
+    {acr:"WHOQOL-BREF",nome:"WHO Quality of Life — BREF",tipo:"prom",cat:"Generico",costrutto:"QoL: fisico, psicologico, sociale, ambientale",item:"26",dev:"World Health Organization",it:"Sì",lic:"Gratuito previo accordo WHO",rif:"WHOQOL Group, 1996",url:"https://www.who.int/tools/whoqol"},
+    {acr:"EORTC QLQ-C30",nome:"EORTC Quality of Life Questionnaire — Core 30",tipo:"prom",cat:"Oncologia",costrutto:"HRQoL oncologica: 5 scale funzionali, 9 sintomatiche, QoL globale",item:"30",dev:"EORTC Quality of Life Group",it:"Sì (norme IT)",lic:"Gratuita per ricerca accademica (registrazione)",rif:"Aaronson et al., JNCI 1993",url:"https://qol.eortc.org"},
+    {acr:"EORTC Modules",nome:"Moduli EORTC sede-specifici (BR23/45, LC13, CR29…)",tipo:"prom",cat:"Oncologia",costrutto:"Sintomi/funzioni per sede tumorale (integra il QLQ-C30)",item:"10–47",dev:"EORTC Quality of Life Group",it:"Sì (molti)",lic:"Gratuita per ricerca",rif:"EORTC QoL Group",url:"https://qol.eortc.org"},
+    {acr:"FACT-G",nome:"Functional Assessment of Cancer Therapy — General",tipo:"prom",cat:"Oncologia",costrutto:"HRQoL: fisico, sociale/familiare, emotivo, funzionale",item:"27",dev:"FACIT.org (Cella)",it:"Sì",lic:"Gratuita previo accordo FACIT",rif:"Cella et al., J Clin Oncol 1993",url:"https://www.facit.org"},
+    {acr:"PRO-CTCAE",nome:"Patient-Reported Outcomes version of the CTCAE",tipo:"prom",cat:"Oncologia",costrutto:"Tossicità sintomatica (78 sintomi); uso modulare",item:"124 (library)",dev:"National Cancer Institute (NIH)",it:"Sì",lic:"Gratuita per ricerca",rif:"Basch et al., JNCI 2014",url:"https://healthcaredelivery.cancer.gov/pro-ctcae/"},
+    {acr:"MDASI",nome:"MD Anderson Symptom Inventory",tipo:"prom",cat:"Oncologia",costrutto:"13 sintomi + 6 item di interferenza",item:"19",dev:"MD Anderson Cancer Center",it:"Sì",lic:"Gratuita per ricerca previo accordo",rif:"Cleeland et al., Cancer 2000",url:"https://www.mdanderson.org"},
+    {acr:"ESAS-r",nome:"Edmonton Symptom Assessment System (revised)",tipo:"prom",cat:"Oncologia / Palliative",costrutto:"9 sintomi su scala 0–10",item:"9",dev:"Bruera et al., Univ. Alberta",it:"Sì",lic:"Gratuita",rif:"Bruera et al., J Palliat Care 1991",url:"https://www.albertahealthservices.ca"},
+    {acr:"PPE-15",nome:"Picker Patient Experience Questionnaire",tipo:"prem",cat:"Esperienza — ricovero",costrutto:"Esperienza del ricovero su 8 domini Picker",item:"15",dev:"Picker Institute Europe",it:"Disponibile (autorizzato)",lic:"Licenza Picker",rif:"Jenkinson et al., IJQHC 2002",url:"https://picker.org"},
+    {acr:"HCAHPS",nome:"Hospital Consumer Assessment of Healthcare Providers and Systems",tipo:"prem",cat:"Esperienza — ricovero",costrutto:"Esperienza standardizzata del ricovero ospedaliero",item:"29",dev:"CMS / AHRQ (USA)",it:"Adattamenti regionali",lic:"Gratuita (linee guida CMS)",rif:"AHRQ CAHPS",url:"https://hcahpsonline.org"},
+    {acr:"CAHPS",nome:"Consumer Assessment of Healthcare Providers and Systems (famiglia)",tipo:"prem",cat:"Esperienza — multi-setting",costrutto:"Esperienza in vari setting assistenziali",item:"Variabile",dev:"AHRQ + consorzio Westat",it:"Adattamenti parziali",lic:"Gratuita",rif:"AHRQ",url:"https://www.ahrq.gov/cahps/"},
+    {acr:"NHS AIS",nome:"NHS Adult Inpatient Survey",tipo:"prem",cat:"Esperienza — ricovero",costrutto:"Esperienza del ricovero adulti (modello UK)",item:"~65",dev:"Care Quality Commission / Picker",it:"No (riferimento)",lic:"Pubblica (licenza CQC)",rif:"Picker / CQC",url:"https://picker.org/how-we-can-help/national-survey-programmes/adult-inpatient-survey/"},
+    {acr:"PREMs AGENAS",nome:"Indagine nazionale esperienza pazienti ricoverati",tipo:"prem",cat:"Esperienza — Italia",costrutto:"Esperienza del ricovero ordinario (rilevazione nazionale)",item:"Variabile",dev:"AGENAS",it:"Sì",lic:"Pubblico (istituzionale)",rif:"AGENAS — Empowerment del cittadino",url:"https://www.agenas.gov.it"},
+    {acr:"MeS PROMs/PREMs",nome:"Sistema PROMs/PREMs Laboratorio MeS (Toscana)",tipo:"prem",cat:"Esperienza — Italia",costrutto:"Esiti ed esperienza per percorsi chirurgici e medici",item:"Variabile",dev:"Scuola Sup. Sant'Anna, Pisa",it:"Sì",lic:"Pubblico",rif:"Laboratorio Management e Sanità",url:"https://performance.santannapisa.it"},
+    {acr:"PaRIS",nome:"OECD Patient-Reported Indicator Surveys",tipo:"prem",cat:"Esperienza — internazionale",costrutto:"Esperienza + esiti nei cronici 45+",item:"Survey nazionale",dev:"OECD",it:"Italia partecipa (2023)",lic:"Pubblico (OECD)",rif:"OECD PaRIS",url:"https://www.oecd.org/health/paris/"},
+    {acr:"NANDA-I",nome:"NANDA International Nursing Diagnoses",tipo:"nurse",cat:"Classificazione infermieristica",costrutto:"Tassonomia II delle diagnosi infermieristiche (13 domini)",item:"~267 diagnosi",dev:"NANDA International, Inc.",it:"Sì (traduzione IT)",lic:"Editoriale (copyright)",rif:"Herdman et al., 2024",url:"https://nanda.org"},
+    {acr:"Q-DIO",nome:"Quality of Diagnoses, Interventions and Outcomes",tipo:"nurse",cat:"Qualità documentazione",costrutto:"Qualità di accertamento, diagnosi, interventi, esiti",item:"29",dev:"Müller-Staub et al.",it:"Sì",lic:"Uso accademico previo accordo",rif:"Müller-Staub et al., J Clin Nurs 2009",url:"https://pubmed.ncbi.nlm.nih.gov/19239538/"},
+    {acr:"Q-DIO-R",nome:"Q-DIO Revised",tipo:"nurse",cat:"Qualità documentazione",costrutto:"Versione aggiornata del Q-DIO, validata in italiano",item:"29",dev:"Müller-Staub; validazione IT Bozzetti et al.",it:"Sì (2024)",lic:"Uso accademico previo accordo",rif:"Bozzetti et al., Int J Nurs Knowl 2024",url:"https://doi.org/10.1111/2047-3095.12504"},
+    {acr:"MMAT 2018",nome:"Mixed Methods Appraisal Tool",tipo:"method",cat:"Appraisal metodologico",costrutto:"Qualità di studi qualitativi, quantitativi e misti (5×5)",item:"5×5",dev:"Hong Q.N. et al., McGill University",it:"Uso internazionale",lic:"Gratuito",rif:"Hong et al., Educ Inf 2018",url:"http://mixedmethodsappraisaltoolpublic.pbworks.com"},
+    {acr:"PRISMA-ScR",nome:"PRISMA extension for Scoping Reviews",tipo:"method",cat:"Reporting guideline",costrutto:"Checklist di reporting per scoping review",item:"20 (+2 opz.)",dev:"Tricco et al.",it:"Uso internazionale",lic:"Gratuito",rif:"Tricco et al., Ann Intern Med 2018",url:"https://www.prisma-statement.org"}
+  ],
+  raccomandazioni: [
+    {n:1,t:"Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio"},
+    {n:2,t:"Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico"},
+    {n:3,t:"Corretta identificazione dei pazienti, del sito chirurgico e della procedura"},
+    {n:4,t:"Prevenzione del suicidio di paziente in ospedale"},
+    {n:5,t:"Prevenzione della reazione trasfusionale da incompatibilità AB0"},
+    {n:6,t:"Prevenzione della morte materna correlata al travaglio e/o parto"},
+    {n:7,t:"Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica"},
+    {n:8,t:"Prevenire gli atti di violenza a danno degli operatori sanitari"},
+    {n:9,t:"Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali"},
+    {n:10,t:"Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati"},
+    {n:11,t:"Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)"},
+    {n:12,t:"Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)"},
+    {n:13,t:"Prevenzione e gestione della caduta del paziente nelle strutture sanitarie"},
+    {n:14,t:"Prevenzione degli errori in terapia con farmaci antineoplastici"},
+    {n:15,t:"Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)"},
+    {n:16,t:"Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g"},
+    {n:17,t:"Riconciliazione della terapia farmacologica"},
+    {n:18,t:"Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli"},
+    {n:19,t:"Manipolazione delle forme farmaceutiche orali solide"}
+  ],
+  metodi: [
+    {acr:"Incident Reporting",desc:"Sistema volontario di segnalazione di eventi avversi e near-miss, base dell'apprendimento organizzativo.",rif:"WHO Draft Guidelines, 2005"},
+    {acr:"Audit Clinico",desc:"Revisione sistematica della pratica clinica rispetto a standard espliciti, con ciclo di miglioramento.",rif:"NICE, Best Practice in Clinical Audit, 2002"},
+    {acr:"Root Cause Analysis",desc:"Analisi retrospettiva delle cause profonde di un evento sentinella; identifica i fattori latenti di sistema.",rif:"Joint Commission — Sentinel Event Policy"},
+    {acr:"FMEA / FMECA",desc:"Analisi proattiva dei modi di guasto. Priorità di rischio RPN = Gravità × Probabilità × Rilevabilità.",rif:"IEC 60812:2018; VA NCPS HFMEA"},
+    {acr:"Ciclo PDCA",desc:"Plan-Do-Check-Act: il motore iterativo del miglioramento continuo della qualità (ruota di Deming).",rif:"Deming, Out of the Crisis, 1986"},
+    {acr:"Landis & Koch",desc:"Criteri di interpretazione della concordanza Kappa, dal «slight» all'«almost perfect». Per audit a doppia codifica.",rif:"Landis & Koch, Biometrics 1977"}
+  ]
+};
+
+let T = FALLBACK;
+let instType = 'all', instQ = '';
+const TYPE_LBL = { prom: 'PROM', prem: 'PREM', nurse: 'Infermieristico', method: 'Metodologico' };
+
+function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+function renderInst() {
+  const grid = document.getElementById('instGrid');
+  const q = norm(instQ);
+  const items = T.strumenti.filter(s => {
+    if (instType !== 'all' && s.tipo !== instType) return false;
+    if (!q) return true;
+    return norm(s.acr + ' ' + s.nome + ' ' + s.cat + ' ' + s.costrutto + ' ' + s.dev).includes(q);
+  });
+  if (!items.length) { grid.innerHTML = '<div class="empty">Nessuno strumento corrisponde alla ricerca.</div>'; return; }
+  grid.innerHTML = items.map(s =>
+    '<div class="inst"><div class="inst-top">' +
+      '<span class="inst-type ' + s.tipo + '">' + (TYPE_LBL[s.tipo] || '') + '</span>' +
+      '<span class="inst-it ' + (s.it && s.it.indexOf('Sì')===0 ? 'yes' : '') + '">IT: ' + s.it + '</span>' +
+    '</div>' +
+    '<div class="inst-acr">' + s.acr + '</div>' +
+    '<div class="inst-name">' + s.nome + '</div>' +
+    '<div class="inst-meta">' +
+      '<div><b>Dominio:</b> ' + s.cat + '</div>' +
+      '<div><b>Misura:</b> ' + s.costrutto + '</div>' +
+      '<div><b>Item:</b> ' + s.item + ' · <b>Licenza:</b> ' + s.lic + '</div>' +
+      '<div><b>Rif.:</b> ' + s.rif + '</div>' +
+    '</div>' +
+    '<a class="inst-link" href="' + s.url + '" target="_blank" rel="noopener">Sito ufficiale ↗</a>' +
+    '</div>'
+  ).join('');
+}
+
+function renderRacc() {
+  document.getElementById('raccBody').innerHTML = T.raccomandazioni.map(r =>
+    '<tr><td class="num" style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;">' + String(r.n).padStart(2,'0') + '</td><td>' + r.t + '</td></tr>'
+  ).join('');
+}
+
+function renderMetodi() {
+  document.getElementById('metodiGrid').innerHTML = T.metodi.map(m =>
+    '<div class="inst"><div class="inst-top"><span class="inst-type method">METODO</span></div>' +
+    '<div class="inst-acr" style="font-size:19px;">' + m.acr + '</div>' +
+    '<div class="inst-name" style="min-height:auto;margin-bottom:10px;">' + m.desc + '</div>' +
+    '<div class="inst-meta"><div><b>Rif.:</b> ' + m.rif + '</div></div></div>'
+  ).join('');
+}
+
+function bind() {
+  document.getElementById('instSearch').addEventListener('input', e => { instQ = e.target.value; renderInst(); });
+  document.querySelectorAll('#instFilters .chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#instFilters .chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on'); instType = c.dataset.t; renderInst();
+  }));
+}
+
+async function boot() {
+  try {
+    const r = await fetch('toolkit-data.json', { cache: 'no-store' });
+    if (r.ok) { const j = await r.json(); T = Object.assign({}, FALLBACK, j); }
+  } catch (e) {}
+  renderInst(); renderRacc(); renderMetodi(); bind();
+}
+boot();
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 2500);
+</script>
+</body>
+</html>
