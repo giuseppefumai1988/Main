@@ -340,6 +340,50 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .map-info .mi-reg{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:23px;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;}
 .map-info .mi-d{font-size:13.5px;color:var(--ink-soft);margin-top:14px;line-height:1.55;}
 
+
+/* === VIEW TRANSITIONS (transizioni tra pagine) === */
+@view-transition { navigation: auto; }
+.nav-logo .nm { view-transition-name: brandmark; }
+::view-transition-old(root){ animation: vtOut .28s ease both; }
+::view-transition-new(root){ animation: vtIn .42s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateY(-6px); } }
+@keyframes vtIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
+
+
+/* === MAPPA: accensione progressiva + collegamento tabella === */
+.map-anim .rgn{fill:#D9D4C8 !important;opacity:.35;transition:fill .55s ease,opacity .55s ease;}
+.map-anim .rgn.lit{opacity:1;}
+.map-anim .rgn.lit[data-st="good"]{fill:#2F8F5B !important;}
+.map-anim .rgn.lit[data-st="warn"]{fill:#C98A1E !important;}
+.map-anim .rgn.lit[data-st="bad"]{fill:#E63946 !important;}
+.map-anim .rgn.lit[data-st="mixed"]{fill:#8A8780 !important;}
+#nsgBody tr{cursor:pointer;transition:background .2s;}
+#nsgBody tr.row-hl{background:rgba(230,57,70,.08);}
+#nsgBody tr.row-hl td:first-child{box-shadow:inset 3px 0 0 var(--accent);}
+@media (prefers-reduced-motion: reduce){.map-anim .rgn{opacity:1 !important;}}
+
+
+/* === SCROLLYTELLING === */
+.scrolly{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;align-items:start;}
+@media(max-width:860px){.scrolly{grid-template-columns:1fr;gap:0;}}
+.scrolly-sticky{position:sticky;top:110px;}
+@media(max-width:860px){.scrolly-sticky{position:static;margin-bottom:20px;}}
+.scrolly-card{background:var(--ink);color:var(--bg);border-radius:12px;padding:44px 38px;position:relative;overflow:hidden;}
+.scrolly-card::after{content:'';position:absolute;bottom:-40%;right:-10%;width:320px;height:320px;background:radial-gradient(circle,rgba(230,57,70,.2),transparent 60%);pointer-events:none;}
+.sc-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(44px,7vw,72px);letter-spacing:-.03em;line-height:1;position:relative;z-index:2;}
+.sc-num .sc-u{font-size:.34em;color:rgba(244,242,236,.6);font-weight:500;}
+.sc-cap{font-size:15px;line-height:1.6;color:rgba(244,242,236,.82);margin-top:20px;position:relative;z-index:2;min-height:96px;}
+.sc-src{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(244,242,236,.5);margin-top:18px;position:relative;z-index:2;}
+.scrolly-steps{display:flex;flex-direction:column;}
+.scrolly-step{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:20px 0;opacity:.34;transition:opacity .4s ease;}
+.scrolly-step.active{opacity:1;}
+.scrolly-step h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;}
+.scrolly-step h3::before{content:'';display:inline-block;width:26px;height:3px;background:var(--accent);vertical-align:middle;margin-right:12px;}
+.scrolly-step p{font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:440px;}
+@media(max-width:860px){.scrolly-step{min-height:auto;padding:26px 0;opacity:1;}}
+@media(prefers-reduced-motion:reduce){.scrolly-step{opacity:1;}}
+
 </style>
 </head>
 <body>
@@ -390,6 +434,41 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     <div class="sec-label reveal">Indicatori chiave</div>
     <h2 class="sec-title reveal">Lo stato dell'arte, <span class="accent">in quattro numeri</span>.</h2>
     <div class="kpi-grid reveal" id="kpiGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SCROLLYTELLING ============ -->
+<section class="sec-pad" id="storia" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">La storia, in breve</div>
+    <h2 class="sec-title reveal">Quattro numeri che <span class="accent">raccontano</span>.</h2>
+    <div class="scrolly">
+      <div class="scrolly-sticky">
+        <div class="scrolly-card" id="scCard">
+          <div class="sc-num" id="scNum">48 → 61<span class="sc-u">%</span></div>
+          <div class="sc-cap" id="scCap">Fratture di femore nell'anziano operate entro 48 ore: dal 2021 al 2024 il dato nazionale è cresciuto, avvicinandosi allo standard del 60%.</div>
+          <div class="sc-src" id="scSrc">PNE-AGENAS, 2021–2024</div>
+        </div>
+      </div>
+      <div class="scrolly-steps">
+        <div class="scrolly-step" data-num="48 → 61&lt;span class='sc-u'&gt;%&lt;/span&gt;" data-cap="Fratture di femore nell'anziano operate entro 48 ore: dal 2021 al 2024 il dato nazionale è cresciuto di 13 punti, avvicinandosi allo standard del 60%. Una buona notizia." data-src="PNE-AGENAS, 2021–2024" data-st="good">
+          <h3>Qualcosa migliora</h3>
+          <p>La tempestività nella cura delle fratture di femore — un indicatore-chiave per l'anziano — è in netto miglioramento in Italia.</p>
+        </div>
+        <div class="scrolly-step" data-num="6,32&lt;span class='sc-u'&gt;%&lt;/span&gt;" data-cap="Mortalità a 30 giorni dopo infarto del miocardio (2024): in costante calo rispetto al 10% del 2012. Le reti tempo-dipendenti funzionano." data-src="PNE-AGENAS / ISS, 2024" data-st="good">
+          <h3>Le reti salvano vite</h3>
+          <p>Dove esistono percorsi tempo-dipendenti ben organizzati, gli esiti migliorano: la mortalità per infarto continua a scendere.</p>
+        </div>
+        <div class="scrolly-step" data-num="13 / 21" data-cap="Solo 13 Regioni su 21 sono promosse in tutte e tre le aree dei LEA 2022. Il divario tra Nord e Sud resta la frattura più profonda del sistema." data-src="Min. Salute — NSG 2022" data-st="warn">
+          <h3>Ma il divario resta</h3>
+          <p>La qualità non è uguale per tutti: la geografia pesa ancora troppo sull'esito delle cure. È qui che si gioca l'equità.</p>
+        </div>
+        <div class="scrolly-step" data-num="6,2&lt;span class='sc-u'&gt; /1.000&lt;/span&gt;" data-cap="Infermieri ogni 1.000 abitanti in Italia: sotto la media UE (8,5) e OCSE (9,2). È il nodo che attraversa tutti gli altri indicatori." data-src="OECD Health at a Glance 2023" data-st="bad">
+          <h3>Il nodo infermieristico</h3>
+          <p>Dietro a ogni indicatore di qualità c'è chi assiste. La carenza di infermieri è il vincolo strutturale da cui ripartire.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -555,7 +634,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="sec-label reveal">Equità · mappa interattiva</div>
     <h2 class="sec-title reveal">Il divario, <span class="accent">Regione per Regione</span>.</h2>
-    <p class="sec-intro reveal">Passa il mouse o tocca una Regione per leggerne l'esito dei LEA 2022. <b>Verde</b>: promossa in tutte e 3 le aree CORE. <b>Ambra</b>: parziale (2/3). <b>Rosso</b>: insufficiente (0–1/3).</p>
+    <p class="sec-intro reveal">Passa il mouse o tocca una Regione per leggerne l'esito dei LEA 2022. <b>Verde</b>: promossa in tutte e 3 le aree CORE. <b>Ambra</b>: parziale (2/3). <b>Rosso</b>: insufficiente (0–1/3). Mappa e tabella sono collegate: clicca una Regione (o una riga) e l'altra vista si evidenzia.</p>
     <div class="map-wrap reveal">
       <div class="map-stage">
 <svg id="mapItalia" viewBox="0 0 620 808" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mappa LEA 2022 per Regione">
@@ -835,7 +914,7 @@ function renderNsg() {
   setText('nsgTitle', D.nsg.titolo); setText('nsgSub', D.nsg.sub); setSrc('nsgSrc', D.nsg.fonte, D.nsg.url);
   const rows = nsgFiltered();
   document.getElementById('nsgBody').innerHTML = rows.map(r =>
-    '<tr><td><b>' + r.regione + '</b></td><td>' + r.area + '</td>' +
+    '<tr data-rk="' + (REG2KEY[r.regione] || '') + '"><td><b>' + r.regione + '</b></td><td>' + r.area + '</td>' +
     '<td class="num">' + areaDots(r.aree_ok) + r.aree_ok + ' / 3</td>' +
     '<td><span class="pill ' + r.stato + '">' + NSG_LBL[r.stato] + '</span></td></tr>'
   ).join('');
@@ -884,35 +963,103 @@ function bindNsg() {
   if (s) s.addEventListener('input', () => { nsgQuery = s.value; renderNsg(); });
   const ex = document.getElementById('nsgExport');
   if (ex) ex.addEventListener('click', exportNsgCsv);
+  const body = document.getElementById('nsgBody');
+  if (body) body.addEventListener('click', e => {
+    const tr = e.target.closest('tr');
+    if (tr && tr.dataset.rk) selectRegion(tr.dataset.rk, true);
+  });
 }
 
 
-/* ---------- MAPPA INTERATTIVA ---------- */
 const MAP_META = {"piemonte": {"label": "Piemonte", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "valledaosta": {"label": "Valle d'Aosta", "status": "bad", "detail": "Insufficiente — 0–1 aree CORE su 3", "aree": 0}, "lombardia": {"label": "Lombardia", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "trentino": {"label": "Trentino-Alto Adige", "status": "mixed", "detail": "P.A. Trento promossa (3/3) · P.A. Bolzano parziale (2/3)", "aree": null}, "veneto": {"label": "Veneto", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "fvg": {"label": "Friuli Venezia Giulia", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "liguria": {"label": "Liguria", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "emilia": {"label": "Emilia-Romagna", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "toscana": {"label": "Toscana", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "umbria": {"label": "Umbria", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "marche": {"label": "Marche", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "lazio": {"label": "Lazio", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "abruzzo": {"label": "Abruzzo", "status": "warn", "detail": "Parziale — 2 aree CORE su 3", "aree": 2}, "molise": {"label": "Molise", "status": "warn", "detail": "Parziale — 2 aree CORE su 3", "aree": 2}, "campania": {"label": "Campania", "status": "warn", "detail": "Parziale — 2 aree CORE su 3", "aree": 2}, "puglia": {"label": "Puglia", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "basilicata": {"label": "Basilicata", "status": "good", "detail": "Promossa — 3 aree CORE su 3", "aree": 3}, "calabria": {"label": "Calabria", "status": "bad", "detail": "Insufficiente — 0–1 aree CORE su 3", "aree": 1}, "sicilia": {"label": "Sicilia", "status": "bad", "detail": "Insufficiente — 0–1 aree CORE su 3", "aree": 1}, "sardegna": {"label": "Sardegna", "status": "bad", "detail": "Insufficiente — 0–1 aree CORE su 3", "aree": 1}};
-function initMap() {
-  const svg = document.getElementById('mapItalia');
-  const info = document.getElementById('mapInfo');
-  if (!svg || !info) return;
-  const LBL = { good:'Promossa (3/3)', warn:'Parziale (2/3)', bad:'Insufficiente', mixed:'Esito misto' };
-  const PILL = { good:'good', warn:'warn', bad:'bad', mixed:'warn' };
-  let sel = null;
-  function show(k) {
-    const m = MAP_META[k]; if (!m) return;
-    info.innerHTML = '<div class="mi-reg">' + m.label + '</div>' +
-      '<span class="pill ' + PILL[m.status] + '">' + LBL[m.status] + '</span>' +
-      '<div class="mi-d">' + m.detail + '</div>';
+
+const REG2KEY = {
+ 'Piemonte':'piemonte','Lombardia':'lombardia','Veneto':'veneto','Friuli Venezia Giulia':'fvg',
+ 'Liguria':'liguria','Emilia-Romagna':'emilia','Toscana':'toscana','Umbria':'umbria','Marche':'marche',
+ 'Lazio':'lazio','Abruzzo':'abruzzo','Molise':'molise','Campania':'campania','Puglia':'puglia',
+ 'Basilicata':'basilicata','Calabria':'calabria','Sicilia':'sicilia','Sardegna':'sardegna',
+ "Valle d'Aosta":'valledaosta','P.A. Trento':'trentino','P.A. Bolzano':'trentino'
+};
+const MAP_LBL = { good:'Promossa (3/3)', warn:'Parziale (2/3)', bad:'Insufficiente', mixed:'Esito misto' };
+const MAP_PILL = { good:'good', warn:'warn', bad:'bad', mixed:'warn' };
+let mapSel = null;
+
+function showMapInfo(k) {
+  const info = document.getElementById('mapInfo'); const m = MAP_META[k];
+  if (!info || !m) return;
+  info.innerHTML = '<div class="mi-reg">' + m.label + '</div>' +
+    '<span class="pill ' + MAP_PILL[m.status] + '">' + MAP_LBL[m.status] + '</span>' +
+    '<div class="mi-d">' + m.detail + '</div>';
+}
+function highlightRows(k, scrollRow) {
+  let first = null;
+  document.querySelectorAll('#nsgBody tr').forEach(function (tr) {
+    const on = tr.dataset.rk === k;
+    tr.classList.toggle('row-hl', on);
+    if (on && !first) first = tr;
+  });
+  if (first && scrollRow) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function selectRegion(k, fromTable) {
+  const svg = document.getElementById('mapItalia'); if (!svg) return;
+  if (mapSel) mapSel.classList.remove('sel');
+  const path = svg.querySelector('.rgn[data-k="' + k + '"]');
+  if (path) { path.classList.add('sel'); mapSel = path; }
+  showMapInfo(k);
+  highlightRows(k, !fromTable);
+  if (fromTable) { const st = document.querySelector('.map-stage'); if (st) st.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+}
+function initMapLightUp(svg) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let paths = Array.prototype.slice.call(svg.querySelectorAll('.rgn'));
+  let order;
+  try { order = paths.map(function (p) { return { p: p, y: p.getBBox().y }; }).sort(function (a, b) { return a.y - b.y; }).map(function (o) { return o.p; }); }
+  catch (e) { order = paths; }
+  svg.classList.add('map-anim');
+  let done = false;
+  function light() {
+    if (done) return; done = true;
+    order.forEach(function (p, i) { p.style.transitionDelay = (i * 60) + 'ms'; });
+    requestAnimationFrame(function () { order.forEach(function (p) { p.classList.add('lit'); }); });
   }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { light(); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(svg);
+    setTimeout(light, 5000); // safety
+  } else { light(); }
+}
+function initMap() {
+  const svg = document.getElementById('mapItalia'); if (!svg) return;
   svg.querySelectorAll('.rgn').forEach(function (p) {
-    p.addEventListener('pointerenter', function () { show(p.dataset.k); });
-    p.addEventListener('click', function () {
-      if (sel) sel.classList.remove('sel');
-      sel = p; p.classList.add('sel'); show(p.dataset.k);
-    });
+    p.addEventListener('pointerenter', function () { showMapInfo(p.dataset.k); });
+    p.addEventListener('click', function () { selectRegion(p.dataset.k, false); });
     p.setAttribute('tabindex', '0');
     p.setAttribute('role', 'button');
-    p.addEventListener('focus', function () { show(p.dataset.k); });
+    p.addEventListener('focus', function () { showMapInfo(p.dataset.k); });
     p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); p.click(); } });
   });
+  initMapLightUp(svg);
+}
+
+
+function initScrolly() {
+  const steps = document.querySelectorAll('.scrolly-step');
+  const num = document.getElementById('scNum'), cap = document.getElementById('scCap'), src = document.getElementById('scSrc');
+  if (!steps.length || !num) return;
+  function set(s) { num.innerHTML = s.dataset.num; cap.innerHTML = s.dataset.cap; src.textContent = s.dataset.src; }
+  if (!('IntersectionObserver' in window)) { return; }
+  const io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) {
+        steps.forEach(function (x) { x.classList.remove('active'); });
+        e.target.classList.add('active');
+        set(e.target);
+      }
+    });
+  }, { threshold: 0.6, rootMargin: '-15% 0px -25% 0px' });
+  steps.forEach(function (s) { io.observe(s); });
 }
 
 /* ---------- RENDER ALL ---------- */
@@ -1012,6 +1159,7 @@ async function boot() {
   renderAll();
   loadLiterature();
   initMap();
+  initScrolly();
 }
 boot();
 

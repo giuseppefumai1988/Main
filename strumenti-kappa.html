@@ -282,6 +282,16 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .fx-title.in .fx-wi{transform:none;opacity:1;}
 @media (prefers-reduced-motion: reduce){.fx-lens{display:none;}.fx-wi{transform:none !important;opacity:1 !important;}}
 
+
+/* === VIEW TRANSITIONS (transizioni tra pagine) === */
+@view-transition { navigation: auto; }
+.nav-logo .nm { view-transition-name: brandmark; }
+::view-transition-old(root){ animation: vtOut .28s ease both; }
+::view-transition-new(root){ animation: vtIn .42s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateY(-6px); } }
+@keyframes vtIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
+
 </style>
 </head>
 <body>

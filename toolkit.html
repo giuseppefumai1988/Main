@@ -289,6 +289,29 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 /* === DEFINIZIONE FACILE === */
 .inst-facile{font-size:13px;color:var(--ink-soft);line-height:1.5;background:var(--bg-warm);border-radius:6px;padding:11px 13px;margin-bottom:14px;}
 
+
+/* === VIEW TRANSITIONS (transizioni tra pagine) === */
+@view-transition { navigation: auto; }
+.nav-logo .nm { view-transition-name: brandmark; }
+::view-transition-old(root){ animation: vtOut .28s ease both; }
+::view-transition-new(root){ animation: vtIn .42s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateY(-6px); } }
+@keyframes vtIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
+
+
+/* === TAB (Toolkit) === */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--rule);margin:40px 0 0;}
+.tab{font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:600;padding:13px 20px;background:transparent;border:none;cursor:pointer;color:var(--ink-mute);position:relative;transition:color .25s;}
+.tab:hover{color:var(--ink);}
+.tab.on{color:var(--ink);}
+.tab.on::after{content:'';position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--accent);}
+.tab-wrap{position:relative;padding-top:30px;}
+.tab-panel{display:none;}
+.tab-panel.on{display:block;animation:tabIn .45s cubic-bezier(0.16,1,0.3,1);}
+@keyframes tabIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+@media(prefers-reduced-motion:reduce){.tab-panel.on{animation:none;}}
+
 </style>
 </head>
 <body>
@@ -356,52 +379,52 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 </section>
 
 <!-- ============ LIBRERIA STRUMENTI ============ -->
+<!-- ============ STRUMENTI & RIFERIMENTI (TABS) ============ -->
 <section class="sec-pad" style="background:var(--bg-warm);" id="libreria">
   <div class="wrap">
-    <div class="sec-label reveal">Libreria strumenti validati</div>
-    <h2 class="sec-title reveal">PROM, PREM e <span class="accent">metodi</span>.</h2>
-    <p class="sec-intro reveal">Schede sintetiche di strumenti validati per misurare esiti, esperienza e qualità dell'assistenza. Solo metadati descrittivi: gli item dei questionari restano sui siti ufficiali degli editori, nel rispetto del copyright. Filtra per tipo o cerca per nome.</p>
+    <div class="sec-label reveal">Strumenti &amp; riferimenti</div>
+    <h2 class="sec-title reveal">La cassetta degli <span class="accent">attrezzi</span>.</h2>
+    <p class="sec-intro reveal">Strumenti validati per misurare esiti, esperienza e qualità; le 19 Raccomandazioni ministeriali; i metodi del risk management. Solo metadati descrittivi, nel rispetto del copyright degli editori.</p>
 
-    <div class="filterbar reveal">
-      <input class="search-in" id="instSearch" type="text" placeholder="Cerca uno strumento (es. EQ-5D, esperienza, oncologia, Q-DIO)…">
-    </div>
-    <div class="chart-controls reveal" id="instFilters" style="margin-top:14px;">
-      <button class="chip on" data-t="all">Tutti</button>
-      <button class="chip" data-t="prom">PROM · Esiti</button>
-      <button class="chip" data-t="prem">PREM · Esperienza</button>
-      <button class="chip" data-t="nurse">Infermieristici</button>
-      <button class="chip" data-t="method">Metodologici</button>
+    <div class="tabs reveal" id="tkTabs" role="tablist">
+      <button class="tab on" data-tab="lib" role="tab">Libreria strumenti</button>
+      <button class="tab" data-tab="racc" role="tab">19 Raccomandazioni</button>
+      <button class="tab" data-tab="met" role="tab">Metodi</button>
     </div>
 
-    <div class="inst-grid" id="instGrid"></div>
-  </div>
-</section>
-
-<!-- ============ RACCOMANDAZIONI ============ -->
-<section class="sec-pad" id="raccomandazioni">
-  <div class="wrap">
-    <div class="sec-label reveal">Sicurezza dei pazienti</div>
-    <h2 class="sec-title reveal">Le <span class="accent">19 Raccomandazioni</span> ministeriali.</h2>
-    <p class="sec-intro reveal">Emanate dal Ministero della Salute tra il 2005 e il 2019, sono il riferimento operativo per la prevenzione degli eventi avversi. AGENAS ne monitora l'applicazione.</p>
-    <div class="table-card reveal" style="margin-top:26px;">
-      <div style="overflow-x:auto;">
-        <table class="dtable" id="raccTable">
-          <thead><tr><th style="width:60px;">N°</th><th>Raccomandazione</th></tr></thead>
-          <tbody id="raccBody"></tbody>
-        </table>
+    <div class="tab-wrap">
+      <div class="tab-panel on" id="tab-lib" role="tabpanel">
+        <div class="filterbar">
+          <input class="search-in" id="instSearch" type="text" placeholder="Cerca uno strumento (es. EQ-5D, esperienza, oncologia, Q-DIO)…">
+        </div>
+        <div class="chart-controls" id="instFilters" style="margin-top:14px;">
+          <button class="chip on" data-t="all">Tutti</button>
+          <button class="chip" data-t="prom">PROM · Esiti</button>
+          <button class="chip" data-t="prem">PREM · Esperienza</button>
+          <button class="chip" data-t="nurse">Infermieristici</button>
+          <button class="chip" data-t="method">Metodologici</button>
+        </div>
+        <div class="inst-grid" id="instGrid"></div>
       </div>
-      <div class="chart-src" style="padding:14px 28px 22px;">Fonte: Ministero della Salute — Direzione Generale della Programmazione Sanitaria · <a href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">elenco completo AGENAS ↗</a></div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ METODI ============ -->
-<section class="sec-pad" style="background:var(--bg-warm);">
-  <div class="wrap">
-    <div class="sec-label reveal">Metodi del risk management</div>
-    <h2 class="sec-title reveal">Gli strumenti del <span class="accent">mestiere</span>.</h2>
-    <p class="sec-intro reveal">I metodi consolidati per identificare, analizzare e prevenire il rischio clinico — con i riferimenti canonici.</p>
-    <div class="inst-grid" id="metodiGrid" style="margin-top:26px;"></div>
+      <div class="tab-panel" id="tab-racc" role="tabpanel">
+        <p class="sec-intro" style="margin-top:6px;">Emanate dal Ministero della Salute tra il 2005 e il 2019, sono il riferimento operativo per la prevenzione degli eventi avversi. AGENAS ne monitora l'applicazione.</p>
+        <div class="table-card" style="margin-top:22px;">
+          <div style="overflow-x:auto;">
+            <table class="dtable" id="raccTable">
+              <thead><tr><th style="width:60px;">N°</th><th>Raccomandazione</th></tr></thead>
+              <tbody id="raccBody"></tbody>
+            </table>
+          </div>
+          <div class="chart-src" style="padding:14px 28px 22px;">Fonte: Ministero della Salute — Direzione Generale della Programmazione Sanitaria · <a href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">elenco completo AGENAS ↗</a></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-met" role="tabpanel">
+        <p class="sec-intro" style="margin-top:6px;">I metodi consolidati per identificare, analizzare e prevenire il rischio clinico — con i riferimenti canonici.</p>
+        <div class="inst-grid" id="metodiGrid" style="margin-top:22px;"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -562,6 +585,15 @@ function bind() {
   document.querySelectorAll('#instFilters .chip').forEach(c => c.addEventListener('click', () => {
     document.querySelectorAll('#instFilters .chip').forEach(x => x.classList.remove('on'));
     c.classList.add('on'); instType = c.dataset.t; renderInst();
+  }));
+  // tab switching (libreria / raccomandazioni / metodi)
+  const tabs = document.querySelectorAll('#tkTabs .tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('on'));
+    const panel = document.getElementById('tab-' + t.dataset.tab);
+    if (panel) panel.classList.add('on');
   }));
 }
 
