@@ -4,58 +4,429 @@
     "ultimo_aggiornamento": "2026-05"
   },
   "strumenti": [
-    { "acr": "EQ-5D", "nome": "EuroQol 5 Dimensions (3L/5L)", "tipo": "prom", "cat": "Generico", "costrutto": "Qualità di vita correlata alla salute (preference-based) + VAS", "item": "5 + VAS", "dev": "EuroQol Research Foundation", "it": "Sì", "lic": "Licenza gratuita per ricerca non-commerciale (registrazione)", "rif": "Herdman et al., Qual Life Res 2011", "url": "https://euroqol.org" },
-    { "acr": "SF-36 / SF-12", "nome": "Short Form Health Survey", "tipo": "prom", "cat": "Generico", "costrutto": "HRQoL: 8 domini → componente fisica (PCS) e mentale (MCS)", "item": "36 / 12", "dev": "RAND / Medical Outcomes Study; QualityMetric", "it": "Sì", "lic": "Commerciale (RAND-36 versione gratuita)", "rif": "Ware & Sherbourne, Med Care 1992; Apolone & Mosconi 1998 (IT)", "url": "https://www.rand.org/health-care/surveys_tools/mos/36-item-short-form.html" },
-    { "acr": "PROMIS", "nome": "Patient-Reported Outcomes Measurement Information System", "tipo": "prom", "cat": "Generico", "costrutto": "Item bank IRT multidominio (fisico, mentale, sociale); CAT", "item": "Variabile (4–29)", "dev": "NIH / HealthMeasures", "it": "Sì (vari domini)", "lic": "Gratuito (registrazione)", "rif": "Cella et al., J Clin Epidemiol 2010", "url": "https://www.healthmeasures.net" },
-    { "acr": "WHOQOL-BREF", "nome": "WHO Quality of Life — BREF", "tipo": "prom", "cat": "Generico", "costrutto": "QoL: fisico, psicologico, sociale, ambientale", "item": "26", "dev": "World Health Organization", "it": "Sì", "lic": "Gratuito previo accordo WHO", "rif": "WHOQOL Group, 1996", "url": "https://www.who.int/tools/whoqol" },
-    { "acr": "EORTC QLQ-C30", "nome": "EORTC Quality of Life Questionnaire — Core 30", "tipo": "prom", "cat": "Oncologia", "costrutto": "HRQoL oncologica: 5 scale funzionali, 9 sintomatiche, QoL globale", "item": "30", "dev": "EORTC Quality of Life Group", "it": "Sì (norme IT, Nolte 2022)", "lic": "Gratuita per ricerca accademica (registrazione)", "rif": "Aaronson et al., J Natl Cancer Inst 1993", "url": "https://qol.eortc.org" },
-    { "acr": "EORTC Modules", "nome": "Moduli EORTC sede-specifici (BR23/45, LC13, CR29…)", "tipo": "prom", "cat": "Oncologia", "costrutto": "Sintomi/funzioni per sede tumorale, ad integrazione del QLQ-C30", "item": "Variabile (10–47)", "dev": "EORTC Quality of Life Group", "it": "Sì (molti moduli)", "lic": "Gratuita per ricerca (EORTC)", "rif": "EORTC QoL Group", "url": "https://qol.eortc.org" },
-    { "acr": "FACT-G", "nome": "Functional Assessment of Cancer Therapy — General", "tipo": "prom", "cat": "Oncologia", "costrutto": "HRQoL: fisico, sociale/familiare, emotivo, funzionale", "item": "27", "dev": "FACIT.org (Cella)", "it": "Sì", "lic": "Gratuita previo accordo FACIT", "rif": "Cella et al., J Clin Oncol 1993", "url": "https://www.facit.org" },
-    { "acr": "PRO-CTCAE", "nome": "Patient-Reported Outcomes version of the CTCAE", "tipo": "prom", "cat": "Oncologia", "costrutto": "Tossicità sintomatica (78 sintomi); uso modulare", "item": "124 (library)", "dev": "National Cancer Institute (NIH)", "it": "Sì (validazione linguistica)", "lic": "Gratuita per ricerca", "rif": "Basch et al., J Natl Cancer Inst 2014", "url": "https://healthcaredelivery.cancer.gov/pro-ctcae/" },
-    { "acr": "MDASI", "nome": "MD Anderson Symptom Inventory", "tipo": "prom", "cat": "Oncologia", "costrutto": "13 sintomi + 6 item di interferenza", "item": "19 (core)", "dev": "MD Anderson Cancer Center", "it": "Sì", "lic": "Gratuita per ricerca previo accordo", "rif": "Cleeland et al., Cancer 2000", "url": "https://www.mdanderson.org/research/departments-labs-institutes/departments-divisions/symptom-research/symptom-assessment-tools.html" },
-    { "acr": "ESAS-r", "nome": "Edmonton Symptom Assessment System (revised)", "tipo": "prom", "cat": "Oncologia / Cure palliative", "costrutto": "9 sintomi su scala numerica 0–10", "item": "9", "dev": "Bruera et al., University of Alberta", "it": "Sì", "lic": "Gratuita", "rif": "Bruera et al., J Palliat Care 1991", "url": "https://www.albertahealthservices.ca" },
-    { "acr": "PPE-15", "nome": "Picker Patient Experience Questionnaire", "tipo": "prem", "cat": "Esperienza — ricovero", "costrutto": "Esperienza del ricovero su 8 domini Picker", "item": "15", "dev": "Picker Institute Europe", "it": "Disponibile (uso autorizzato)", "lic": "Licenza Picker", "rif": "Jenkinson et al., Int J Qual Health Care 2002", "url": "https://picker.org" },
-    { "acr": "HCAHPS", "nome": "Hospital Consumer Assessment of Healthcare Providers and Systems", "tipo": "prem", "cat": "Esperienza — ricovero", "costrutto": "Esperienza standardizzata del ricovero ospedaliero", "item": "29 (core)", "dev": "CMS / AHRQ (USA)", "it": "Adattamenti regionali", "lic": "Gratuita (linee guida CMS)", "rif": "AHRQ CAHPS", "url": "https://hcahpsonline.org" },
-    { "acr": "CAHPS", "nome": "Consumer Assessment of Healthcare Providers and Systems (famiglia)", "tipo": "prem", "cat": "Esperienza — multi-setting", "costrutto": "Esperienza in vari setting (ospedale, ambulatorio, oncologia, hospice…)", "item": "Variabile", "dev": "AHRQ + consorzio Westat", "it": "Adattamenti parziali", "lic": "Gratuita", "rif": "Agency for Healthcare Research and Quality", "url": "https://www.ahrq.gov/cahps/" },
-    { "acr": "NHS AIS", "nome": "NHS Adult Inpatient Survey", "tipo": "prem", "cat": "Esperienza — ricovero", "costrutto": "Esperienza del ricovero per adulti (modello di riferimento UK)", "item": "~65", "dev": "Care Quality Commission / Picker", "it": "No (modello di riferimento)", "lic": "Pubblica (licenza CQC)", "rif": "Picker / CQC National Survey Programme", "url": "https://picker.org/how-we-can-help/national-survey-programmes/adult-inpatient-survey/" },
-    { "acr": "PREMs AGENAS", "nome": "Indagine nazionale esperienza pazienti ricoverati", "tipo": "prem", "cat": "Esperienza — Italia", "costrutto": "Esperienza del ricovero ordinario, rilevazione nazionale", "item": "Variabile", "dev": "AGENAS", "it": "Sì", "lic": "Pubblico (uso istituzionale)", "rif": "AGENAS — Empowerment del cittadino", "url": "https://www.agenas.gov.it" },
-    { "acr": "MeS PROMs/PREMs", "nome": "Sistema PROMs/PREMs Laboratorio MeS (Toscana)", "tipo": "prem", "cat": "Esperienza — Italia", "costrutto": "Esiti ed esperienza per percorsi chirurgici e medici", "item": "Variabile", "dev": "Scuola Sup. Sant'Anna, Pisa — Regione Toscana", "it": "Sì", "lic": "Pubblico", "rif": "Laboratorio Management e Sanità", "url": "https://performance.santannapisa.it" },
-    { "acr": "PaRIS", "nome": "OECD Patient-Reported Indicator Surveys", "tipo": "prem", "cat": "Esperienza — internazionale", "costrutto": "Esperienza + esiti nei pazienti cronici 45+ (PCM + condition-specific)", "item": "Survey nazionale", "dev": "OECD", "it": "Italia partecipa (2023)", "lic": "Pubblico (OECD)", "rif": "OECD PaRIS", "url": "https://www.oecd.org/health/paris/" },
-    { "acr": "NANDA-I", "nome": "NANDA International Nursing Diagnoses", "tipo": "nurse", "cat": "Classificazione infermieristica", "costrutto": "Tassonomia II delle diagnosi infermieristiche (13 domini, 47 classi)", "item": "~267 diagnosi (ed. 2024–2026)", "dev": "NANDA International, Inc.", "it": "Sì (traduzione IT)", "lic": "Editoriale (copyright)", "rif": "Herdman et al., 2024", "url": "https://nanda.org" },
-    { "acr": "Q-DIO", "nome": "Quality of Diagnoses, Interventions and Outcomes", "tipo": "nurse", "cat": "Qualità documentazione infermieristica", "costrutto": "Qualità di accertamento, diagnosi (processo/prodotto), interventi, esiti", "item": "29", "dev": "Müller-Staub et al.", "it": "Sì", "lic": "Uso accademico previo accordo", "rif": "Müller-Staub et al., J Clin Nurs 2009", "url": "https://pubmed.ncbi.nlm.nih.gov/19239538/" },
-    { "acr": "Q-DIO-R", "nome": "Q-DIO Revised", "tipo": "nurse", "cat": "Qualità documentazione infermieristica", "costrutto": "Versione aggiornata del Q-DIO, validata in italiano", "item": "29", "dev": "Müller-Staub et al.; validazione IT Bozzetti et al.", "it": "Sì (Bozzetti et al. 2024)", "lic": "Uso accademico previo accordo", "rif": "Bozzetti et al., Int J Nurs Knowl 2024", "url": "https://doi.org/10.1111/2047-3095.12504" },
-    { "acr": "MMAT 2018", "nome": "Mixed Methods Appraisal Tool", "tipo": "method", "cat": "Appraisal metodologico", "costrutto": "Valutazione qualità di studi qualitativi, quantitativi e misti (5 criteri × 5 disegni)", "item": "5×5", "dev": "Hong Q.N. et al., McGill University", "it": "Uso internazionale", "lic": "Gratuito", "rif": "Hong et al., Education for Information 2018", "url": "http://mixedmethodsappraisaltoolpublic.pbworks.com" },
-    { "acr": "PRISMA-ScR", "nome": "PRISMA extension for Scoping Reviews", "tipo": "method", "cat": "Reporting guideline", "costrutto": "Checklist di reporting per scoping review", "item": "20 (+2 opz.)", "dev": "Tricco et al.", "it": "Uso internazionale", "lic": "Gratuito", "rif": "Tricco AC et al., Ann Intern Med 2018;169:467–473", "url": "https://www.prisma-statement.org" }
+    {
+      "acr": "EQ-5D",
+      "nome": "EuroQol 5 Dimensions (3L/5L)",
+      "tipo": "prom",
+      "cat": "Generico",
+      "costrutto": "Qualità di vita correlata alla salute (preference-based) + VAS",
+      "item": "5 + VAS",
+      "dev": "EuroQol Research Foundation",
+      "it": "Sì",
+      "lic": "Licenza gratuita per ricerca non-commerciale (registrazione)",
+      "rif": "Herdman et al., Qual Life Res 2011",
+      "url": "https://euroqol.org",
+      "facile": "In parole semplici: un questionario brevissimo in cui la persona dice come sta in 5 aree (movimento, cura di sé, attività, dolore, ansia) più un «termometro» della salute da 0 a 100."
+    },
+    {
+      "acr": "SF-36 / SF-12",
+      "nome": "Short Form Health Survey",
+      "tipo": "prom",
+      "cat": "Generico",
+      "costrutto": "HRQoL: 8 domini → componente fisica (PCS) e mentale (MCS)",
+      "item": "36 / 12",
+      "dev": "RAND / Medical Outcomes Study; QualityMetric",
+      "it": "Sì",
+      "lic": "Commerciale (RAND-36 versione gratuita)",
+      "rif": "Ware & Sherbourne, Med Care 1992; Apolone & Mosconi 1998 (IT)",
+      "url": "https://www.rand.org/health-care/surveys_tools/mos/36-item-short-form.html",
+      "facile": "In parole semplici: misura come la persona percepisce la propria salute fisica e mentale e quanto incide sulla vita di tutti i giorni. SF-12 è la versione corta."
+    },
+    {
+      "acr": "PROMIS",
+      "nome": "Patient-Reported Outcomes Measurement Information System",
+      "tipo": "prom",
+      "cat": "Generico",
+      "costrutto": "Item bank IRT multidominio (fisico, mentale, sociale); CAT",
+      "item": "Variabile (4–29)",
+      "dev": "NIH / HealthMeasures",
+      "it": "Sì (vari domini)",
+      "lic": "Gratuito (registrazione)",
+      "rif": "Cella et al., J Clin Epidemiol 2010",
+      "url": "https://www.healthmeasures.net",
+      "facile": "In parole semplici: una «cassetta degli attrezzi» di questionari moderni; il computer sceglie solo le domande utili, così bastano poche risposte per misurare con precisione sintomi e benessere."
+    },
+    {
+      "acr": "WHOQOL-BREF",
+      "nome": "WHO Quality of Life — BREF",
+      "tipo": "prom",
+      "cat": "Generico",
+      "costrutto": "QoL: fisico, psicologico, sociale, ambientale",
+      "item": "26",
+      "dev": "World Health Organization",
+      "it": "Sì",
+      "lic": "Gratuito previo accordo WHO",
+      "rif": "WHOQOL Group, 1996",
+      "url": "https://www.who.int/tools/whoqol",
+      "facile": "In parole semplici: il questionario dell'OMS sulla qualità di vita: come sta la persona nel fisico, nella psiche, nelle relazioni e nell'ambiente in cui vive."
+    },
+    {
+      "acr": "EORTC QLQ-C30",
+      "nome": "EORTC Quality of Life Questionnaire — Core 30",
+      "tipo": "prom",
+      "cat": "Oncologia",
+      "costrutto": "HRQoL oncologica: 5 scale funzionali, 9 sintomatiche, QoL globale",
+      "item": "30",
+      "dev": "EORTC Quality of Life Group",
+      "it": "Sì (norme IT, Nolte 2022)",
+      "lic": "Gratuita per ricerca accademica (registrazione)",
+      "rif": "Aaronson et al., J Natl Cancer Inst 1993",
+      "url": "https://qol.eortc.org",
+      "facile": "In parole semplici: il questionario di riferimento per chiedere a chi ha un tumore come si sente e che qualità di vita ha durante le cure."
+    },
+    {
+      "acr": "EORTC Modules",
+      "nome": "Moduli EORTC sede-specifici (BR23/45, LC13, CR29…)",
+      "tipo": "prom",
+      "cat": "Oncologia",
+      "costrutto": "Sintomi/funzioni per sede tumorale, ad integrazione del QLQ-C30",
+      "item": "Variabile (10–47)",
+      "dev": "EORTC Quality of Life Group",
+      "it": "Sì (molti moduli)",
+      "lic": "Gratuita per ricerca (EORTC)",
+      "rif": "EORTC QoL Group",
+      "url": "https://qol.eortc.org",
+      "facile": "In parole semplici: domande aggiuntive specifiche per il tipo di tumore (seno, polmone, colon…), da affiancare al questionario generale QLQ-C30."
+    },
+    {
+      "acr": "FACT-G",
+      "nome": "Functional Assessment of Cancer Therapy — General",
+      "tipo": "prom",
+      "cat": "Oncologia",
+      "costrutto": "HRQoL: fisico, sociale/familiare, emotivo, funzionale",
+      "item": "27",
+      "dev": "FACIT.org (Cella)",
+      "it": "Sì",
+      "lic": "Gratuita previo accordo FACIT",
+      "rif": "Cella et al., J Clin Oncol 1993",
+      "url": "https://www.facit.org",
+      "facile": "In parole semplici: un altro questionario molto usato in oncologia; misura il benessere fisico, sociale, emotivo e funzionale della persona malata."
+    },
+    {
+      "acr": "PRO-CTCAE",
+      "nome": "Patient-Reported Outcomes version of the CTCAE",
+      "tipo": "prom",
+      "cat": "Oncologia",
+      "costrutto": "Tossicità sintomatica (78 sintomi); uso modulare",
+      "item": "124 (library)",
+      "dev": "National Cancer Institute (NIH)",
+      "it": "Sì (validazione linguistica)",
+      "lic": "Gratuita per ricerca",
+      "rif": "Basch et al., J Natl Cancer Inst 2014",
+      "url": "https://healthcaredelivery.cancer.gov/pro-ctcae/",
+      "facile": "In parole semplici: permette al paziente stesso (non solo al medico) di segnalare gli effetti collaterali delle terapie oncologiche, con parole sue."
+    },
+    {
+      "acr": "MDASI",
+      "nome": "MD Anderson Symptom Inventory",
+      "tipo": "prom",
+      "cat": "Oncologia",
+      "costrutto": "13 sintomi + 6 item di interferenza",
+      "item": "19 (core)",
+      "dev": "MD Anderson Cancer Center",
+      "it": "Sì",
+      "lic": "Gratuita per ricerca previo accordo",
+      "rif": "Cleeland et al., Cancer 2000",
+      "url": "https://www.mdanderson.org/research/departments-labs-institutes/departments-divisions/symptom-research/symptom-assessment-tools.html",
+      "facile": "In parole semplici: misura quanto sono intensi i sintomi del tumore (dolore, stanchezza, nausea…) e quanto disturbano la vita quotidiana."
+    },
+    {
+      "acr": "ESAS-r",
+      "nome": "Edmonton Symptom Assessment System (revised)",
+      "tipo": "prom",
+      "cat": "Oncologia / Cure palliative",
+      "costrutto": "9 sintomi su scala numerica 0–10",
+      "item": "9",
+      "dev": "Bruera et al., University of Alberta",
+      "it": "Sì",
+      "lic": "Gratuita",
+      "rif": "Bruera et al., J Palliat Care 1991",
+      "url": "https://www.albertahealthservices.ca",
+      "facile": "In parole semplici: una scala rapida in cui il paziente dà un voto da 0 a 10 ai sintomi principali; molto usata nelle cure palliative per capire come sta «adesso»."
+    },
+    {
+      "acr": "PPE-15",
+      "nome": "Picker Patient Experience Questionnaire",
+      "tipo": "prem",
+      "cat": "Esperienza — ricovero",
+      "costrutto": "Esperienza del ricovero su 8 domini Picker",
+      "item": "15",
+      "dev": "Picker Institute Europe",
+      "it": "Disponibile (uso autorizzato)",
+      "lic": "Licenza Picker",
+      "rif": "Jenkinson et al., Int J Qual Health Care 2002",
+      "url": "https://picker.org",
+      "facile": "In parole semplici: chiede al paziente com'è stata l'esperienza del ricovero (ascolto, informazioni, rispetto, dolore gestito), non se è «soddisfatto» ma cosa è successo davvero."
+    },
+    {
+      "acr": "HCAHPS",
+      "nome": "Hospital Consumer Assessment of Healthcare Providers and Systems",
+      "tipo": "prem",
+      "cat": "Esperienza — ricovero",
+      "costrutto": "Esperienza standardizzata del ricovero ospedaliero",
+      "item": "29 (core)",
+      "dev": "CMS / AHRQ (USA)",
+      "it": "Adattamenti regionali",
+      "lic": "Gratuita (linee guida CMS)",
+      "rif": "AHRQ CAHPS",
+      "url": "https://hcahpsonline.org",
+      "facile": "In parole semplici: il questionario statunitense standard per chiedere ai pazienti dimessi com'è andato il ricovero; permette di confrontare gli ospedali tra loro."
+    },
+    {
+      "acr": "CAHPS",
+      "nome": "Consumer Assessment of Healthcare Providers and Systems (famiglia)",
+      "tipo": "prem",
+      "cat": "Esperienza — multi-setting",
+      "costrutto": "Esperienza in vari setting (ospedale, ambulatorio, oncologia, hospice…)",
+      "item": "Variabile",
+      "dev": "AHRQ + consorzio Westat",
+      "it": "Adattamenti parziali",
+      "lic": "Gratuita",
+      "rif": "Agency for Healthcare Research and Quality",
+      "url": "https://www.ahrq.gov/cahps/",
+      "facile": "In parole semplici: una famiglia di questionari sull'esperienza di cura in diversi contesti (ospedale, ambulatorio, dialisi…), non solo durante il ricovero."
+    },
+    {
+      "acr": "NHS AIS",
+      "nome": "NHS Adult Inpatient Survey",
+      "tipo": "prem",
+      "cat": "Esperienza — ricovero",
+      "costrutto": "Esperienza del ricovero per adulti (modello di riferimento UK)",
+      "item": "~65",
+      "dev": "Care Quality Commission / Picker",
+      "it": "No (modello di riferimento)",
+      "lic": "Pubblica (licenza CQC)",
+      "rif": "Picker / CQC National Survey Programme",
+      "url": "https://picker.org/how-we-can-help/national-survey-programmes/adult-inpatient-survey/",
+      "facile": "In parole semplici: l'indagine nazionale inglese che ogni anno chiede ai pazienti ricoverati com'è stata la loro esperienza; un modello molto studiato."
+    },
+    {
+      "acr": "PREMs AGENAS",
+      "nome": "Indagine nazionale esperienza pazienti ricoverati",
+      "tipo": "prem",
+      "cat": "Esperienza — Italia",
+      "costrutto": "Esperienza del ricovero ordinario, rilevazione nazionale",
+      "item": "Variabile",
+      "dev": "AGENAS",
+      "it": "Sì",
+      "lic": "Pubblico (uso istituzionale)",
+      "rif": "AGENAS — Empowerment del cittadino",
+      "url": "https://www.agenas.gov.it",
+      "facile": "In parole semplici: gli strumenti italiani, promossi dall'agenzia nazionale, per raccogliere l'esperienza dei pazienti in modo uniforme tra le Regioni."
+    },
+    {
+      "acr": "MeS PROMs/PREMs",
+      "nome": "Sistema PROMs/PREMs Laboratorio MeS (Toscana)",
+      "tipo": "prem",
+      "cat": "Esperienza — Italia",
+      "costrutto": "Esiti ed esperienza per percorsi chirurgici e medici",
+      "item": "Variabile",
+      "dev": "Scuola Sup. Sant'Anna, Pisa — Regione Toscana",
+      "it": "Sì",
+      "lic": "Pubblico",
+      "rif": "Laboratorio Management e Sanità",
+      "url": "https://performance.santannapisa.it",
+      "facile": "In parole semplici: il sistema della Scuola Sant'Anna usato in Toscana per misurare sia gli esiti riferiti dai pazienti sia la loro esperienza di cura."
+    },
+    {
+      "acr": "PaRIS",
+      "nome": "OECD Patient-Reported Indicator Surveys",
+      "tipo": "prem",
+      "cat": "Esperienza — internazionale",
+      "costrutto": "Esperienza + esiti nei pazienti cronici 45+ (PCM + condition-specific)",
+      "item": "Survey nazionale",
+      "dev": "OECD",
+      "it": "Italia partecipa (2023)",
+      "lic": "Pubblico (OECD)",
+      "rif": "OECD PaRIS",
+      "url": "https://www.oecd.org/health/paris/",
+      "facile": "In parole semplici: una grande indagine internazionale dell'OCSE che confronta tra Paesi gli esiti e l'esperienza riferiti dai pazienti, soprattutto cronici."
+    },
+    {
+      "acr": "NANDA-I",
+      "nome": "NANDA International Nursing Diagnoses",
+      "tipo": "nurse",
+      "cat": "Classificazione infermieristica",
+      "costrutto": "Tassonomia II delle diagnosi infermieristiche (13 domini, 47 classi)",
+      "item": "~267 diagnosi (ed. 2024–2026)",
+      "dev": "NANDA International, Inc.",
+      "it": "Sì (traduzione IT)",
+      "lic": "Editoriale (copyright)",
+      "rif": "Herdman et al., 2024",
+      "url": "https://nanda.org",
+      "facile": "In parole semplici: il «dizionario» ufficiale delle diagnosi infermieristiche: nomi condivisi per descrivere i problemi di cui l'infermiere si fa carico."
+    },
+    {
+      "acr": "Q-DIO",
+      "nome": "Quality of Diagnoses, Interventions and Outcomes",
+      "tipo": "nurse",
+      "cat": "Qualità documentazione infermieristica",
+      "costrutto": "Qualità di accertamento, diagnosi (processo/prodotto), interventi, esiti",
+      "item": "29",
+      "dev": "Müller-Staub et al.",
+      "it": "Sì",
+      "lic": "Uso accademico previo accordo",
+      "rif": "Müller-Staub et al., J Clin Nurs 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19239538/",
+      "facile": "In parole semplici: uno strumento per misurare quanto è fatta bene la documentazione infermieristica (diagnosi, interventi, risultati) nelle cartelle."
+    },
+    {
+      "acr": "Q-DIO-R",
+      "nome": "Q-DIO Revised",
+      "tipo": "nurse",
+      "cat": "Qualità documentazione infermieristica",
+      "costrutto": "Versione aggiornata del Q-DIO, validata in italiano",
+      "item": "29",
+      "dev": "Müller-Staub et al.; validazione IT Bozzetti et al.",
+      "it": "Sì (Bozzetti et al. 2024)",
+      "lic": "Uso accademico previo accordo",
+      "rif": "Bozzetti et al., Int J Nurs Knowl 2024",
+      "url": "https://doi.org/10.1111/2047-3095.12504",
+      "facile": "In parole semplici: la versione aggiornata del Q-DIO, rivista per valutare oggi la qualità di ciò che l'infermiere scrive e registra."
+    },
+    {
+      "acr": "MMAT 2018",
+      "nome": "Mixed Methods Appraisal Tool",
+      "tipo": "method",
+      "cat": "Appraisal metodologico",
+      "costrutto": "Valutazione qualità di studi qualitativi, quantitativi e misti (5 criteri × 5 disegni)",
+      "item": "5×5",
+      "dev": "Hong Q.N. et al., McGill University",
+      "it": "Uso internazionale",
+      "lic": "Gratuito",
+      "rif": "Hong et al., Education for Information 2018",
+      "url": "http://mixedmethodsappraisaltoolpublic.pbworks.com",
+      "facile": "In parole semplici: una griglia per giudicare se uno studio scientifico è fatto bene; utile quando in una ricerca si confrontano studi di tipo diverso."
+    },
+    {
+      "acr": "PRISMA-ScR",
+      "nome": "PRISMA extension for Scoping Reviews",
+      "tipo": "method",
+      "cat": "Reporting guideline",
+      "costrutto": "Checklist di reporting per scoping review",
+      "item": "20 (+2 opz.)",
+      "dev": "Tricco et al.",
+      "it": "Uso internazionale",
+      "lic": "Gratuito",
+      "rif": "Tricco AC et al., Ann Intern Med 2018;169:467–473",
+      "url": "https://www.prisma-statement.org",
+      "facile": "In parole semplici: una lista di controllo che dice cosa scrivere, e come, quando si pubblica una «scoping review», perché il lavoro sia trasparente e ripetibile."
+    }
   ],
-
   "raccomandazioni": [
-    { "n": 1, "t": "Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio" },
-    { "n": 2, "t": "Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico" },
-    { "n": 3, "t": "Corretta identificazione dei pazienti, del sito chirurgico e della procedura" },
-    { "n": 4, "t": "Prevenzione del suicidio di paziente in ospedale" },
-    { "n": 5, "t": "Prevenzione della reazione trasfusionale da incompatibilità AB0" },
-    { "n": 6, "t": "Prevenzione della morte materna correlata al travaglio e/o parto" },
-    { "n": 7, "t": "Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica" },
-    { "n": 8, "t": "Prevenire gli atti di violenza a danno degli operatori sanitari" },
-    { "n": 9, "t": "Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali" },
-    { "n": 10, "t": "Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati" },
-    { "n": 11, "t": "Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)" },
-    { "n": 12, "t": "Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)" },
-    { "n": 13, "t": "Prevenzione e gestione della caduta del paziente nelle strutture sanitarie" },
-    { "n": 14, "t": "Prevenzione degli errori in terapia con farmaci antineoplastici" },
-    { "n": 15, "t": "Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)" },
-    { "n": 16, "t": "Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g" },
-    { "n": 17, "t": "Riconciliazione della terapia farmacologica" },
-    { "n": 18, "t": "Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli" },
-    { "n": 19, "t": "Manipolazione delle forme farmaceutiche orali solide" }
+    {
+      "n": 1,
+      "t": "Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio"
+    },
+    {
+      "n": 2,
+      "t": "Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico"
+    },
+    {
+      "n": 3,
+      "t": "Corretta identificazione dei pazienti, del sito chirurgico e della procedura"
+    },
+    {
+      "n": 4,
+      "t": "Prevenzione del suicidio di paziente in ospedale"
+    },
+    {
+      "n": 5,
+      "t": "Prevenzione della reazione trasfusionale da incompatibilità AB0"
+    },
+    {
+      "n": 6,
+      "t": "Prevenzione della morte materna correlata al travaglio e/o parto"
+    },
+    {
+      "n": 7,
+      "t": "Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica"
+    },
+    {
+      "n": 8,
+      "t": "Prevenire gli atti di violenza a danno degli operatori sanitari"
+    },
+    {
+      "n": 9,
+      "t": "Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali"
+    },
+    {
+      "n": 10,
+      "t": "Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati"
+    },
+    {
+      "n": 11,
+      "t": "Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)"
+    },
+    {
+      "n": 12,
+      "t": "Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)"
+    },
+    {
+      "n": 13,
+      "t": "Prevenzione e gestione della caduta del paziente nelle strutture sanitarie"
+    },
+    {
+      "n": 14,
+      "t": "Prevenzione degli errori in terapia con farmaci antineoplastici"
+    },
+    {
+      "n": 15,
+      "t": "Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)"
+    },
+    {
+      "n": 16,
+      "t": "Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g"
+    },
+    {
+      "n": 17,
+      "t": "Riconciliazione della terapia farmacologica"
+    },
+    {
+      "n": 18,
+      "t": "Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli"
+    },
+    {
+      "n": 19,
+      "t": "Manipolazione delle forme farmaceutiche orali solide"
+    }
   ],
-
   "metodi": [
-    { "acr": "Incident Reporting", "desc": "Sistema volontario di segnalazione di eventi avversi e near-miss, base dell'apprendimento organizzativo.", "rif": "WHO Draft Guidelines for Adverse Event Reporting, 2005" },
-    { "acr": "Audit Clinico", "desc": "Revisione sistematica e strutturata della pratica clinica rispetto a standard espliciti, con ciclo di miglioramento.", "rif": "NICE, Principles for Best Practice in Clinical Audit, 2002" },
-    { "acr": "Root Cause Analysis", "desc": "Analisi retrospettiva delle cause profonde di un evento sentinella; identifica fattori latenti di sistema.", "rif": "Joint Commission — Sentinel Event Policy" },
-    { "acr": "FMEA / FMECA", "desc": "Analisi proattiva dei modi di guasto e dei loro effetti; priorità di rischio RPN = Gravità × Probabilità × Rilevabilità.", "rif": "IEC 60812:2018; VA NCPS HFMEA" },
-    { "acr": "Ciclo PDCA", "desc": "Plan-Do-Check-Act: il motore iterativo del miglioramento continuo della qualità (ruota di Deming).", "rif": "Deming, Out of the Crisis, 1986" },
-    { "acr": "Landis & Koch", "desc": "Criteri di interpretazione della concordanza Kappa (slight → almost perfect). Riferimento per audit a doppia codifica.", "rif": "Landis & Koch, Biometrics 1977;33:159–174" }
+    {
+      "acr": "Incident Reporting",
+      "desc": "Sistema volontario di segnalazione di eventi avversi e near-miss, base dell'apprendimento organizzativo.",
+      "rif": "WHO Draft Guidelines for Adverse Event Reporting, 2005",
+      "facile": "In parole semplici: segnalare (anche in anonimo) gli errori e i «quasi-errori», non per punire qualcuno, ma per imparare ed evitare che riaccadano."
+    },
+    {
+      "acr": "Audit Clinico",
+      "desc": "Revisione sistematica e strutturata della pratica clinica rispetto a standard espliciti, con ciclo di miglioramento.",
+      "rif": "NICE, Principles for Best Practice in Clinical Audit, 2002",
+      "facile": "In parole semplici: confrontare come si lavora davvero con come si dovrebbe lavorare, misurare la differenza e migliorare; poi si ricontrolla."
+    },
+    {
+      "acr": "Root Cause Analysis",
+      "desc": "Analisi retrospettiva delle cause profonde di un evento sentinella; identifica fattori latenti di sistema.",
+      "rif": "Joint Commission — Sentinel Event Policy",
+      "facile": "In parole semplici: dopo un evento grave, si va a fondo chiedendosi «perché?» più volte, per trovare le cause vere (di sistema) e non solo il colpevole."
+    },
+    {
+      "acr": "FMEA / FMECA",
+      "desc": "Analisi proattiva dei modi di guasto e dei loro effetti; priorità di rischio RPN = Gravità × Probabilità × Rilevabilità.",
+      "rif": "IEC 60812:2018; VA NCPS HFMEA",
+      "facile": "In parole semplici: prima che accada un danno, ci si chiede «dove può rompersi questo processo e con quali conseguenze?» e si interviene sui punti più rischiosi."
+    },
+    {
+      "acr": "Ciclo PDCA",
+      "desc": "Plan-Do-Check-Act: il motore iterativo del miglioramento continuo della qualità (ruota di Deming).",
+      "rif": "Deming, Out of the Crisis, 1986",
+      "facile": "In parole semplici: il metodo del miglioramento a piccoli passi — Pianifica, Fai, Verifica, Agisci — da ripetere come una ruota che gira."
+    },
+    {
+      "acr": "Landis & Koch",
+      "desc": "Criteri di interpretazione della concordanza Kappa (slight → almost perfect). Riferimento per audit a doppia codifica.",
+      "rif": "Landis & Koch, Biometrics 1977;33:159–174",
+      "facile": "In parole semplici: una scaletta che dice se l'accordo tra due valutatori è scarso, discreto, buono o quasi perfetto, leggendo il valore di Kappa."
+    }
   ]
 }

@@ -269,6 +269,19 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 26px; font-size: 12px; color: rgba(244,242,236,0.5); }
 .foot-bottom a { color: inherit; }
 
+
+/* === EFFETTI (qualita-fx.js) === */
+.fx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));will-change:transform;}
+.fx-card{position:relative;}
+.fx-lens{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .4s ease;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(230,57,70,.10),rgba(230,57,70,.04) 35%,transparent 62%);}
+.fx-card:hover>.fx-lens{opacity:1;}
+.result-box .fx-lens{background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(230,57,70,.28),transparent 60%);}
+.fx-title.reveal{opacity:1 !important;transform:none !important;}
+.fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em 0;margin:-.06em 0;}
+.fx-wi{display:inline-block;transform:translateY(110%);opacity:0;transition:transform .7s cubic-bezier(0.16,1,0.3,1),opacity .7s ease;}
+.fx-title.in .fx-wi{transform:none;opacity:1;}
+@media (prefers-reduced-motion: reduce){.fx-lens{display:none;}.fx-wi{transform:none !important;opacity:1 !important;}}
+
 </style>
 </head>
 <body>
@@ -302,6 +315,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     <h1 class="page-title">Dimensione del <span class="accent">campione</span></h1>
     <p class="page-lead">Quanti soggetti servono? Calcola la numerosità per una <b>stima di prevalenza</b> (formula di Cochran, con correzione per popolazione finita e design effect) o per il <b>confronto tra due proporzioni</b>. Per audit, indagini di prevalenza (es. lesioni da pressione) e protocolli di ricerca.</p>
     <div class="databanner reveal"><span class="ic">i</span><p>Calcolo locale nel browser. I risultati sono stime: la scelta finale va sempre discussa con un metodologo/statistico in base al disegno dello studio.</p></div>
+    <p class="reveal" style="font-size:14px;line-height:1.55;color:var(--ink-soft);background:var(--bg-warm);border-radius:8px;padding:16px 18px;margin-top:16px;max-width:800px;"><b>In parole semplici:</b> prima di un'indagine o di uno studio serve sapere <b>quante persone coinvolgere</b> per ottenere risultati affidabili e non casuali. Questo strumento calcola quel numero in base alla precisione che vuoi raggiungere.</p>
   </div>
 </header>
 

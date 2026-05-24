@@ -273,6 +273,22 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 26px; font-size: 12px; color: rgba(244,242,236,0.5); }
 .foot-bottom a { color: inherit; }
 
+
+/* === EFFETTI (qualita-fx.js) === */
+.fx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));will-change:transform;}
+.fx-card{position:relative;}
+.fx-lens{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .4s ease;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(230,57,70,.10),rgba(230,57,70,.04) 35%,transparent 62%);}
+.fx-card:hover>.fx-lens{opacity:1;}
+.result-box .fx-lens{background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(230,57,70,.28),transparent 60%);}
+.fx-title.reveal{opacity:1 !important;transform:none !important;}
+.fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.06em 0;margin:-.06em 0;}
+.fx-wi{display:inline-block;transform:translateY(110%);opacity:0;transition:transform .7s cubic-bezier(0.16,1,0.3,1),opacity .7s ease;}
+.fx-title.in .fx-wi{transform:none;opacity:1;}
+@media (prefers-reduced-motion: reduce){.fx-lens{display:none;}.fx-wi{transform:none !important;opacity:1 !important;}}
+
+/* === DEFINIZIONE FACILE === */
+.inst-facile{font-size:13px;color:var(--ink-soft);line-height:1.5;background:var(--bg-warm);border-radius:6px;padding:11px 13px;margin-bottom:14px;}
+
 </style>
 </head>
 <body>
@@ -513,6 +529,7 @@ function renderInst() {
     '</div>' +
     '<div class="inst-acr">' + s.acr + '</div>' +
     '<div class="inst-name">' + s.nome + '</div>' +
+    (s.facile ? '<div class="inst-facile">' + s.facile + '</div>' : '') +
     '<div class="inst-meta">' +
       '<div><b>Dominio:</b> ' + s.cat + '</div>' +
       '<div><b>Misura:</b> ' + s.costrutto + '</div>' +
@@ -535,6 +552,7 @@ function renderMetodi() {
     '<div class="inst"><div class="inst-top"><span class="inst-type method">METODO</span></div>' +
     '<div class="inst-acr" style="font-size:19px;">' + m.acr + '</div>' +
     '<div class="inst-name" style="min-height:auto;margin-bottom:10px;">' + m.desc + '</div>' +
+    (m.facile ? '<div class="inst-facile">' + m.facile + '</div>' : '') +
     '<div class="inst-meta"><div><b>Rif.:</b> ' + m.rif + '</div></div></div>'
   ).join('');
 }
@@ -562,5 +580,6 @@ const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecti
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 2500);
 </script>
+  <script src="qualita-fx.js" defer></script>
 </body>
 </html>
