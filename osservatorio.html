@@ -384,20 +384,6 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 @media(max-width:860px){.scrolly-step{min-height:auto;padding:26px 0;opacity:1;}}
 @media(prefers-reduced-motion:reduce){.scrolly-step{opacity:1;}}
 
-
-/* === SKELETON SHIMMER (letteratura) === */
-.lit-skel{background:var(--bg-card);border:1px solid var(--rule);border-radius:8px;padding:22px;overflow:hidden;}
-.lit-skel .sk{background:var(--bg-warm);border-radius:6px;height:12px;margin-bottom:11px;position:relative;overflow:hidden;}
-.lit-skel .sk.w1{width:38%;} .lit-skel .sk.w2{width:92%;height:18px;margin-bottom:14px;} .lit-skel .sk.w3{width:72%;} .lit-skel .sk.w4{width:54%;margin-top:18px;}
-.lit-skel .sk::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:skshimmer 1.4s infinite;}
-@keyframes skshimmer{100%{transform:translateX(100%);}}
-@media (prefers-reduced-motion: reduce){ .lit-skel .sk::after{animation:none;} }
-/* === LENTE D'INGRANDIMENTO (mappa) === */
-.map-lens{position:absolute;width:150px;height:150px;border-radius:50%;border:2.5px solid var(--accent);box-shadow:0 10px 30px rgba(10,10,10,.28), inset 0 0 0 4px rgba(251,250,246,.55);overflow:hidden;pointer-events:none;opacity:0;transition:opacity .18s ease;z-index:7;background:var(--bg-card);}
-.map-lens.on{opacity:1;}
-.map-lens svg{position:absolute;top:0;left:0;max-width:none;height:auto;display:block;}
-@media (hover: none){ .map-lens{display:none !important;} }
-
 </style>
 </head>
 <body>
@@ -718,7 +704,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     <h2 class="sec-title reveal">La ricerca, <span class="accent">in tempo reale</span>.</h2>
     <p class="sec-intro reveal">A differenza dei dati statistici (che le fonti ufficiali pubblicano una volta l'anno), questa sezione si aggiorna <b>a ogni visita</b>: mostra gli studi più recenti indicizzati su PubMed/MEDLINE su nursing, sicurezza delle cure, qualità e rischio clinico. È il battito quotidiano della ricerca infermieristica.</p>
     <div class="reveal" style="margin-top:18px;"><span class="live-badge"><span class="live-dot"></span>Live · aggiornato a ogni visita</span></div>
-    <div id="litGrid" class="lit-grid reveal"><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div></div>
+    <div id="litGrid" class="lit-grid reveal"><div class="lit-loading">Caricamento degli studi più recenti…</div></div>
     <div class="chart-src reveal" id="litSrc" style="margin-top:18px;">Fonte: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed / MEDLINE — U.S. National Library of Medicine</a> · query: nursing AND (patient safety OR quality of care OR clinical risk) · ordinati per data.</div>
   </div>
 </section>
@@ -850,11 +836,8 @@ function renderKpi() {
 }
 
 /* ---------- LINE ---------- */
-const CHARTS = {};
 function lineChart(cv, d) {
-  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dly = function (ctx) { return (ctx.type === 'data' && ctx.mode === 'default') ? ctx.dataIndex * 110 : 0; };
-  const ch = new Chart(document.getElementById(cv), {
+  return new Chart(document.getElementById(cv), {
     type: 'line',
     data: { labels: d.anni, datasets: d.serie.map(s => ({
       label: s.nome, data: s.valori, borderColor: s.colore,
@@ -864,36 +847,26 @@ function lineChart(cv, d) {
     })) },
     options: {
       responsive: true, maintainAspectRatio: false,
-      animation: rm ? false : { duration: 700 },
-      animations: rm ? {} : {
-        x: { type: 'number', easing: 'easeOutCubic', duration: 700, delay: dly },
-        y: { type: 'number', easing: 'easeOutCubic', duration: 500, delay: dly }
-      },
       plugins: { legend: { display: d.serie.length > 1, position: 'bottom' },
         tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.parsed.y + (d.unita || '') } } },
       scales: { y: { grid: GRID, ticks: { callback: fmtPct(d.unita) } }, x: { grid: { display:false } } }
     }
   });
-  CHARTS[cv] = ch; return ch;
 }
 
 /* ---------- BAR (verticale o orizzontale) ---------- */
 function barChart(cv, d, horizontal) {
   const isMulti = !!d.serie;
   const labels = isMulti ? d.anni : d.categorie;
-  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dly = function (ctx) { return (ctx.type === 'data' && ctx.mode === 'default') ? ctx.dataIndex * 80 : 0; };
   const datasets = isMulti
     ? d.serie.map(s => ({ label: s.nome, data: s.valori, backgroundColor: s.colore, borderRadius: 5, maxBarThickness: 46 }))
     : [{ label: d.titolo, data: d.valori, backgroundColor: d.categorie.map((_,i)=>shade(d.colore,i,d.categorie.length)), borderRadius: 6, maxBarThickness: 54 }];
-  const ch = new Chart(document.getElementById(cv), {
+  return new Chart(document.getElementById(cv), {
     type: 'bar',
     data: { labels, datasets },
     options: {
       indexAxis: horizontal ? 'y' : 'x',
       responsive: true, maintainAspectRatio: false,
-      animation: rm ? false : { duration: 650 },
-      animations: rm ? {} : { x: { delay: dly }, y: { delay: dly } },
       plugins: { legend: { display: isMulti, position: 'bottom' },
         tooltip: { callbacks: { label: c => (isMulti ? c.dataset.label + ': ' : '') + c.parsed[horizontal ? 'x' : 'y'] + (d.unita || '') } } },
       scales: horizontal
@@ -901,7 +874,6 @@ function barChart(cv, d, horizontal) {
         : { y: { grid: GRID, ticks: { callback: fmtPct(d.unita) } }, x: { grid: { display:false } } }
     }
   });
-  CHARTS[cv] = ch; return ch;
 }
 /* sfuma un colore base per le barre singole */
 function shade(hex, i, n) {
@@ -1058,32 +1030,6 @@ function initMapLightUp(svg) {
     setTimeout(light, 5000); // safety
   } else { light(); }
 }
-
-function initMagnifier(svg) {
-  if (!(window.matchMedia && matchMedia('(hover: hover)').matches)) return;
-  const stage = svg.closest('.map-stage'); if (!stage) return;
-  stage.style.position = 'relative';
-  const Z = 2.4, L = 150;
-  const lens = document.createElement('div'); lens.className = 'map-lens';
-  const clone = svg.cloneNode(true);
-  clone.removeAttribute('id');
-  clone.classList.remove('map-anim');
-  clone.querySelectorAll('[id]').forEach(function (n) { n.removeAttribute('id'); });
-  clone.querySelectorAll('.rgn').forEach(function (p) { p.classList.add('lit'); p.style.transitionDelay = '0ms'; });
-  lens.appendChild(clone); stage.appendChild(lens);
-  function size() { const r = svg.getBoundingClientRect(); clone.style.width = (r.width * Z) + 'px'; clone.style.height = (r.height * Z) + 'px'; }
-  svg.addEventListener('pointerenter', function () { size(); lens.classList.add('on'); });
-  svg.addEventListener('pointerleave', function () { lens.classList.remove('on'); });
-  svg.addEventListener('pointermove', function (e) {
-    const r = svg.getBoundingClientRect(), sr = stage.getBoundingClientRect();
-    const cx = e.clientX - r.left, cy = e.clientY - r.top;
-    lens.style.left = (e.clientX - sr.left - L / 2) + 'px';
-    lens.style.top = (e.clientY - sr.top - L / 2) + 'px';
-    clone.style.transform = 'translate(' + (L / 2 - cx * Z) + 'px,' + (L / 2 - cy * Z) + 'px)';
-  });
-  window.addEventListener('resize', size);
-}
-
 function initMap() {
   const svg = document.getElementById('mapItalia'); if (!svg) return;
   svg.querySelectorAll('.rgn').forEach(function (p) {
@@ -1095,7 +1041,6 @@ function initMap() {
     p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); p.click(); } });
   });
   initMapLightUp(svg);
-  initMagnifier(svg);
 }
 
 
@@ -1115,24 +1060,6 @@ function initScrolly() {
     });
   }, { threshold: 0.6, rootMargin: '-15% 0px -25% 0px' });
   steps.forEach(function (s) { io.observe(s); });
-}
-
-function initChartReveal() {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) return;
-  const seen = new WeakSet();
-  const io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (e.isIntersecting) {
-        const cv = e.target;
-        if (seen.has(cv)) return; seen.add(cv);
-        const ch = CHARTS[cv.id];
-        if (ch) { try { ch.reset(); ch.update(); } catch (_) {} }
-        io.unobserve(cv);
-      }
-    });
-  }, { threshold: 0.35 });
-  Object.keys(CHARTS).forEach(function (id) { const cv = document.getElementById(id); if (cv) io.observe(cv); });
 }
 
 /* ---------- RENDER ALL ---------- */
@@ -1233,7 +1160,6 @@ async function boot() {
   loadLiterature();
   initMap();
   initScrolly();
-  initChartReveal();
 }
 boot();
 
