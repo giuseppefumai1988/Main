@@ -316,79 +316,98 @@
   "raccomandazioni": [
     {
       "n": 1,
-      "t": "Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio"
+      "t": "Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio",
+      "facile": "Il cloruro di potassio concentrato può fermare il cuore se iniettato non diluito: va tenuto separato dagli altri farmaci, ben etichettato e sempre diluito prima dell'uso."
     },
     {
       "n": 2,
-      "t": "Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico"
+      "t": "Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico",
+      "facile": "Contare garze, strumenti e taglienti prima e dopo ogni intervento, così non resta nulla dimenticato dentro il paziente."
     },
     {
       "n": 3,
-      "t": "Corretta identificazione dei pazienti, del sito chirurgico e della procedura"
+      "t": "Corretta identificazione dei pazienti, del sito chirurgico e della procedura",
+      "facile": "Verificare sempre identità del paziente, lato e tipo di procedura prima di operare, per non sbagliare persona, sito o intervento."
     },
     {
       "n": 4,
-      "t": "Prevenzione del suicidio di paziente in ospedale"
+      "t": "Prevenzione del suicidio di paziente in ospedale",
+      "facile": "Riconoscere i pazienti a rischio di suicidio durante il ricovero e rendere sicuro l'ambiente, per prevenire gesti autolesivi."
     },
     {
       "n": 5,
-      "t": "Prevenzione della reazione trasfusionale da incompatibilità AB0"
+      "t": "Prevenzione della reazione trasfusionale da incompatibilità AB0",
+      "facile": "Controlli rigorosi su gruppo sanguigno e identità prima di ogni trasfusione, per evitare di somministrare sangue incompatibile."
     },
     {
       "n": 6,
-      "t": "Prevenzione della morte materna correlata al travaglio e/o parto"
+      "t": "Prevenzione della morte materna correlata al travaglio e/o parto",
+      "facile": "Organizzazione e procedure per riconoscere e affrontare in tempo le emergenze del parto, riducendo le morti materne."
     },
     {
       "n": 7,
-      "t": "Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica"
+      "t": "Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica",
+      "facile": "Prevenire gli errori in ogni fase del farmaco — prescrizione, preparazione, somministrazione — per evitare morte, coma o danni gravi."
     },
     {
       "n": 8,
-      "t": "Prevenire gli atti di violenza a danno degli operatori sanitari"
+      "t": "Prevenire gli atti di violenza a danno degli operatori sanitari",
+      "facile": "Misure per prevenire e gestire le aggressioni verso il personale sanitario, dalla formazione all'organizzazione dei luoghi di lavoro."
     },
     {
       "n": 9,
-      "t": "Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali"
+      "t": "Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali",
+      "facile": "Manutenzione e uso corretto delle apparecchiature elettromedicali, per evitare danni causati da guasti o malfunzionamenti."
     },
     {
       "n": 10,
-      "t": "Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati"
+      "t": "Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati",
+      "facile": "Valutazione odontoiatrica e precauzioni nei pazienti che assumono bifosfonati, per prevenire la necrosi dell'osso della mascella."
     },
     {
       "n": 11,
-      "t": "Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)"
+      "t": "Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)",
+      "facile": "Requisiti e controlli per un trasporto sicuro del paziente, dentro e fuori l'ospedale, evitando danni durante gli spostamenti."
     },
     {
       "n": 12,
-      "t": "Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)"
+      "t": "Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)",
+      "facile": "Gestire con attenzione i farmaci dal nome o dalla confezione simili (LASA), per evitare scambi pericolosi."
     },
     {
       "n": 13,
-      "t": "Prevenzione e gestione della caduta del paziente nelle strutture sanitarie"
+      "t": "Prevenzione e gestione della caduta del paziente nelle strutture sanitarie",
+      "facile": "Valutare il rischio di caduta e adottare misure di prevenzione, per ridurre cadute e lesioni nelle strutture sanitarie."
     },
     {
       "n": 14,
-      "t": "Prevenzione degli errori in terapia con farmaci antineoplastici"
+      "t": "Prevenzione degli errori in terapia con farmaci antineoplastici",
+      "facile": "Procedure sicure per prescrivere, preparare e somministrare i chemioterapici, farmaci ad altissimo rischio di errore."
     },
     {
       "n": 15,
-      "t": "Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)"
+      "t": "Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)",
+      "facile": "Attribuire correttamente il codice di priorità al 118 e in Pronto Soccorso, per non sottovalutare le situazioni urgenti."
     },
     {
       "n": 16,
-      "t": "Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g"
+      "t": "Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g",
+      "facile": "Sorveglianza attenta del neonato sano nelle prime ore e giorni di vita, per prevenire morte o disabilità improvvise."
     },
     {
       "n": 17,
-      "t": "Riconciliazione della terapia farmacologica"
+      "t": "Riconciliazione della terapia farmacologica",
+      "facile": "A ogni passaggio di cura, confrontare i farmaci che il paziente già assume con quelli prescritti, per evitare doppioni, omissioni o interazioni."
     },
     {
       "n": 18,
-      "t": "Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli"
+      "t": "Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli",
+      "facile": "Evitare abbreviazioni, sigle e simboli ambigui nelle prescrizioni, perché possono essere fraintesi e generare errori di terapia."
     },
     {
       "n": 19,
-      "t": "Manipolazione delle forme farmaceutiche orali solide"
+      "t": "Manipolazione delle forme farmaceutiche orali solide",
+      "facile": "Indicazioni su come manipolare correttamente compresse e capsule (quando si possono dividere, tritare o aprire), per non comprometterne efficacia e sicurezza."
     }
   ],
   "metodi": [

@@ -286,10 +286,10 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 /* === VIEW TRANSITIONS (transizioni tra pagine) === */
 @view-transition { navigation: auto; }
 .nav-logo .nm { view-transition-name: brandmark; }
-::view-transition-old(root){ animation: vtOut .28s ease both; }
-::view-transition-new(root){ animation: vtIn .42s cubic-bezier(0.16,1,0.3,1) both; }
-@keyframes vtOut { to { opacity:0; transform: translateY(-6px); } }
-@keyframes vtIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+::view-transition-old(root){ animation: vtOut .35s cubic-bezier(0.4,0,0.2,1) both; }
+::view-transition-new(root){ animation: vtIn .5s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateX(-10%); } }
+@keyframes vtIn { from { opacity:0; transform: translateX(100%); } to { opacity:1; transform:none; } }
 @media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
 
 

@@ -293,10 +293,10 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 /* === VIEW TRANSITIONS (transizioni tra pagine) === */
 @view-transition { navigation: auto; }
 .nav-logo .nm { view-transition-name: brandmark; }
-::view-transition-old(root){ animation: vtOut .28s ease both; }
-::view-transition-new(root){ animation: vtIn .42s cubic-bezier(0.16,1,0.3,1) both; }
-@keyframes vtOut { to { opacity:0; transform: translateY(-6px); } }
-@keyframes vtIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+::view-transition-old(root){ animation: vtOut .35s cubic-bezier(0.4,0,0.2,1) both; }
+::view-transition-new(root){ animation: vtIn .5s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateX(-10%); } }
+@keyframes vtIn { from { opacity:0; transform: translateX(100%); } to { opacity:1; transform:none; } }
 @media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
 
 
@@ -312,6 +312,12 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 @keyframes tabIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
 @media(prefers-reduced-motion:reduce){.tab-panel.on{animation:none;}}
 
+
+/* === RACCOMANDAZIONI consultabili === */
+.racc-t{ color:var(--ink); font-weight:600; text-decoration:none; display:inline-block; line-height:1.4; transition:color .2s; }
+.racc-t:hover{ color:var(--accent-deep); text-decoration:underline; }
+.racc-ext{ color:var(--accent); font-size:0.9em; white-space:nowrap; }
+#raccTable td{ vertical-align:top; }
 </style>
 </head>
 <body>
@@ -408,7 +414,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       </div>
 
       <div class="tab-panel" id="tab-racc" role="tabpanel">
-        <p class="sec-intro" style="margin-top:6px;">Emanate dal Ministero della Salute tra il 2005 e il 2019, sono il riferimento operativo per la prevenzione degli eventi avversi. AGENAS ne monitora l'applicazione.</p>
+        <p class="sec-intro" style="margin-top:6px;">Emanate dal Ministero della Salute tra il 2005 e il 2019, sono il riferimento operativo per la prevenzione degli eventi avversi. <b>Tocca un titolo</b> per aprire la pagina ufficiale del Ministero; sotto, una spiegazione in parole semplici.</p>
         <div class="table-card" style="margin-top:22px;">
           <div style="overflow-x:auto;">
             <table class="dtable" id="raccTable">
@@ -416,7 +422,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
               <tbody id="raccBody"></tbody>
             </table>
           </div>
-          <div class="chart-src" style="padding:14px 28px 22px;">Fonte: Ministero della Salute — Direzione Generale della Programmazione Sanitaria · <a href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">elenco completo AGENAS ↗</a></div>
+          <div class="chart-src" style="padding:14px 28px 22px;">Ogni titolo apre la pagina ufficiale del <a href="https://www.salute.gov.it/new/it/tema/governo-clinico-e-sicurezza-delle-cure/raccomandazioni-del-ministero/" target="_blank" rel="noopener">Ministero della Salute ↗</a> (PDF scaricabili). Monitoraggio applicazione: <a href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">AGENAS ↗</a></div>
         </div>
       </div>
 
@@ -500,25 +506,25 @@ const FALLBACK = {
     {acr:"PRISMA-ScR",nome:"PRISMA extension for Scoping Reviews",tipo:"method",cat:"Reporting guideline",costrutto:"Checklist di reporting per scoping review",item:"20 (+2 opz.)",dev:"Tricco et al.",it:"Uso internazionale",lic:"Gratuito",rif:"Tricco et al., Ann Intern Med 2018",url:"https://www.prisma-statement.org"}
   ],
   raccomandazioni: [
-    {n:1,t:"Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio"},
-    {n:2,t:"Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico"},
-    {n:3,t:"Corretta identificazione dei pazienti, del sito chirurgico e della procedura"},
-    {n:4,t:"Prevenzione del suicidio di paziente in ospedale"},
-    {n:5,t:"Prevenzione della reazione trasfusionale da incompatibilità AB0"},
-    {n:6,t:"Prevenzione della morte materna correlata al travaglio e/o parto"},
-    {n:7,t:"Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica"},
-    {n:8,t:"Prevenire gli atti di violenza a danno degli operatori sanitari"},
-    {n:9,t:"Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali"},
-    {n:10,t:"Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati"},
-    {n:11,t:"Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)"},
-    {n:12,t:"Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)"},
-    {n:13,t:"Prevenzione e gestione della caduta del paziente nelle strutture sanitarie"},
-    {n:14,t:"Prevenzione degli errori in terapia con farmaci antineoplastici"},
-    {n:15,t:"Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)"},
-    {n:16,t:"Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g"},
-    {n:17,t:"Riconciliazione della terapia farmacologica"},
-    {n:18,t:"Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli"},
-    {n:19,t:"Manipolazione delle forme farmaceutiche orali solide"}
+    {n:1,t:"Corretto utilizzo delle soluzioni concentrate di Cloruro di Potassio (KCl) ed altre soluzioni concentrate di potassio",facile:"Il cloruro di potassio concentrato può fermare il cuore se iniettato non diluito: va tenuto separato dagli altri farmaci, ben etichettato e sempre diluito prima dell'uso."},
+    {n:2,t:"Prevenire la ritenzione di garze, strumenti o altro materiale all'interno del sito chirurgico",facile:"Contare garze, strumenti e taglienti prima e dopo ogni intervento, così non resta nulla dimenticato dentro il paziente."},
+    {n:3,t:"Corretta identificazione dei pazienti, del sito chirurgico e della procedura",facile:"Verificare sempre identità del paziente, lato e tipo di procedura prima di operare, per non sbagliare persona, sito o intervento."},
+    {n:4,t:"Prevenzione del suicidio di paziente in ospedale",facile:"Riconoscere i pazienti a rischio di suicidio durante il ricovero e rendere sicuro l'ambiente, per prevenire gesti autolesivi."},
+    {n:5,t:"Prevenzione della reazione trasfusionale da incompatibilità AB0",facile:"Controlli rigorosi su gruppo sanguigno e identità prima di ogni trasfusione, per evitare di somministrare sangue incompatibile."},
+    {n:6,t:"Prevenzione della morte materna correlata al travaglio e/o parto",facile:"Organizzazione e procedure per riconoscere e affrontare in tempo le emergenze del parto, riducendo le morti materne."},
+    {n:7,t:"Prevenzione della morte, coma o grave danno derivati da errori in terapia farmacologica",facile:"Prevenire gli errori in ogni fase del farmaco — prescrizione, preparazione, somministrazione — per evitare morte, coma o danni gravi."},
+    {n:8,t:"Prevenire gli atti di violenza a danno degli operatori sanitari",facile:"Misure per prevenire e gestire le aggressioni verso il personale sanitario, dalla formazione all'organizzazione dei luoghi di lavoro."},
+    {n:9,t:"Prevenzione degli eventi avversi da malfunzionamento dei dispositivi medici / apparecchi elettromedicali",facile:"Manutenzione e uso corretto delle apparecchiature elettromedicali, per evitare danni causati da guasti o malfunzionamenti."},
+    {n:10,t:"Prevenzione dell'osteonecrosi della mascella/mandibola da bifosfonati",facile:"Valutazione odontoiatrica e precauzioni nei pazienti che assumono bifosfonati, per prevenire la necrosi dell'osso della mascella."},
+    {n:11,t:"Morte o grave danno da malfunzionamento del sistema di trasporto (intra/extra-ospedaliero)",facile:"Requisiti e controlli per un trasporto sicuro del paziente, dentro e fuori l'ospedale, evitando danni durante gli spostamenti."},
+    {n:12,t:"Prevenzione degli errori in terapia con farmaci «Look-alike / Sound-alike» (LASA)",facile:"Gestire con attenzione i farmaci dal nome o dalla confezione simili (LASA), per evitare scambi pericolosi."},
+    {n:13,t:"Prevenzione e gestione della caduta del paziente nelle strutture sanitarie",facile:"Valutare il rischio di caduta e adottare misure di prevenzione, per ridurre cadute e lesioni nelle strutture sanitarie."},
+    {n:14,t:"Prevenzione degli errori in terapia con farmaci antineoplastici",facile:"Procedure sicure per prescrivere, preparare e somministrare i chemioterapici, farmaci ad altissimo rischio di errore."},
+    {n:15,t:"Morte o grave danno da non corretta attribuzione del codice triage (118 / Pronto Soccorso)",facile:"Attribuire correttamente il codice di priorità al 118 e in Pronto Soccorso, per non sottovalutare le situazioni urgenti."},
+    {n:16,t:"Prevenzione della morte o disabilità permanente in neonato sano di peso >2500 g",facile:"Sorveglianza attenta del neonato sano nelle prime ore e giorni di vita, per prevenire morte o disabilità improvvise."},
+    {n:17,t:"Riconciliazione della terapia farmacologica",facile:"A ogni passaggio di cura, confrontare i farmaci che il paziente già assume con quelli prescritti, per evitare doppioni, omissioni o interazioni."},
+    {n:18,t:"Prevenzione degli errori in terapia da uso di abbreviazioni, acronimi, sigle e simboli",facile:"Evitare abbreviazioni, sigle e simboli ambigui nelle prescrizioni, perché possono essere fraintesi e generare errori di terapia."},
+    {n:19,t:"Manipolazione delle forme farmaceutiche orali solide",facile:"Indicazioni su come manipolare correttamente compresse e capsule (quando si possono dividere, tritare o aprire), per non comprometterne efficacia e sicurezza."}
   ],
   metodi: [
     {acr:"Incident Reporting",desc:"Sistema volontario di segnalazione di eventi avversi e near-miss, base dell'apprendimento organizzativo.",rif:"WHO Draft Guidelines, 2005"},
@@ -565,9 +571,16 @@ function renderInst() {
 }
 
 function renderRacc() {
-  document.getElementById('raccBody').innerHTML = T.raccomandazioni.map(r =>
-    '<tr><td class="num" style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;">' + String(r.n).padStart(2,'0') + '</td><td>' + r.t + '</td></tr>'
-  ).join('');
+  var MIN_URL = 'https://www.salute.gov.it/new/it/tema/governo-clinico-e-sicurezza-delle-cure/raccomandazioni-del-ministero/';
+  document.getElementById('raccBody').innerHTML = T.raccomandazioni.map(function (r) {
+    return '<tr>' +
+      '<td class="num" style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;vertical-align:top;padding-top:18px;">' + String(r.n).padStart(2, '0') + '</td>' +
+      '<td style="padding:14px 12px;">' +
+        '<a class="racc-t" href="' + MIN_URL + '" target="_blank" rel="noopener">' + r.t + ' <span class="racc-ext">↗</span></a>' +
+        (r.facile ? '<div class="inst-facile" style="margin-top:9px;"><b>In parole semplici:</b> ' + r.facile + '</div>' : '') +
+      '</td>' +
+    '</tr>';
+  }).join('');
 }
 
 function renderMetodi() {
