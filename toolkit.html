@@ -301,6 +301,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 
 
 /* === TAB (Toolkit) === */
+#tkTabs{scroll-margin-top:84px;}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--rule);margin:40px 0 0;}
 .tab{font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:600;padding:13px 20px;background:transparent;border:none;cursor:pointer;color:var(--ink-mute);position:relative;transition:color .25s;}
 .tab:hover{color:var(--ink);}
@@ -593,6 +594,20 @@ function renderMetodi() {
   ).join('');
 }
 
+var HASHMAP = { raccomandazioni:'racc', racc:'racc', libreria:'lib', strumenti:'lib', lib:'lib', metodi:'met', met:'met' };
+function activateTab(name) {
+  var tabs = document.querySelectorAll('#tkTabs .tab');
+  var found = false;
+  tabs.forEach(function (x) { var on = x.dataset.tab === name; x.classList.toggle('on', on); if (on) found = true; });
+  document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('on'); });
+  var panel = document.getElementById('tab-' + name);
+  if (panel) panel.classList.add('on');
+  return found;
+}
+function scrollToTabs() {
+  var el = document.getElementById('tkTabs');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 function bind() {
   document.getElementById('instSearch').addEventListener('input', e => { instQ = e.target.value; renderInst(); });
   document.querySelectorAll('#instFilters .chip').forEach(c => c.addEventListener('click', () => {
@@ -600,14 +615,20 @@ function bind() {
     c.classList.add('on'); instType = c.dataset.t; renderInst();
   }));
   // tab switching (libreria / raccomandazioni / metodi)
-  const tabs = document.querySelectorAll('#tkTabs .tab');
-  tabs.forEach(t => t.addEventListener('click', () => {
-    tabs.forEach(x => x.classList.remove('on'));
-    t.classList.add('on');
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('on'));
-    const panel = document.getElementById('tab-' + t.dataset.tab);
-    if (panel) panel.classList.add('on');
-  }));
+  document.querySelectorAll('#tkTabs .tab').forEach(function (t) {
+    t.addEventListener('click', function () { activateTab(t.dataset.tab); });
+  });
+  // links (cards, footer) that point to a tab via hash → open that tab instead of a dead anchor
+  document.querySelectorAll('a[href*="#raccomandazioni"], a[href*="#libreria"], a[href*="#metodi"], a[href*="#strumenti"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var hash = (a.getAttribute('href') || '').split('#')[1];
+      var name = HASHMAP[hash];
+      if (name) { e.preventDefault(); activateTab(name); scrollToTabs(); history.replaceState(null, '', '#' + hash); }
+    });
+  });
+  // if the page is opened directly with a hash, show the right tab
+  var h = (location.hash || '').replace('#', '');
+  if (h && HASHMAP[h]) { activateTab(HASHMAP[h]); setTimeout(scrollToTabs, 80); }
 }
 
 async function boot() {
