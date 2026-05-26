@@ -1021,6 +1021,31 @@
 .hexfx.fade .hx-dot{ opacity:0; }
 @keyframes dotPulse{ 0%{ box-shadow:0 0 0 0 rgba(230,57,70,.45); } 70%{ box-shadow:0 0 0 13px rgba(230,57,70,0); } 100%{ box-shadow:0 0 0 0 rgba(230,57,70,0); } }
 @media (prefers-reduced-motion:reduce){ .hexfx{ display:none; } }
+
+/* === ASSISTENTE (intent router) === */
+.ask{ margin-top:40px; max-width:720px; }
+.ask-bar{ display:flex; gap:10px; }
+.ask-bar input{ flex:1; font-family:'Manrope',sans-serif; font-size:16px; padding:16px 22px; border:1.5px solid var(--rule); border-radius:100px; background:var(--bg-card); color:var(--ink); outline:none; transition:border-color .2s; }
+.ask-bar input:focus{ border-color:var(--accent); }
+.ask-bar button{ font-family:'Manrope',sans-serif; font-weight:600; font-size:15px; padding:0 30px; border-radius:100px; border:none; background:var(--accent); color:#fff; cursor:pointer; transition:background .2s; }
+.ask-bar button:hover{ background:var(--accent-deep); }
+.ask-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.chip{ font-family:'Manrope',sans-serif; font-size:13px; font-weight:500; padding:7px 16px; border-radius:100px; border:1px solid var(--rule); background:transparent; color:var(--ink-soft); cursor:pointer; transition:all .2s; text-decoration:none; }
+.chip:hover{ border-color:var(--ink); color:var(--ink); }
+.ask-results{ margin-top:22px; display:flex; flex-direction:column; gap:12px; }
+.ask-card{ background:var(--bg-card); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:10px; padding:22px 24px; opacity:0; transform:translateY(8px); animation:askIn .4s forwards; }
+@keyframes askIn{ to{ opacity:1; transform:none; } }
+.ask-card h4{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:18px; color:var(--ink); margin:0 0 6px; }
+.ask-card p{ font-size:14.5px; line-height:1.55; color:var(--ink-soft); margin:0 0 14px; }
+.ask-cta{ display:inline-flex; align-items:center; gap:6px; font-family:'Manrope',sans-serif; font-weight:600; font-size:14px; color:#fff; background:var(--ink); padding:10px 22px; border-radius:100px; text-decoration:none; transition:background .2s; }
+.ask-cta:hover{ background:var(--accent); }
+@media(max-width:560px){ .ask-bar{ flex-direction:column; } .ask-bar button{ padding:15px; } }
+
+/* === NAV SEARCH (lente) === */
+.nav-search{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; border:1.5px solid var(--rule); color:var(--ink-soft); background:transparent; transition:border-color .2s, color .2s; flex:0 0 auto; text-decoration:none; }
+.nav-search:hover{ border-color:var(--accent); color:var(--accent); }
+.nav-search svg{ width:17px; height:17px; display:block; }
+@media (max-width:860px){ .nav-links a.nav-search{ display:inline-flex; } }
 </style>
 <script>document.documentElement.className += ' js';</script>
 </head>
@@ -1048,6 +1073,7 @@
       <a href="toolkit.html">Toolkit</a>
       <a href="eventi.html">Eventi</a>
       <a href="#documenti">Documenti</a>
+      <a href="#assistente" class="nav-search" id="navSearch" aria-label="Cerca nel sito" title="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></a>
       <a href="#newsletter" class="nav-cta nav-news"><span class="nl-full">Iscriviti alla newsletter</span><span class="nl-short">Newsletter</span></a>
       <a href="adesione.html" class="nav-cta">Associati</a>
     </div>
@@ -1540,6 +1566,29 @@
   </div>
 </section>
 
+<!-- ============ ASSISTENTE (cerca) ============ -->
+<section class="sec-pad" id="assistente" style="background:var(--bg-warm);padding-top:60px;padding-bottom:60px;">
+  <div class="wrap" style="max-width:760px;">
+    <div class="sec-label reveal">Assistente ANIQRC</div>
+    <h2 class="sec-title reveal" style="font-size:clamp(26px,4vw,38px);">Cosa stai <span class="accent">cercando</span>?</h2>
+    <p class="sec-intro reveal" style="margin-bottom:0;">Scrivi una domanda e ti porto subito nella sezione giusta. Tutto nel browser, senza inviare nulla.</p>
+    <div class="ask reveal" style="margin-top:26px;max-width:100%;">
+      <div class="ask-bar">
+        <input id="askInput" type="text" autocomplete="off" placeholder="Chiedimi qualcosa… es. come mi associo?" aria-label="Fai una domanda" />
+        <button id="askBtn" type="button">Chiedi</button>
+      </div>
+      <div class="ask-chips">
+        <button class="chip" data-q="dove trovo i dati sulla qualita">Dati e indicatori</button>
+        <button class="chip" data-q="dove sono i calcolatori e le raccomandazioni">Calcolatori e raccomandazioni</button>
+        <button class="chip" data-q="come mi associo">Come associarsi</button>
+        <button class="chip" data-q="quali eventi e corsi ci sono">Eventi e corsi</button>
+        <button class="chip" data-q="voglio fare il test di autovalutazione">Autovalutazione</button>
+      </div>
+      <div class="ask-results" id="askResults" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -1950,6 +1999,98 @@
     fx.classList.add('go');                                 // appear + slow drift + pulse
     setTimeout(function(){ fx.classList.add('fade'); }, 5200); // dissolve at end of path
   }, 1200);
+})();
+</script>
+<script>
+(function(){
+  var input=document.getElementById('askInput'), btn=document.getElementById('askBtn'), out=document.getElementById('askResults');
+  if(!input||!out) return;
+  var INTENTS=[
+    {title:"Osservatorio dei dati", href:"osservatorio.html", cta:"Apri l'Osservatorio",
+     answer:"Indicatori ufficiali su qualità e sicurezza delle cure in Italia: esiti clinici, LEA regionali, mappa e confronti nel tempo.",
+     kw:["dati","dato","indicatori","indicatore","statistiche","statistica","numeri","numero","esiti","esito","mortalita","femore","fratture","frattura","infermieri","infermiere","lea","mappa","regioni","regione","regionale","divario","pne","performance","grafici","grafico","monitoraggio","osservatorio","sicurezza delle cure","nord sud"]},
+    {title:"Toolkit operativo", href:"toolkit.html", cta:"Apri il Toolkit",
+     answer:"Calcolatori (Kappa di Cohen, dimensione del campione), le 19 Raccomandazioni ministeriali e una libreria di strumenti validati.",
+     kw:["strumenti","strumento","toolkit","calcolatori","calcolatore","calcolo","kappa","cohen","campione","sample","raccomandazioni","raccomandazione","linee guida","linea guida","prom","proms","prem","prems","mmat","prisma","metodi","metodo","libreria","appraisal","checklist","ministeriali"]},
+    {title:"Eventi e formazione", href:"eventi.html", cta:"Vai agli Eventi",
+     answer:"Congressi, corsi ECM e appuntamenti formativi dell'associazione.",
+     kw:["eventi","evento","congressi","congresso","corsi","corso","formazione","ecm","webinar","convegni","convegno","seminari","seminario","appuntamenti","appuntamento","calendario","prossimi eventi"]},
+    {title:"Associarsi ad ANIQRC", href:"adesione.html", cta:"Scopri come associarti",
+     answer:"Come diventare socio: requisiti, quota associativa e modulo di adesione.",
+     kw:["iscriversi","iscrizione","iscrivermi","iscrivere","iscrivo","associarsi","associarmi","associo","socio","soci","tesseramento","tessera","quota","quote","aderire","adesione","membership","diventare socio","entrare"]},
+    {title:"Autovalutazione", href:"#autovalutazione", cta:"Fai il test",
+     answer:"Un test rapido di 5 domande per capire quanto è sicura la tua pratica.",
+     kw:["test","quiz","autovalutazione","valutazione","valutarmi","valutare","punteggio","check","verifica","mettermi alla prova","quanto sicura","quanto e sicura","quanto sono sicuro","quanto siamo sicuri","sicura","struttura","pratica","reparto","sono pronto","siamo pronti","pronta"]},
+    {title:"Documenti", href:"#documenti", cta:"Vai ai Documenti",
+     answer:"Statuto, atto costitutivo e modulistica scaricabili in PDF.",
+     kw:["documenti","documento","statuto","modulistica","modulo","moduli","atto costitutivo","regolamento","pdf","scaricare","download","carte"]},
+    {title:"Chi siamo", href:"#manifesto", cta:"Leggi il Manifesto",
+     answer:"Chi siamo, perché nasce ANIQRC e i valori che ci guidano.",
+     kw:["chi siamo","chi siete","manifesto","missione","mission","valori","scopo","obiettivi","identita","cosa fate","perche esiste","perche nasce"]},
+    {title:"I nostri ambiti", href:"#ambiti", cta:"Esplora gli Ambiti",
+     answer:"Le quattro aree in cui operiamo: rischio clinico, quality improvement, processi e ricerca.",
+     kw:["ambiti","ambito","discipline","disciplina","aree","area","rischio clinico","risk management","quality improvement","miglioramento","ricerca","processi","governance","temi","segnalazione","segnalo","segnala","segnalare","evento avverso","eventi sentinella","near miss","incident reporting","reporting","root cause","audit clinici","audit"]},
+    {title:"Video e podcast", href:"#media", cta:"Vai a Media",
+     answer:"Contenuti video e podcast su qualità, rischio e professione infermieristica.",
+     kw:["video","podcast","ascoltare","ascolto","guardare","canale","youtube","spotify","multimedia","contenuti","interviste"]},
+    {title:"Consiglio direttivo", href:"#direttivo", cta:"Vedi il Direttivo",
+     answer:"I soci fondatori e i ruoli del consiglio direttivo dell'associazione.",
+     kw:["direttivo","consiglio","fondatori","fondatore","presidente","vicepresidente","segretario","tesoriere","membri","persone","chi guida","fumai","morelli","colonna","menolascina"]},
+    {title:"Contatti e newsletter", href:"#newsletter", cta:"Vai alla Newsletter",
+     answer:"Iscriviti alla newsletter per restare aggiornato sulle attività dell'associazione.",
+     kw:["contatti","contatto","contattare","scrivere","scrivervi","scriverci","email","mail","posta","newsletter","aggiornamenti"]},
+    {title:"News", href:"#news", cta:"Leggi le News",
+     answer:"Le ultime notizie su sanità, qualità e sicurezza delle cure.",
+     kw:["news","notizie","novita","ultime notizie","rassegna","articoli","attualita"]},
+    {title:"Storia e normativa", href:"#storia-sicurezza", cta:"Vedi la timeline",
+     answer:"La linea del tempo della sicurezza delle cure: dalla Legge Gelli-Bianco al DM 77 e all'EHDS.",
+     kw:["storia","normativa","leggi","legge","gelli","gelli bianco","dm 70","dm 77","ehds","timeline","linea del tempo","evoluzione","cronologia","decreto"]},
+    {title:"Contesto e fonti", href:"#contesto", cta:"Vai al Contesto",
+     answer:"I riferimenti normativi e le fonti istituzionali ufficiali su cui ci basiamo.",
+     kw:["fonti","fonte","riferimenti","ministero","agenas","iss","who","oms","fnopi","istituzionali","standard","iso","jci","su cosa poggiamo"]}
+  ];
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+  function lev(a,b){ var m=a.length,n=b.length; if(Math.abs(m-n)>1) return 2; var d=[],i,j; for(i=0;i<=m;i++) d[i]=[i]; for(j=0;j<=n;j++) d[0][j]=j; for(i=1;i<=m;i++){ for(j=1;j<=n;j++){ var c=a.charAt(i-1)===b.charAt(j-1)?0:1; d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c); } } return d[m][n]; }
+  function score(q,it){
+    var n=norm(q); if(!n) return 0;
+    var toks=n.split(' ').filter(function(t){return t.length>=2;}); var sc=0;
+    it.kw.forEach(function(kw){
+      if(kw.indexOf(' ')>=0){ if(n.indexOf(kw)>=0) sc+=3.2; return; }
+      toks.forEach(function(t){
+        if(t===kw) sc+=2.2;
+        else if(t.length>=4 && kw.length>=4 && (t.indexOf(kw)>=0||kw.indexOf(t)>=0)) sc+=1.3;
+        else if(t.length>=4 && kw.length>=4 && lev(t,kw)<=1) sc+=1.1;
+      });
+    });
+    return sc;
+  }
+  function esc(x){ return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function render(q){
+    out.innerHTML='';
+    if(!q.trim()) return;
+    var ranked=INTENTS.map(function(it){ return {it:it,s:score(q,it)}; }).sort(function(a,b){ return b.s-a.s; });
+    if(ranked[0].s<1.2){
+      var f=document.createElement('div'); f.className='ask-card';
+      f.innerHTML='<h4>Non sono sicuro di aver capito</h4><p>Prova a riformulare la domanda, oppure parti da queste sezioni:</p>'+
+        '<div class="ask-chips"><a class="chip" href="osservatorio.html">Osservatorio</a><a class="chip" href="toolkit.html">Toolkit</a><a class="chip" href="eventi.html">Eventi</a><a class="chip" href="adesione.html">Associarsi</a><a class="chip" href="#documenti">Documenti</a></div>';
+      out.appendChild(f); return;
+    }
+    var best=ranked[0].s;
+    var top=ranked.filter(function(r){ return r.s>=1.2 && r.s>=best*0.62; }).slice(0,3);
+    top.forEach(function(r,i){
+      var it=r.it, c=document.createElement('div'); c.className='ask-card'; c.style.animationDelay=(i*0.06)+'s';
+      c.innerHTML='<h4>'+esc(it.title)+'</h4><p>'+esc(it.answer)+'</p><a class="ask-cta" href="'+it.href+'">'+esc(it.cta)+' \u2192</a>';
+      out.appendChild(c);
+    });
+  }
+  btn.addEventListener('click', function(){ render(input.value); });
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); render(input.value); } });
+  var t; input.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(function(){ render(input.value); }, 220); });
+  document.querySelectorAll('#assistente .ask-chips .chip[data-q]').forEach(function(ch){
+    ch.addEventListener('click', function(){ input.value=ch.getAttribute('data-q'); render(input.value); input.focus(); });
+  });
+  var navSearch=document.getElementById('navSearch');
+  if(navSearch){ navSearch.addEventListener('click', function(e){ e.preventDefault(); var sec=document.getElementById('assistente'); if(sec){ sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ try{ input.focus({preventScroll:true}); }catch(_){ input.focus(); } }, 650); } }); }
 })();
 </script>
 </body>
