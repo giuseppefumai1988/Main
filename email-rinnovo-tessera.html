@@ -2,13 +2,13 @@
 <!--
   ANIQRC — Promemoria rinnovo tessera associativa
   Email da inviare ~1 mese prima della scadenza annuale.
-  SOSTITUISCI i segnaposto tra {{ }} prima dell'invio:
-    {{NOME}}            = nome del socio (o "Gentile Socia/o" se invio massivo)
-    {{SCADENZA}}        = data di scadenza tessera (es. 31/12/2026)
-    {{INTESTATARIO}}    = intestatario del conto / associazione
-    {{IBAN}}            = IBAN su cui versare
-    {{CAUSALE}}         = causale del bonifico (es. "Quota associativa 2026 - Mario Rossi")
-    {{LINK_PAGAMENTO}}  = (facoltativo) link a pagamento online; se non lo usi, elimina il bottone
+  SOSTITUISCI i segnaposto tra [ ] prima dell'invio:
+    [NOME]            = nome del socio (o "Gentile Socia/o" se invio massivo)
+    [SCADENZA]        = data di scadenza tessera (es. 31/12/2026)
+    [INTESTATARIO]    = intestatario del conto / associazione
+    [IBAN]            = IBAN su cui versare
+    [CAUSALE]         = causale del bonifico (es. "Quota associativa 2026 - Mario Rossi")
+    [LINK_PAGAMENTO]  = (facoltativo) link a pagamento online; se non lo usi, elimina il bottone
   L'importo della quota è 5 euro.
 -->
 <html lang="it">
@@ -16,7 +16,7 @@
 <title>Rinnovo tessera ANIQRC</title></head>
 <body style="margin:0; padding:0; background:#EAE6DC; font-family:Arial,Helvetica,sans-serif; color:#0A0A0A;">
   <!-- preheader nascosto -->
-  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">La tua tessera ANIQRC scade il {{SCADENZA}}: rinnova con 5 euro.</div>
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">La tua tessera ANIQRC scade il [SCADENZA]: rinnova con 5 euro.</div>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EAE6DC; padding:28px 12px;">
     <tr><td align="center">
@@ -32,9 +32,9 @@
         <tr><td style="padding:38px 34px 10px;">
           <div style="font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#E63946; margin-bottom:18px;">Promemoria di rinnovo</div>
           <h1 style="font-family:Georgia,'Times New Roman',serif; font-size:28px; line-height:1.2; margin:0 0 20px; color:#0A0A0A;">La tua tessera sta per scadere.</h1>
-          <p style="font-size:15px; line-height:1.65; color:#34332F; margin:0 0 16px;">Gentile {{NOME}},</p>
+          <p style="font-size:15px; line-height:1.65; color:#34332F; margin:0 0 16px;">Gentile [NOME],</p>
           <p style="font-size:15px; line-height:1.65; color:#34332F; margin:0 0 16px;">
-            ti ricordiamo che la tua tessera associativa ANIQRC scadrà il <strong>{{SCADENZA}}</strong>.
+            ti ricordiamo che la tua tessera associativa ANIQRC scadrà il <strong>[SCADENZA]</strong>.
             Per continuare a far parte della comunità degli infermieri della qualità e del rischio clinico,
             ti invitiamo a rinnovare l'iscrizione con la quota annuale di
             <strong style="color:#E63946;">5&nbsp;euro</strong>.
@@ -50,9 +50,9 @@
               <div style="font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#75736B; margin-bottom:14px;">Come rinnovare — quota 5 euro</div>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px; color:#34332F; line-height:1.6;">
                 <tr><td style="padding:4px 0; color:#75736B; width:130px;">Importo</td><td style="padding:4px 0; font-weight:bold;">5,00 €</td></tr>
-                <tr><td style="padding:4px 0; color:#75736B;">Intestatario</td><td style="padding:4px 0; font-weight:bold;">{{INTESTATARIO}}</td></tr>
-                <tr><td style="padding:4px 0; color:#75736B;">IBAN</td><td style="padding:4px 0; font-weight:bold; font-family:'Courier New',monospace;">{{IBAN}}</td></tr>
-                <tr><td style="padding:4px 0; color:#75736B;">Causale</td><td style="padding:4px 0; font-weight:bold;">{{CAUSALE}}</td></tr>
+                <tr><td style="padding:4px 0; color:#75736B;">Intestatario</td><td style="padding:4px 0; font-weight:bold;">[INTESTATARIO]</td></tr>
+                <tr><td style="padding:4px 0; color:#75736B;">IBAN</td><td style="padding:4px 0; font-weight:bold; font-family:'Courier New',monospace;">[IBAN]</td></tr>
+                <tr><td style="padding:4px 0; color:#75736B;">Causale</td><td style="padding:4px 0; font-weight:bold;">[CAUSALE]</td></tr>
               </table>
             </td></tr>
           </table>
@@ -60,7 +60,7 @@
           <!-- bottone facoltativo: elimina se non usi pagamento online -->
           <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
             <tr><td style="border-radius:100px; background:#E63946;">
-              <a href="{{LINK_PAGAMENTO}}" target="_blank" style="display:inline-block; padding:14px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; color:#F4F2EC; text-decoration:none; border-radius:100px;">Rinnova ora &rarr;</a>
+              <a href="[LINK_PAGAMENTO]" target="_blank" style="display:inline-block; padding:14px 30px; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; color:#F4F2EC; text-decoration:none; border-radius:100px;">Rinnova ora &rarr;</a>
             </td></tr>
           </table>
 
