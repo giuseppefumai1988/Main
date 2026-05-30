@@ -1089,6 +1089,10 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 .nl-card > .spot, .manifesto > .spot{ z-index:0; }
 .spot.on{ opacity:1; }
 @media (prefers-reduced-motion:reduce){ .sec-title.wipe .t{ opacity:1; } .sec-title.wipe::after{ display:none; } .magnetic{ transition:none; } .spot{ display:none; } .hero::after{ animation:none; } }
+
+/* === HOME: card osservatorio/toolkit/ricerca (3 colonne) === */
+.obs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+@media(max-width:900px){.obs-cards{grid-template-columns:1fr;}}
 </style>
 <script>document.documentElement.className += ' js';try{if(localStorage.getItem('aniqrc-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 </head>
@@ -1115,6 +1119,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
       <a href="#ambiti">Ambiti</a>
       <a href="osservatorio.html">Osservatorio</a>
       <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
       <a href="eventi.html">Eventi</a>
       <a href="#documenti">Documenti</a>
       <a href="#assistente" class="nav-search" id="navSearch" aria-label="Cerca nel sito" title="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></a>
@@ -1370,7 +1375,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
   <div class="wrap">
     <div class="sec-label reveal">Osservatorio · dati in tempo reale</div>
     <h2 data-editable="source" data-path="/index.html" data-key="title-5" class="sec-title reveal">Dai principi ai <span class="accent">dati</span>.</h2>
-    <p data-editable="source" data-path="/index.html" data-key="intro-3" class="sec-intro reveal">Due strumenti vivi al servizio della comunità: un osservatorio che legge la qualità delle cure in Italia attraverso i dati ufficiali, e un toolkit operativo per chi misura, valuta e fa ricerca.</p>
+    <p data-editable="source" data-path="/index.html" data-key="intro-3" class="sec-intro reveal">Tre spazi vivi al servizio della comunità: un osservatorio che legge la qualità delle cure in Italia attraverso i dati ufficiali, un toolkit operativo per chi misura e valuta, e la ricerca infermieristica con metodo trasparente ed evidenze in tempo reale.</p>
 
     <div class="mini-obs reveal">
       <div class="mo-stat"><div class="mo-num" data-to="59" data-dec="0" data-suffix="%">0</div><div class="mo-lab">Fratture di femore operate entro 48h <span>· mediana naz. 2023</span></div></div>
@@ -1378,7 +1383,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
       <div class="mo-stat"><div class="mo-num" data-to="13" data-dec="0" data-suffix="/21">0</div><div class="mo-lab">Regioni promosse nei LEA in tutte le aree <span>· 2022</span></div></div>
     </div>
 
-    <div class="manifesto-cards reveal" style="margin-top:40px;">
+    <div class="obs-cards reveal">
       <a data-fx href="osservatorio.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
         <span style="position:absolute;bottom:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(230,57,70,0.18) 0%,transparent 70%);pointer-events:none;"></span>
         <span style="position:relative;z-index:2;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">01 — OSSERVATORIO</span>
@@ -1392,6 +1397,13 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
         <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;color:var(--ink);">Il Toolkit<br>della qualità</span>
         <span style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Calcolatori che funzionano nel browser (Kappa di Cohen, dimensione del campione), una libreria di strumenti validati (PROM, PREM, Q-DIO, MMAT, PRISMA-ScR) e le 19 Raccomandazioni ministeriali per la sicurezza dei pazienti.</span>
         <span style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Apri gli strumenti &rarr;</span>
+      </a>
+
+      <a data-fx href="ricerca.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s,border-color .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';this.style.borderColor='var(--accent)';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--rule)';">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">03 &mdash; LA RICERCA</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;color:var(--ink);">La ricerca<br>infermieristica</span>
+        <span style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Il metodo delle nostre revisioni (scoping review, PRISMA-ScR, pre-registrazione OSF), le evidenze da PubMed in tempo reale e le linee di ricerca dell'associazione in qualit&agrave; e rischio clinico.</span>
+        <span style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Scopri la ricerca &rarr;</span>
       </a>
     </div>
   </div>

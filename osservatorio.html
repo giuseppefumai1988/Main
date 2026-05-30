@@ -454,6 +454,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       <a href="index.html#ambiti">Ambiti</a>
       <a href="osservatorio.html" class="active">Osservatorio</a>
       <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
       <a href="index.html#documenti">Documenti</a>
       <a href="adesione.html" class="nav-cta">Associati</a>
     </div>
@@ -732,18 +733,6 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   </div>
 </section>
 
-<!-- ============ LETTERATURA (LIVE) ============ -->
-<section class="sec-pad" style="background:var(--bg-warm);" id="letteratura">
-  <div class="wrap">
-    <div class="sec-label reveal">Aggiornamento continuo · letteratura</div>
-    <h2 class="sec-title reveal">La ricerca, <span class="accent">in tempo reale</span>.</h2>
-    <p class="sec-intro reveal">A differenza dei dati statistici (che le fonti ufficiali pubblicano una volta l'anno), questa sezione si aggiorna <b>a ogni visita</b>: mostra gli studi più recenti indicizzati su PubMed/MEDLINE su nursing, sicurezza delle cure, qualità e rischio clinico. È il battito quotidiano della ricerca infermieristica.</p>
-    <div class="reveal" style="margin-top:18px;"><span class="live-badge"><span class="live-dot"></span>Live · aggiornato a ogni visita</span></div>
-    <div id="litGrid" class="lit-grid reveal"><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div><div class="lit-skel"><div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div><div class="sk w4"></div></div></div>
-    <div class="chart-src reveal" id="litSrc" style="margin-top:18px;">Fonte: <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed / MEDLINE — U.S. National Library of Medicine</a> · query: nursing AND (patient safety OR quality of care OR clinical risk) · ordinati per data.</div>
-  </div>
-</section>
-
 <!-- ============ NOTE METODOLOGICHE ============ -->
 <section class="sec-pad">
   <div class="wrap">
@@ -788,6 +777,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
         <a href="index.html#ambiti">Ambiti</a>
         <a href="osservatorio.html">Osservatorio</a>
         <a href="toolkit.html">Toolkit</a>
+        <a href="ricerca.html">La ricerca</a>
         <a href="index.html#documenti">Documenti</a>
       </div>
       <div class="foot-col">
@@ -1324,7 +1314,6 @@ async function boot() {
   renderAll();
   initKpiCountUp();
   initGauge();
-  loadLiterature();
   initMap();
   initScrolly();
   initChartReveal();
