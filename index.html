@@ -229,8 +229,8 @@
     line-height: 0.84;
     color: var(--ink);
     margin-bottom: 22px;
-    opacity: 0;
-    animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+    opacity: 1;
+    --lr-dur: 1.15s; --lr-del: .25s;
   }
   .hero-acronym .q { color: var(--accent); }
 
@@ -1093,6 +1093,16 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 /* === HOME: card osservatorio/toolkit/ricerca (3 colonne) === */
 .obs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
 @media(max-width:900px){.obs-cards{grid-template-columns:1fr;}}
+
+/* === LIGHT-READ (luce che legge il testo) === */
+@property --litp { syntax: '<length-percentage>'; inherits: false; initial-value: 0%; }
+.light-read{ -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--litp) - 7%), rgba(0,0,0,.16) calc(var(--litp) + 7%), rgba(0,0,0,.16) 100%); mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--litp) - 7%), rgba(0,0,0,.16) calc(var(--litp) + 7%), rgba(0,0,0,.16) 100%); }
+.light-read.lit{ animation: lightRead var(--lr-dur,3s) cubic-bezier(.4,0,.2,1) var(--lr-del,0s) forwards; }
+@keyframes lightRead{ from{ --litp:-8%; } to{ --litp:116%; } }
+.manifesto-quote{ --lr-dur:3.2s; }
+@media (prefers-reduced-motion:reduce){ .light-read{ -webkit-mask-image:none; mask-image:none; } }
+/* nav: ogni voce su una sola riga (La ricerca per esteso) */
+.nav-links a{ white-space:nowrap; }
 </style>
 <script>document.documentElement.className += ' js';try{if(localStorage.getItem('aniqrc-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 </head>
@@ -1158,7 +1168,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
       </div>
 
       <div class="hero-text">
-        <h1 class="hero-acronym">ANI<span class="q">Q</span>RC</h1>
+        <h1 class="hero-acronym light-read lit">ANI<span class="q">Q</span>RC</h1>
         <p class="hero-name">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</p>
         <div class="hexfx" aria-hidden="true"><span class="hx-dot"></span></div>
       </div>
@@ -1210,7 +1220,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
   <div class="deco-q">Q</div>
   <div class="wrap">
     <div class="sec-label reveal">Manifesto</div>
-    <p class="manifesto-quote reveal">
+    <p class="manifesto-quote light-read">
       <span class="soft">Crediamo che la</span> sicurezza delle cure <span class="soft">non sia un esito accessorio, ma il</span> fine ultimo <span class="soft">della pratica infermieristica. Per questo riuniamo chi misura, previene, scrive procedure e fa</span> <span class="hl">ricerca</span> <span class="soft">—  trasformando il rischio in</span> <span class="hl">qualità</span><span class="soft">.</span>
     </p>
     <div class="manifesto-attr reveal">— Giuseppe Fumai <span>·</span> Fondatore</div>
@@ -2038,6 +2048,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
   var fx = document.querySelector('.hexfx'); if(!fx) return;
   var acr = document.querySelector('.hero-acronym'); if(!acr) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(function(){ acr.style.webkitMaskImage='none'; acr.style.maskImage='none'; }, 1500);
   function place(){
     if (window.innerWidth < 1181){ fx.style.display='none'; return; }
     var a = acr.getBoundingClientRect(), f = fx.getBoundingClientRect();
@@ -2080,7 +2091,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
     if (fx.style.display==='none') return;
     fx.classList.add('go');        // il puntino rosso appare, si muove lentamente e lampeggia
     setTimeout(explode, 1700);     // poi esplode in tanti puntini lampeggianti che si dissolvono
-  }, 1200);
+  }, 1500);
 })();
 </script>
 <script>
@@ -2228,6 +2239,15 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
       sec.addEventListener('mouseleave', function(){ spot.classList.remove('on'); });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var q=document.querySelector('.manifesto-quote.light-read'); if(!q) return;
+  var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(rm || !('IntersectionObserver' in window)){ q.style.webkitMaskImage='none'; q.style.maskImage='none'; return; }
+  var o=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ q.classList.add('lit'); setTimeout(function(){ q.style.webkitMaskImage='none'; q.style.maskImage='none'; }, 3800); o.disconnect(); } }); },{threshold:.45});
+  o.observe(q);
 })();
 </script>
 </body>

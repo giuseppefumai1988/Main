@@ -469,6 +469,40 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 @media(max-width:760px){.os-grid{grid-template-columns:1fr 1fr;}}
 .os-item .oi-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:6px;}
 .os-item .oi-d{font-size:13px;line-height:1.5;color:rgba(244,242,236,.72);}
+
+/* === TIPI DI RICERCA (pannello) === */
+.rt-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px;}
+@media(max-width:680px){.rt-two{grid-template-columns:1fr;}}
+.rt-fam{background:var(--bg-card);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:22px 24px;}
+.rt-fam-k{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.rt-fam p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0;}
+.rt-tabs{display:inline-flex;gap:6px;margin-top:34px;background:var(--bg-card);border:1px solid var(--rule);border-radius:100px;padding:5px;}
+.rt-tab{font-family:'Manrope',sans-serif;font-weight:600;font-size:14px;padding:10px 22px;border:none;border-radius:100px;background:transparent;color:var(--ink-soft);cursor:pointer;transition:all .2s;}
+.rt-tab.on{background:var(--ink);color:var(--bg);}
+.rt-list{margin-top:22px;display:flex;flex-direction:column;gap:12px;}
+.rt-item{background:var(--bg-card);border:1px solid var(--rule);border-radius:10px;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+.rt-item.open{border-color:var(--accent);box-shadow:0 14px 36px var(--shadow);}
+.rt-head{width:100%;display:flex;align-items:flex-start;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;}
+.rt-head .rt-tx{flex:1;}
+.rt-head .rt-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;color:var(--ink);}
+.rt-head .rt-1{font-size:13.5px;color:var(--ink-mute);margin-top:3px;}
+.rt-head .rt-ico{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;color:var(--ink-mute);font-size:18px;line-height:1;transition:transform .3s,color .2s,border-color .2s;}
+.rt-item.open .rt-ico{transform:rotate(45deg);border-color:var(--accent);color:var(--accent);}
+.rt-body{display:none;padding:0 24px 24px;}
+.rt-item.open .rt-body{display:block;}
+.rt-body .rt-lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:16px 0 5px;}
+.rt-body p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0;}
+.rt-ex{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
+@media(max-width:640px){.rt-ex{grid-template-columns:1fr;}}
+.rt-ex .ex{display:block;background:var(--bg-warm);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;text-decoration:none;transition:border-color .2s,transform .2s;}
+.rt-ex .ex:hover{border-color:var(--accent);transform:translateY(-2px);}
+.rt-ex .ex-l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+.rt-ex .ex-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13.5px;line-height:1.32;color:var(--ink);margin:6px 0;}
+.rt-ex .ex-s{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-mute);}
+.rt-ex .ex.skel{pointer-events:none;}
+.rt-ex .ex.skel .ln{height:9px;background:var(--rule-soft);border-radius:5px;margin:8px 0;}
+/* nav: voci su una sola riga */
+.nav-links a{ white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -505,11 +539,11 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="crumb"><a href="index.html">ANIQRC</a><span class="sep">/</span>La ricerca</div>
     <h1 class="page-title">La ricerca infermieristica<br>in qualità e <span class="accent">rischio clinico</span></h1>
-    <p class="page-lead">Dalla domanda clinica alla prova pubblicata. ANIQRC promuove revisioni e studi rigorosi su qualità delle cure, sicurezza del paziente e rischio clinico — con metodo trasparente, evidenze aggiornate in tempo reale e pubblicazione ad accesso aperto.</p>
+    <p class="page-lead">Dalla domanda clinica alla prova. ANIQRC sostiene e promuove la ricerca infermieristica in qualità delle cure, sicurezza del paziente e rischio clinico: ne diffonde i metodi, dà accesso alle evidenze aggiornate e incoraggia una scienza aperta.</p>
 
     <div class="databanner reveal">
       <span class="ic">i</span>
-      <p>Questa pagina unisce <b>metodo</b> ed <b>evidenze vive</b>: il percorso con cui realizziamo le revisioni e una ricerca <b>dal vivo</b> su PubMed/MEDLINE che puoi interrogare tu. I temi riflettono le linee di ricerca dell'associazione. Per gli strumenti operativi (calcolatori, checklist, template) vedi il <a href="toolkit.html">Toolkit</a>.</p>
+      <p>Questa pagina unisce <b>metodo</b> ed <b>evidenze vive</b>: come nasce una revisione e una ricerca <b>dal vivo</b> su PubMed/MEDLINE che puoi interrogare tu. I temi riflettono le aree di ricerca che sosteniamo. Per gli strumenti operativi (calcolatori, checklist, template) vedi il <a href="toolkit.html">Toolkit</a>.</p>
     </div>
   </div>
 </header>
@@ -519,11 +553,30 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="sec-label reveal">Il metodo · dalla domanda alla prova</div>
     <h2 class="sec-title reveal">Come nasce una <span class="accent">revisione</span>.</h2>
-    <p class="sec-intro reveal">Ogni nostro lavoro segue un percorso trasparente e replicabile — il framework delle scoping review (Arksey &amp; O'Malley, Levac, JBI) con reporting PRISMA-ScR. Tocca una tappa per vedere cosa comporta.</p>
+    <p class="sec-intro reveal">Una revisione seria segue un percorso trasparente e replicabile — il framework delle scoping review (Arksey &amp; O'Malley, Levac, JBI) con reporting PRISMA-ScR. Tocca una tappa per capirla.</p>
     <div class="pipe reveal">
       <div class="pipe-track" id="pipeTrack"></div>
       <div class="pipe-detail" id="pipeDetail"></div>
     </div>
+  </div>
+</section>
+
+<!-- ============ TIPI DI RICERCA ============ -->
+<section class="sec-pad" id="tipi">
+  <div class="wrap">
+    <div class="sec-label reveal">Capire la ricerca</div>
+    <h2 class="sec-title reveal">Primaria o <span class="accent">secondaria</span>?</h2>
+    <p class="sec-intro reveal">Due grandi famiglie. La <b>ricerca primaria</b> raccoglie dati nuovi, direttamente da persone, pazienti o contesti. La <b>ricerca secondaria</b> non raccoglie dati nuovi: seleziona, valuta e mette insieme studi già pubblicati. Qui sotto trovi ogni tipo spiegato semplice, con due esempi reali da PubMed (uno in inglese, uno in italiano).</p>
+    <div class="rt-two reveal">
+      <div class="rt-fam"><div class="rt-fam-k">Primaria · genera prove nuove</div><p>Questionari, osservazioni, esperimenti, interviste. Risponde a "che cosa succede?" raccogliendo dati sul campo.</p></div>
+      <div class="rt-fam"><div class="rt-fam-k">Secondaria · ordina le prove</div><p>Revisioni e sintesi della letteratura. Risponde a "che cosa sappiamo già?" leggendo e confrontando studi pubblicati.</p></div>
+    </div>
+    <div class="rt-tabs reveal">
+      <button type="button" class="rt-tab on" data-g="primaria">Ricerca primaria</button>
+      <button type="button" class="rt-tab" data-g="secondaria">Ricerca secondaria</button>
+    </div>
+    <div class="rt-list" id="rtList"></div>
+    <p class="chart-src reveal" style="margin-top:18px;">Gli esempi sono recuperati dal vivo da PubMed/MEDLINE al momento dell'apertura di ogni tipo; se un esempio non è disponibile, trovi un link alla ricerca corrispondente.</p>
   </div>
 </section>
 
@@ -547,9 +600,9 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 <!-- ============ LINEE DI RICERCA ============ -->
 <section class="sec-pad" id="linee">
   <div class="wrap">
-    <div class="sec-label reveal">Le nostre piste</div>
+    <div class="sec-label reveal">Aree di ricerca</div>
     <h2 class="sec-title reveal">Linee di <span class="accent">ricerca</span>.</h2>
-    <p class="sec-intro reveal">I filoni su cui ANIQRC concentra revisioni, studi e produzione scientifica.</p>
+    <p class="sec-intro reveal">I temi su cui ANIQRC sostiene e promuove la ricerca infermieristica.</p>
     <div class="lr-grid">
       <div class="lr-card reveal"><div class="lr-k">Qualità</div><h3>Qualità &amp; accreditamento</h3><p>Modelli e standard (ISO 7101, JCI, ISO 9001) e il loro impatto reale sugli esiti assistenziali.</p></div>
       <div class="lr-card reveal"><div class="lr-k">Sicurezza</div><h3>Rischio clinico &amp; eventi avversi</h3><p>Segnalazione, audit e bundle di prevenzione; dalla cultura just culture agli strumenti operativi.</p></div>
@@ -564,11 +617,11 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 <!-- ============ OPEN SCIENCE ============ -->
 <section class="sec-pad" style="background:var(--bg-warm);" id="open">
   <div class="wrap">
-    <div class="sec-label reveal">Come pubblichiamo</div>
+    <div class="sec-label reveal">Cosa sosteniamo</div>
     <h2 class="sec-title reveal">Scienza <span class="accent">aperta</span>, per davvero.</h2>
     <div class="os-card reveal">
       <div class="os-h">Trasparenza prima dei risultati.</div>
-      <p class="os-sub">Pre-registriamo i protocolli, dichiariamo i metodi, rendiamo verificabile ogni passaggio e scegliamo riviste ad accesso aperto con costi di pubblicazione nulli o contenuti. La conoscenza prodotta deve poter essere letta, controllata e riusata.</p>
+      <p class="os-sub">La buona ricerca pre-registra i protocolli, dichiara i metodi, resta verificabile e pubblica ad accesso aperto. Sono i principi che ANIQRC sostiene e promuove: la conoscenza deve poter essere letta, controllata e riusata.</p>
       <div class="os-grid">
         <div class="os-item"><div class="oi-t">Pre-registrazione</div><div class="oi-d">Protocolli depositati su OSF prima di iniziare.</div></div>
         <div class="os-item"><div class="oi-t">PRISMA-ScR</div><div class="oi-d">Reporting standardizzato e checklist pubblica.</div></div>
@@ -640,13 +693,13 @@ setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.clas
 
 // ---- PIPELINE (metodo) ----
 var PIPE=[
- {t:"Domanda (PCC)", d:"Definiamo la domanda con il modello Popolazione-Concetto-Contesto: chi, che cosa, in quale ambito. Una domanda chiara orienta tutto il resto.", tag:"Population · Concept · Context"},
- {t:"Protocollo & OSF", d:"Scriviamo il protocollo e lo pre-registriamo pubblicamente su OSF prima di iniziare: criteri, metodi e analisi sono fissati in anticipo, per trasparenza e contro i bias.", tag:"Pre-registrazione · OSF"},
- {t:"Ricerca & banche dati", d:"Costruiamo stringhe di ricerca riproducibili e interroghiamo le principali banche dati: PubMed/MEDLINE, CINAHL, Embase, Cochrane, oltre alla letteratura grigia.", tag:"PubMed · CINAHL · Embase · Cochrane"},
- {t:"Selezione (PRISMA-ScR)", d:"Screening di titoli e abstract, poi full-text, in doppio revisore con misura dell'accordo (kappa di Cohen). Il flusso e documentato secondo PRISMA-ScR.", tag:"Screening · doppio revisore · kappa"},
- {t:"Estrazione dati", d:"Estraiamo i dati con una griglia condivisa (charting) e valutiamo la qualita degli studi (es. MMAT 2018). Tutto tracciabile e verificabile.", tag:"Charting · MMAT 2018"},
- {t:"Sintesi", d:"Sintesi narrativa e tematica: mappiamo cio che si sa, cio che manca e le implicazioni per la pratica infermieristica in qualita e rischio clinico.", tag:"Sintesi narrativa & tematica"},
- {t:"Pubblicazione aperta", d:"Pubblichiamo su riviste ad accesso aperto con costi nulli o contenuti, cosi che il lavoro sia leggibile, citabile e riutilizzabile da tutti.", tag:"Open access · APC zero/basso"}
+ {t:"Domanda (PCC)", d:"Si definisce la domanda con il modello Popolazione-Concetto-Contesto: chi, che cosa, in quale ambito. Una domanda chiara orienta tutto il resto.", tag:"Population · Concept · Context"},
+ {t:"Protocollo & OSF", d:"Il protocollo viene scritto e pre-registrato pubblicamente (es. su OSF) prima di iniziare: criteri, metodi e analisi sono fissati in anticipo, per trasparenza e contro i bias.", tag:"Pre-registrazione · OSF"},
+ {t:"Ricerca & banche dati", d:"Si costruiscono stringhe di ricerca riproducibili e si interrogano le principali banche dati: PubMed/MEDLINE, CINAHL, Embase, Cochrane, oltre alla letteratura grigia.", tag:"PubMed · CINAHL · Embase · Cochrane"},
+ {t:"Selezione (PRISMA-ScR)", d:"Screening di titoli e abstract, poi full-text, in doppio revisore con misura dell'accordo (kappa di Cohen). Il flusso è documentato secondo PRISMA-ScR.", tag:"Screening · doppio revisore · kappa"},
+ {t:"Estrazione dati", d:"I dati vengono estratti con una griglia condivisa (charting) e si valuta la qualità degli studi (es. MMAT 2018). Tutto è tracciabile e verificabile.", tag:"Charting · MMAT 2018"},
+ {t:"Sintesi", d:"Sintesi narrativa e tematica: si mappa ciò che si sa, ciò che manca e le implicazioni per la pratica infermieristica in qualità e rischio clinico.", tag:"Sintesi narrativa & tematica"},
+ {t:"Pubblicazione aperta", d:"I risultati vengono pubblicati su riviste ad accesso aperto con costi nulli o contenuti, così che il lavoro sia leggibile, citabile e riutilizzabile da tutti.", tag:"Open access · APC zero/basso"}
 ];
 (function(){
   var track=document.getElementById('pipeTrack'), det=document.getElementById('pipeDetail'); if(!track||!det) return;
@@ -684,6 +737,62 @@ async function loadLiterature(termRaw){
   if(btn) btn.addEventListener('click',doSearch);
   if(input) input.addEventListener('keydown',function(e){ if(e.key==='Enter') doSearch(); });
   loadLiterature();
+})();
+</script>
+<script>
+(function(){
+  var list=document.getElementById('rtList'); if(!list) return;
+  var EUT='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+  var RT={
+   primaria:[
+    {t:"Studio trasversale", one:"una fotografia in un singolo momento", what:"Misura una popolazione in un dato momento, senza seguirla nel tempo. Serve a sapere quanto è diffuso un fenomeno (prevalenza) e a notare possibili associazioni.", how:"Si raccoglie un campione una volta sola, di solito con questionari o misurazioni, e si analizzano insieme le caratteristiche osservate.", q:"nursing AND cross-sectional[tiab]"},
+    {t:"Studio di coorte", one:"segue gruppi nel tempo", what:"Parte da persone con o senza un certo fattore e le segue in avanti per vedere chi sviluppa l'esito. Aiuta a stimare il rischio.", how:"Si definiscono i gruppi all'inizio e si osservano nel tempo, confrontando quanto spesso compare l'esito.", q:"nursing AND cohort study[tiab]"},
+    {t:"Studio caso-controllo", one:"guarda al passato partendo dall'esito", what:"Parte da chi ha già l'esito (casi) e da chi non ce l'ha (controlli) e guarda all'indietro le esposizioni passate. Utile per esiti rari.", how:"Si confrontano le esposizioni pregresse tra casi e controlli per capire cosa li distingue.", q:"nursing AND case-control[tiab]"},
+    {t:"Trial randomizzato (RCT)", one:"assegna a caso l'intervento", what:"È il disegno più forte per dire se un intervento funziona: i partecipanti sono assegnati per sorteggio al gruppo intervento o al gruppo di controllo.", how:"Randomizzazione, gruppo di controllo e, quando possibile, cecità riducono i bias e permettono di attribuire l'effetto all'intervento.", q:"nursing AND randomized controlled trial[ptyp]"},
+    {t:"Studio qualitativo", one:"esperienze, significati, vissuti", what:"Esplora il punto di vista delle persone — perché e come — più che i numeri. Tipico per vissuti di pazienti e professionisti.", how:"Si raccolgono dati con interviste, focus group o osservazione e si analizzano per temi ricorrenti.", q:"nursing AND qualitative[tiab]"},
+    {t:"Case report / serie di casi", one:"descrive casi clinici insoliti", what:"Racconta in dettaglio uno o pochi casi particolari. Non dimostra cause, ma segnala fenomeni nuovi o rari da studiare.", how:"Descrizione accurata del caso, del decorso e degli esiti, senza un gruppo di confronto.", q:"nursing AND case reports[ptyp]"}
+   ],
+   secondaria:[
+    {t:"Revisione narrativa", one:"panoramica esperta, non sistematica", what:"Offre una visione d'insieme su un tema, scritta da esperti. Utile per orientarsi, ma non segue un metodo esaustivo e riproducibile.", how:"Selezione non sistematica della letteratura e sintesi discorsiva, senza criteri rigidi predefiniti.", q:"nursing AND narrative review[tiab]"},
+    {t:"Revisione sistematica", one:"metodo esplicito e riproducibile", what:"Risponde a una domanda precisa raccogliendo tutti gli studi rilevanti con un metodo dichiarato, così che chiunque possa replicarla.", how:"Protocollo, ricerca esaustiva, selezione a due revisori, valutazione della qualità e sintesi dei risultati.", q:"nursing AND systematic review[ptyp]"},
+    {t:"Meta-analisi", one:"combina statisticamente più studi", what:"Quando più studi misurano la stessa cosa, ne unisce i risultati in un'unica stima più precisa.", how:"Si estraggono gli effetti dei singoli studi e si combinano con un modello statistico, spesso mostrato in un forest plot.", q:"nursing AND meta-analysis[ptyp]"},
+    {t:"Scoping review", one:"mappa l'estensione di un tema", what:"Mappa quanto e cosa si è scritto su un tema ampio: concetti, tipi di studio, lacune. Non valuta l'efficacia, ma fa il punto.", how:"Framework JBI / Arksey-O'Malley e reporting PRISMA-ScR; spesso con pre-registrazione del protocollo.", q:"nursing AND scoping review[tiab]"},
+    {t:"Umbrella review", one:"una revisione di revisioni", what:"Sta un gradino più in alto: sintetizza i risultati di più revisioni sistematiche già pubblicate sullo stesso ambito.", how:"Si selezionano e si confrontano revisioni sistematiche, valutandone qualità e coerenza.", q:"nursing AND umbrella review[tiab]"}
+   ]
+  };
+  function exSkel(){ return '<span class="ex skel"><div class="ln" style="width:32%"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:60%"></div></span>'; }
+  function exFallback(term,label){ return '<a class="ex" href="https://pubmed.ncbi.nlm.nih.gov/?term='+encodeURIComponent(term)+'&sort=date" target="_blank" rel="noopener"><div class="ex-l">'+label+'</div><div class="ex-t">Cerca esempi su PubMed</div><div class="ex-s">apri la ricerca ↗</div></a>'; }
+  async function oneCard(term,label){
+    try{
+      var es=await fetchJson(EUT+'esearch.fcgi?db=pubmed&retmode=json&retmax=1&sort=relevance&term='+encodeURIComponent(term));
+      var ids=(es.esearchresult&&es.esearchresult.idlist)||[]; if(!ids.length) return exFallback(term,label);
+      var su=await fetchJson(EUT+'esummary.fcgi?db=pubmed&retmode=json&id='+ids[0]);
+      var a=(su.result||{})[ids[0]]; if(!a) return exFallback(term,label);
+      var j=esc(a.fulljournalname||a.source||''), d=esc(a.pubdate||'');
+      return '<a class="ex" href="https://pubmed.ncbi.nlm.nih.gov/'+ids[0]+'/" target="_blank" rel="noopener"><div class="ex-l">'+label+'</div><div class="ex-t">'+esc(a.title||'')+'</div><div class="ex-s">'+j+(d?(' · '+d):'')+' · PubMed ↗</div></a>';
+    }catch(e){ return exFallback(term,label); }
+  }
+  async function loadEx(box){
+    var q=box.getAttribute('data-q');
+    var en=await oneCard(q+' AND english[lang]','EN · inglese');
+    box.innerHTML=en+exSkel();
+    var it=await oneCard(q+' AND italian[lang]','IT · italiano');
+    box.innerHTML=en+it;
+  }
+  function build(group){
+    list.innerHTML='';
+    RT[group].forEach(function(it){
+      var w=document.createElement('div'); w.className='rt-item';
+      w.innerHTML='<button type="button" class="rt-head"><div class="rt-tx"><div class="rt-t">'+it.t+'</div><div class="rt-1">'+it.one+'</div></div><span class="rt-ico">+</span></button><div class="rt-body"><div class="rt-lab">Definizione</div><p>'+it.what+'</p><div class="rt-lab">Metodo</div><p>'+it.how+'</p><div class="rt-lab">Due esempi da PubMed</div><div class="rt-ex" data-q="'+it.q+'" data-loaded="0">'+exSkel()+exSkel()+'</div></div>';
+      w.querySelector('.rt-head').addEventListener('click',function(){
+        var open=w.classList.toggle('open');
+        if(open){ var ex=w.querySelector('.rt-ex'); if(ex.getAttribute('data-loaded')==='0'){ ex.setAttribute('data-loaded','1'); loadEx(ex); } }
+      });
+      list.appendChild(w);
+    });
+  }
+  document.querySelectorAll('.rt-tab').forEach(function(tb){ tb.addEventListener('click',function(){ document.querySelectorAll('.rt-tab').forEach(function(x){x.classList.remove('on');}); tb.classList.add('on'); build(tb.getAttribute('data-g')); }); });
+  build('primaria');
 })();
 </script>
 </body>
