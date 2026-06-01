@@ -1104,6 +1104,12 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 /* nav: ogni voce su una sola riga (La ricerca per esteso) */
 .nav-links a{ white-space:nowrap; }
 
+.racconto-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+.racconto-text .sec-title{ margin:6px 0 18px; }
+.racconto-text p.racconto-lead{ font-size:clamp(15px,1.7vw,18px); line-height:1.6; color:var(--ink-soft); max-width:34em; }
+.racconto-frame{ display:flex; justify-content:center; }
+.racconto-video{ width:100%; max-width:330px; aspect-ratio:9/16; object-fit:cover; border-radius:22px; box-shadow:0 18px 50px rgba(20,18,14,.22); border:1px solid var(--rule); background:var(--bg-warm); display:block; }
+@media (max-width:900px){ .racconto-grid{ grid-template-columns:1fr; gap:30px; } .racconto-video{ max-width:300px; } }
 /* ===== INTRO CINEMATICA 3D ===== */
 #intro{ position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; overflow:hidden; transition:opacity 1s ease; animation: introFailsafe .6s ease 11.8s forwards; }
 .intro-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:saturate(.6) contrast(.96) brightness(1.03); animation: vidIn 1.2s ease both, vidOut 1.6s cubic-bezier(.4,0,.2,1) 2.6s forwards; }
@@ -1234,9 +1240,8 @@ html.intro-seen #intro{ display:none !important; }
       </div>
 
       <div class="hero-text">
-        <h1 class="hero-acronym light-read">ANI<span class="q">Q</span>RC</h1>
+        <h1 class="hero-acronym">ANI<span class="q">Q</span>RC</h1>
         <p class="hero-name">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</p>
-        <div class="hexfx" aria-hidden="true"><span class="hx-dot"></span></div>
       </div>
     </div>
 
@@ -1254,6 +1259,7 @@ html.intro-seen #intro{ display:none !important; }
     <div class="hero-actions hero-actions-2">
       <a href="osservatorio.html" class="btn btn-dark">Osservatorio <span class="arrow">→</span></a>
       <a href="toolkit.html" class="btn btn-outline">Toolkit <span class="arrow">→</span></a>
+      <a href="ricerca.html" class="btn btn-outline">La ricerca <span class="arrow">→</span></a>
     </div>
 
     <p class="hero-pride hero-pride-2">E presto, anche di persona: dove si parla di qualità e sicurezza, ANI<span class="q">Q</span>RC vuole esserci.</p>
@@ -1286,7 +1292,7 @@ html.intro-seen #intro{ display:none !important; }
   <div class="deco-q">Q</div>
   <div class="wrap">
     <div class="sec-label reveal">Manifesto</div>
-    <p class="manifesto-quote light-read">
+    <p class="manifesto-quote">
       <span class="soft">Crediamo che la</span> sicurezza delle cure <span class="soft">non sia un esito accessorio, ma il</span> fine ultimo <span class="soft">della pratica infermieristica. Per questo riuniamo chi misura, previene, scrive procedure e fa</span> <span class="hl">ricerca</span> <span class="soft">—  trasformando il rischio in</span> <span class="hl">qualità</span><span class="soft">.</span>
     </p>
     <div class="manifesto-attr reveal">— Giuseppe Fumai <span>·</span> Fondatore</div>
@@ -1411,40 +1417,6 @@ html.intro-seen #intro{ display:none !important; }
 </section>
 
 <!-- ============ ATTIVITÀ ============ -->
-<section class="sec-pad" id="attivita">
-  <div class="wrap">
-    <div class="sec-label reveal">Cosa facciamo</div>
-    <h2 data-editable="source" data-path="/index.html" data-key="title-4" class="sec-title reveal">Dalla teoria alla <span class="accent">pratica</span>.</h2>
-
-    <div class="attivita-list reveal">
-      <a class="att-row att-link" href="https://www.forumriskmanagement.it/index.php/convegni" target="_blank" rel="noopener">
-        <div class="att-num">01</div>
-        <div class="att-name">Congressi e convegni <span class="att-go">↗</span></div>
-        <div class="att-desc">Eventi nazionali per condividere esperienze, ricerca e buone pratiche tra professionisti.</div>
-      </a>
-      <a class="att-row att-link" href="https://www.agenas.gov.it/aree-tematiche/qualita-e-sicurezza/rischio-clinico-e-sicurezza-del-paziente/monitoraggio-delle-raccomandazioni/elenco-raccomandazioni" target="_blank" rel="noopener">
-        <div class="att-num">02</div>
-        <div class="att-name">Linee guida e raccomandazioni <span class="att-go">↗</span></div>
-        <div class="att-desc">Documenti tecnico-scientifici basati sulle evidenze. Accedi alle raccomandazioni AGENAS per la sicurezza del paziente.</div>
-      </a>
-      <a class="att-row att-link" href="https://ape.agenas.it/tools/eventi.aspx" target="_blank" rel="noopener">
-        <div class="att-num">03</div>
-        <div class="att-name">Formazione ECM <span class="att-go">↗</span></div>
-        <div class="att-desc">Corsi e percorsi formativi accreditati: cerca gli eventi ECM nel portale ufficiale AGENAS.</div>
-      </a>
-      <div class="att-row">
-        <div class="att-num">04</div>
-        <div class="att-name">Ricerca e pubblicazioni</div>
-        <div class="att-desc">Promozione di studi e diffusione su riviste scientifiche indicizzate.</div>
-      </div>
-      <div class="att-row">
-        <div class="att-num">05</div>
-        <div class="att-name">Rete nazionale</div>
-        <div class="att-desc">Sezioni regionali e gruppi di lavoro per una presenza capillare sul territorio.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ STRUMENTI (Osservatorio + Toolkit) ============ -->
 <section class="sec-pad" id="strumenti">
@@ -1722,6 +1694,25 @@ html.intro-seen #intro{ display:none !important; }
   </div>
 </section>
 
+<!-- ============ RACCONTO (storytelling Instagram) ============ -->
+<section class="sec-pad" id="racconto">
+  <div class="wrap">
+    <div class="racconto-grid">
+      <div class="racconto-text reveal">
+        <div class="sec-label">Verso il lancio · il racconto</div>
+        <h2 class="sec-title">Sessanta scatti, <span class="accent">una storia</span>.</h2>
+        <p class="racconto-lead">Stiamo presentando ANIQRC un'immagine alla volta — i valori, gli strumenti, le persone, fino al nome. È il racconto che cresce giorno dopo giorno su Instagram: la qualità delle cure che prende forma, un fotogramma dopo l'altro.</p>
+      </div>
+      <div class="racconto-frame reveal">
+        <video class="racconto-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+          <source src="home-storie.mp4" type="video/mp4">
+          <source src="home-storie.webm" type="video/webm">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -1774,7 +1765,7 @@ html.intro-seen #intro{ display:none !important; }
     </div>
 
     <div class="foot-bottom">
-      <span>© MMXXVI ANIQRC · Tutti i diritti riservati</span>
+      <span>© MMXXVI Giuseppe Fumai — ANIQRC · Tutti i diritti riservati</span>
       <span><a href="privacy.html" style="color:inherit;">Privacy</a> · Associazione in costituzione</span>
     </div>
   </div>
@@ -2358,6 +2349,7 @@ html.intro-seen #intro{ display:none !important; }
   setTimeout(function(){ document.body.style.overflow=''; if(intro.parentNode) intro.parentNode.removeChild(intro); fireDone(); }, 10700);
 })();
 </script>
+<script>(function(){var v=document.querySelector(".racconto-video");if(!v)return;v.muted=true;try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});io.observe(v);}catch(e){}})();</script>
 </body>
 </html>
 
