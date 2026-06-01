@@ -1141,7 +1141,7 @@ html.intro-seen #intro{ display:none !important; }
 .intro-word span{ display:inline-block; opacity:0; transform-origin:50% 100%; transform:rotateX(-95deg) translateY(.22em); animation: letter3d 1s cubic-bezier(.2,.85,.25,1) forwards; animation-delay: calc(5.2s + var(--i) * .14s); }
 .intro-word .q{ color:var(--accent); }
 @keyframes letter3d{ 0%{opacity:0; transform:rotateX(-95deg) translateY(.22em);} 55%{opacity:1;} 100%{opacity:1; transform:rotateX(0) translateY(0);} }
-.intro-sub{ font-family:'Manrope', sans-serif; font-weight:500; font-size:clamp(11px,1.6vw,13px); letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute); opacity:0; transform:translateY(8px); animation: subIn 1s ease 6.1s forwards; }
+.intro-sub{ font-family:'Manrope', sans-serif; font-weight:600; font-size:clamp(12.5px,2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); opacity:0; transform:translateY(8px); animation: subIn 1s ease 6.1s forwards; }
 @keyframes subIn{ to{opacity:1; transform:none;} }
 .intro-stage.flyout .intro-tag, .intro-stage.flyout .intro-word, .intro-stage.flyout .intro-sub{ opacity:0; transform:translateY(-12px); transition:opacity .6s ease, transform .6s ease; }
 #intro.out{ opacity:0; }
