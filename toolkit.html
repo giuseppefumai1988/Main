@@ -189,6 +189,15 @@ nav.scrolled { border-bottom-color: var(--rule); }
 .tool-card[style*="bg-card"] .tool-p { color: var(--ink-soft); }
 .tool-go { margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--accent); position: relative; z-index: 2; transition: transform 0.3s; }
 .tool-card:hover .tool-go { transform: translateX(4px); }
+.doc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 52px; }
+@media (max-width: 940px) { .doc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .doc-grid { grid-template-columns: 1fr; } }
+.doc-card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 6px; padding: 28px 24px; text-decoration: none; display: flex; flex-direction: column; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.35s; }
+.doc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); border-color: var(--accent); }
+.doc-ico { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--bg); background: var(--accent); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.doc-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 18px; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 10px; }
+.doc-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+.doc-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--accent); margin-top: auto; }
 
 /* ============ LIBRARY (filterbar + instruments) ============ */
 .filterbar { margin-top: 44px; }
@@ -345,6 +354,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       <a href="osservatorio.html">Osservatorio</a>
       <a href="toolkit.html" class="active">Toolkit</a>
       <a href="ricerca.html">La ricerca</a>
+      <a href="#standard-iso">Standard ISO</a>
       <a href="index.html#documenti">Documenti</a>
       <a href="adesione.html" class="nav-cta">Associati</a>
     </div>
@@ -382,6 +392,12 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
         <div class="tool-num" style="color:var(--accent);">03 — SAFETY</div>
         <div class="tool-h">19 Raccomandazioni</div>
         <div class="tool-p" style="color:var(--ink-soft);">Le Raccomandazioni ministeriali per la sicurezza dei pazienti, da consultare e applicare. Vai alla sezione dedicata più in basso.</div>
+        <span class="tool-go">Vai all'elenco →</span>
+      </a>
+      <a class="tool-card" href="#standard-iso" style="grid-column:1 / -1;">
+        <div class="tool-num">04 — STANDARDS</div>
+        <div class="tool-h">Gli standard internazionali ISO</div>
+        <div class="tool-p">Le norme ISO più rilevanti per la qualità dell'assistenza e il rischio clinico — 7101, 9001, 31000, 27001, 15189, 19011, 45001 — spiegate in modo semplice, ognuna con il link alla scheda ufficiale ISO.</div>
         <span class="tool-go">Vai all'elenco →</span>
       </a>
     </div>
@@ -438,6 +454,69 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   </div>
 </section>
 
+<!-- ============ STANDARD ISO ============ -->
+<section class="sec-pad" id="standard-iso" style="scroll-margin-top:80px;">
+  <div class="wrap">
+    <div class="sec-label reveal">Toolkit · Standard internazionali</div>
+    <h2 class="sec-title reveal">Gli standard <span class="accent">internazionali</span> ISO.</h2>
+    <p class="sec-intro reveal">Le norme ISO più rilevanti per la qualità dell'assistenza e il rischio clinico, spiegate in modo semplice. Ogni scheda rimanda alla pagina ufficiale ISO, sempre aggiornata, dove sono disponibili l'anteprima gratuita e l'acquisto della versione integrale.</p>
+
+    <div class="doc-grid reveal">
+      <a class="doc-card" href="https://www.iso.org/standard/81647.html" target="_blank" rel="noopener" style="border-color:var(--accent);">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 7101:2023</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Qualità nelle organizzazioni sanitarie</div>
+        <div class="doc-desc">La prima norma internazionale dedicata alla qualità in sanità: come costruire e mantenere un sistema di gestione per la qualità in ospedali, cliniche e servizi territoriali — leadership, rischio clinico, sicurezza del paziente, cura centrata sulla persona e miglioramento continuo (ciclo PDSA). È la norma di riferimento del lavoro di ANIQRC.</div>
+        <div class="doc-link">Anteprima e scheda ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/62085.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 9001:2015</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Sistemi di gestione per la qualità</div>
+        <div class="doc-desc">La norma di base di tutti i sistemi qualità, valida in ogni settore. Fissa i principi fondamentali — focus sul destinatario del servizio, approccio per processi, gestione del rischio, miglioramento continuo — su cui si appoggiano anche le norme sanitarie come la 7101 e la 15189.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 31000:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Gestione del rischio — Linee guida</div>
+        <div class="doc-desc">Le linee guida internazionali per gestire il rischio con metodo: identificarlo, analizzarlo, valutarlo e trattarlo. È la cornice metodologica del rischio clinico — cuore dell'attività di ANIQRC — applicabile a qualsiasi organizzazione.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO/IEC 27001:2022</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Sicurezza delle informazioni</div>
+        <div class="doc-desc">Lo standard per proteggere le informazioni, inclusi i dati sanitari dei pazienti. Disciplina riservatezza, integrità e disponibilità dei dati: essenziale per la sicurezza informatica in sanità e per la conformità al GDPR.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/76677.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 15189:2022</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Laboratori medici — Qualità e competenza</div>
+        <div class="doc-desc">I requisiti di qualità e competenza per i laboratori medici, point-of-care testing incluso. Mette al centro la sicurezza del paziente e la gestione del rischio nei processi di laboratorio; è strettamente legata alla 7101.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/70017.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 19011:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Audit dei sistemi di gestione</div>
+        <div class="doc-desc">La guida per pianificare e condurre gli audit dei sistemi di gestione. Spiega come verificare, con metodo e imparzialità, che un sistema qualità funzioni davvero: lo strumento di chi si occupa di audit e accreditamento.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/63787.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 45001:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Salute e sicurezza sul lavoro</div>
+        <div class="doc-desc">Lo standard per la salute e la sicurezza sul lavoro: prevenire infortuni e malattie professionali e tutelare il benessere del personale — il "workforce wellbeing" richiamato anche dalla 7101.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+    </div>
+
+    <p class="reveal" style="margin-top:30px;font-size:13px;color:var(--ink-mute);line-height:1.65;max-width:780px;">Le norme ISO sono opere protette dal diritto d'autore: i testi integrali si acquistano tramite ISO o, in Italia, attraverso l'ente nazionale UNI. I link qui sopra puntano alle schede ufficiali, dove ciascuna norma può essere consultata in anteprima e acquistata.</p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -475,6 +554,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
         <a href="strumenti-kappa.html">Calcolatore Kappa</a>
         <a href="strumenti-campione.html">Dimensione del campione</a>
         <a href="#raccomandazioni">19 Raccomandazioni</a>
+        <a href="#standard-iso">Standard ISO</a>
       </div>
     </div>
     <div class="foot-bottom">
