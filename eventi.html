@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Eventi — ANIQRC</title>
 <meta name="description" content="Calcolatore della numerosità campionaria: stima di prevalenza (formula di Cochran) con correzione per popolazione finita e design effect, e confronto tra due proporzioni. Gira nel browser.">
 <meta name="theme-color" content="#0A0A0A">
@@ -388,5 +394,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 2500);
 </script>
 <script src="qualita-fx.js" defer></script>
+<script src="aniqrc-bg.js" defer></script>
+<script src="aniqrc-app.js" defer></script>
 </body>
 </html>
