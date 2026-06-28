@@ -1,7 +1,7 @@
 /* ANIQRC — Service Worker. Rende il sito installabile come app e disponibile offline.
    Strategia: navigazioni network-first (contenuti sempre freschi, fallback offline),
    asset cache-first con runtime cache. © ANIQRC */
-var VERSION = 'aniqrc-v1';
+var VERSION = 'aniqrc-v2';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
@@ -10,7 +10,8 @@ var CORE = [
   'aniqrc-bg.js', 'aniqrc-app.js', 'qualita-fx.js',
   'qualita-data.json', 'toolkit-data.json',
   'site.webmanifest', 'favicon.svg', 'favicon-16.png', 'favicon-32.png',
-  'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og-image.png'
+  'apple-touch-icon.png', 'apple-touch-icon-152.png', 'apple-touch-icon-167.png',
+  'icon-192.png', 'icon-512.png', 'icon-512-maskable.png', 'og-image.png'
 ];
 
 self.addEventListener('install', function(e){
