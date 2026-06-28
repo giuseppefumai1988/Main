@@ -1116,55 +1116,56 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 .racconto-frame{ perspective:900px; }
 .racconto-video{ transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
 
-/* ===== INTRO CINEMATICA 3D ===== */
-#intro{ position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; overflow:hidden; transition:opacity 1s ease; animation: introFailsafe .6s ease 14.6s forwards; }
-.intro-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:saturate(.6) contrast(.96) brightness(1.03); animation: vidIn 1.2s ease both, vidOut 1.6s cubic-bezier(.4,0,.2,1) 5.6s forwards; }
-.intro-veil{ position:absolute; inset:0; z-index:1; pointer-events:none; animation: veilOut 1.6s ease 5.6s forwards; background: linear-gradient(180deg, rgba(244,242,236,.82) 0%, rgba(244,242,236,.72) 42%, rgba(244,242,236,.72) 58%, rgba(244,242,236,.86) 100%); }
-@keyframes vidIn{ from{opacity:0} to{opacity:1} }
-@keyframes vidOut{ to{opacity:0; transform:scale(1.22);} }
-@keyframes veilOut{ to{opacity:0;} }
-/* --- atto del rischio: le parole del rischio nello spazio, il punto le visita e diventa il marchio --- */
-.risk-field{ position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-50%); z-index:1; perspective:1100px; transform-style:preserve-3d; pointer-events:none; }
-.risk-dot{ position:absolute; left:0; top:0; width:15px; height:15px; margin:-7.5px 0 0 -7.5px; border-radius:50%; background:var(--accent); box-shadow:0 0 14px rgba(230,57,70,.85), 0 0 36px rgba(230,57,70,.35); opacity:0; will-change:transform,opacity; }
-.impact-ring{ position:absolute; left:0; top:0; width:min(46vmin,380px); height:min(46vmin,380px); margin-left:calc(min(46vmin,380px) * -0.5); margin-top:calc(min(46vmin,380px) * -0.5); transform:scale(.1); border:2px solid var(--accent); border-radius:50%; opacity:0; }
-#intro.play .impact-ring{ animation: impactR 1.05s cubic-bezier(.17,.67,.3,1) 6.2s forwards; }
-#intro.play .impact-ring.r2{ animation-delay:6.38s; animation-duration:1.2s; border-width:1px; }
-@keyframes impactR{ 0%{opacity:.9; transform:scale(.1);} 100%{opacity:0; transform:scale(2.3);} }
-.risk-word{ position:absolute; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; color:var(--ink-soft); opacity:0; white-space:nowrap; letter-spacing:-.01em; will-change:transform,opacity; }
-.risk-word.m{ font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.22em; }
-.risk-word.r{ color:var(--accent); }
+/* ===== INTRO CINEMATICA 3D (WebGL) ===== */
+#intro{ position:fixed; inset:0; z-index:9999; background:#0C0B0A; display:flex; align-items:center; justify-content:center; overflow:hidden; transition:opacity 1s ease; animation: introDawn 1.15s cubic-bezier(.4,0,.2,1) 5.6s forwards, introFailsafe .6s ease 12.4s forwards; }
+@keyframes introDawn{ from{ background-color:#0C0B0A; } to{ background-color:#F4F2EC; } }
+#introCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0; opacity:0; animation: cvIn 1s ease .15s forwards, cvOut 1.05s ease 5.75s forwards; }
+@keyframes cvIn{ to{opacity:1;} }
+@keyframes cvOut{ to{opacity:0;} }
+.intro-vignette{ position:absolute; inset:0; z-index:1; pointer-events:none; background: radial-gradient(125% 125% at 50% 50%, transparent 52%, rgba(0,0,0,.6) 100%); opacity:0; animation: glowIn 1.6s ease .2s forwards, glowOut 1s ease 5.6s forwards; }
+.intro-glow{ position:absolute; inset:0; z-index:1; pointer-events:none; background: radial-gradient(56% 48% at 50% 50%, rgba(230,57,70,.16), transparent 70%); opacity:0; animation: glowIn 2.6s ease-out 1s forwards, glowOut 1s ease 5.6s forwards; }
+@keyframes glowIn{ to{opacity:1;} }
+@keyframes glowOut{ to{opacity:0;} }
 html.intro-seen #intro{ display:none !important; }
-.intro-glow{ position:absolute; inset:0; z-index:2; pointer-events:none; background: radial-gradient(60% 50% at 50% 46%, rgba(230,57,70,.10), transparent 72%); opacity:0; animation: glowIn 3.4s ease-out 1.4s forwards; }
-@keyframes glowIn{ 0%{opacity:0; transform:scale(.9);} 100%{opacity:1; transform:scale(1);} }
-.intro-stage{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; gap:34px; text-align:center; padding:24px; animation: stageZoom 10.5s cubic-bezier(.4,0,.2,1) forwards; }
-@keyframes stageZoom{ 0%{ transform:scale(.93);} 100%{ transform:scale(1);} }
-.intro-tag{ font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:clamp(16px,2.6vw,26px); letter-spacing:-.01em; color:var(--ink-soft); max-width:640px; line-height:1.32; }
-.intro-tag span{ display:inline-block; opacity:0; transform:translateY(12px); filter:blur(6px); animation: tagw .9s cubic-bezier(.3,.85,.3,1) forwards; animation-delay: calc(6.4s + var(--w) * .085s); }
-.intro-tag .hl{ color:var(--accent); font-weight:600; }
+
+.intro-stage{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; gap:30px; text-align:center; padding:24px; }
+
+.intro-tag{ font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:clamp(16px,2.6vw,26px); letter-spacing:-.01em; color:#E9E4D7; max-width:660px; line-height:1.34; text-shadow:0 2px 34px rgba(0,0,0,.55); animation: tagOut .8s ease 5.35s forwards; }
+.intro-tag span{ display:inline-block; opacity:0; transform:translateY(12px); filter:blur(8px); animation: tagw 1s cubic-bezier(.3,.85,.3,1) forwards; animation-delay: calc(.55s + var(--w) * .09s); }
+.intro-tag .hl{ color:#FF5A66; font-weight:600; }
 @keyframes tagw{ to{ opacity:1; transform:none; filter:blur(0);} }
-.intro-mark{ position:relative; width:clamp(130px,21vw,188px); height:clamp(130px,21vw,188px); display:block; animation: coinShow 2.0s ease-in-out 9.5s forwards; }
-.intro-mark::after{ content:''; position:absolute; inset:10%; border-radius:50%; background:#0A0A0A; z-index:0; box-shadow: 0 1px 0 #080808,0 2px 0 #080808,0 3px 0 #070707,0 4px 0 #070707,0 5px 0 #060606,0 6px 0 #060606,0 7px 0 #050505,0 8px 0 #050505,0 9px 0 #040404,0 10px 0 #040404,0 11px 0 #030303,0 12px 0 #030303,0 13px 0 #020202, 0 26px 34px rgba(20,18,14,.34); opacity:0; transform:scale(.3); animation: depthIn .9s cubic-bezier(.2,.8,.2,1) 6.85s forwards; }
+@keyframes tagOut{ to{ opacity:0; transform:translateY(-14px); filter:blur(4px);} }
+
+.intro-mark{ position:relative; width:clamp(132px,21vw,190px); height:clamp(132px,21vw,190px); display:block; opacity:0; animation: markIn .9s ease 6.2s forwards, coinShow 1.7s cubic-bezier(.4,0,.2,1) 6.4s forwards; }
+@keyframes markIn{ to{opacity:1;} }
+.intro-mark::after{ content:''; position:absolute; inset:10%; border-radius:50%; background:#0A0A0A; z-index:0; box-shadow: 0 1px 0 #080808,0 2px 0 #080808,0 3px 0 #070707,0 4px 0 #070707,0 5px 0 #060606,0 6px 0 #060606,0 7px 0 #050505,0 8px 0 #050505,0 9px 0 #040404,0 10px 0 #040404,0 11px 0 #030303,0 12px 0 #030303,0 13px 0 #020202, 0 26px 34px rgba(20,18,14,.34); opacity:0; transform:scale(.3); animation: depthIn .9s cubic-bezier(.2,.8,.2,1) 6.5s forwards; }
 @keyframes depthIn{ to{ opacity:1; transform:scale(1); } }
 .intro-mark svg{ position:relative; z-index:1; width:100%; height:100%; display:block; overflow:visible; }
-@keyframes introMarkIn{ 0%{ transform: perspective(900px) rotateX(60deg) scale(.55); } 100%{ transform: perspective(900px) rotateX(0deg) scale(1); } }
-@keyframes coinShow{ 0%{ transform: perspective(900px) rotateX(0deg); } 18%{ transform: perspective(900px) rotateX(30deg); } 50%{ transform: perspective(900px) rotateX(33deg); } 100%{ transform: perspective(900px) rotateX(0deg); } }
+@keyframes coinShow{ 0%{ transform: perspective(900px) rotateX(0deg); } 20%{ transform: perspective(900px) rotateX(34deg); } 52%{ transform: perspective(900px) rotateX(36deg); } 100%{ transform: perspective(900px) rotateX(0deg); } }
 .ip{ transform-box:fill-box; transform-origin:center; opacity:0; }
-.ip-disc{ animation: ipDisc 1.0s cubic-bezier(.2,.8,.2,1) 6.7s forwards; }
-.ip-v{ animation: ipV .7s cubic-bezier(.2,.8,.2,1) 7.15s forwards; }
-.ip-h{ animation: ipH .7s cubic-bezier(.2,.8,.2,1) 7.35s forwards; }
-.ip-dot{ animation: ipDot .7s cubic-bezier(.2,.9,.3,1.4) 6.3s forwards; }
-.ip-lens{ transform-box:view-box; transform-origin:0 0; opacity:0; animation: ipLens 1.7s cubic-bezier(.25,.9,.3,1) 7.65s forwards; }
+.ip-disc{ animation: ipDisc 1s cubic-bezier(.2,.8,.2,1) 6.35s forwards; }
+.ip-v{ animation: ipV .7s cubic-bezier(.2,.8,.2,1) 6.95s forwards; }
+.ip-h{ animation: ipH .7s cubic-bezier(.2,.8,.2,1) 7.15s forwards; }
+.ip-dot{ animation: ipDot .7s cubic-bezier(.2,.9,.3,1.4) 6.7s forwards; }
+.ip-lens{ transform-box:view-box; transform-origin:0 0; opacity:0; animation: ipLens 1.6s cubic-bezier(.25,.9,.3,1) 7.4s forwards; }
 @keyframes ipDisc{ 0%{opacity:0; transform:scale(.2) rotate(-40deg);} 100%{opacity:1; transform:scale(1) rotate(0);} }
 @keyframes ipV{ 0%{opacity:0; transform:scaleY(0);} 100%{opacity:1; transform:scaleY(1);} }
 @keyframes ipH{ 0%{opacity:0; transform:scaleX(0);} 100%{opacity:1; transform:scaleX(1);} }
 @keyframes ipDot{ 0%{opacity:0; transform:scale(0);} 45%{opacity:1; transform:scale(2.4); filter:drop-shadow(0 0 16px rgba(230,57,70,.95));} 100%{opacity:1; transform:scale(1); filter:drop-shadow(0 0 5px rgba(230,57,70,.4));} }
 @keyframes ipLens{ 0%{opacity:0; transform:translate(200px,200px) rotate(765deg);} 16%{opacity:1;} 100%{opacity:1; transform:translate(200px,200px) rotate(45deg);} }
+
 .intro-word{ font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:clamp(50px,10vw,108px); letter-spacing:-.055em; line-height:1; color:var(--ink); display:flex; perspective:600px; }
-.intro-word span{ display:inline-block; opacity:0; transform-origin:50% 100%; transform:rotateX(-95deg) translateY(.22em); animation: letter3d 1s cubic-bezier(.2,.85,.25,1) forwards; animation-delay: calc(8.1s + var(--i) * .14s); }
+.intro-word span{ display:inline-block; opacity:0; transform-origin:50% 100%; transform:rotateX(-95deg) translateY(.22em); animation: letter3d 1s cubic-bezier(.2,.85,.25,1) forwards; animation-delay: calc(7.7s + var(--i) * .12s); }
 .intro-word .q{ color:var(--accent); }
 @keyframes letter3d{ 0%{opacity:0; transform:rotateX(-95deg) translateY(.22em);} 55%{opacity:1;} 100%{opacity:1; transform:rotateX(0) translateY(0);} }
-.intro-sub{ font-family:'Manrope', sans-serif; font-weight:600; font-size:clamp(12.5px,2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); opacity:0; transform:translateY(8px); animation: subIn 1s ease 8.9s forwards; }
+.intro-sub{ font-family:'Manrope', sans-serif; font-weight:600; font-size:clamp(12.5px,2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); opacity:0; transform:translateY(8px); animation: subIn 1s ease 8.5s forwards; }
 @keyframes subIn{ to{opacity:1; transform:none;} }
+
+.intro-skip{ position:absolute; right:22px; bottom:20px; z-index:5; font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(233,228,215,.72); background:transparent; border:0; cursor:pointer; padding:9px 11px; display:inline-flex; align-items:center; gap:8px; opacity:0; animation: tagw .8s ease 1.8s forwards, tagOut .6s ease 6.2s forwards; transition:color .25s ease; }
+.intro-skip:hover{ color:#FF5A66; }
+.intro-skip .arr{ display:inline-block; transition:transform .25s ease; }
+.intro-skip:hover .arr{ transform:translateX(4px); }
+
 .intro-stage.flyout .intro-tag, .intro-stage.flyout .intro-word, .intro-stage.flyout .intro-sub{ opacity:0; transform:translateY(-12px); transition:opacity .6s ease, transform .6s ease; }
 #intro.out{ opacity:0; }
 @keyframes introFailsafe{ to{opacity:0; visibility:hidden;} }
@@ -1174,28 +1175,12 @@ html.intro-seen #intro{ display:none !important; }
 </head>
 <body>
 <div id="intro" aria-hidden="true">
-  <video class="intro-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
-    <source src="intro-bg.mp4" type="video/mp4">
-    <source src="intro-bg.webm" type="video/webm">
-  </video>
-  <div class="intro-veil"></div>
+  <canvas id="introCanvas" aria-hidden="true"></canvas>
+  <div class="intro-vignette"></div>
   <div class="intro-glow"></div>
   <div class="intro-stage">
     <div class="intro-tag" aria-label="Il riferimento per il Quality nurse improvement."><span style="--w:0">Il</span> <span style="--w:1">riferimento</span> <span style="--w:2">per</span> <span style="--w:3">il</span> <span class="hl" style="--w:4">Quality</span> <span class="hl" style="--w:5">nurse</span> <span class="hl" style="--w:6">improvement</span><span style="--w:7">.</span></div>
     <span class="intro-mark" id="introCoin">
-      <span class="risk-field" aria-hidden="true">
-        <span class="risk-word" style="left:calc(50% - 210px); top:calc(50% - 130px); font-size:30px;">Sicurezza</span>
-        <span class="risk-word r" style="left:calc(50% + 150px); top:calc(50% - 160px); font-size:26px;">Prevenzione</span>
-        <span class="risk-word" style="left:calc(50% - 170px); top:calc(50% + 110px); font-size:22px;">Near miss</span>
-        <span class="risk-word r" style="left:calc(50% + 200px); top:calc(50% + 60px); font-size:24px;">Audit</span>
-        <span class="risk-word" style="left:calc(50% - 70px); top:calc(50% - 215px); font-size:22px;">Eventi sentinella</span>
-        <span class="risk-word" style="left:calc(50% + 180px); top:calc(50% + 170px); font-size:26px;">Checklist</span>
-        <span class="risk-word" style="left:calc(50% - 230px); top:calc(50% - 20px); font-size:28px;">Barriere</span>
-        <span class="risk-word" style="left:calc(50% + 80px); top:calc(50% + 210px); font-size:24px;">Evidenze</span>
-        <span class="risk-dot"></span>
-        <span class="impact-ring"></span>
-        <span class="impact-ring r2"></span>
-      </span>
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
         <circle class="ip ip-disc" cx="200" cy="200" r="160" fill="#0A0A0A"/>
         <rect class="ip ip-v" x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
@@ -1207,32 +1192,146 @@ html.intro-seen #intro{ display:none !important; }
     <div class="intro-word" aria-label="ANIQRC"><span style="--i:0">A</span><span style="--i:1">N</span><span style="--i:2">I</span><span class="q" style="--i:3">Q</span><span style="--i:4">R</span><span style="--i:5">C</span></div>
     <div class="intro-sub">Associazione Nazionale Infermieri · Qualità e Rischio Clinico</div>
   </div>
+  <button type="button" class="intro-skip" id="introSkip" aria-label="Salta introduzione">Salta <span class="arr">&#8594;</span></button>
 </div>
 <div class="scroll-progress" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="window.__noThree=1"></script>
 <script>(function(){
   var intro=document.getElementById('intro');
   if(!intro || document.documentElement.classList.contains('intro-seen')) return;
-  var iv=intro.querySelector('.intro-video'); if(iv){ try{ iv.playbackRate=0.55; }catch(e){} }
-  var M=window.Motion; if(!M || !M.timeline) return;
-  var field=intro.querySelector('.risk-field'); if(!field) return;
   intro.classList.add('play');
-  var dot=intro.querySelector('.risk-dot');
-  var seq=[];
-  intro.querySelectorAll('.risk-word').forEach(function(w,i){
-    seq.push([w,{ z:[-950-(i%3)*120, 80], opacity:[0,.7,.7,0] },
-      {duration:2.9, easing:[.3,.1,.6,.95], offset:[0,.18,.78,1], at:.7+i*.4}]);
-  });
-  seq.push([dot,{opacity:[0,1]},{duration:.3, at:1.05}]);
-  seq.push([dot,{ z:-120,
-    x:[-20,-140,190,235,-180,135,0],
-    y:[30,-110,-145,75,-5,222,0] },
-    {duration:5.05, offset:[0,.10,.26,.44,.62,.82,1],
-     easing:['ease-in-out','ease-in-out','ease-in-out','ease-in-out','ease-in-out','ease-in-out'], at:1.1}]);
-  seq.push([dot,{scale:[1,1.9,1], x:0, y:0, z:-120},{duration:.5, easing:'ease-out', at:6.15}]);
-  seq.push([dot,{opacity:[1,0], scale:[1,.55], x:0, y:0, z:-120},{duration:.5, easing:'ease-in', at:6.35}]);
-  try{ M.timeline(seq); }catch(e){ intro.classList.remove('play'); }
+  var canvas=document.getElementById('introCanvas');
+  var THREE=window.THREE;
+  if(window.__noThree || !THREE || !canvas) return; /* CSS fallback (dawn+marchio+parola) copre l'assenza di WebGL */
+  var renderer;
+  try{ renderer=new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true, powerPreference:'high-performance'}); }
+  catch(e){ return; }
+  var W=window.innerWidth, H=window.innerHeight;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setSize(W,H,false);
+  renderer.setClearColor(0x000000,0);
+
+  var scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x0c0b0a,0.0125);
+  var camera=new THREE.PerspectiveCamera(54, W/H, 0.1, 400);
+  camera.position.set(0,0,72);
+
+  var WORDS=[
+    {t:'Sicurezza',s:1.0,c:0},{t:'Prevenzione',s:.92,c:1},
+    {t:'Near miss',s:.8,c:0},{t:'Audit',s:.86,c:1},
+    {t:'Eventi sentinella',s:.74,c:0},{t:'Checklist',s:.9,c:0},
+    {t:'Barriere',s:.95,c:0},{t:'Evidenze',s:.84,c:0},
+    {t:'Qualità',s:1.0,c:1},{t:'Procedure',s:.82,c:0},
+    {t:'Esiti',s:.8,c:0},{t:'Cultura',s:.8,c:0}
+  ];
+  function makeText(txt,red){
+    var fs=96,pad=26;
+    var cv=document.createElement('canvas'),ctx=cv.getContext('2d');
+    var font='600 '+fs+"px 'Bricolage Grotesque', system-ui, sans-serif";
+    ctx.font=font;
+    var w=Math.ceil(ctx.measureText(txt).width)+pad*2, h=fs+pad*2;
+    cv.width=w; cv.height=h;
+    ctx.font=font; ctx.textAlign='center'; ctx.textBaseline='middle';
+    if(red){ ctx.shadowColor='rgba(230,57,70,.55)'; ctx.shadowBlur=30; ctx.fillStyle='#FF6470'; }
+    else { ctx.shadowColor='rgba(0,0,0,0)'; ctx.shadowBlur=0; ctx.fillStyle='#E9E4D7'; }
+    ctx.fillText(txt,w/2,h/2);
+    var tex=new THREE.CanvasTexture(cv); tex.anisotropy=4; tex.needsUpdate=true;
+    return {tex:tex, aspect:w/h};
+  }
+  var words=[];
+  function buildWords(){
+    for(var i=0;i<WORDS.length;i++){
+      var wd=WORDS[i], red=wd.c===1, o=makeText(wd.t,red);
+      var mat=new THREE.MeshBasicMaterial({map:o.tex,transparent:true,opacity:0,depthWrite:false});
+      var hgt=3.5*wd.s, wid=hgt*o.aspect;
+      var m=new THREE.Mesh(new THREE.PlaneGeometry(wid,hgt),mat);
+      var ang=(i/WORDS.length)*Math.PI*2+(i%2?0.6:0), rad=13+(i%4)*4+Math.random()*5;
+      m.position.set(Math.cos(ang)*rad*(0.7+Math.random()*0.5),(Math.random()*2-1)*15,-6-i*4.4-Math.random()*4);
+      m.userData={base:0.4+(red?0.2:0.07),flare:0,drift:(Math.random()*0.6+0.2)*(i%2?1:-1),phase:Math.random()*6.28};
+      scene.add(m); words.push(m);
+    }
+  }
+  function radial(color,size,op){
+    var cv=document.createElement('canvas'); cv.width=cv.height=128; var ctx=cv.getContext('2d');
+    var g=ctx.createRadialGradient(64,64,0,64,64,64);
+    g.addColorStop(0,'rgba('+color+',1)'); g.addColorStop(.25,'rgba('+color+',.7)'); g.addColorStop(1,'rgba('+color+',0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,128,128);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,depthTest:false,opacity:(op==null?1:op)}));
+    sp.scale.set(size,size,1); return sp;
+  }
+  var dot=new THREE.Mesh(new THREE.SphereGeometry(0.55,24,24),new THREE.MeshBasicMaterial({color:0xE63946}));
+  var halo=radial('255,90,102',9), halo2=radial('255,160,168',4.4);
+  scene.add(dot,halo,halo2); dot.visible=halo.visible=halo2.visible=false;
+
+  var TRAIL=46, trail=[], ti=0;
+  for(var k=0;k<TRAIL;k++){ var s=radial('255,95,107',2.6,0); scene.add(s); trail.push(s); }
+
+  var dust;
+  (function(){
+    var N=900,pos=new Float32Array(N*3),col=new Float32Array(N*3),cR=new THREE.Color(0xE63946),cC=new THREE.Color(0xEDE8DC);
+    for(var i=0;i<N;i++){ pos[i*3]=(Math.random()*2-1)*60; pos[i*3+1]=(Math.random()*2-1)*40; pos[i*3+2]=10-Math.random()*120; var c=Math.random()<0.18?cR:cC; col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b; }
+    var g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    dust=new THREE.Points(g,new THREE.PointsMaterial({size:0.22,transparent:true,opacity:0,vertexColors:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+    scene.add(dust);
+  })();
+
+  var flash=radial('255,212,180',2,0); flash.position.set(0,0,-8); scene.add(flash);
+
+  var path=null;
+  function buildPath(){
+    var pts=[new THREE.Vector3(0,6,42)], order=[0,8,1,3,6,5,4];
+    for(var i=0;i<order.length;i++){ var m=words[order[i]]; if(m){ pts.push(new THREE.Vector3(m.position.x*0.82,m.position.y*0.82,m.position.z+2.4)); } }
+    pts.push(new THREE.Vector3(0,0,-8));
+    path=new THREE.CatmullRomCurve3(pts,false,'catmullrom',0.5);
+  }
+
+  var t0=performance.now(), running=true;
+  var J0=0.7,J1=5.2,IMP=5.35,STOP=6.9;
+  function ei(x){ return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2; }
+  function frame(now){
+    if(!running) return;
+    var t=(now-t0)/1000;
+    if(dust){ dust.material.opacity=Math.min(0.8,Math.max(0,t/1.2))*(t>5.4?Math.max(0,1-(t-5.4)/0.9):1); dust.rotation.y=t*0.012; }
+    for(var i=0;i<words.length;i++){ var m=words[i],u=m.userData;
+      var ap=Math.max(0,Math.min(1,(t-0.5-i*0.06)/1.0)), fd=t>5.2?Math.max(0,1-(t-5.2)/0.7):1;
+      m.material.opacity=(u.base*ap+u.flare)*fd;
+      m.position.x+=Math.cos(t*0.3+u.phase)*0.002*u.drift;
+      m.position.y+=Math.sin(t*0.4+u.phase)*0.0016*u.drift;
+      m.lookAt(camera.position); u.flare*=0.92;
+    }
+    if(path && t>=J0 && t<IMP){
+      var pj=Math.max(0,Math.min(1,(t-J0)/(J1-J0))), te=ei(pj), p=path.getPoint(te);
+      dot.visible=halo.visible=halo2.visible=true;
+      dot.position.copy(p); halo.position.copy(p); halo2.position.copy(p);
+      var pu=1+Math.sin(t*9)*0.12; halo.scale.setScalar(9*pu); halo2.scale.setScalar(4.4*pu);
+      var sp=trail[ti%TRAIL]; ti++; sp.position.copy(p); sp.material.opacity=0.9; sp.scale.setScalar(2.7);
+      for(var w2=0;w2<words.length;w2++){ var d=words[w2].position.distanceTo(p); if(d<7){ words[w2].userData.flare=Math.min(0.55,words[w2].userData.flare+(7-d)/7*0.06); } }
+      var cz=72-te*38;
+      camera.position.x+=(p.x*0.18-camera.position.x)*0.04;
+      camera.position.y+=(p.y*0.14-camera.position.y)*0.04;
+      camera.position.z+=(cz-camera.position.z)*0.05;
+      camera.lookAt(p.x*0.3,p.y*0.3,p.z*0.5);
+    }
+    for(var q=0;q<TRAIL;q++){ var oo=trail[q].material.opacity; if(oo>0.002){ trail[q].material.opacity=oo*0.9; trail[q].scale.multiplyScalar(0.985); } else trail[q].material.opacity=0; }
+    if(t>=IMP){
+      dot.visible=halo.visible=halo2.visible=false;
+      var it=(t-IMP)/0.6;
+      if(it<1.6){ flash.material.opacity=Math.max(0,1-it/1.0)*0.95; flash.scale.setScalar(2+ei(Math.min(1,it))*48); }
+      camera.position.x+=(0-camera.position.x)*0.06;
+      camera.position.y+=(0-camera.position.y)*0.06;
+      camera.position.z+=(30-camera.position.z)*0.06;
+      camera.lookAt(0,0,-6);
+    }
+    try{ renderer.render(scene,camera); }catch(e){ running=false; }
+    if(t<STOP && running) requestAnimationFrame(frame); else { running=false; try{ renderer.dispose(); }catch(e){} }
+  }
+  function start(){ buildWords(); buildPath(); requestAnimationFrame(frame); }
+  var started=false; function go(){ if(started) return; started=true; try{ start(); }catch(e){} }
+  if(document.fonts && document.fonts.ready){ var to=setTimeout(go,650); document.fonts.ready.then(function(){ clearTimeout(to); go(); }); } else { go(); }
+  window.addEventListener('resize',function(){ W=window.innerWidth; H=window.innerHeight; renderer.setSize(W,H,false); camera.aspect=W/H; camera.updateProjectionMatrix(); });
+  window.__aniqrcStopScene=function(){ running=false; };
 })();</script>
 
 <!-- ============ NAV ============ -->
@@ -2450,7 +2549,8 @@ html.intro-seen #intro{ display:none !important; }
   var coin=document.getElementById('introCoin');
   var navmark=document.querySelector('.nav-logo .nm');
   var stage=document.querySelector('.intro-stage');
-  setTimeout(function(){
+  var T=[]; var ended=false;
+  function flyMark(){
     if(stage) stage.classList.add('flyout');
     if(coin && navmark){ try{
       coin.style.animation='none'; coin.style.opacity='1'; coin.style.transform='none';
@@ -2459,13 +2559,22 @@ html.intro-seen #intro{ display:none !important; }
         var sc=n.width/c.width;
         var dx=(n.left+n.width/2)-(c.left+c.width/2);
         var dy=(n.top+n.height/2)-(c.top+c.height/2);
-        coin.style.transition='transform 1.7s cubic-bezier(.42,.04,.18,1)';
+        coin.style.transition='transform 1.5s cubic-bezier(.42,.04,.18,1)';
         requestAnimationFrame(function(){ coin.style.transform='translate('+dx+'px,'+dy+'px) scale('+sc+')'; });
       });
     }catch(e){} }
-  }, 11600);
-  setTimeout(function(){ intro.classList.add('out'); }, 13000);
-  setTimeout(function(){ document.body.style.overflow=''; if(intro.parentNode) intro.parentNode.removeChild(intro); fireDone(); }, 13800);
+  }
+  function finish(){ document.body.style.overflow=''; if(intro && intro.parentNode) intro.parentNode.removeChild(intro); fireDone(); }
+  function endSeq(fast){ if(ended) return; ended=true; T.forEach(function(x){clearTimeout(x);}); T=[];
+    try{ if(window.__aniqrcStopScene) window.__aniqrcStopScene(); }catch(e){}
+    flyMark();
+    T.push(setTimeout(function(){ if(intro) intro.classList.add('out'); }, fast?420:1100));
+    T.push(setTimeout(finish, fast?1080:1800));
+  }
+  T.push(setTimeout(function(){ endSeq(false); }, 9800));
+  var skipBtn=document.getElementById('introSkip');
+  if(skipBtn) skipBtn.addEventListener('click', function(){ endSeq(true); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'||e.key==='Esc'){ endSeq(true); } });
 })();
 </script>
 <script>(function(){
