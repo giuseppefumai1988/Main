@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIQRC — Anteprima mobile / app</title>
+<style>
+  body{ margin:0; min-height:100vh; background:#2A2824; color:#EDE8DC; font-family:system-ui,sans-serif; display:flex; flex-direction:column; align-items:center; gap:16px; padding:26px 14px 48px; }
+  h1{ font-size:18px; font-weight:600; margin:4px 0 0; }
+  p.note{ max-width:560px; text-align:center; font-size:13.5px; line-height:1.5; color:#B9B3A7; margin:0 0 6px; }
+  .phone{ width:392px; max-width:96vw; height:792px; max-height:82vh; background:#000; border-radius:42px; padding:12px; box-shadow:0 30px 80px rgba(0,0,0,.5); position:relative; }
+  .phone::before{ content:''; position:absolute; top:20px; left:50%; transform:translateX(-50%); width:120px; height:26px; background:#000; border-radius:0 0 16px 16px; z-index:5; }
+  .phone iframe{ width:100%; height:100%; border:0; border-radius:32px; background:#F4F2EC; display:block; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .row button{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; background:#EDE8DC; color:#1a1a1a; border:0; border-radius:999px; padding:9px 15px; cursor:pointer; }
+</style>
+</head>
+<body>
+  <h1>Anteprima mobile · ANIQRC</h1>
+  <p class="note">Questa è la barra ridotta a misura di telefono: tocca l'icona <b>☰</b> in alto a destra per aprire il nuovo menu. Usa i pulsanti per cambiare tema o ricaricare.</p>
+  <div class="row">
+    <button onclick="setTheme('')">Tema chiaro</button>
+    <button onclick="setTheme('dark')">Tema scuro</button>
+    <button onclick="reload()">Ricarica</button>
+  </div>
+  <div class="phone"><iframe id="ph" title="Anteprima mobile ANIQRC"></iframe></div>
+
+<script>
+var INNER = [
+'<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">',
+'<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">',
+'<style>',
+':root{--bg:#F4F2EC;--bg-warm:#EAE6DC;--bg-card:#FBFAF6;--ink:#0A0A0A;--ink-soft:#34332F;--ink-mute:#75736B;--accent:#E63946;--rule:#D4D0C5;--rule-soft:#E2DED4;}',
+'html[data-theme="dark"]{--bg:#15140F;--bg-warm:#1C1A14;--bg-card:#201E18;--ink:#F2EFE8;--ink-soft:#CFC9BD;--ink-mute:#938E83;--rule:#34322B;--rule-soft:#2A2822;--accent:#F2616E;}',
+'*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}',
+'body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;line-height:1.6;transition:background .5s,color .5s;overflow-x:hidden;}',
+'nav{position:fixed;top:0;left:0;right:0;z-index:100;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}',
+'.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;}',
+'.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;}',
+'.nav-logo .nm{width:30px;height:30px;}',
+'.nav-logo .nt{font-family:Bricolage Grotesque,sans-serif;font-weight:700;font-size:19px;letter-spacing:-.03em;color:var(--ink);}',
+'.nav-logo .nt .q{color:var(--accent);}',
+'.nav-links{display:flex;gap:26px;align-items:center;}',
+'.nav-links a{font-size:14px;color:var(--ink-soft);text-decoration:none;}',
+'.nav-cta{background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:600;}',
+'.nav-cta.red{background:var(--accent);color:#fff;}',
+'.nav-theme{font:inherit;background:transparent;border:1px solid var(--rule);color:var(--ink-soft);border-radius:50%;width:38px;height:38px;cursor:pointer;}',
+'.am-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:8px;border:1px solid var(--rule);border-radius:11px;background:transparent;color:var(--ink);cursor:pointer;}',
+'.am-burger span{position:relative;display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:.25s;}',
+'.am-burger span::before,.am-burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:currentColor;border-radius:2px;transition:.25s;}',
+'.am-burger span::before{top:-6px;}.am-burger span::after{top:6px;}',
+'nav.open .am-burger span{background:transparent;}',
+'nav.open .am-burger span::before{top:0;transform:rotate(45deg);}',
+'nav.open .am-burger span::after{top:0;transform:rotate(-45deg);}',
+'.am-backdrop{position:fixed;inset:0;z-index:90;background:rgba(10,10,10,.36);opacity:0;visibility:hidden;transition:.26s;}',
+'body.am-open .am-backdrop{opacity:1;visibility:visible;}',
+'@media(max-width:860px){',
+'  .am-burger{display:inline-flex;}',
+'  nav .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg-card);border-bottom:1px solid var(--rule);padding:6px 20px 20px;box-shadow:0 26px 44px rgba(20,18,14,.18);transform:translateY(-10px);opacity:0;visibility:hidden;pointer-events:none;transition:.26s;}',
+'  nav.open .nav-links{transform:none;opacity:1;visibility:visible;pointer-events:auto;}',
+'  nav .nav-links a{padding:15px 2px;font-size:16px;border-bottom:1px solid var(--rule-soft);}',
+'  nav .nav-links .nav-cta{margin-top:14px;text-align:center;}',
+'  nav .nav-links .nav-theme{margin-top:12px;}',
+'}',
+'.wrap{max-width:1100px;margin:0 auto;padding:0 22px;position:relative;z-index:2;}',
+'.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;}',
+'.eyebrow{font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:18px;}',
+'h1{font-family:Bricolage Grotesque,sans-serif;font-weight:800;font-size:clamp(44px,16vw,80px);line-height:.96;letter-spacing:-.05em;}',
+'h1 .q{color:var(--accent);}',
+'.lead{font-size:17px;color:var(--ink-soft);max-width:540px;margin-top:20px;}',
+'section{position:relative;z-index:2;padding:64px 0;}',
+'.sec-label{font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}',
+'h2{font-family:Bricolage Grotesque,sans-serif;font-weight:700;font-size:clamp(26px,7vw,38px);letter-spacing:-.03em;margin-bottom:14px;}',
+'.cards{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}',
+'.card{background:var(--bg-card);border:1px solid var(--rule);border-radius:16px;padding:22px;}',
+'.card h3{font-family:Bricolage Grotesque,sans-serif;font-size:19px;margin-bottom:6px;}',
+'.card p{color:var(--ink-mute);font-size:14px;}',
+'.manifesto{background:var(--ink);color:var(--bg);border-radius:22px;margin:0 18px;}',
+'html[data-theme="dark"] .manifesto{background:#100F0B;color:#F2EFE8;}',
+'.manifesto .wrap{padding:54px 22px;}',
+'.manifesto p{opacity:.85;max-width:560px;}',
+'</style></head><body>',
+'<nav><div class="nav-inner">',
+'<a class="nav-logo"><span class="nm"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><circle cx="200" cy="200" r="160" fill="#0A0A0A"/><rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/><rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/><circle cx="200" cy="200" r="9" fill="#E63946"/><g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g></svg></span><span class="nt">ANI<span class="q">Q</span>RC</span></a>',
+'<div class="nav-links"><a href="#">Manifesto</a><a href="#">Ambiti</a><a href="#">Osservatorio</a><a href="#">Toolkit</a><a href="#">La ricerca</a><a href="#">Eventi</a><a href="#">Standard ISO</a><button class="nav-theme" id="tg" aria-label="Tema">◐</button><a href="#" class="nav-cta red">Associati</a></div>',
+'</div></nav>',
+'<header class="hero"><div class="wrap"><div class="eyebrow">Associazione · Fondata MMXXVI · Infermieri</div><h1>ANI<span class="q">Q</span>RC</h1><p class="lead">Tocca l’icona <b>☰</b> in alto a destra: ora su mobile tutti i link sono in un menu ordinato. Lo sfondo aurora respira dietro.</p></div></header>',
+'<section><div class="wrap"><div class="sec-label">Ambiti</div><h2>Navigazione chiara sul telefono</h2><div class="cards"><div class="card"><h3>Qualità</h3><p>Tap target ampi, testo leggibile.</p></div><div class="card"><h3>Rischio clinico</h3><p>Menu a tutta larghezza, chiusura facile.</p></div><div class="card"><h3>Ricerca</h3><p>Installabile come app dal browser.</p></div></div></div></section>',
+'<section class="manifesto"><div class="wrap"><div class="sec-label" style="color:var(--accent)">Manifesto</div><h2>Come un’app</h2><p>Aggiungendola alla schermata Home parte a tutto schermo, con icona ANIQRC e disponibilità offline.</p></div></section>',
+'<section><div class="wrap"><div class="sec-label">Fine</div><h2>Scorri: lo sfondo segue</h2><p style="color:var(--ink-soft)">Profondità viva ma leggera, anche su mobile.</p><div style="height:30vh"></div></div></section>',
+'<script>',
+'(function(){',
+' var docEl=document.documentElement;',
+' /* aurora compatta */',
+' var blobs=[{c:"255,251,242",a:0.42,x:0.3,y:0.2,r:0.7,dx:0.05,dy:0.04,per:36,ph:0},{c:"213,205,186",a:0.34,x:0.78,y:0.5,r:0.66,dx:0.06,dy:0.05,per:48,ph:1.7},{c:"230,57,70",a:0.06,x:0.6,y:0.82,r:0.58,dx:0.05,dy:0.06,per:42,ph:3.1}];',
+' function pal(){ var d=docEl.getAttribute("data-theme")==="dark"; return d?[{c:"255,226,170",a:0.12,x:0.3,y:0.2,r:0.7,dx:0.05,dy:0.04,per:36,ph:0},{c:"130,158,196",a:0.07,x:0.78,y:0.5,r:0.66,dx:0.06,dy:0.05,per:48,ph:1.7},{c:"242,97,110",a:0.09,x:0.6,y:0.82,r:0.58,dx:0.05,dy:0.06,per:42,ph:3.1}]:blobs; }',
+' var b=pal();',
+' var cv=document.createElement("canvas");var s=cv.style;s.position="fixed";s.inset="0";s.width="100%";s.height="100%";s.zIndex="-1";s.pointerEvents="none";document.body.insertBefore(cv,document.body.firstChild);',
+' var ctx=cv.getContext("2d"),RS=0.6,W=1,H=1;function rz(){W=window.innerWidth||1;H=window.innerHeight||1;cv.width=W*RS|0;cv.height=H*RS|0;}rz();window.addEventListener("resize",function(){rz();b=pal();});',
+' function draw(now){var m=Math.max(W,H);ctx.setTransform(RS,0,0,RS,0,0);ctx.clearRect(0,0,W,H);var sy=window.scrollY||0,par=Math.max(-H*0.3,Math.min(H*0.3,-sy*0.05));for(var i=0;i<b.length;i++){var o=b[i],ang=now/(o.per*1000)*Math.PI*2+o.ph,px=(o.x+Math.sin(ang)*o.dx)*W,py=(o.y+Math.cos(ang*0.85+o.ph)*o.dy)*H+par*(1+i*0.12),rad=o.r*m*(1+0.1*Math.sin(ang*1.3+o.ph));var g=ctx.createRadialGradient(px,py,0,px,py,rad);g.addColorStop(0,"rgba("+o.c+","+o.a+")");g.addColorStop(1,"rgba("+o.c+",0)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);} }',
+' var last=0;function loop(n){requestAnimationFrame(loop);if(n-last<33)return;last=n;draw(n);}requestAnimationFrame(loop);',
+' /* menu */',
+' var nav=document.querySelector("nav"),inner=nav.querySelector(".nav-inner"),links=nav.querySelector(".nav-links");',
+' var burger=document.createElement("button");burger.type="button";burger.className="am-burger";burger.setAttribute("aria-label","Apri il menu");burger.innerHTML="<span></span>";inner.appendChild(burger);',
+' var bd=document.createElement("div");bd.className="am-backdrop";document.body.appendChild(bd);',
+' function close(){nav.classList.remove("open");document.body.classList.remove("am-open");}',
+' burger.addEventListener("click",function(){nav.classList.toggle("open");document.body.classList.toggle("am-open");});',
+' bd.addEventListener("click",close);',
+' links.addEventListener("click",function(e){var a=e.target.closest("a");if(a)close();});',
+' /* tema */',
+' document.getElementById("tg").addEventListener("click",function(){docEl.setAttribute("data-theme",docEl.getAttribute("data-theme")==="dark"?"":"dark");b=pal();});',
+'})();',
+'<\/script>',
+'</body></html>'
+].join('\n');
+
+var ph=document.getElementById('ph');
+function load(theme){ var doc=INNER; if(theme==='dark'){ doc=doc.replace('<html lang="it">','<html lang="it" data-theme="dark">'); } ph.srcdoc=doc; }
+function setTheme(t){ load(t); }
+function reload(){ load(currentTheme()); }
+function currentTheme(){ try{ return ph.contentDocument.documentElement.getAttribute('data-theme')||''; }catch(e){ return ''; } }
+load('');
+</script>
+</body>
+</html>

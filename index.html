@@ -4,6 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
 <title>ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico</title>
 <meta name="description" content="ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico. La comunità degli infermieri italiani per la qualità dell'assistenza, il rischio clinico, le procedure e la ricerca sulla sicurezza delle cure.">
 <meta name="theme-color" content="#0A0A0A">
@@ -1209,7 +1213,7 @@ html.intro-seen #intro{ display:none !important; }
   try{ renderer=new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true, powerPreference:'high-performance'}); }
   catch(e){ return; }
   var W=window.innerWidth, H=window.innerHeight;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, (window.innerWidth<700?1.5:2)));
   renderer.setSize(W,H,false);
   renderer.setClearColor(0x000000,0);
 
@@ -1265,12 +1269,12 @@ html.intro-seen #intro{ display:none !important; }
   var halo=radial('255,90,102',9), halo2=radial('255,160,168',4.4);
   scene.add(dot,halo,halo2); dot.visible=halo.visible=halo2.visible=false;
 
-  var TRAIL=46, trail=[], ti=0;
+  var TRAIL=(window.innerWidth<700?28:46), trail=[], ti=0;
   for(var k=0;k<TRAIL;k++){ var s=radial('255,95,107',2.6,0); scene.add(s); trail.push(s); }
 
   var dust;
   (function(){
-    var N=900,pos=new Float32Array(N*3),col=new Float32Array(N*3),cR=new THREE.Color(0xE63946),cC=new THREE.Color(0xEDE8DC);
+    var N=(window.innerWidth<700?420:900),pos=new Float32Array(N*3),col=new Float32Array(N*3),cR=new THREE.Color(0xE63946),cC=new THREE.Color(0xEDE8DC);
     for(var i=0;i<N;i++){ pos[i*3]=(Math.random()*2-1)*60; pos[i*3+1]=(Math.random()*2-1)*40; pos[i*3+2]=10-Math.random()*120; var c=Math.random()<0.18?cR:cC; col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b; }
     var g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(pos,3)); g.setAttribute('color',new THREE.BufferAttribute(col,3));
     dust=new THREE.Points(g,new THREE.PointsMaterial({size:0.22,transparent:true,opacity:0,vertexColors:true,blending:THREE.AdditiveBlending,depthWrite:false}));
@@ -2596,6 +2600,8 @@ html.intro-seen #intro{ display:none !important; }
     fr.addEventListener('pointerleave',function(){ vd.style.transform=''; }); }
 })();</script>
 <script>(function(){var v=document.querySelector(".racconto-video");if(!v)return;v.muted=true;try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});io.observe(v);}catch(e){}})();</script>
+<script src="aniqrc-bg.js" defer></script>
+<script src="aniqrc-app.js" defer></script>
 </body>
 </html>
 
