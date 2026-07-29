@@ -1,15 +1,8 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
 import tina from '@tinacms/astro/integration';
-import { tinaAdminDevRedirect } from '@tinacms/astro/vite';
 
-// https://astro.build/config
+// Configurazione per Sito Statico Puro adatto a Vercel e TinaCMS
 export default defineConfig({
-  output: 'server',
-  adapter: node({ mode: 'standalone' }),
-  integrations: [tina()],
-  vite: {
-    plugins: [tinaAdminDevRedirect()],
-    ssr: { noExternal: ['@tinacms/astro', '@tinacms/bridge'] },
-  },
+  output: 'static', // <-- Cambiato da 'server' a 'static'
+  integrations: [tina()]
 });
