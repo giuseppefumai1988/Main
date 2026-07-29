@@ -39,6 +39,12 @@ export default defineConfig({
         label: "Posts",
         path: "src/pages",
 	format: "md",
+router: ({ document }) => {
+            if (document._sys.filename === "index") {
+              return "/";
+            }
+            return `/${document._sys.filename}`;
+          },
         fields: [
           {
             type: "string",
