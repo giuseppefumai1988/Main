@@ -1,4 +1,8 @@
 ---
+title: Home Page del mio sito
+---
+Benvenuto sul mio nuovo sito statico modificabile!
+---
 eyebrow: TinaCMS + Astro
 title: prova
 ctaPrimary:
