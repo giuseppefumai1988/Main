@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIQRC — Anteprima sfondo aurora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#F4F2EC; --bg-warm:#EAE6DC; --bg-card:#FBFAF6; --ink:#0A0A0A; --ink-soft:#34332F; --ink-mute:#75736B; --accent:#E63946; --rule:#D4D0C5; }
+  html[data-theme="dark"]{ --bg:#15140F; --bg-warm:#1C1A14; --bg-card:#201E18; --ink:#F2EFE8; --ink-soft:#CFC9BD; --ink-mute:#938E83; --rule:#34322B; --accent:#F2616E; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .5s ease, color .5s ease; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:2; }
+  nav{ position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filter:blur(14px); background:color-mix(in srgb, var(--bg) 82%, transparent); border-bottom:1px solid var(--rule); }
+  .nav-inner{ max-width:1100px; margin:0 auto; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+  .logo{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; letter-spacing:-.03em; }
+  .logo .q{ color:var(--accent); }
+  .nav-links{ display:flex; gap:24px; font-size:13.5px; color:var(--ink-soft); }
+  .hero{ position:relative; min-height:96vh; display:flex; flex-direction:column; justify-content:center; }
+  .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:22px; }
+  h1{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(48px,9vw,118px); line-height:.98; letter-spacing:-.05em; }
+  h1 .q{ color:var(--accent); }
+  .lead{ font-size:clamp(17px,2.2vw,22px); color:var(--ink-soft); max-width:620px; margin-top:26px; }
+  section{ position:relative; z-index:2; padding:90px 0; }
+  .sec-label{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+  h2{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,46px); letter-spacing:-.03em; margin-bottom:18px; }
+  p.body{ color:var(--ink-soft); max-width:680px; }
+  .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:34px; }
+  @media(max-width:820px){ .cards{ grid-template-columns:1fr; } }
+  .card{ background:var(--bg-card); border:1px solid var(--rule); border-radius:16px; padding:26px; box-shadow:0 10px 30px rgba(20,18,14,.06); }
+  .card h3{ font-family:'Bricolage Grotesque',sans-serif; font-size:20px; margin-bottom:8px; }
+  .card p{ color:var(--ink-mute); font-size:14.5px; }
+  .manifesto{ background:var(--ink); color:var(--bg); border-radius:24px; margin:0 28px; }
+  html[data-theme="dark"] .manifesto{ background:#100F0B; color:#F2EFE8; }
+  .manifesto .wrap{ padding-top:70px; padding-bottom:70px; }
+  .manifesto h2{ color:inherit; }
+  .manifesto p{ color:inherit; opacity:.82; max-width:680px; }
+  .toggle{ position:fixed; right:18px; bottom:18px; z-index:200; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); background:var(--bg-card); border:1px solid var(--rule); border-radius:999px; padding:11px 18px; cursor:pointer; box-shadow:0 8px 22px rgba(20,18,14,.14); }
+  .hint{ position:fixed; left:18px; bottom:18px; z-index:200; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--ink-mute); }
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><span class="logo">ANI<span class="q">Q</span>RC</span><span class="nav-links"><span>Manifesto</span><span>Ambiti</span><span>Osservatorio</span><span>Toolkit</span></span></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Associazione Nazionale · Fondata MMXXVI · Infermieri</div>
+  <h1>ANI<span class="q">Q</span>RC</h1>
+  <p class="lead">Scorri la pagina: lo sfondo "aurora" respira e deriva con profondità dietro i contenuti, mentre i pannelli e le card galleggiano sopra.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="sec-label">Ambiti</div>
+  <h2>Profondità viva, ma discreta</h2>
+  <p class="body">Le aree trasparenti mostrano l'aurora; le sezioni piene la coprono, rafforzando la sensazione di livelli sovrapposti.</p>
+  <div class="cards">
+    <div class="card"><h3>Qualità</h3><p>Card opaca che galleggia sopra lo sfondo dinamico.</p></div>
+    <div class="card"><h3>Rischio clinico</h3><p>Ombre morbide e luce che si muove lentamente dietro.</p></div>
+    <div class="card"><h3>Ricerca</h3><p>Coerente con la palette crema · nero · rosso.</p></div>
+  </div>
+</div></section>
+
+<section class="manifesto"><div class="wrap">
+  <div class="sec-label" style="color:var(--accent)">Manifesto</div>
+  <h2>Un pannello pieno copre l'aurora</h2>
+  <p>Le sezioni scure restano solide e leggibili: lo sfondo vive solo dove c'è spazio, senza mai disturbare la lettura.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-label">Continua</div>
+  <h2>Elegante in chiaro e in scuro</h2>
+  <p class="body">Usa il pulsante in basso a destra per cambiare tema: l'aurora adatta i suoi colori automaticamente.</p>
+  <div style="height:40vh"></div>
+</div></section>
+
+<button class="toggle" onclick="(function(){var d=document.documentElement;d.setAttribute('data-theme', d.getAttribute('data-theme')==='dark'?'':'dark');})()">Cambia tema</button>
+<div class="hint">anteprima · sfondo aurora ANIQRC</div>
+
+<script>
+/* identico ad aniqrc-bg.js */
+(function(){
+  if(window.__aniqrcAurora) return; window.__aniqrcAurora=true;
+  var docEl=document.documentElement;
+  var reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function palette(){
+    var dark=docEl.getAttribute('data-theme')==='dark';
+    if(dark) return [
+      {c:'255,226,170',a:0.12,x:0.24,y:0.20,r:0.62,dx:0.05,dy:0.04,per:36,ph:0.0,br:0.10},
+      {c:'130,158,196',a:0.07,x:0.82,y:0.32,r:0.56,dx:0.06,dy:0.05,per:48,ph:1.7,br:0.12},
+      {c:'242,97,110', a:0.09,x:0.66,y:0.80,r:0.52,dx:0.05,dy:0.06,per:42,ph:3.1,br:0.10},
+      {c:'255,234,196',a:0.06,x:0.42,y:0.66,r:0.50,dx:0.04,dy:0.05,per:54,ph:4.4,br:0.10}];
+    return [
+      {c:'255,251,242',a:0.42,x:0.24,y:0.20,r:0.60,dx:0.05,dy:0.04,per:36,ph:0.0,br:0.10},
+      {c:'213,205,186',a:0.34,x:0.80,y:0.34,r:0.58,dx:0.06,dy:0.05,per:48,ph:1.7,br:0.12},
+      {c:'230,57,70',  a:0.06,x:0.68,y:0.80,r:0.50,dx:0.05,dy:0.06,per:42,ph:3.1,br:0.10},
+      {c:'236,229,213',a:0.32,x:0.42,y:0.70,r:0.52,dx:0.04,dy:0.05,per:54,ph:4.4,br:0.10}];
+  }
+  var blobs=palette();
+  var cv=document.createElement('canvas'); cv.id='aniqrc-aurora'; cv.setAttribute('aria-hidden','true');
+  var st=cv.style; st.position='fixed'; st.left='0'; st.top='0'; st.width='100%'; st.height='100%'; st.zIndex='-1'; st.pointerEvents='none'; st.display='block';
+  function attach(){ if(document.body&&!cv.parentNode) document.body.insertBefore(cv,document.body.firstChild); }
+  if(document.body) attach(); else document.addEventListener('DOMContentLoaded',attach);
+  var ctx=cv.getContext('2d'), RS=0.6, W=1, H=1;
+  function resize(){ W=window.innerWidth||1; H=window.innerHeight||1; cv.width=Math.max(1,Math.floor(W*RS)); cv.height=Math.max(1,Math.floor(H*RS)); }
+  resize();
+  function draw(now){
+    var maxR=Math.max(W,H); ctx.setTransform(RS,0,0,RS,0,0); ctx.clearRect(0,0,W,H);
+    var sy=(window.scrollY||window.pageYOffset||0), par=Math.max(-H*0.3,Math.min(H*0.3,-sy*0.05));
+    for(var i=0;i<blobs.length;i++){ var b=blobs[i]; var ang=now/(b.per*1000)*Math.PI*2+b.ph;
+      var px=(b.x+Math.sin(ang)*b.dx)*W, py=(b.y+Math.cos(ang*0.85+b.ph)*b.dy)*H+par*(1+i*0.12);
+      var rad=b.r*maxR*(1+b.br*Math.sin(ang*1.3+b.ph)); if(rad<=0) continue;
+      var g=ctx.createRadialGradient(px,py,0,px,py,rad); g.addColorStop(0,'rgba('+b.c+','+b.a+')'); g.addColorStop(1,'rgba('+b.c+',0)');
+      ctx.fillStyle=g; ctx.fillRect(0,0,W,H); }
+  }
+  var rt=null; window.addEventListener('resize',function(){ if(rt)cancelAnimationFrame(rt); rt=requestAnimationFrame(function(){ resize(); if(reduce)draw(0); }); });
+  if(reduce){ draw(0); return; }
+  var last=0,frameMs=1000/30,raf=null,running=false;
+  function loop(now){ if(!running)return; raf=requestAnimationFrame(loop); if(now-last<frameMs)return; last=now; draw(now); }
+  function startLoop(){ if(!running){ running=true; last=0; raf=requestAnimationFrame(loop); } }
+  function stopLoop(){ running=false; if(raf){ cancelAnimationFrame(raf); raf=null; } }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden)stopLoop(); else startLoop(); });
+  if(window.MutationObserver){ new MutationObserver(function(){ blobs=palette(); }).observe(docEl,{attributes:true,attributeFilter:['data-theme']}); }
+  startLoop();
+})();
+</script>
+</body>
+</html>

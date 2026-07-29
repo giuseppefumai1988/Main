@@ -1,0 +1,22 @@
+{
+  "name": "ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico",
+  "short_name": "ANIQRC",
+  "description": "La comunità degli infermieri italiani per la qualità, il rischio clinico, le procedure e la ricerca sulla sicurezza delle cure.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F2EC",
+  "theme_color": "#0A0A0A",
+  "categories": ["health", "medical", "education"],
+  "icons": [
+    { "src": "apple-touch-icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "apple-touch-icon-167.png", "sizes": "167x167", "type": "image/png", "purpose": "any" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

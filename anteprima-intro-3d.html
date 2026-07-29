@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIQRC — Anteprima intro 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#F4F2EC; --ink:#0A0A0A; --ink-soft:#34332F; --accent:#E63946; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--bg); font-family:'Manrope',sans-serif; overflow:hidden; }
+
+  #intro{ position:fixed; inset:0; z-index:10; background:#0C0B0A; display:flex; align-items:center; justify-content:center; overflow:hidden; animation: introDawn 1.15s cubic-bezier(.4,0,.2,1) 5.6s forwards; }
+  @keyframes introDawn{ from{ background-color:#0C0B0A; } to{ background-color:#F4F2EC; } }
+  #introCanvas{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0; opacity:0; animation: cvIn 1s ease .15s forwards, cvOut 1.05s ease 5.75s forwards; }
+  @keyframes cvIn{ to{opacity:1;} } @keyframes cvOut{ to{opacity:0;} }
+  .intro-vignette{ position:absolute; inset:0; z-index:1; pointer-events:none; background: radial-gradient(125% 125% at 50% 50%, transparent 52%, rgba(0,0,0,.6) 100%); opacity:0; animation: glowIn 1.6s ease .2s forwards, glowOut 1s ease 5.6s forwards; }
+  .intro-glow{ position:absolute; inset:0; z-index:1; pointer-events:none; background: radial-gradient(56% 48% at 50% 50%, rgba(230,57,70,.16), transparent 70%); opacity:0; animation: glowIn 2.6s ease-out 1s forwards, glowOut 1s ease 5.6s forwards; }
+  @keyframes glowIn{ to{opacity:1;} } @keyframes glowOut{ to{opacity:0;} }
+
+  .intro-stage{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; gap:30px; text-align:center; padding:24px; }
+  .intro-tag{ font-family:'Bricolage Grotesque',sans-serif; font-weight:500; font-size:clamp(16px,2.6vw,26px); letter-spacing:-.01em; color:#E9E4D7; max-width:660px; line-height:1.34; text-shadow:0 2px 34px rgba(0,0,0,.55); animation: tagOut .8s ease 5.35s forwards; }
+  .intro-tag span{ display:inline-block; opacity:0; transform:translateY(12px); filter:blur(8px); animation: tagw 1s cubic-bezier(.3,.85,.3,1) forwards; animation-delay: calc(.55s + var(--w) * .09s); }
+  .intro-tag .hl{ color:#FF5A66; font-weight:600; }
+  @keyframes tagw{ to{ opacity:1; transform:none; filter:blur(0);} }
+  @keyframes tagOut{ to{ opacity:0; transform:translateY(-14px); filter:blur(4px);} }
+
+  .intro-mark{ position:relative; width:clamp(132px,21vw,190px); height:clamp(132px,21vw,190px); display:block; opacity:0; animation: markIn .9s ease 6.2s forwards, coinShow 1.7s cubic-bezier(.4,0,.2,1) 6.4s forwards; }
+  @keyframes markIn{ to{opacity:1;} }
+  .intro-mark::after{ content:''; position:absolute; inset:10%; border-radius:50%; background:#0A0A0A; z-index:0; box-shadow: 0 1px 0 #080808,0 2px 0 #080808,0 3px 0 #070707,0 4px 0 #070707,0 5px 0 #060606,0 6px 0 #060606,0 7px 0 #050505,0 8px 0 #050505,0 9px 0 #040404,0 10px 0 #040404,0 11px 0 #030303,0 12px 0 #030303,0 13px 0 #020202, 0 26px 34px rgba(20,18,14,.34); opacity:0; transform:scale(.3); animation: depthIn .9s cubic-bezier(.2,.8,.2,1) 6.5s forwards; }
+  @keyframes depthIn{ to{ opacity:1; transform:scale(1); } }
+  .intro-mark svg{ position:relative; z-index:1; width:100%; height:100%; display:block; overflow:visible; }
+  @keyframes coinShow{ 0%{ transform: perspective(900px) rotateX(0deg); } 20%{ transform: perspective(900px) rotateX(34deg); } 52%{ transform: perspective(900px) rotateX(36deg); } 100%{ transform: perspective(900px) rotateX(0deg); } }
+  .ip{ transform-box:fill-box; transform-origin:center; opacity:0; }
+  .ip-disc{ animation: ipDisc 1s cubic-bezier(.2,.8,.2,1) 6.35s forwards; }
+  .ip-v{ animation: ipV .7s cubic-bezier(.2,.8,.2,1) 6.95s forwards; }
+  .ip-h{ animation: ipH .7s cubic-bezier(.2,.8,.2,1) 7.15s forwards; }
+  .ip-dot{ animation: ipDot .7s cubic-bezier(.2,.9,.3,1.4) 6.7s forwards; }
+  .ip-lens{ transform-box:view-box; transform-origin:0 0; opacity:0; animation: ipLens 1.6s cubic-bezier(.25,.9,.3,1) 7.4s forwards; }
+  @keyframes ipDisc{ 0%{opacity:0; transform:scale(.2) rotate(-40deg);} 100%{opacity:1; transform:scale(1) rotate(0);} }
+  @keyframes ipV{ 0%{opacity:0; transform:scaleY(0);} 100%{opacity:1; transform:scaleY(1);} }
+  @keyframes ipH{ 0%{opacity:0; transform:scaleX(0);} 100%{opacity:1; transform:scaleX(1);} }
+  @keyframes ipDot{ 0%{opacity:0; transform:scale(0);} 45%{opacity:1; transform:scale(2.4); filter:drop-shadow(0 0 16px rgba(230,57,70,.95));} 100%{opacity:1; transform:scale(1); filter:drop-shadow(0 0 5px rgba(230,57,70,.4));} }
+  @keyframes ipLens{ 0%{opacity:0; transform:translate(200px,200px) rotate(765deg);} 16%{opacity:1;} 100%{opacity:1; transform:translate(200px,200px) rotate(45deg);} }
+  .intro-word{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(50px,10vw,108px); letter-spacing:-.055em; line-height:1; color:var(--ink); display:flex; perspective:600px; }
+  .intro-word span{ display:inline-block; opacity:0; transform-origin:50% 100%; transform:rotateX(-95deg) translateY(.22em); animation: letter3d 1s cubic-bezier(.2,.85,.25,1) forwards; animation-delay: calc(7.7s + var(--i) * .12s); }
+  .intro-word .q{ color:var(--accent); }
+  @keyframes letter3d{ 0%{opacity:0; transform:rotateX(-95deg) translateY(.22em);} 55%{opacity:1;} 100%{opacity:1; transform:rotateX(0) translateY(0);} }
+  .intro-sub{ font-family:'Manrope',sans-serif; font-weight:600; font-size:clamp(12.5px,2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); opacity:0; transform:translateY(8px); animation: subIn 1s ease 8.5s forwards; }
+  @keyframes subIn{ to{opacity:1; transform:none;} }
+
+  .replay{ position:fixed; left:20px; bottom:18px; z-index:50; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); background:#FBFAF6; border:1px solid #D4D0C5; border-radius:999px; padding:10px 16px; cursor:pointer; display:inline-flex; gap:9px; align-items:center; box-shadow:0 6px 20px rgba(20,18,14,.12); transition:transform .2s ease, border-color .2s ease; }
+  .replay:hover{ transform:translateY(-1px); border-color:var(--accent); color:var(--accent); }
+  .hint{ position:fixed; right:20px; bottom:20px; z-index:50; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; color:#75736B; }
+</style>
+</head>
+<body>
+<div id="introHost"></div>
+<button class="replay" onclick="playIntro()">&#8635; Rivedi l'intro</button>
+<div class="hint">anteprima · ANIQRC intro 3D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+var INTRO_HTML =
+  '<div id="intro">' +
+  '  <canvas id="introCanvas"></canvas>' +
+  '  <div class="intro-vignette"></div>' +
+  '  <div class="intro-glow"></div>' +
+  '  <div class="intro-stage">' +
+  '    <div class="intro-tag"><span style="--w:0">Il</span> <span style="--w:1">riferimento</span> <span style="--w:2">per</span> <span style="--w:3">il</span> <span class="hl" style="--w:4">Quality</span> <span class="hl" style="--w:5">nurse</span> <span class="hl" style="--w:6">improvement</span><span style="--w:7">.</span></div>' +
+  '    <span class="intro-mark" id="introCoin">' +
+  '      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">' +
+  '        <circle class="ip ip-disc" cx="200" cy="200" r="160" fill="#0A0A0A"/>' +
+  '        <rect class="ip ip-v" x="186" y="100" width="28" height="200" fill="#F4F2EC"/>' +
+  '        <rect class="ip ip-h" x="100" y="186" width="200" height="28" fill="#F4F2EC"/>' +
+  '        <circle class="ip ip-dot" cx="200" cy="200" r="9" fill="#E63946"/>' +
+  '        <g class="ip-lens" transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>' +
+  '      </svg>' +
+  '    </span>' +
+  '    <div class="intro-word"><span style="--i:0">A</span><span style="--i:1">N</span><span style="--i:2">I</span><span class="q" style="--i:3">Q</span><span style="--i:4">R</span><span style="--i:5">C</span></div>' +
+  '    <div class="intro-sub">Associazione Nazionale Infermieri · Qualità e Rischio Clinico</div>' +
+  '  </div>' +
+  '</div>';
+
+var activeRenderer=null, activeStop=null;
+function initScene(){
+  var canvas=document.getElementById('introCanvas');
+  var THREE=window.THREE; if(!THREE||!canvas) return;
+  var renderer; try{ renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true,powerPreference:'high-performance'}); }catch(e){ return; }
+  activeRenderer=renderer;
+  var W=window.innerWidth,H=window.innerHeight;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2)); renderer.setSize(W,H,false); renderer.setClearColor(0x000000,0);
+  var scene=new THREE.Scene(); scene.fog=new THREE.FogExp2(0x0c0b0a,0.0125);
+  var camera=new THREE.PerspectiveCamera(54,W/H,0.1,400); camera.position.set(0,0,72);
+  var WORDS=[{t:'Sicurezza',s:1,c:0},{t:'Prevenzione',s:.92,c:1},{t:'Near miss',s:.8,c:0},{t:'Audit',s:.86,c:1},{t:'Eventi sentinella',s:.74,c:0},{t:'Checklist',s:.9,c:0},{t:'Barriere',s:.95,c:0},{t:'Evidenze',s:.84,c:0},{t:'Qualità',s:1,c:1},{t:'Procedure',s:.82,c:0},{t:'Esiti',s:.8,c:0},{t:'Cultura',s:.8,c:0}];
+  function makeText(txt,red){ var fs=96,pad=26,cv=document.createElement('canvas'),ctx=cv.getContext('2d'); var font="600 "+fs+"px 'Bricolage Grotesque', system-ui, sans-serif"; ctx.font=font; var w=Math.ceil(ctx.measureText(txt).width)+pad*2,h=fs+pad*2; cv.width=w; cv.height=h; ctx.font=font; ctx.textAlign='center'; ctx.textBaseline='middle'; if(red){ctx.shadowColor='rgba(230,57,70,.55)';ctx.shadowBlur=30;ctx.fillStyle='#FF6470';}else{ctx.fillStyle='#E9E4D7';} ctx.fillText(txt,w/2,h/2); var tex=new THREE.CanvasTexture(cv); tex.anisotropy=4; return {tex:tex,aspect:w/h}; }
+  var words=[];
+  for(var i=0;i<WORDS.length;i++){ var wd=WORDS[i],red=wd.c===1,o=makeText(wd.t,red); var mat=new THREE.MeshBasicMaterial({map:o.tex,transparent:true,opacity:0,depthWrite:false}); var hgt=3.5*wd.s,wid=hgt*o.aspect; var m=new THREE.Mesh(new THREE.PlaneGeometry(wid,hgt),mat); var ang=(i/WORDS.length)*Math.PI*2+(i%2?0.6:0),rad=13+(i%4)*4+Math.random()*5; m.position.set(Math.cos(ang)*rad*(0.7+Math.random()*0.5),(Math.random()*2-1)*15,-6-i*4.4-Math.random()*4); m.userData={base:0.4+(red?0.2:0.07),flare:0,drift:(Math.random()*0.6+0.2)*(i%2?1:-1),phase:Math.random()*6.28}; scene.add(m); words.push(m); }
+  function radial(color,size,op){ var cv=document.createElement('canvas'); cv.width=cv.height=128; var ctx=cv.getContext('2d'); var g=ctx.createRadialGradient(64,64,0,64,64,64); g.addColorStop(0,'rgba('+color+',1)'); g.addColorStop(.25,'rgba('+color+',.7)'); g.addColorStop(1,'rgba('+color+',0)'); ctx.fillStyle=g; ctx.fillRect(0,0,128,128); var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,depthTest:false,opacity:(op==null?1:op)})); sp.scale.set(size,size,1); return sp; }
+  var dot=new THREE.Mesh(new THREE.SphereGeometry(0.55,24,24),new THREE.MeshBasicMaterial({color:0xE63946})); var halo=radial('255,90,102',9),halo2=radial('255,160,168',4.4); scene.add(dot,halo,halo2); dot.visible=halo.visible=halo2.visible=false;
+  var TRAIL=46,trail=[],ti=0; for(var k=0;k<TRAIL;k++){ var s=radial('255,95,107',2.6,0); scene.add(s); trail.push(s); }
+  var N=900,pos=new Float32Array(N*3),col=new Float32Array(N*3),cR=new THREE.Color(0xE63946),cC=new THREE.Color(0xEDE8DC); for(var d2=0;d2<N;d2++){ pos[d2*3]=(Math.random()*2-1)*60; pos[d2*3+1]=(Math.random()*2-1)*40; pos[d2*3+2]=10-Math.random()*120; var cc=Math.random()<0.18?cR:cC; col[d2*3]=cc.r; col[d2*3+1]=cc.g; col[d2*3+2]=cc.b; } var dg=new THREE.BufferGeometry(); dg.setAttribute('position',new THREE.BufferAttribute(pos,3)); dg.setAttribute('color',new THREE.BufferAttribute(col,3)); var dust=new THREE.Points(dg,new THREE.PointsMaterial({size:0.22,transparent:true,opacity:0,vertexColors:true,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(dust);
+  var flash=radial('255,212,180',2,0); flash.position.set(0,0,-8); scene.add(flash);
+  var pts=[new THREE.Vector3(0,6,42)],order=[0,8,1,3,6,5,4]; for(var pi=0;pi<order.length;pi++){ var mm=words[order[pi]]; if(mm) pts.push(new THREE.Vector3(mm.position.x*0.82,mm.position.y*0.82,mm.position.z+2.4)); } pts.push(new THREE.Vector3(0,0,-8)); var path=new THREE.CatmullRomCurve3(pts,false,'catmullrom',0.5);
+  var t0=performance.now(),running=true; activeStop=function(){running=false;};
+  var J0=0.7,J1=5.2,IMP=5.35,STOP=6.9; function ei(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
+  function frame(now){ if(!running) return; var t=(now-t0)/1000;
+    dust.material.opacity=Math.min(0.8,Math.max(0,t/1.2))*(t>5.4?Math.max(0,1-(t-5.4)/0.9):1); dust.rotation.y=t*0.012;
+    for(var i=0;i<words.length;i++){ var m=words[i],u=m.userData; var ap=Math.max(0,Math.min(1,(t-0.5-i*0.06)/1)),fd=t>5.2?Math.max(0,1-(t-5.2)/0.7):1; m.material.opacity=(u.base*ap+u.flare)*fd; m.position.x+=Math.cos(t*0.3+u.phase)*0.002*u.drift; m.position.y+=Math.sin(t*0.4+u.phase)*0.0016*u.drift; m.lookAt(camera.position); u.flare*=0.92; }
+    if(t>=J0&&t<IMP){ var pj=Math.max(0,Math.min(1,(t-J0)/(J1-J0))),te=ei(pj),p=path.getPoint(te); dot.visible=halo.visible=halo2.visible=true; dot.position.copy(p); halo.position.copy(p); halo2.position.copy(p); var pu=1+Math.sin(t*9)*0.12; halo.scale.setScalar(9*pu); halo2.scale.setScalar(4.4*pu); var sp=trail[ti%TRAIL]; ti++; sp.position.copy(p); sp.material.opacity=0.9; sp.scale.setScalar(2.7); for(var w2=0;w2<words.length;w2++){ var dd=words[w2].position.distanceTo(p); if(dd<7) words[w2].userData.flare=Math.min(0.55,words[w2].userData.flare+(7-dd)/7*0.06); } var cz=72-te*38; camera.position.x+=(p.x*0.18-camera.position.x)*0.04; camera.position.y+=(p.y*0.14-camera.position.y)*0.04; camera.position.z+=(cz-camera.position.z)*0.05; camera.lookAt(p.x*0.3,p.y*0.3,p.z*0.5); }
+    for(var q=0;q<TRAIL;q++){ var oo=trail[q].material.opacity; if(oo>0.002){ trail[q].material.opacity=oo*0.9; trail[q].scale.multiplyScalar(0.985);} else trail[q].material.opacity=0; }
+    if(t>=IMP){ dot.visible=halo.visible=halo2.visible=false; var it=(t-IMP)/0.6; if(it<1.6){ flash.material.opacity=Math.max(0,1-it/1)*0.95; flash.scale.setScalar(2+ei(Math.min(1,it))*48);} camera.position.x+=(0-camera.position.x)*0.06; camera.position.y+=(0-camera.position.y)*0.06; camera.position.z+=(30-camera.position.z)*0.06; camera.lookAt(0,0,-6); }
+    try{ renderer.render(scene,camera); }catch(e){ running=false; }
+    if(t<STOP&&running) requestAnimationFrame(frame); else { running=false; try{ renderer.dispose(); }catch(e){} }
+  }
+  requestAnimationFrame(frame);
+}
+var loopTimer=null;
+function playIntro(){
+  if(activeStop) try{ activeStop(); }catch(e){}
+  if(activeRenderer) try{ activeRenderer.dispose(); }catch(e){}
+  if(loopTimer) clearTimeout(loopTimer);
+  var host=document.getElementById('introHost'); host.innerHTML=INTRO_HTML;
+  if(document.fonts&&document.fonts.ready){ var to=setTimeout(initScene,650); document.fonts.ready.then(function(){ clearTimeout(to); initScene(); }); } else initScene();
+  loopTimer=setTimeout(playIntro, 12000); // auto-loop
+}
+window.addEventListener('load', playIntro);
+</script>
+</body>
+</html>

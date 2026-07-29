@@ -1,0 +1,5 @@
+# Configurazione Netlify per ANIQRC
+# Indica dove si trovano le funzioni serverless. Non modifica la pubblicazione del sito.
+
+[functions]
+  directory = "netlify/functions"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>Grazie — ANIQRC</title>
+<meta name="description" content="Richiesta inviata correttamente. Grazie per aver scritto ad ANIQRC.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F2EC; --ink:#0A0A0A; --soft:#34332F; --mute:#75736B; --accent:#E63946; --accent-deep:#C0202E; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:'Manrope',sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:32px; -webkit-font-smoothing:antialiased; }
+  .card { max-width:540px; }
+  .mark { width:96px; height:96px; margin:0 auto 36px; animation:pop 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .mark svg { width:100%; height:100%; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+  h1 { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(34px,7vw,54px); letter-spacing:-0.035em; line-height:1.02; margin-bottom:20px; }
+  h1 .q { color:var(--accent); }
+  p { font-size:17px; color:var(--soft); line-height:1.6; margin-bottom:32px; }
+  .btn { display:inline-flex; align-items:center; gap:10px; padding:15px 32px; border-radius:100px; font-size:15px; font-weight:600; text-decoration:none; background:var(--ink); color:var(--bg); transition:all 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .btn:hover { background:var(--accent); transform:translateY(-2px); }
+  @keyframes pop { from{opacity:0;transform:scale(0.8) rotate(-8deg);} to{opacity:1;transform:scale(1) rotate(0);} }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">
+      <img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%">
+    </div>
+    <div class="eyebrow">Richiesta ricevuta</div>
+    <h1>Grazie per averci <span class="q">scritto</span>.</h1>
+    <p>La tua richiesta è stata inviata correttamente. Ti risponderemo all'indirizzo email che hai indicato. A presto in ANIQRC.</p>
+    <a href="index.html" class="btn">← Torna al sito</a>
+  </div>
+<script src="aniqrc-bg.js" defer></script>
+<script src="aniqrc-app.js" defer></script>
+</body>
+</html>

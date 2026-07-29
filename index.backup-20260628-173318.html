@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<!-- build 2026-05-26 -->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico</title>
+<meta name="description" content="ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico. La comunità degli infermieri italiani per la qualità dell'assistenza, il rischio clinico, le procedure e la ricerca sulla sicurezza delle cure.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico">
+<meta property="og:description" content="La comunità degli infermieri italiani per la qualità, il rischio clinico e la ricerca sulla sicurezza delle cure.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F2EC;
+    --bg-warm: #EAE6DC;
+    --bg-card: #FBFAF6;
+    --ink: #0A0A0A;
+    --ink-soft: #34332F;
+    --ink-mute: #75736B;
+    --accent: #E63946;
+    --accent-deep: #C0202E;
+    --rule: #D4D0C5;
+    --rule-soft: #E2DED4;
+    --shadow: rgba(20, 18, 14, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  @media (max-width: 640px) { .wrap { padding: 0 22px; } }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+    background: rgba(244, 242, 236, 0.82);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, background 0.4s;
+  }
+
+  nav.scrolled { border-bottom-color: var(--rule); }
+
+  .nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) { .nav-inner { padding: 12px 22px; } }
+
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo .nm { width: 34px; height: 34px; }
+  .nav-logo .nm svg { width: 100%; height: 100%; display: block; }
+  .nav-logo .nt {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .nav-logo .nt .q { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a:not(.nav-cta)::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1.5px;
+    background: var(--accent);
+    transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .nav-links a:not(.nav-cta):hover { color: var(--ink); }
+  .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--bg) !important;
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  @media (max-width: 860px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    padding: 180px 0 120px;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(230,57,70,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+  }
+  .hero-eyebrow .dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); border-radius: 50%;
+    margin: 0 14px; vertical-align: 2px;
+  }
+
+  /* THE BIG LOCKUP */
+  .hero-lockup {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+    margin-bottom: 56px;
+  }
+
+  @media (max-width: 820px) {
+    .hero-lockup { flex-direction: column; align-items: flex-start; gap: 32px; }
+  }
+
+  .hero-mark {
+    width: clamp(180px, 26vw, 300px);
+    height: clamp(180px, 26vw, 300px);
+    flex-shrink: 0;
+    opacity: 0;
+    animation: markIn 1.3s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+  }
+  .hero-mark svg { width: 100%; height: 100%; display: block; }
+
+  .cycle-ring {
+    transform-origin: 200px 200px;
+    animation: spin 36s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* logo assembly */
+  .lg-bar-v { transform-box: fill-box; transform-origin: center; animation: lgBarV 0.7s cubic-bezier(0.16,1,0.3,1) 0.85s both; }
+  .lg-bar-h { transform-box: fill-box; transform-origin: center; animation: lgBarH 0.7s cubic-bezier(0.16,1,0.3,1) 1.0s both; }
+  .lens { transform-box: view-box; transform-origin: 200px 200px; animation: lgLens 0.75s cubic-bezier(0.34,1.56,0.64,1) 1.2s both; }
+  .lg-dot { transform-box: fill-box; transform-origin: center; animation: lgDot 0.6s cubic-bezier(0.34,1.56,0.64,1) 1.45s both; }
+  .lg-halo { transform-box: view-box; transform-origin: 200px 200px; animation: lgHalo 5s ease-in-out 2.2s infinite; }
+  @keyframes lgBarV { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes lgBarH { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes lgLens { 0% { transform: scale(0); opacity: 0; } 55% { opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes lgDot { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+  @keyframes lgHalo { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-mark, .lg-bar-v, .lg-bar-h, .lens, .lg-dot, .lg-halo, .cycle-ring { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  .hero-text {
+    border-left: 3px solid var(--accent);
+    padding-left: 48px;
+    position: relative;
+  }
+
+  @media (max-width: 820px) {
+    .hero-text { border-left: none; border-top: 3px solid var(--accent); padding-left: 0; padding-top: 32px; }
+  }
+
+  .hero-acronym {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: clamp(72px, 13vw, 168px);
+    letter-spacing: -0.055em;
+    line-height: 0.84;
+    color: var(--ink);
+    margin-bottom: 22px;
+    opacity: 1;
+    --lr-dur: 1.15s; --lr-del: .25s;
+  }
+  .hero-acronym .q { color: var(--accent); }
+
+  .hero-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: clamp(15px, 1.7vw, 19px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+  }
+  .hero-name .q { color: var(--accent); font-weight: 600; }
+
+  .hero-lead {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;
+  }
+  .hero-lead strong { font-weight: 600; color: var(--ink); }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 30px;
+    border-radius: 100px;
+    font-size: 15px; font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,57,70,0.28); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn-dark { background: var(--ink); color: var(--bg); }
+  .btn-dark:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,10,10,0.22); }
+  .btn-outline { background: transparent; color: var(--accent-deep); border: 1.5px solid var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,57,70,0.24); }
+  .btn .arrow { transition: transform 0.3s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+  .hero-pride {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.5; color: var(--ink-soft); font-weight: 300;
+    max-width: 720px; margin-top: 42px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.95s forwards;
+  }
+  .hero-pride .q { color: var(--accent); font-weight: 600; }
+  .hero-actions-2 { margin-top: 18px; animation-delay: 1.05s; }
+  .hero-pride-2 { margin-top: 30px; animation-delay: 1.15s; }
+  .hero-actions-3 { margin-top: 18px; animation-delay: 1.25s; }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--bg-warm);
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 48px;
+    animation: scroll-x 32s linear infinite;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 17px; font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .marquee-track span .sep { color: var(--accent); margin-left: 48px; }
+  @keyframes scroll-x { to { transform: translateX(-50%); } }
+
+  /* ============ SECTION FRAMEWORK ============ */
+  section { position: relative; z-index: 2; }
+  .sec-pad { padding: 120px 0; }
+  @media (max-width: 640px) { .sec-pad { padding: 80px 0; } }
+
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .sec-label::before {
+    content: ''; width: 28px; height: 1.5px; background: var(--accent);
+  }
+
+  .sec-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 5vw, 60px);
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    color: var(--ink);
+    margin-bottom: 28px;
+    max-width: 880px;
+  }
+  .sec-title .q, .sec-title .accent { color: var(--accent); }
+
+  /* ============ MANIFESTO ============ */
+  .manifesto { background: var(--ink); color: var(--bg); position: relative; overflow: hidden; }
+  .manifesto .deco-q {
+    position: absolute;
+    right: -8%; bottom: -28%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 64vh;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+  }
+  .manifesto .sec-label { color: var(--accent); }
+  .manifesto .sec-label::before { background: var(--accent); }
+  .manifesto-quote {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: clamp(26px, 4.2vw, 52px);
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    max-width: 1000px;
+    position: relative; z-index: 2;
+  }
+  .manifesto-quote .hl { color: var(--accent); font-weight: 600; }
+  .manifesto-quote .soft { color: rgba(244,242,236,0.55); }
+
+  .manifesto-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: 0.08em;
+    color: var(--bg); margin-top: 28px; position: relative; z-index: 2;
+  }
+  .manifesto-attr span { color: var(--accent); margin: 0 6px; }
+
+  .manifesto-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+    margin-top: 56px; position: relative; z-index: 2;
+  }
+  @media (max-width: 760px) { .manifesto-cards { grid-template-columns: 1fr; gap: 16px; } }
+  .manifesto-doc { display: inline-flex; align-items: center; gap: 8px; margin-top: 36px; padding: 12px 22px; background: var(--accent); color: #FBFAF6; font-size: 0.95rem; font-weight: 600; text-decoration: none; border-radius: 100px; transition: background .25s, transform .2s; }
+  .manifesto-doc:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .mcard {
+    border: 1px solid rgba(244,242,236,0.16);
+    border-radius: 8px;
+    padding: 34px 32px;
+    background: rgba(244,242,236,0.03);
+    transition: border-color 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .mcard:hover { border-color: rgba(230,57,70,0.5); transform: translateY(-4px); }
+  .mcard-quote {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400; font-size: clamp(18px, 2.2vw, 23px);
+    letter-spacing: -0.02em; line-height: 1.32;
+    color: rgba(244,242,236,0.82); margin-bottom: 22px;
+  }
+  .mcard-quote .hl { color: var(--accent); font-weight: 600; }
+  .mcard-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.07em; color: var(--bg);
+  }
+  .mcard-attr span { color: var(--accent); margin: 0 5px; }
+
+  /* ============ AMBITI ============ */
+  .ambiti-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    margin-top: 56px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .ambiti-grid { grid-template-columns: 1fr; } }
+
+  .ambito {
+    background: var(--bg-card);
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+  .ambito::before {
+    content: '';
+    position: absolute; left: 0; top: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .ambito:hover { background: #fff; }
+  .ambito:hover::before { height: 100%; }
+
+  .ambito-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .ambito h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .ambito p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+
+  /* ============ ATTIVITÀ ============ */
+  .attivita-list { margin-top: 48px; border-top: 1px solid var(--rule); }
+  .att-row {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 32px 8px;
+    border-bottom: 1px solid var(--rule);
+    transition: padding 0.4s cubic-bezier(0.16,1,0.3,1), background 0.4s;
+    cursor: default;
+  }
+  .att-row:hover { padding-left: 24px; padding-right: 24px; background: var(--bg-card); }
+  .att-row .att-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--ink-mute);
+  }
+  .att-row .att-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .att-row .att-desc { font-size: 14.5px; color: var(--ink-soft); max-width: 460px; text-align: right; }
+  @media (max-width: 720px) {
+    .att-row { grid-template-columns: 48px 1fr; }
+    .att-row .att-desc { display: none; }
+  }
+  a.att-row.att-link { text-decoration: none; color: inherit; cursor: pointer; }
+  a.att-row.att-link:hover .att-name { color: var(--accent); }
+  .att-go { color: var(--accent); font-size: 0.7em; opacity: 0; transform: translateX(-6px); display: inline-block; transition: opacity 0.3s, transform 0.3s; vertical-align: middle; }
+  a.att-row.att-link:hover .att-go { opacity: 1; transform: translateX(0); }
+
+  /* ============ DIRETTIVO ============ */
+  .direttivo { background: var(--bg-warm); }
+  .dir-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 52px;
+  }
+  @media (max-width: 920px) { .dir-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px) { .dir-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+  .dir-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px;
+    display: flex; flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  }
+  .dir-social { margin-top: auto; padding-top: 20px; }
+  .dir-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .dir-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .dir-card.pres .dir-avatar { background: var(--accent); }
+  .dir-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 21px;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .dir-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* mail nelle card manifesto */
+  .mcard-mail {
+    display: inline-flex; align-items: center; margin-top: 14px;
+    padding: 7px 14px; background: var(--bg); color: var(--ink);
+    font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    border-radius: 9px; letter-spacing: 0.01em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18); transition: transform .15s;
+  }
+  .mcard-mail:hover { transform: translateY(-1px); }
+
+  /* social nel consiglio direttivo */
+  .dir-social { display: flex; gap: 10px; margin-top: 18px; }
+  .dir-ic {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule); color: var(--ink-soft);
+    background: transparent; transition: all .25s;
+  }
+  .dir-ic:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); transform: translateY(-2px); }
+  .dir-ic svg { width: 16px; height: 16px; }
+
+  /* pulsante newsletter (a contrasto) */
+  .nav-cta.nav-news { background: var(--accent); }
+  .nav-cta.nav-news:hover { background: var(--accent-deep); }
+  .nav-news .nl-short { display: none; }
+  @media (max-width: 620px) { .nav-news .nl-full { display: none; } .nav-news .nl-short { display: inline; } }
+
+  /* modale newsletter */
+  .nl-overlay { position: fixed; inset: 0; z-index: 200; display: none; background: rgba(10,10,10,0.55); backdrop-filter: blur(4px); padding: 14vh 20px 20px; }
+  .nl-overlay.open { display: block; }
+  .nl-box { max-width: 480px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+  .nl-head { padding: 24px 24px 4px; }
+  .nl-head .sr-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+  .nl-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; margin-top: 6px; color: var(--ink); }
+  .nl-sub { color: var(--ink-mute); font-size: 14px; margin-top: 8px; }
+  .nl-form { display: flex; gap: 10px; padding: 18px 24px 8px; flex-wrap: wrap; }
+  .nl-form input[type=email] { flex: 1; min-width: 200px; padding: 12px 14px; border: 1px solid var(--rule); border-radius: 10px; font-family: 'Manrope', sans-serif; font-size: 15px; outline: none; background: var(--bg); color: var(--ink); }
+  .nl-form input[type=email]:focus { border-color: var(--accent); }
+  .nl-form button { padding: 12px 22px; background: var(--accent); color: var(--bg); border: none; border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: 'Manrope', sans-serif; }
+  .nl-form button:hover { background: var(--accent-deep); }
+  .nl-priv { padding: 0 24px 22px; font-size: 11px; color: var(--ink-mute); line-height: 1.5; }
+  .nl-msg { padding: 0 24px 22px; font-size: 14px; color: var(--ink-soft); font-weight: 600; }
+
+  /* pulsante Consulta nelle card "Su cosa poggiamo" */
+  .ctx-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 8px 16px; background: var(--accent); color: #FBFAF6; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 100px; transition: background .25s, transform .25s; }
+  .ctx-link:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+  /* QR del sito — badge fisso in basso a destra */
+  .site-qr { display: inline-block; margin-top: 24px; background: #FBFAF6; border: 1px solid var(--rule); border-radius: 12px; padding: 11px; text-align: center; text-decoration: none; }
+  .site-qr img { width: 104px; height: 104px; display: block; }
+  .site-qr span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.03em; color: var(--ink-mute); margin-top: 7px; }
+
+  /* ============ ASSOCIATI / CTA ============ */
+  .join-card {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 72px 56px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+  @media (max-width: 640px) { .join-card { padding: 48px 28px; } }
+  .join-card::after {
+    content: '';
+    position: absolute; top: -40%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(230,57,70,0.18) 0%, transparent 70%);
+  }
+  .join-inner { position: relative; z-index: 2; }
+  .join-card .sec-label { color: var(--accent); }
+  .join-card .sec-label::before { background: var(--accent); }
+  .join-card h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: clamp(30px, 4.5vw, 52px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .join-card h2 .q { color: var(--accent); }
+  .join-categories {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin: 36px 0 40px;
+  }
+  .join-cat {
+    border: 1px solid rgba(244,242,236,0.25);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: rgba(244,242,236,0.85);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+  .join-cat .q { color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--bg); border-top: 1px solid var(--rule); padding: 72px 0 36px; }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .foot-brand .fb-lockup { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .foot-brand .fb-mark { width: 56px; height: 56px; }
+  .foot-brand .fb-mark svg { width: 100%; height: 100%; }
+  .foot-brand .fb-text {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+  }
+  .foot-brand .fb-acr {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 30px; letter-spacing: -0.04em;
+    line-height: 0.9; color: var(--ink);
+  }
+  .foot-brand .fb-acr .q { color: var(--accent); }
+  .foot-brand .fb-full {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-soft); line-height: 1.45; margin-top: 4px;
+  }
+  .foot-brand .fb-full .q { color: var(--accent); }
+  .foot-brand p { font-size: 14px; color: var(--ink-mute); max-width: 320px; }
+
+  .foot-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 20px;
+  }
+  .foot-col a, .foot-col p {
+    display: block;
+    font-size: 14.5px; color: var(--ink-soft);
+    text-decoration: none; margin-bottom: 12px;
+    transition: color 0.25s;
+  }
+  .foot-col a:hover { color: var(--accent); }
+
+  .foot-bottom {
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .note-banner {
+    background: var(--bg-warm);
+    border: 1px dashed var(--rule);
+    border-radius: 6px;
+    padding: 16px 22px;
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.55;
+  }
+  .note-banner strong { color: var(--ink-soft); }
+
+  /* ============ CONTESTO ============ */
+  .contesto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  @media (max-width: 720px) { .contesto-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+  .ctx {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 36px 34px;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  }
+  .ctx:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+  .ctx-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+  .ctx-h {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 23px; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 12px; line-height: 1.15;
+  }
+  .ctx p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+  .ctx em { color: var(--ink); font-style: italic; }
+
+  /* ============ NEWS ============ */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 52px;
+    min-height: 120px;
+  }
+  @media (max-width: 940px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .news-grid { grid-template-columns: 1fr; } }
+
+  .news-loading {
+    grid-column: 1 / -1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--ink-mute); letter-spacing: 0.05em;
+    padding: 32px 0;
+  }
+  .news-loading::after { content: ''; animation: dots 1.4s steps(4,end) infinite; }
+  @keyframes dots { 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} }
+
+  .news-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 26px 24px;
+    display: flex; flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.35s;
+    position: relative; overflow: hidden;
+  }
+  .news-card::before {
+    content: ''; position: absolute; left:0; top:0; height: 3px; width: 0;
+    background: var(--accent); transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .news-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); border-color: var(--accent); }
+  .news-card:hover::before { width: 100%; }
+
+  .news-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em; color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .news-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 18px; line-height: 1.25; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .news-excerpt {
+    font-size: 13.5px; color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 20px; flex: 1;
+  }
+  .news-source {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.05em; color: var(--accent);
+    margin-top: auto;
+  }
+  .news-note {
+    margin-top: 28px; font-size: 12.5px; color: var(--ink-mute);
+    line-height: 1.55; max-width: 640px;
+  }
+
+  /* fallback resource cards reuse .news-card */
+  .news-card.res .news-title { font-size: 16px; }
+
+  /* ============ NEWSLETTER ============ */
+  .nl-card {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 64px 56px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 820px) { .nl-card { grid-template-columns: 1fr; gap: 32px; padding: 48px 30px; } }
+  .nl-card::after {
+    content: '';
+    position: absolute; bottom: -50%; right: -8%;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(230,57,70,0.16) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .nl-card .sec-label { color: var(--accent); }
+  .nl-card .sec-label::before { background: var(--accent); }
+  .nl-left { position: relative; z-index: 2; }
+  .nl-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: -0.03em; line-height: 1.02; margin-bottom: 14px;
+  }
+  .nl-title .q { color: var(--accent); }
+  .nl-sub { font-size: 15.5px; color: rgba(244,242,236,0.7); line-height: 1.6; max-width: 420px; }
+  .nl-right { position: relative; z-index: 2; }
+  .nl-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .nl-input {
+    flex: 1; min-width: 180px;
+    background: rgba(244,242,236,0.06);
+    border: 1.5px solid rgba(244,242,236,0.25);
+    border-radius: 100px;
+    padding: 15px 22px;
+    color: var(--bg);
+    font-family: 'Manrope', sans-serif; font-size: 15px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .nl-input::placeholder { color: rgba(244,242,236,0.4); }
+  .nl-input:focus { outline: none; border-color: var(--accent); background: rgba(244,242,236,0.1); }
+  .nl-input.err { border-color: var(--accent); }
+  .nl-btn { white-space: nowrap; }
+  .nl-msg {
+    margin-top: 16px; font-size: 14px; font-weight: 500;
+    min-height: 20px; opacity: 0; transition: opacity 0.3s;
+  }
+  .nl-msg.show { opacity: 1; }
+  .nl-msg.ok { color: #5FBF8B; }
+  .nl-msg.bad { color: var(--accent-soft, #FF6B74); }
+  .nl-privacy { margin-top: 18px; font-size: 11.5px; color: rgba(244,242,236,0.45); line-height: 1.5; }
+
+  /* ============ FONTI ISTITUZIONALI ============ */
+  .fonti-list {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .fonti-list { grid-template-columns: 1fr; } }
+  .fonte {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    background: var(--bg-card);
+    padding: 28px 30px;
+    text-decoration: none;
+    transition: background 0.3s, padding 0.3s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+  }
+  .fonte::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--accent); transform: scaleY(0); transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .fonte:hover { background: #fff; padding-left: 38px; }
+  .fonte:hover::before { transform: scaleY(1); }
+  .fonte-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 18px; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .fonte-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .fonte-arrow {
+    font-size: 18px; color: var(--ink-mute); flex-shrink: 0;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .fonte:hover .fonte-arrow { color: var(--accent); transform: translate(3px,-3px); }
+
+  /* ============ DOCUMENTI ============ */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 52px;
+  }
+  @media (max-width: 940px) { .doc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .doc-grid { grid-template-columns: 1fr; } }
+  .doc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 28px 24px;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.35s;
+  }
+  .doc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); border-color: var(--accent); }
+  .doc-ico {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--bg); background: var(--accent);
+    width: 44px; height: 44px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .doc-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600; font-size: 18px; line-height: 1.2; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .doc-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+  .doc-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--accent); margin-top: auto; }
+
+  /* ============ VIDEO ============ */
+  .video-channels { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:48px; }
+  @media (max-width:820px){ .video-channels{ grid-template-columns:1fr; gap:36px; } }
+  .vc-head { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:16px; letter-spacing:-0.01em; color:var(--ink); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .vc-flag { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:500; letter-spacing:0.06em; background:var(--accent); color:var(--bg); padding:3px 8px; border-radius:4px; }
+  .video-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; min-height:80px; }
+  @media (max-width:520px){ .video-grid-2{ grid-template-columns:1fr; } }
+  .video-card { background:var(--bg-card); border:1px solid var(--rule); border-radius:6px; overflow:hidden; text-decoration:none; transition:transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s, border-color .35s; display:flex; flex-direction:column; }
+  .video-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px var(--shadow); border-color:var(--accent); }
+  .video-thumb { aspect-ratio:16/9; background:#dcd8cf center/cover no-repeat; position:relative; }
+  .video-play { position:absolute; inset:0; margin:auto; width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:rgba(230,57,70,0.92); color:#fff; border-radius:50%; font-size:14px; transition:transform .3s; }
+  .video-card:hover .video-play { transform:scale(1.12); }
+  .video-title { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:14.5px; line-height:1.25; letter-spacing:-0.01em; color:var(--ink); padding:15px 15px 6px; }
+  .video-src { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.04em; color:var(--accent); padding:0 15px 15px; margin-top:auto; }
+
+  /* ============ PODCAST ============ */
+  .podcast-wrap { margin-top:52px; display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+  @media (max-width:820px){ .podcast-wrap{ grid-template-columns:1fr; } }
+  .pod-embed iframe { width:100%; border:none; border-radius:12px; display:block; }
+  .pod-cards { display:flex; flex-direction:column; gap:12px; }
+  .pod-card { background:var(--bg-card); border:1px solid var(--rule); border-radius:8px; padding:18px 20px; transition:border-color .3s, transform .3s; }
+  .pod-card:hover { border-color:var(--accent); transform:translateX(4px); }
+  .pod-name { font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:17px; letter-spacing:-0.015em; color:var(--ink); margin-bottom:5px; }
+  .pod-desc { font-size:13px; color:var(--ink-soft); line-height:1.5; margin-bottom:13px; }
+  .pod-btns { display:flex; gap:8px; }
+  .pod-btns a { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.04em; text-decoration:none; padding:7px 15px; border-radius:100px; border:1px solid var(--rule); color:var(--ink-soft); transition:all .25s; }
+  .pod-btns a:hover { border-color:var(--accent); color:var(--accent); }
+  .pod-btns a.spo:hover { background:#1DB954; color:#fff; border-color:#1DB954; }
+
+  .js .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* special effects */
+  .fx-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); will-change: transform; }
+  .fx-card { position: relative; }
+  .fx-lens { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3; opacity: 0; transition: opacity 0.4s ease; background: radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(230,57,70,0.10), rgba(230,57,70,0.04) 35%, transparent 62%); }
+  .fx-card:hover > .fx-lens { opacity: 1; }
+  .fx-title.reveal { opacity: 1 !important; transform: none !important; }
+  .fx-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0; margin: -0.06em 0; }
+  .fx-wi { display: inline-block; transform: translateY(110%); opacity: 0; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease; }
+  .fx-title.in .fx-wi { transform: none; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .fx-lens { display: none; } .fx-wi { transform: none; opacity: 1; } }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes markIn { from { opacity: 0; transform: scale(0.88) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+
+/* === VIEW TRANSITIONS (transizioni tra pagine) === */
+@view-transition { navigation: auto; }
+.nav-logo .nm { view-transition-name: brandmark; }
+::view-transition-old(root){ animation: vtOut .35s cubic-bezier(0.4,0,0.2,1) both; }
+::view-transition-new(root){ animation: vtIn .5s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes vtOut { to { opacity:0; transform: translateX(-10%); } }
+@keyframes vtIn { from { opacity:0; transform: translateX(100%); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
+
+
+/* === MINI-OSSERVATORIO (home) === */
+.mini-obs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:44px 0 8px;}
+@media(max-width:760px){.mini-obs{grid-template-columns:1fr;gap:16px;}}
+.mo-stat{background:var(--bg-card);border:1px solid var(--rule);border-radius:12px;padding:30px 28px;}
+.mo-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(40px,6vw,54px);line-height:1;letter-spacing:-.03em;color:var(--accent);}
+.mo-lab{font-size:14px;color:var(--ink-soft);line-height:1.5;margin-top:12px;}
+.mo-lab span{color:var(--ink-mute);}
+/* === AUTOVALUTAZIONE === */
+.sub-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;color:var(--ink);margin:6px 0 0;}
+.quiz-card{background:var(--bg-card);border:1px solid var(--rule);border-radius:14px;padding:30px 30px;margin-top:44px;}
+.q-item{padding:20px 0;border-bottom:1px solid var(--rule);}
+.q-item:first-child{padding-top:4px;}
+.q-q{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;color:var(--ink);margin-bottom:14px;line-height:1.4;}
+.q-q .qn{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:14px;margin-right:8px;}
+.q-opts{display:flex;gap:10px;flex-wrap:wrap;}
+.q-opt{font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;padding:9px 24px;border-radius:100px;border:1.5px solid var(--rule);background:transparent;color:var(--ink-soft);cursor:pointer;transition:all .2s;}
+.q-opt:hover{border-color:var(--ink);color:var(--ink);}
+.q-opt.sel{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+.quiz-result{max-height:0;overflow:hidden;opacity:0;transition:opacity .5s,max-height .5s,margin .5s,padding .5s;}
+.quiz-result.show{opacity:1;max-height:420px;margin-top:26px;padding:28px;background:var(--ink);color:var(--bg);border-radius:12px;}
+.qr-score{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:46px;line-height:1;color:#fff;}
+.qr-band{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;margin:8px 0 10px;}
+.qr-tip{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);}
+.qr-tip a{color:#fff;text-decoration:underline;}
+.quiz-note{font-size:12.5px;color:var(--ink-mute);margin-top:16px;}
+/* === TIMELINE === */
+.timeline{position:relative;margin-top:48px;padding-left:34px;}
+.timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--rule);}
+.tl-item{position:relative;padding:0 0 34px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-30px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);}
+.tl-year{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--accent);letter-spacing:.04em;}
+.tl-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);margin:4px 0 6px;letter-spacing:-.01em;}
+.tl-p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:620px;}
+
+/* === HERO DOT BURST (home only) === */
+.hexfx{ position:absolute; left:100%; top:0; width:300px; height:100%; margin-left:20px; pointer-events:none; z-index:3; }
+@media (max-width:1180px){ .hexfx{ display:none; } }
+.hx-dot{ position:absolute; left:var(--sx,0); top:var(--sy,0); width:14px; height:14px; border-radius:50%; background:var(--accent); transform:translate(-50%,-50%); opacity:0; transition:left 1.5s cubic-bezier(.4,0,.3,1), top 1.5s cubic-bezier(.4,0,.3,1), opacity .7s ease; }
+.hexfx.go .hx-dot{ opacity:1; left:100px; top:80px; animation:dotPulse 1.2s ease-in-out infinite; }
+.hexfx .hx-dot.out{ opacity:0 !important; animation:none; }
+.dot-particle{ position:absolute; border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; }
+@keyframes dotPulse{ 0%{ box-shadow:0 0 0 0 rgba(230,57,70,.5); } 70%{ box-shadow:0 0 0 12px rgba(230,57,70,0); } 100%{ box-shadow:0 0 0 0 rgba(230,57,70,0); } }
+@media (prefers-reduced-motion:reduce){ .hexfx{ display:none; } }
+
+/* === ASSISTENTE (intent router) === */
+.ask{ margin-top:40px; max-width:720px; }
+.ask-bar{ display:flex; gap:10px; }
+.ask-bar input{ flex:1; font-family:'Manrope',sans-serif; font-size:16px; padding:16px 22px; border:1.5px solid var(--rule); border-radius:100px; background:var(--bg-card); color:var(--ink); outline:none; transition:border-color .2s; }
+.ask-bar input:focus{ border-color:var(--accent); }
+.ask-bar button{ font-family:'Manrope',sans-serif; font-weight:600; font-size:15px; padding:0 30px; border-radius:100px; border:none; background:var(--accent); color:#fff; cursor:pointer; transition:background .2s; }
+.ask-bar button:hover{ background:var(--accent-deep); }
+.ask-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.chip{ font-family:'Manrope',sans-serif; font-size:13px; font-weight:500; padding:7px 16px; border-radius:100px; border:1px solid var(--rule); background:transparent; color:var(--ink-soft); cursor:pointer; transition:all .2s; text-decoration:none; }
+.chip:hover{ border-color:var(--ink); color:var(--ink); }
+.ask-results{ margin-top:22px; display:flex; flex-direction:column; gap:12px; }
+.ask-card{ background:var(--bg-card); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:10px; padding:22px 24px; opacity:0; transform:translateY(8px); animation:askIn .4s forwards; }
+@keyframes askIn{ to{ opacity:1; transform:none; } }
+.ask-card h4{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:18px; color:var(--ink); margin:0 0 6px; }
+.ask-card p{ font-size:14.5px; line-height:1.55; color:var(--ink-soft); margin:0 0 14px; }
+.ask-cta{ display:inline-flex; align-items:center; gap:6px; font-family:'Manrope',sans-serif; font-weight:600; font-size:14px; color:#fff; background:var(--ink); padding:10px 22px; border-radius:100px; text-decoration:none; transition:background .2s; }
+.ask-cta:hover{ background:var(--accent); }
+@media(max-width:560px){ .ask-bar{ flex-direction:column; } .ask-bar button{ padding:15px; } }
+
+/* === NAV SEARCH (lente) === */
+.nav-search{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; border:1.5px solid var(--rule); color:var(--ink-soft); background:transparent; transition:border-color .2s, color .2s; flex:0 0 auto; text-decoration:none; }
+.nav-search:hover{ border-color:var(--accent); color:var(--accent); }
+.nav-search svg{ width:17px; height:17px; display:block; }
+@media (max-width:860px){ .nav-links a.nav-search{ display:inline-flex; } }
+
+/* ===== B (premium) + C (dark mode + spotlight) ===== */
+/* paper grain */
+.grain{ position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+html[data-theme="dark"] .grain{ mix-blend-mode:screen; opacity:.06; }
+/* hero living aurora */
+.hero::after{ animation:aurora 16s ease-in-out infinite alternate; }
+@keyframes aurora{ 0%{ transform:translate(0,0) scale(1); } 100%{ transform:translate(-26px,18px) scale(1.12); } }
+/* theme toggle */
+.nav-theme{ padding:0; cursor:pointer; font:inherit; }
+.nav-theme .ic-sun{ display:none; }
+.nav-theme .ic-moon{ display:block; }
+html[data-theme="dark"] .nav-theme .ic-sun{ display:block; }
+html[data-theme="dark"] .nav-theme .ic-moon{ display:none; }
+/* DARK TOKENS */
+html[data-theme="dark"]{ --bg:#15140F; --bg-warm:#1C1A14; --bg-card:#201E18; --ink:#F2EFE8; --ink-soft:#CFC9BD; --ink-mute:#938E83; --rule:#34322B; --rule-soft:#2A2822; --shadow:rgba(0,0,0,0.5); --accent:#F2616E; --accent-deep:#E63946; }
+html[data-theme="dark"] body{ background:var(--bg); }
+html[data-theme="dark"] nav{ background:rgba(21,20,15,0.82); }
+html[data-theme="dark"] .manifesto{ background:#100F0B; color:#F2EFE8; }
+html[data-theme="dark"] .nl-card{ background:#100F0B; }
+html[data-theme="dark"] .quiz-result.show{ background:#100F0B; }
+html[data-theme="dark"] a[data-fx]{ background:#201E18 !important; color:#F2EFE8 !important; border:1px solid var(--rule) !important; }
+html[data-theme="dark"] .ask-cta{ background:var(--accent); color:#0A0A0A; }
+html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
+/* TITLE WIPE */
+.sec-title.wipe{ position:relative; display:inline-block; }
+.sec-title.wipe .t{ opacity:0; }
+.sec-title.wipe.in .t{ opacity:1; transition:opacity .01s .4s; }
+.sec-title.wipe::after{ content:''; position:absolute; inset:0; background:var(--accent); transform:scaleX(0); transform-origin:left center; pointer-events:none; }
+.sec-title.wipe.in::after{ animation:secWipe .9s cubic-bezier(.7,0,.2,1) forwards; }
+@keyframes secWipe{ 0%{transform:scaleX(0);transform-origin:left center;} 45%{transform:scaleX(1);transform-origin:left center;} 55%{transform:scaleX(1);transform-origin:right center;} 100%{transform:scaleX(0);transform-origin:right center;} }
+/* MAGNETIC */
+.magnetic{ transition:transform .25s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+/* SPOTLIGHT */
+.manifesto .wrap{ position:relative; z-index:1; }
+.nl-card > .nl-left, .nl-card > .nl-right{ position:relative; z-index:1; }
+.spot{ position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s; z-index:0; background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.10), transparent 62%); }
+.nl-card > .spot, .manifesto > .spot{ z-index:0; }
+.spot.on{ opacity:1; }
+@media (prefers-reduced-motion:reduce){ .sec-title.wipe .t{ opacity:1; } .sec-title.wipe::after{ display:none; } .magnetic{ transition:none; } .spot{ display:none; } .hero::after{ animation:none; } }
+
+/* === HOME: card osservatorio/toolkit/ricerca (3 colonne) === */
+.obs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+@media(max-width:900px){.obs-cards{grid-template-columns:1fr;}}
+
+/* === LIGHT-READ (luce che legge il testo) === */
+@property --litp { syntax: '<length-percentage>'; inherits: false; initial-value: 0%; }
+.light-read{ -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--litp) - 7%), rgba(0,0,0,.16) calc(var(--litp) + 7%), rgba(0,0,0,.16) 100%); mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--litp) - 7%), rgba(0,0,0,.16) calc(var(--litp) + 7%), rgba(0,0,0,.16) 100%); }
+.light-read.lit{ animation: lightRead var(--lr-dur,3s) cubic-bezier(.4,0,.2,1) var(--lr-del,0s) forwards; }
+@keyframes lightRead{ from{ --litp:-8%; } to{ --litp:116%; } }
+.manifesto-quote{ --lr-dur:3.2s; }
+@media (prefers-reduced-motion:reduce){ .light-read{ -webkit-mask-image:none; mask-image:none; } }
+/* nav: ogni voce su una sola riga (La ricerca per esteso) */
+.nav-links a{ white-space:nowrap; }
+
+.racconto-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+.racconto-text .sec-title{ margin:6px 0 18px; }
+.racconto-text p.racconto-lead{ font-size:clamp(15px,1.7vw,18px); line-height:1.6; color:var(--ink-soft); max-width:34em; }
+.racconto-frame{ display:flex; justify-content:center; }
+.racconto-video{ width:100%; max-width:330px; aspect-ratio:9/16; object-fit:cover; border-radius:22px; box-shadow:0 18px 50px rgba(20,18,14,.22); border:1px solid var(--rule); background:var(--bg-warm); display:block; }
+@media (max-width:900px){ .racconto-grid{ grid-template-columns:1fr; gap:30px; } .racconto-video{ max-width:300px; } }
+/* ===== MICRO-INTERAZIONI ===== */
+.scroll-progress{ position:fixed; top:0; left:0; height:3px; width:100%; z-index:1200; pointer-events:none; transform-origin:0 50%; transform:scaleX(0); background:linear-gradient(90deg,var(--accent),var(--accent-deep)); }
+.btn{ will-change:transform; }
+.racconto-frame{ perspective:900px; }
+.racconto-video{ transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+
+/* ===== INTRO CINEMATICA 3D ===== */
+#intro{ position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; overflow:hidden; transition:opacity 1s ease; animation: introFailsafe .6s ease 14.6s forwards; }
+.intro-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:saturate(.6) contrast(.96) brightness(1.03); animation: vidIn 1.2s ease both, vidOut 1.6s cubic-bezier(.4,0,.2,1) 5.6s forwards; }
+.intro-veil{ position:absolute; inset:0; z-index:1; pointer-events:none; animation: veilOut 1.6s ease 5.6s forwards; background: linear-gradient(180deg, rgba(244,242,236,.82) 0%, rgba(244,242,236,.72) 42%, rgba(244,242,236,.72) 58%, rgba(244,242,236,.86) 100%); }
+@keyframes vidIn{ from{opacity:0} to{opacity:1} }
+@keyframes vidOut{ to{opacity:0; transform:scale(1.22);} }
+@keyframes veilOut{ to{opacity:0;} }
+/* --- atto del rischio: le parole del rischio nello spazio, il punto le visita e diventa il marchio --- */
+.risk-field{ position:absolute; left:50%; top:50%; width:0; height:0; transform:translate(-50%,-50%); z-index:1; perspective:1100px; transform-style:preserve-3d; pointer-events:none; }
+.risk-dot{ position:absolute; left:0; top:0; width:15px; height:15px; margin:-7.5px 0 0 -7.5px; border-radius:50%; background:var(--accent); box-shadow:0 0 14px rgba(230,57,70,.85), 0 0 36px rgba(230,57,70,.35); opacity:0; will-change:transform,opacity; }
+.impact-ring{ position:absolute; left:0; top:0; width:min(46vmin,380px); height:min(46vmin,380px); margin-left:calc(min(46vmin,380px) * -0.5); margin-top:calc(min(46vmin,380px) * -0.5); transform:scale(.1); border:2px solid var(--accent); border-radius:50%; opacity:0; }
+#intro.play .impact-ring{ animation: impactR 1.05s cubic-bezier(.17,.67,.3,1) 6.2s forwards; }
+#intro.play .impact-ring.r2{ animation-delay:6.38s; animation-duration:1.2s; border-width:1px; }
+@keyframes impactR{ 0%{opacity:.9; transform:scale(.1);} 100%{opacity:0; transform:scale(2.3);} }
+.risk-word{ position:absolute; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; color:var(--ink-soft); opacity:0; white-space:nowrap; letter-spacing:-.01em; will-change:transform,opacity; }
+.risk-word.m{ font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.22em; }
+.risk-word.r{ color:var(--accent); }
+html.intro-seen #intro{ display:none !important; }
+.intro-glow{ position:absolute; inset:0; z-index:2; pointer-events:none; background: radial-gradient(60% 50% at 50% 46%, rgba(230,57,70,.10), transparent 72%); opacity:0; animation: glowIn 3.4s ease-out 1.4s forwards; }
+@keyframes glowIn{ 0%{opacity:0; transform:scale(.9);} 100%{opacity:1; transform:scale(1);} }
+.intro-stage{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; gap:34px; text-align:center; padding:24px; animation: stageZoom 10.5s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes stageZoom{ 0%{ transform:scale(.93);} 100%{ transform:scale(1);} }
+.intro-tag{ font-family:'Bricolage Grotesque', sans-serif; font-weight:500; font-size:clamp(16px,2.6vw,26px); letter-spacing:-.01em; color:var(--ink-soft); max-width:640px; line-height:1.32; }
+.intro-tag span{ display:inline-block; opacity:0; transform:translateY(12px); filter:blur(6px); animation: tagw .9s cubic-bezier(.3,.85,.3,1) forwards; animation-delay: calc(6.4s + var(--w) * .085s); }
+.intro-tag .hl{ color:var(--accent); font-weight:600; }
+@keyframes tagw{ to{ opacity:1; transform:none; filter:blur(0);} }
+.intro-mark{ position:relative; width:clamp(130px,21vw,188px); height:clamp(130px,21vw,188px); display:block; animation: coinShow 2.0s ease-in-out 9.5s forwards; }
+.intro-mark::after{ content:''; position:absolute; inset:10%; border-radius:50%; background:#0A0A0A; z-index:0; box-shadow: 0 1px 0 #080808,0 2px 0 #080808,0 3px 0 #070707,0 4px 0 #070707,0 5px 0 #060606,0 6px 0 #060606,0 7px 0 #050505,0 8px 0 #050505,0 9px 0 #040404,0 10px 0 #040404,0 11px 0 #030303,0 12px 0 #030303,0 13px 0 #020202, 0 26px 34px rgba(20,18,14,.34); opacity:0; transform:scale(.3); animation: depthIn .9s cubic-bezier(.2,.8,.2,1) 6.85s forwards; }
+@keyframes depthIn{ to{ opacity:1; transform:scale(1); } }
+.intro-mark svg{ position:relative; z-index:1; width:100%; height:100%; display:block; overflow:visible; }
+@keyframes introMarkIn{ 0%{ transform: perspective(900px) rotateX(60deg) scale(.55); } 100%{ transform: perspective(900px) rotateX(0deg) scale(1); } }
+@keyframes coinShow{ 0%{ transform: perspective(900px) rotateX(0deg); } 18%{ transform: perspective(900px) rotateX(30deg); } 50%{ transform: perspective(900px) rotateX(33deg); } 100%{ transform: perspective(900px) rotateX(0deg); } }
+.ip{ transform-box:fill-box; transform-origin:center; opacity:0; }
+.ip-disc{ animation: ipDisc 1.0s cubic-bezier(.2,.8,.2,1) 6.7s forwards; }
+.ip-v{ animation: ipV .7s cubic-bezier(.2,.8,.2,1) 7.15s forwards; }
+.ip-h{ animation: ipH .7s cubic-bezier(.2,.8,.2,1) 7.35s forwards; }
+.ip-dot{ animation: ipDot .7s cubic-bezier(.2,.9,.3,1.4) 6.3s forwards; }
+.ip-lens{ transform-box:view-box; transform-origin:0 0; opacity:0; animation: ipLens 1.7s cubic-bezier(.25,.9,.3,1) 7.65s forwards; }
+@keyframes ipDisc{ 0%{opacity:0; transform:scale(.2) rotate(-40deg);} 100%{opacity:1; transform:scale(1) rotate(0);} }
+@keyframes ipV{ 0%{opacity:0; transform:scaleY(0);} 100%{opacity:1; transform:scaleY(1);} }
+@keyframes ipH{ 0%{opacity:0; transform:scaleX(0);} 100%{opacity:1; transform:scaleX(1);} }
+@keyframes ipDot{ 0%{opacity:0; transform:scale(0);} 45%{opacity:1; transform:scale(2.4); filter:drop-shadow(0 0 16px rgba(230,57,70,.95));} 100%{opacity:1; transform:scale(1); filter:drop-shadow(0 0 5px rgba(230,57,70,.4));} }
+@keyframes ipLens{ 0%{opacity:0; transform:translate(200px,200px) rotate(765deg);} 16%{opacity:1;} 100%{opacity:1; transform:translate(200px,200px) rotate(45deg);} }
+.intro-word{ font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:clamp(50px,10vw,108px); letter-spacing:-.055em; line-height:1; color:var(--ink); display:flex; perspective:600px; }
+.intro-word span{ display:inline-block; opacity:0; transform-origin:50% 100%; transform:rotateX(-95deg) translateY(.22em); animation: letter3d 1s cubic-bezier(.2,.85,.25,1) forwards; animation-delay: calc(8.1s + var(--i) * .14s); }
+.intro-word .q{ color:var(--accent); }
+@keyframes letter3d{ 0%{opacity:0; transform:rotateX(-95deg) translateY(.22em);} 55%{opacity:1;} 100%{opacity:1; transform:rotateX(0) translateY(0);} }
+.intro-sub{ font-family:'Manrope', sans-serif; font-weight:600; font-size:clamp(12.5px,2vw,16px); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); opacity:0; transform:translateY(8px); animation: subIn 1s ease 8.9s forwards; }
+@keyframes subIn{ to{opacity:1; transform:none;} }
+.intro-stage.flyout .intro-tag, .intro-stage.flyout .intro-word, .intro-stage.flyout .intro-sub{ opacity:0; transform:translateY(-12px); transition:opacity .6s ease, transform .6s ease; }
+#intro.out{ opacity:0; }
+@keyframes introFailsafe{ to{opacity:0; visibility:hidden;} }
+@media (prefers-reduced-motion:reduce){ #intro{ display:none !important; } }
+</style>
+<script>document.documentElement.className += ' js';try{if(localStorage.getItem('aniqrc-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}try{if(sessionStorage.getItem('aniqrc-intro')==='1'||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('intro-seen');}catch(e){}</script>
+</head>
+<body>
+<div id="intro" aria-hidden="true">
+  <video class="intro-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+    <source src="intro-bg.mp4" type="video/mp4">
+    <source src="intro-bg.webm" type="video/webm">
+  </video>
+  <div class="intro-veil"></div>
+  <div class="intro-glow"></div>
+  <div class="intro-stage">
+    <div class="intro-tag" aria-label="Il riferimento per il Quality nurse improvement."><span style="--w:0">Il</span> <span style="--w:1">riferimento</span> <span style="--w:2">per</span> <span style="--w:3">il</span> <span class="hl" style="--w:4">Quality</span> <span class="hl" style="--w:5">nurse</span> <span class="hl" style="--w:6">improvement</span><span style="--w:7">.</span></div>
+    <span class="intro-mark" id="introCoin">
+      <span class="risk-field" aria-hidden="true">
+        <span class="risk-word" style="left:calc(50% - 210px); top:calc(50% - 130px); font-size:30px;">Sicurezza</span>
+        <span class="risk-word r" style="left:calc(50% + 150px); top:calc(50% - 160px); font-size:26px;">Prevenzione</span>
+        <span class="risk-word" style="left:calc(50% - 170px); top:calc(50% + 110px); font-size:22px;">Near miss</span>
+        <span class="risk-word r" style="left:calc(50% + 200px); top:calc(50% + 60px); font-size:24px;">Audit</span>
+        <span class="risk-word" style="left:calc(50% - 70px); top:calc(50% - 215px); font-size:22px;">Eventi sentinella</span>
+        <span class="risk-word" style="left:calc(50% + 180px); top:calc(50% + 170px); font-size:26px;">Checklist</span>
+        <span class="risk-word" style="left:calc(50% - 230px); top:calc(50% - 20px); font-size:28px;">Barriere</span>
+        <span class="risk-word" style="left:calc(50% + 80px); top:calc(50% + 210px); font-size:24px;">Evidenze</span>
+        <span class="risk-dot"></span>
+        <span class="impact-ring"></span>
+        <span class="impact-ring r2"></span>
+      </span>
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle class="ip ip-disc" cx="200" cy="200" r="160" fill="#0A0A0A"/>
+        <rect class="ip ip-v" x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+        <rect class="ip ip-h" x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+        <circle class="ip ip-dot" cx="200" cy="200" r="9" fill="#E63946"/>
+        <g class="ip-lens" transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+      </svg>
+    </span>
+    <div class="intro-word" aria-label="ANIQRC"><span style="--i:0">A</span><span style="--i:1">N</span><span style="--i:2">I</span><span class="q" style="--i:3">Q</span><span style="--i:4">R</span><span style="--i:5">C</span></div>
+    <div class="intro-sub">Associazione Nazionale Infermieri · Qualità e Rischio Clinico</div>
+  </div>
+</div>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.min.js"></script>
+<script>(function(){
+  var intro=document.getElementById('intro');
+  if(!intro || document.documentElement.classList.contains('intro-seen')) return;
+  var iv=intro.querySelector('.intro-video'); if(iv){ try{ iv.playbackRate=0.55; }catch(e){} }
+  var M=window.Motion; if(!M || !M.timeline) return;
+  var field=intro.querySelector('.risk-field'); if(!field) return;
+  intro.classList.add('play');
+  var dot=intro.querySelector('.risk-dot');
+  var seq=[];
+  intro.querySelectorAll('.risk-word').forEach(function(w,i){
+    seq.push([w,{ z:[-950-(i%3)*120, 80], opacity:[0,.7,.7,0] },
+      {duration:2.9, easing:[.3,.1,.6,.95], offset:[0,.18,.78,1], at:.7+i*.4}]);
+  });
+  seq.push([dot,{opacity:[0,1]},{duration:.3, at:1.05}]);
+  seq.push([dot,{ z:-120,
+    x:[-20,-140,190,235,-180,135,0],
+    y:[30,-110,-145,75,-5,222,0] },
+    {duration:5.05, offset:[0,.10,.26,.44,.62,.82,1],
+     easing:['ease-in-out','ease-in-out','ease-in-out','ease-in-out','ease-in-out','ease-in-out'], at:1.1}]);
+  seq.push([dot,{scale:[1,1.9,1], x:0, y:0, z:-120},{duration:.5, easing:'ease-out', at:6.15}]);
+  seq.push([dot,{opacity:[1,0], scale:[1,.55], x:0, y:0, z:-120},{duration:.5, easing:'ease-in', at:6.35}]);
+  try{ M.timeline(seq); }catch(e){ intro.classList.remove('play'); }
+})();</script>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <span class="nm">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946"/>
+          <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+        </svg>
+      </span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#ambiti">Ambiti</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="#standard-iso">Standard ISO</a>
+      <a href="#documenti">Documenti</a>
+      <a href="#assistente" class="nav-search" id="navSearch" aria-label="Cerca nel sito" title="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></a>
+      <button type="button" class="nav-search nav-theme" id="navTheme" aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.3 1.3M17.7 17.7L19 19M19 5l-1.3 1.3M6.3 17.7L5 19"/></svg></button>
+      <a href="#newsletter" class="nav-cta nav-news"><span class="nl-full">Iscriviti alla newsletter</span><span class="nl-short">Newsletter</span></a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow">Associazione Nazionale<span class="dot"></span>Fondata MMXXVI<span class="dot"></span>Infermieri</div>
+
+    <div class="hero-lockup">
+      <div class="hero-mark">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marchio ANIQRC">
+          <defs>
+            <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+              <stop offset="62%" stop-color="#E63946" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#E63946" stop-opacity="0.16"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="184" fill="url(#halo)" class="lg-halo"/>
+          <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+          <g class="cycle-ring">
+            <circle cx="200" cy="200" r="130" fill="none" stroke="#F4F2EC" stroke-width="1" opacity="0.5"/>
+            <path d="M 196,66 L 204,70 L 196,74" fill="none" stroke="#F4F2EC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+          </g>
+          <rect x="186" y="100" width="28" height="200" fill="#F4F2EC" class="lg-bar-v"/>
+          <rect x="100" y="186" width="200" height="28" fill="#F4F2EC" class="lg-bar-h"/>
+          <circle cx="200" cy="200" r="9" fill="#E63946" class="lg-dot"/>
+          <g class="lens"><g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g></g>
+        </svg>
+      </div>
+
+      <div class="hero-text">
+        <h1 class="hero-acronym">ANI<span class="q">Q</span>RC</h1>
+        <p class="hero-name">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</p>
+      </div>
+    </div>
+
+    <p data-editable="source" data-path="/index.html" data-key="hero-lead" class="hero-lead">
+      La comunità degli infermieri italiani che lavorano sulla <strong>qualità dell'assistenza</strong>, sul <strong>rischio clinico</strong>, sullo sviluppo di <strong>procedure e protocolli</strong> e sulla <strong>ricerca</strong> per la sicurezza delle cure.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#associati" class="btn btn-primary">Associati <span class="arrow">→</span></a>
+      <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Il manifesto</a>
+    </div>
+
+    <p class="hero-pride">Qualcosa di cui noi di ANI<span class="q">Q</span>RC andiamo fieri.</p>
+
+    <div class="hero-actions hero-actions-2">
+      <a href="osservatorio.html" class="btn btn-dark">Osservatorio <span class="arrow">→</span></a>
+      <a href="toolkit.html" class="btn btn-outline">Toolkit <span class="arrow">→</span></a>
+      <a href="ricerca.html" class="btn btn-outline">La ricerca <span class="arrow">→</span></a>
+    </div>
+
+    <p class="hero-pride hero-pride-2">E presto, anche di persona: dove si parla di qualità e sicurezza, ANI<span class="q">Q</span>RC vuole esserci.</p>
+    <div class="hero-actions hero-actions-3">
+      <a href="eventi.html" class="btn btn-primary">I prossimi eventi di ANIQRC <span class="arrow">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Rischio Clinico<span class="sep">·</span></span>
+    <span>Quality Improvement<span class="sep">·</span></span>
+    <span>Procedure & Protocolli<span class="sep">·</span></span>
+    <span>Ricerca Infermieristica<span class="sep">·</span></span>
+    <span>Sicurezza delle Cure<span class="sep">·</span></span>
+    <span>Ciclo PDCA<span class="sep">·</span></span>
+    <span>Rischio Clinico<span class="sep">·</span></span>
+    <span>Quality Improvement<span class="sep">·</span></span>
+    <span>Procedure & Protocolli<span class="sep">·</span></span>
+    <span>Ricerca Infermieristica<span class="sep">·</span></span>
+    <span>Sicurezza delle Cure<span class="sep">·</span></span>
+    <span>Ciclo PDCA<span class="sep">·</span></span>
+  </div>
+</div>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto sec-pad" id="manifesto">
+  <div class="deco-q">Q</div>
+  <div class="wrap">
+    <div class="sec-label reveal">Manifesto</div>
+    <p class="manifesto-quote">
+      <span class="soft">Crediamo che la</span> sicurezza delle cure <span class="soft">non sia un esito accessorio, ma il</span> fine ultimo <span class="soft">della pratica infermieristica. Per questo riuniamo chi misura, previene, scrive procedure e fa</span> <span class="hl">ricerca</span> <span class="soft">—  trasformando il rischio in</span> <span class="hl">qualità</span><span class="soft">.</span>
+    </p>
+    <div class="manifesto-attr reveal">— Giuseppe Fumai <span>·</span> Fondatore</div>
+    <a class="manifesto-mail reveal" href="mailto:giuseppe.fumai@aniqrc.it" style="display:inline-flex;align-items:center;margin-top:16px;padding:9px 18px;background:var(--bg);color:var(--ink);font-size:0.92rem;font-weight:600;text-decoration:none;border-radius:10px;letter-spacing:0.01em;box-shadow:0 2px 10px rgba(0,0,0,0.18);">Scrivi a&nbsp;giuseppe.fumai@<span style="color:var(--accent);">aniqrc</span>.it</a>
+
+    <div class="manifesto-cards reveal">
+      <div class="mcard">
+        <p class="mcard-quote">La <span class="hl">qualità</span> non è un traguardo che si raggiunge una volta: è una disciplina quotidiana. Si costruisce in ogni gesto, in ogni protocollo condiviso, in ogni errore di cui abbiamo il <span class="hl">coraggio</span> di parlare.</p>
+        <div class="mcard-attr">— Claudio Morelli <span>·</span> Fondatore</div>
+        <a class="mcard-mail" href="mailto:claudio.morelli@aniqrc.it">Scrivi a&nbsp;claudio.morelli@<span style="color:var(--accent);">aniqrc</span>.it</a>
+      </div>
+      <div class="mcard">
+        <p class="mcard-quote">Dietro ogni dato, ogni indicatore, ogni audit, c'è una <span class="hl">persona</span> che si affida a noi. Misurare la qualità è il modo più concreto di rispettare quella <span class="hl">fiducia</span>.</p>
+        <div class="mcard-attr">— Giuseppe Colonna <span>·</span> Fondatore</div>
+        <a class="mcard-mail" href="mailto:giuseppe.colonna@aniqrc.it">Scrivi a&nbsp;giuseppe.colonna@<span style="color:var(--accent);">aniqrc</span>.it</a>
+      </div>
+      <div class="mcard">
+        <p class="mcard-quote">La qualità di un Paese non si misura in una sola struttura, ma nella sua capacità di <span class="hl">fare rete</span>. Il nostro compito è unire le realtà nazionali — ospedali, territori, professionisti — perché nessuna <span class="hl">buona pratica</span> resti isolata.</p>
+        <div class="mcard-attr">— Francesco Menolascina <span>·</span> Fondatore</div>
+        <a class="mcard-mail" href="mailto:francesco.menolascina@aniqrc.it">Scrivi a&nbsp;francesco.menolascina@<span style="color:var(--accent);">aniqrc</span>.it</a>
+      </div>
+    </div>
+    <a href="manifesto-aniqrc.pdf" target="_blank" rel="noopener" class="manifesto-doc">Leggi il manifesto completo (PDF) <span>&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ============ AMBITI ============ -->
+<!-- ============ RACCONTO (storytelling Instagram) ============ -->
+<section class="sec-pad" id="racconto">
+  <div class="wrap">
+    <div class="racconto-grid">
+      <div class="racconto-text reveal">
+        <div class="sec-label">Verso il lancio · il racconto</div>
+        <h2 class="sec-title">Sessanta scatti, <span class="accent">una storia</span>.</h2>
+        <p class="racconto-lead">Stiamo presentando ANIQRC un'immagine alla volta — i valori, gli strumenti, le persone, fino al nome. È il racconto che cresce giorno dopo giorno su Instagram: la qualità delle cure che prende forma, un fotogramma dopo l'altro.</p>
+      </div>
+      <div class="racconto-frame reveal">
+        <video class="racconto-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+          <source src="home-storie.mp4" type="video/mp4">
+          <source src="home-storie.webm" type="video/webm">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-pad" id="ambiti">
+  <div class="wrap">
+    <div class="sec-label reveal">I quattro ambiti</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-1" class="sec-title reveal">Una sola comunità,<br>quattro <span class="accent">discipline</span> che si parlano.</h2>
+
+    <div class="ambiti-grid reveal">
+      <div class="ambito">
+        <div class="ambito-num">01 — RISK</div>
+        <h3>Rischio clinico</h3>
+        <p>Per il Ministero della Salute è il fallimento nella pianificazione o nell'esecuzione di una sequenza di azioni che impedisce di raggiungere l'obiettivo voluto, non attribuibile al caso. Lo affrontiamo con incident reporting, audit clinici, root cause analysis e FMEA/FMECA, costruendo una cultura della segnalazione che apprende dall'errore senza colpevolizzare.</p>
+      </div>
+      <div class="ambito">
+        <div class="ambito-num">02 — QUALITY</div>
+        <h3>Quality improvement</h3>
+        <p>Il miglioramento continuo si fonda sul ciclo PDCA di Deming — pianificare, fare, verificare, agire. Lavoriamo su indicatori di processo e di esito, accreditamento e sistemi di gestione della qualità (ISO 9001, ISO 7101, Joint Commission International) calati nella pratica infermieristica quotidiana.</p>
+      </div>
+      <div class="ambito">
+        <div class="ambito-num">03 — PROCESS</div>
+        <h3>Procedure e protocolli</h3>
+        <p>Linee guida, protocolli, procedure e istruzioni operative traducono le evidenze nella pratica, riducono la variabilità e rendono riproducibili e sicuri i percorsi assistenziali. Ne promuoviamo lo sviluppo rigoroso, l'adozione condivisa e l'aggiornamento sistematico.</p>
+      </div>
+      <div class="ambito">
+        <div class="ambito-num">04 — RESEARCH</div>
+        <h3>Ricerca</h3>
+        <p>Promuoviamo la ricerca infermieristica su qualità e sicurezza delle cure: revisioni sistematiche e scoping review, studi osservazionali, validazione di strumenti e indicatori, con diffusione su riviste peer-reviewed e nei congressi scientifici.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTESTO ============ -->
+<section class="sec-pad" id="contesto" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Contesto</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-2" class="sec-title reveal">Su cosa <span class="accent">poggiamo</span>.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-1" class="sec-intro reveal">Quattro pietre miliari, scientifiche e normative, che fondano il lavoro sulla qualità e sul rischio clinico in Italia.</p>
+
+    <div class="contesto-grid reveal">
+      <div class="ctx">
+        <div class="ctx-tag">Diritto</div>
+        <h3 class="ctx-h">La sicurezza delle cure è un diritto</h3>
+        <p>La Legge 24/2017 (Gelli-Bianco) sancisce che <em>la sicurezza delle cure è parte costitutiva del diritto alla salute</em> e si realizza anche attraverso la prevenzione e la gestione del rischio connesso alle prestazioni sanitarie.</p>
+        <a class="ctx-link" href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2017;24" target="_blank" rel="noopener">Consulta la Legge 24/2017 →</a>
+      </div>
+      <div class="ctx">
+        <div class="ctx-tag">Cultura</div>
+        <h3 class="ctx-h">Imparare dall'errore</h3>
+        <p>Dal rapporto dell'Institute of Medicine «To Err Is Human» (1999) nasce l'approccio sistemico: l'errore è una componente inevitabile, e il compito è creare condizioni che ne riducano probabilità e conseguenze, anziché cercare il colpevole.</p>
+        <a class="ctx-link" href="https://nap.nationalacademies.org/catalog/9728/to-err-is-human-building-a-safer-health-system" target="_blank" rel="noopener">Consulta «To Err Is Human» →</a>
+      </div>
+      <div class="ctx">
+        <div class="ctx-tag">Metodo</div>
+        <h3 class="ctx-h">Il ciclo del miglioramento</h3>
+        <p>Il ciclo di Deming — Plan, Do, Check, Act — è il motore del miglioramento continuo della qualità: misurare, intervenire, verificare e standardizzare, in modo iterativo. È il principio reso esplicito anche nel nostro marchio.</p>
+        <a class="ctx-link" href="https://asq.org/quality-resources/pdca-cycle" target="_blank" rel="noopener">Cos'è il ciclo PDCA →</a>
+      </div>
+      <div class="ctx">
+        <div class="ctx-tag">Governance</div>
+        <h3 class="ctx-h">Le linee guida e le società scientifiche</h3>
+        <p>Il D.M. 2 agosto 2017, in attuazione della Legge Gelli, riconosce alle società scientifiche e alle associazioni tecnico-scientifiche delle professioni sanitarie il compito di elaborare le linee guida cui i professionisti si attengono. È l'orizzonte istituzionale verso cui cresciamo.</p>
+        <a class="ctx-link" href="https://www.gazzettaufficiale.it/eli/id/2017/08/10/17A05598/sg" target="_blank" rel="noopener">Consulta il D.M. 2 agosto 2017 →</a>
+      </div>
+    </div>
+
+    <div class="ctx-fonti reveal" style="margin-top:50px;border-top:1px solid var(--rule);padding-top:42px;">
+      <div class="sec-label">Fonti istituzionali</div>
+      <p class="sec-intro" style="margin-top:6px;">Le fonti ufficiali su sicurezza delle cure, rischio clinico e professione infermieristica. Sempre disponibili, a prescindere dal flusso di notizie.</p>
+      <div class="fonti-list" style="margin-top:24px;">
+        <a class="fonte" href="https://www.salute.gov.it/portale/sicurezzacure/homeSicurezzaCure.jsp" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">Ministero della Salute</div><div class="fonte-desc">Sicurezza delle cure e gestione del rischio clinico · Raccomandazioni ministeriali</div></div><div class="fonte-arrow">↗</div></a>
+        <a class="fonte" href="https://www.agenas.gov.it/" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">AGENAS</div><div class="fonte-desc">Agenzia Nazionale per i Servizi Sanitari Regionali · Qualità e sicurezza delle cure</div></div><div class="fonte-arrow">↗</div></a>
+        <a class="fonte" href="https://www.buonepratichesicurezzasanita.it/" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">Osservatorio Buone Pratiche</div><div class="fonte-desc">Osservatorio nazionale delle buone pratiche sulla sicurezza nella sanità</div></div><div class="fonte-arrow">↗</div></a>
+        <a class="fonte" href="https://www.fnopi.it/" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">FNOPI</div><div class="fonte-desc">Federazione Nazionale degli Ordini delle Professioni Infermieristiche</div></div><div class="fonte-arrow">↗</div></a>
+        <a class="fonte" href="https://www.iss.it/" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">Istituto Superiore di Sanità</div><div class="fonte-desc">Ricerca, sorveglianza e linee guida del Sistema Nazionale (SNLG)</div></div><div class="fonte-arrow">↗</div></a>
+        <a class="fonte" href="https://www.who.int/health-topics/patient-safety" target="_blank" rel="noopener"><div class="fonte-main"><div class="fonte-name">WHO — Patient Safety</div><div class="fonte-desc">Organizzazione Mondiale della Sanità · Sicurezza del paziente a livello globale</div></div><div class="fonte-arrow">↗</div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="sec-pad" id="storia-sicurezza">
+  <div class="wrap">
+    <div class="sec-label reveal">La storia, in breve</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-3" class="sec-title reveal">Vent'anni di <span class="accent">sicurezza delle cure</span>.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-2" class="sec-intro reveal">Le tappe che hanno costruito, in Italia e nel mondo, la cultura della qualità e del rischio clinico.</p>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-year">1999</div><div class="tl-h">«To Err Is Human»</div><div class="tl-p">Il rapporto dell'Institute of Medicine porta l'errore in sanità al centro del dibattito: nasce l'approccio sistemico, che cerca le cause nei processi e non nel colpevole.</div></div>
+      <div class="tl-item reveal"><div class="tl-year">2005–2008</div><div class="tl-h">Le prime Raccomandazioni ministeriali</div><div class="tl-p">Il Ministero della Salute avvia le Raccomandazioni per la sicurezza dei pazienti: indicazioni operative per prevenire gli eventi avversi più gravi.</div></div>
+      <div class="tl-item reveal"><div class="tl-year">2015</div><div class="tl-h">DM 70 — standard ospedalieri</div><div class="tl-p">Vengono definiti gli standard qualitativi, strutturali e quantitativi dell'assistenza ospedaliera, con soglie di volume ed esito.</div></div>
+      <div class="tl-item reveal"><div class="tl-year">2017</div><div class="tl-h">Legge Gelli-Bianco (L. 24/2017)</div><div class="tl-p">La sicurezza delle cure diventa parte costitutiva del diritto alla salute. Il DM 2 agosto 2017 affida a società e associazioni tecnico-scientifiche l'elaborazione delle linee guida.</div></div>
+      <div class="tl-item reveal"><div class="tl-year">2022</div><div class="tl-h">DM 77 — assistenza territoriale</div><div class="tl-p">La riforma dell'assistenza territoriale ridisegna i servizi di prossimità, con un ruolo crescente dell'infermiere nella continuità delle cure.</div></div>
+      <div class="tl-item reveal"><div class="tl-year">2025</div><div class="tl-h">Spazio Europeo dei Dati Sanitari (EHDS)</div><div class="tl-p">Il Regolamento UE 2025/327 apre la stagione della condivisione e del riuso dei dati sanitari: governance, qualità del dato e tutela del cittadino diventano centrali.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATTIVITÀ ============ -->
+
+<!-- ============ STRUMENTI (Osservatorio + Toolkit) ============ -->
+<section class="sec-pad" id="strumenti">
+  <div class="wrap">
+    <div class="sec-label reveal">Osservatorio · dati in tempo reale</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-5" class="sec-title reveal">Dai principi ai <span class="accent">dati</span>.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-3" class="sec-intro reveal">Tre spazi vivi al servizio della comunità: un osservatorio che legge la qualità delle cure in Italia attraverso i dati ufficiali, un toolkit operativo per chi misura e valuta, e la ricerca infermieristica con metodo trasparente ed evidenze in tempo reale.</p>
+
+    <div class="mini-obs reveal">
+      <div class="mo-stat"><div class="mo-num" data-to="59" data-dec="0" data-suffix="%">0</div><div class="mo-lab">Fratture di femore operate entro 48h <span>· mediana naz. 2023</span></div></div>
+      <div class="mo-stat"><div class="mo-num" data-to="6,2" data-dec="1" data-suffix="">0</div><div class="mo-lab">Infermieri ogni 1.000 abitanti — sotto la media UE (8,5) <span>· 2021</span></div></div>
+      <div class="mo-stat"><div class="mo-num" data-to="13" data-dec="0" data-suffix="/21">0</div><div class="mo-lab">Regioni promosse nei LEA in tutte le aree <span>· 2022</span></div></div>
+    </div>
+
+    <div class="obs-cards reveal">
+      <a data-fx href="osservatorio.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--ink);color:var(--bg);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+        <span style="position:absolute;bottom:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(230,57,70,0.18) 0%,transparent 70%);pointer-events:none;"></span>
+        <span style="position:relative;z-index:2;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">01 — OSSERVATORIO</span>
+        <span style="position:relative;z-index:2;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;">Osservatorio Nazionale<br>Qualità &amp; Rischio Clinico</span>
+        <span style="position:relative;z-index:2;font-size:14.5px;color:rgba(244,242,236,0.72);line-height:1.6;">Esiti ospedalieri (PNE-AGENAS), eventi sentinella, infezioni correlate all'assistenza, densità infermieristica e adempimento dei LEA — con il divario Nord-Sud che li attraversa. Dati ufficiali, citati e aggiornabili.</span>
+        <span style="position:relative;z-index:2;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Esplora i dati &rarr;</span>
+      </a>
+
+      <a data-fx href="toolkit.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s,border-color .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';this.style.borderColor='var(--accent)';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--rule)';">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">02 — TOOLKIT</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;color:var(--ink);">Il Toolkit<br>della qualità</span>
+        <span style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Calcolatori che funzionano nel browser (Kappa di Cohen, dimensione del campione), una libreria di strumenti validati (PROM, PREM, Q-DIO, MMAT, PRISMA-ScR) e le 19 Raccomandazioni ministeriali per la sicurezza dei pazienti.</span>
+        <span style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Apri gli strumenti &rarr;</span>
+      </a>
+
+      <a data-fx href="ricerca.html" style="position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;background:var(--bg-card);color:var(--ink);border:1px solid var(--rule);border-radius:10px;padding:40px 36px;transition:transform .4s cubic-bezier(0.16,1,0.3,1),box-shadow .4s,border-color .4s;" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px var(--shadow)';this.style.borderColor='var(--accent)';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='var(--rule)';">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:18px;">03 &mdash; LA RICERCA</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;color:var(--ink);">La ricerca<br>infermieristica</span>
+        <span style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Il metodo delle nostre revisioni (scoping review, PRISMA-ScR, pre-registrazione OSF), le evidenze da PubMed in tempo reale e le linee di ricerca dell'associazione in qualit&agrave; e rischio clinico.</span>
+        <span style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent);">Scopri la ricerca &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTOVALUTAZIONE ============ -->
+<section class="sec-pad" id="autovalutazione" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Mettiti alla prova</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-6" class="sec-title reveal">Quanto è sicura la tua <span class="accent">pratica</span>?</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-4" class="sec-intro reveal">Cinque domande rapide sulla sicurezza delle cure: rispondi e ottieni subito un punteggio con qualche spunto. Resta tutto nel tuo browser, nessun dato viene inviato.</p>
+    <div class="quiz-card reveal" id="autoQuiz">
+      <div class="q-item" data-q="1"><div class="q-q"><span class="qn">01</span>Nella tua struttura si applica la checklist di sala operatoria (o un'analoga verifica pre-procedura)?</div><div class="q-opts"><button class="q-opt" data-v="1">Sì</button><button class="q-opt" data-v="0">No</button></div></div>
+      <div class="q-item" data-q="2"><div class="q-q"><span class="qn">02</span>Esiste un sistema di segnalazione degli eventi avversi e dei near-miss di tipo non punitivo?</div><div class="q-opts"><button class="q-opt" data-v="1">Sì</button><button class="q-opt" data-v="0">No</button></div></div>
+      <div class="q-item" data-q="3"><div class="q-q"><span class="qn">03</span>Viene effettuata la riconciliazione della terapia nei passaggi di cura (ingresso, trasferimento, dimissione)?</div><div class="q-opts"><button class="q-opt" data-v="1">Sì</button><button class="q-opt" data-v="0">No</button></div></div>
+      <div class="q-item" data-q="4"><div class="q-q"><span class="qn">04</span>Il personale riceve formazione periodica su sicurezza delle cure e gestione del rischio clinico?</div><div class="q-opts"><button class="q-opt" data-v="1">Sì</button><button class="q-opt" data-v="0">No</button></div></div>
+      <div class="q-item" data-q="5"><div class="q-q"><span class="qn">05</span>I farmaci ad alto rischio (es. potassio concentrato, farmaci LASA) sono gestiti con precauzioni dedicate?</div><div class="q-opts"><button class="q-opt" data-v="1">Sì</button><button class="q-opt" data-v="0">No</button></div></div>
+      <div class="quiz-result" id="quizResult"></div>
+      <p class="quiz-note">Strumento divulgativo di auto-riflessione, non una valutazione formale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="sec-pad" id="news">
+  <div class="wrap">
+    <div class="sec-label reveal">Aggiornamenti</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-7" class="sec-title reveal">News dal <span class="accent">nursing</span> e dal rischio clinico.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-5" class="sec-intro reveal">Una rassegna automatica da fonti italiane di informazione sanitaria e infermieristica, aggiornata in tempo reale. Le notizie rimandano agli articoli originali.</p>
+
+    <div id="news-list" class="news-grid reveal">
+      <div class="news-loading">Caricamento delle notizie in corso…</div>
+    </div>
+
+    <p class="news-note">Le notizie provengono da feed RSS pubblici di testate di informazione sanitaria. ANIQRC non è responsabile dei contenuti delle fonti esterne; ogni titolo rimanda all'articolo originale.</p>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="sec-pad" id="media" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Media</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-8" class="sec-title reveal">Guarda e ascolta la <span class="accent">qualità</span> che cambia.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-6" class="sec-intro reveal">Voci dal mondo (Institute for Healthcare Improvement) e dall'Italia (FNOPI), più i podcast italiani su professione, rischio e innovazione in sanità. I flussi si aggiornano in tempo reale.</p>
+
+    <div class="video-channels reveal">
+      <div class="video-channel">
+        <div class="vc-head"><span class="vc-flag">EN</span> Institute for Healthcare Improvement</div>
+        <div id="video-ihi" class="video-grid-2"><div class="news-loading">Caricamento…</div></div>
+      </div>
+      <div class="video-channel">
+        <div class="vc-head"><span class="vc-flag">IT</span> FNOPI · Federazione Infermieri</div>
+        <div id="video-fnopi" class="video-grid-2"><div class="news-loading">Caricamento…</div></div>
+      </div>
+    </div>
+    <p class="news-note">Fonti: canali YouTube ufficiali di IHI e FNOPI. I video rimandano a YouTube.</p>
+
+    <div class="sec-label reveal" style="margin-top:58px;">Podcast</div>
+    <h3 class="sub-title reveal">Ascolta la <span class="accent">sanità</span> che cambia.</h3>
+    <div class="podcast-wrap reveal">
+      <div class="pod-embed">
+        <iframe src="https://open.spotify.com/embed/show/4hyO8ns6R9km6pZWLNVLoF?utm_source=generator" width="100%" height="232" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Medcast Italia"></iframe>
+      </div>
+      <div class="pod-cards">
+        <div class="pod-card">
+          <div class="pod-name">Skeptical Health</div>
+          <div class="pod-desc">Risk management, RSA, innovazione organizzativa e professioni sanitarie.</div>
+          <div class="pod-btns">
+            <a class="spo" href="https://open.spotify.com/search/Skeptical%20Health/shows" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://podcasts.apple.com/it/search?term=Skeptical%20Health" target="_blank" rel="noopener">Apple</a>
+          </div>
+        </div>
+        <div class="pod-card">
+          <div class="pod-name">Medcast Italia</div>
+          <div class="pod-desc">Hot topics della professione, ricerca, digital health e innovazione in sanità.</div>
+          <div class="pod-btns">
+            <a class="spo" href="https://open.spotify.com/show/4hyO8ns6R9km6pZWLNVLoF" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://podcasts.apple.com/it/search?term=Medcast%20Italia" target="_blank" rel="noopener">Apple</a>
+          </div>
+        </div>
+        <div class="pod-card">
+          <div class="pod-name">INFERMIERI online</div>
+          <div class="pod-desc">Attualità e approfondimenti dalla e per la professione infermieristica.</div>
+          <div class="pod-btns">
+            <a class="spo" href="https://open.spotify.com/show/49ThGbl9F7Cd8bcCs3saYf" target="_blank" rel="noopener">Spotify</a>
+            <a href="https://podcasts.apple.com/it/search?term=Infermieri%20online" target="_blank" rel="noopener">Apple</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIRETTIVO ============ -->
+<section class="direttivo sec-pad" id="direttivo">
+  <div class="wrap">
+    <div class="sec-label reveal">Consiglio direttivo</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-9" class="sec-title reveal">I soci <span class="accent">fondatori</span>.</h2>
+
+    <div class="dir-grid reveal">
+      <div class="dir-card pres">
+        <div class="dir-avatar">GF</div>
+        <div class="dir-name">Giuseppe Fumai</div>
+        <div class="dir-role">Presidente</div>
+        <div class="dir-social">
+          <a class="dir-ic" href="mailto:giuseppe.fumai@aniqrc.it" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="dir-ic" href="https://www.instagram.com/aniqrc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="dir-ic" href="https://www.linkedin.com/company/aniqrc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg></a>
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-avatar">CM</div>
+        <div class="dir-name">Claudio Morelli</div>
+        <div class="dir-role">Vicepresidente</div>
+        <div class="dir-social">
+          <a class="dir-ic" href="mailto:claudio.morelli@aniqrc.it" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="dir-ic" href="https://www.instagram.com/aniqrc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="dir-ic" href="https://www.linkedin.com/company/aniqrc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg></a>
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-avatar">GC</div>
+        <div class="dir-name">Giuseppe Colonna</div>
+        <div class="dir-role">Segretario-Tesoriere</div>
+        <div class="dir-social">
+          <a class="dir-ic" href="mailto:giuseppe.colonna@aniqrc.it" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="dir-ic" href="https://www.instagram.com/aniqrc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="dir-ic" href="https://www.linkedin.com/company/aniqrc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg></a>
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-avatar">FM</div>
+        <div class="dir-name">Francesco Menolascina</div>
+        <div class="dir-role">Coordinatore della rete e sviluppo nazionale</div>
+        <div class="dir-social">
+          <a class="dir-ic" href="mailto:francesco.menolascina@aniqrc.it" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="dir-ic" href="https://www.instagram.com/aniqrc" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a class="dir-ic" href="https://www.linkedin.com/company/aniqrc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STANDARD ISO ============ -->
+<section class="sec-pad" id="standard-iso">
+  <div class="wrap">
+    <div class="sec-label reveal">Toolkit · Standard internazionali</div>
+    <h2 class="sec-title reveal">Gli standard <span class="accent">internazionali</span> ISO.</h2>
+    <p class="sec-intro reveal">Le norme ISO più rilevanti per la qualità dell'assistenza e il rischio clinico, spiegate in modo semplice. Ogni scheda rimanda alla pagina ufficiale ISO, sempre aggiornata, dove sono disponibili l'anteprima gratuita e l'acquisto della versione integrale.</p>
+
+    <div class="doc-grid reveal">
+      <a class="doc-card" href="https://www.iso.org/standard/81647.html" target="_blank" rel="noopener" style="border-color:var(--accent);">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 7101:2023</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Qualità nelle organizzazioni sanitarie</div>
+        <div class="doc-desc">La prima norma internazionale dedicata alla qualità in sanità: come costruire e mantenere un sistema di gestione per la qualità in ospedali, cliniche e servizi territoriali — leadership, rischio clinico, sicurezza del paziente, cura centrata sulla persona e miglioramento continuo (ciclo PDSA). È la norma di riferimento del lavoro di ANIQRC.</div>
+        <div class="doc-link">Anteprima e scheda ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/62085.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 9001:2015</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Sistemi di gestione per la qualità</div>
+        <div class="doc-desc">La norma di base di tutti i sistemi qualità, valida in ogni settore. Fissa i principi fondamentali — focus sul destinatario del servizio, approccio per processi, gestione del rischio, miglioramento continuo — su cui si appoggiano anche le norme sanitarie come la 7101 e la 15189.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 31000:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Gestione del rischio — Linee guida</div>
+        <div class="doc-desc">Le linee guida internazionali per gestire il rischio con metodo: identificarlo, analizzarlo, valutarlo e trattarlo. È la cornice metodologica del rischio clinico — cuore dell'attività di ANIQRC — applicabile a qualsiasi organizzazione.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO/IEC 27001:2022</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Sicurezza delle informazioni</div>
+        <div class="doc-desc">Lo standard per proteggere le informazioni, inclusi i dati sanitari dei pazienti. Disciplina riservatezza, integrità e disponibilità dei dati: essenziale per la sicurezza informatica in sanità e per la conformità al GDPR.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/76677.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 15189:2022</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Laboratori medici — Qualità e competenza</div>
+        <div class="doc-desc">I requisiti di qualità e competenza per i laboratori medici, point-of-care testing incluso. Mette al centro la sicurezza del paziente e la gestione del rischio nei processi di laboratorio; è strettamente legata alla 7101.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/70017.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 19011:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Audit dei sistemi di gestione</div>
+        <div class="doc-desc">La guida per pianificare e condurre gli audit dei sistemi di gestione. Spiega come verificare, con metodo e imparzialità, che un sistema qualità funzioni davvero: lo strumento di chi si occupa di audit e accreditamento.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+      <a class="doc-card" href="https://www.iso.org/standard/63787.html" target="_blank" rel="noopener">
+        <div class="doc-ico">ISO</div>
+        <div class="doc-name">ISO 45001:2018</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin:-2px 0 12px;">Salute e sicurezza sul lavoro</div>
+        <div class="doc-desc">Lo standard per la salute e la sicurezza sul lavoro: prevenire infortuni e malattie professionali e tutelare il benessere del personale — il "workforce wellbeing" richiamato anche dalla 7101.</div>
+        <div class="doc-link">Scheda ufficiale ISO ↗</div>
+      </a>
+    </div>
+
+    <p class="reveal" style="margin-top:30px;font-size:13px;color:var(--ink-mute);line-height:1.65;max-width:780px;">Le norme ISO sono opere protette dal diritto d'autore: i testi integrali si acquistano tramite ISO o, in Italia, attraverso l'ente nazionale UNI. I link qui sopra puntano alle schede ufficiali, dove ciascuna norma può essere consultata in anteprima e acquistata.</p>
+  </div>
+</section>
+
+<!-- ============ DOCUMENTI ============ -->
+<section class="sec-pad" id="documenti" style="background:var(--bg-warm);">
+  <div class="wrap">
+    <div class="sec-label reveal">Documenti</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-10" class="sec-title reveal">Statuto e <span class="accent">modulistica</span>.</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-7" class="sec-intro reveal">I documenti istituzionali dell'Associazione, scaricabili in PDF. In fase di costituzione: i testi recano campi da completare a fondazione avvenuta.</p>
+
+    <div class="doc-grid reveal">
+      <a class="doc-card" href="documenti/Statuto_ANIQRC.pdf" target="_blank" rel="noopener">
+        <div class="doc-ico">PDF</div>
+        <div class="doc-name">Atto Costitutivo e Statuto</div>
+        <div class="doc-desc">Lo statuto in 27 articoli, conforme ai requisiti del DM 2 agosto 2017.</div>
+        <div class="doc-link">Scarica ↓</div>
+      </a>
+      <a class="doc-card" href="documenti/Modulo_Adesione_ANIQRC.pdf" target="_blank" rel="noopener">
+        <div class="doc-ico">PDF</div>
+        <div class="doc-name">Modulo di Adesione</div>
+        <div class="doc-desc">Domanda di iscrizione cartacea, da compilare e firmare.</div>
+        <div class="doc-link">Scarica ↓</div>
+      </a>
+      <a class="doc-card" href="documenti/Informativa_Privacy_ANIQRC.pdf" target="_blank" rel="noopener">
+        <div class="doc-ico">PDF</div>
+        <div class="doc-name">Informativa Privacy</div>
+        <div class="doc-desc">Trattamento dei dati personali ai sensi dell'art. 13 GDPR.</div>
+        <div class="doc-link">Scarica ↓</div>
+      </a>
+      <a class="doc-card" href="documenti/Verbale_Assemblea_Costitutiva_ANIQRC.pdf" target="_blank" rel="noopener">
+        <div class="doc-ico">PDF</div>
+        <div class="doc-name">Verbale Assemblea Costitutiva</div>
+        <div class="doc-desc">Verbale di fondazione con nomina delle cariche sociali.</div>
+        <div class="doc-link">Scarica ↓</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSOCIATI ============ -->
+<section class="sec-pad" id="associati">
+  <div class="wrap">
+    <div class="join-card reveal">
+      <div class="join-inner">
+        <div class="sec-label">Diventa socio</div>
+        <h2>Unisciti agli infermieri che fanno della <span class="q">qualità</span> una professione.</h2>
+        <div class="join-categories">
+          <span class="join-cat">Soci fondatori</span>
+          <span class="join-cat">Soci ordinari</span>
+          <span class="join-cat">Soci sostenitori</span>
+          <span class="join-cat">Soci onorari</span>
+        </div>
+        <a href="adesione.html" class="btn btn-primary">Compila la domanda di adesione <span class="arrow">→</span></a>
+        <div class="note-banner">
+          <strong>Sito in allestimento.</strong> ANIQRC è in fase di costituzione. La domanda di adesione viene raccolta ma sarà processata a fondazione avvenuta. Puoi anche scaricare il <a href="documenti/Modulo_Adesione_ANIQRC.pdf" target="_blank" style="color:var(--accent);">modulo cartaceo</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="sec-pad" id="newsletter" style="padding-top:0;">
+  <div class="wrap">
+    <div class="nl-card reveal">
+      <div class="nl-left">
+        <div class="sec-label">Resta aggiornato</div>
+        <h2 class="nl-title">La newsletter di <span class="q">ANIQRC</span>.</h2>
+        <p class="nl-sub">Una sintesi essenziale su qualità, rischio clinico, procedure e ricerca infermieristica. Solo quando c'è qualcosa che vale.</p>
+      </div>
+      <div class="nl-right">
+        <a class="btn btn-primary nl-btn" href="https://preview.mailerlite.io/forms/2370746/188160515817604860/share" target="_blank" rel="noopener">Iscriviti alla newsletter <span class="arrow">→</span></a>
+        <p class="nl-privacy">Iscrivendoti accetti di ricevere comunicazioni da ANIQRC e dichiari di aver letto l'<a href="privacy.html" style="color:rgba(244,242,236,0.7);">informativa privacy</a>. Nessuno spam; puoi disiscriverti quando vuoi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSISTENTE (cerca) ============ -->
+<section class="sec-pad" id="assistente" style="background:var(--bg-warm);padding-top:60px;padding-bottom:60px;">
+  <div class="wrap" style="max-width:760px;">
+    <div class="sec-label reveal">Assistente ANIQRC</div>
+    <h2 data-editable="source" data-path="/index.html" data-key="title-11" class="sec-title reveal" style="font-size:clamp(26px,4vw,38px);">Cosa stai <span class="accent">cercando</span>?</h2>
+    <p data-editable="source" data-path="/index.html" data-key="intro-8" class="sec-intro reveal" style="margin-bottom:0;">Scrivi una domanda e ti porto subito nella sezione giusta. Tutto nel browser, senza inviare nulla.</p>
+    <div class="ask reveal" style="margin-top:26px;max-width:100%;">
+      <div class="ask-bar">
+        <input id="askInput" type="text" autocomplete="off" placeholder="Chiedimi qualcosa… es. come mi associo?" aria-label="Fai una domanda" />
+        <button id="askBtn" type="button">Chiedi</button>
+      </div>
+      <div class="ask-chips">
+        <button class="chip" data-q="dove trovo i dati sulla qualita">Dati e indicatori</button>
+        <button class="chip" data-q="dove sono i calcolatori e le raccomandazioni">Calcolatori e raccomandazioni</button>
+        <button class="chip" data-q="come mi associo">Come associarsi</button>
+        <button class="chip" data-q="quali eventi e corsi ci sono">Eventi e corsi</button>
+        <button class="chip" data-q="voglio fare il test di autovalutazione">Autovalutazione</button>
+      </div>
+      <div class="ask-results" id="askResults" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-lockup">
+          <div class="fb-mark">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="200" cy="200" r="160" fill="#0A0A0A"/>
+              <circle cx="200" cy="200" r="130" fill="none" stroke="#F4F2EC" stroke-width="1.2" opacity="0.5"/>
+              <path d="M 196,66 L 204,70 L 196,74" fill="none" stroke="#F4F2EC" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              <rect x="186" y="100" width="28" height="200" fill="#F4F2EC"/>
+              <rect x="100" y="186" width="200" height="28" fill="#F4F2EC"/>
+              <circle cx="200" cy="200" r="9" fill="#E63946"/>
+              <g transform="translate(200,200) rotate(45)"><rect x="50" y="-13" width="92" height="26" fill="#E63946"/></g>
+            </svg>
+          </div>
+          <div class="fb-text">
+            <div class="fb-acr">ANI<span class="q">Q</span>RC</div>
+            <div class="fb-full">Associazione Nazionale Infermieri<br><span class="q">Qualità</span> e Rischio Clinico</div>
+          </div>
+        </div>
+        <p>Comunità scientifica degli infermieri italiani per la qualità, il rischio clinico e la ricerca sulla sicurezza delle cure.</p>
+        <a class="site-qr" href="https://www.aniqrc.it" target="_blank" rel="noopener"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0AQMAAAAJrVAQAAAABlBMVEUKCgr7+vYi7aBDAAABXUlEQVR42u2bwQ3DIAwArS7A/luyAVUEGENwgL7a6lAeJNyrOhkbU0lHIwo8PDw8PPy38FF0XPOQynxYul5fcjbg/5uXzrpY/MmTcQl/4D1/Ygk+2ZMcgsqrLuEP/NKfGm3mS/gDv4o/1/6ViD/wH+U/dfOaLuEP/NQfW38ND/UX/MKf23CX8Afe2b/G7/kgKJjsCH/gH+JPTX6aTqHlQjmpxh/4qT+t5jKV1xiF8Afe80eDTOwT6bEc4/eE9/NnbV6Ydgb1O/xu/W5ODkvYCSYvwh94z5/Q97xMOdZ2NPyB9+r3KLbg0kZG9wV/4H1/tP7qemHmLAh/4Bf5s9nL7O0y/IHfyp/FHPvYXhj1F/zz/mXvH4rcW/Dkz/DL/Ln13G3nQvAH/syf7hQ6JfyB3/WntsP04fwH/iD/0XZYaHeBuL8Bf1B/mc5F6WjQf4ffPP/h/5Xw8PDw8D/AvwGJ4dwQRJAqbAAAAABJRU5ErkJggg==" alt="QR www.aniqrc.it" width="104" height="104"><span>www.aniqrc.it</span></a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Naviga</h4>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#ambiti">Ambiti</a>
+        <a href="osservatorio.html">Osservatorio</a>
+        <a href="toolkit.html">Toolkit</a>
+        <a href="eventi.html">Eventi</a>
+        <a href="#news">News</a>
+        <a href="#media">Media</a>
+        <a href="#documenti">Documenti</a>
+        <a href="#standard-iso">Standard ISO</a>
+        <a href="adesione.html">Adesione</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contatti</h4>
+        <a href="mailto:giuseppe.fumai@aniqrc.it">Giuseppe Fumai — giuseppe.fumai@aniqrc.it</a>
+        <a href="mailto:claudio.morelli@aniqrc.it">Claudio Morelli — claudio.morelli@aniqrc.it</a>
+        <a href="mailto:giuseppe.colonna@aniqrc.it">Giuseppe Colonna — giuseppe.colonna@aniqrc.it</a>
+        <a href="mailto:francesco.menolascina@aniqrc.it">Francesco Menolascina — francesco.menolascina@aniqrc.it</a>
+        <a href="mailto:fondazione@pec.aniqrc.it">PEC: fondazione@pec.aniqrc.it</a>
+        <p>Sede — da definire</p>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© MMXXVI Giuseppe Fumai — ANIQRC · Tutti i diritti riservati</span>
+      <span><a href="privacy.html" style="color:inherit;">Privacy</a> · Associazione in costituzione</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal (with stagger among siblings)
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        // stagger: delay based on position among reveal siblings
+        if (!reduceMotion) {
+          const sibs = Array.from(el.parentElement ? el.parentElement.children : []).filter(c => c.classList.contains('reveal'));
+          const idx = sibs.indexOf(el);
+          if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 80 + 'ms';
+        }
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Safety net: reveal everything after 3s in case observer misses anything
+  setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 3000);
+
+  // Subtle parallax on hero mark
+  (function () {
+    if (reduceMotion) return;
+    const svg = document.querySelector('.hero-mark svg');
+    if (!svg) return;
+    let ticking = false;
+    function upd() {
+      const y = window.scrollY;
+      if (y < 760) svg.style.transform = 'translateY(' + (y * 0.11).toFixed(1) + 'px)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+  })();
+
+  // Special effects: scroll progress bar + lens spotlight on cards
+  (function () {
+    // progress bar
+    var bar = document.createElement('div');
+    bar.className = 'fx-progress';
+    document.body.appendChild(bar);
+    var t = false;
+    function up() {
+      var h = document.documentElement;
+      var max = (h.scrollHeight - h.clientHeight) || 1;
+      bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, h.scrollTop / max)) + ')';
+      t = false;
+    }
+    window.addEventListener('scroll', function () { if (!t) { requestAnimationFrame(up); t = true; } }, { passive: true });
+    up();
+
+    // lens spotlight
+    if (reduceMotion || !(matchMedia && matchMedia('(hover: hover)').matches)) return;
+    var sel = '.mcard, .dir-card, .doc-card, .news-card, .video-card, .pod-card, .join-card, .nl-card, [data-fx]';
+    document.querySelectorAll(sel).forEach(function (card) {
+      if (card.querySelector(':scope > .fx-lens')) return;
+      card.classList.add('fx-card');
+      var lens = document.createElement('span');
+      lens.className = 'fx-lens'; lens.setAttribute('aria-hidden', 'true');
+      card.appendChild(lens);
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    });
+  })();
+
+  // Word-by-word title reveal
+  (function () {
+    if (reduceMotion) return;
+    function splitTitle(el) {
+      if (el.dataset.fxSplit) return; el.dataset.fxSplit = '1';
+      var c = { n: 0 };
+      function process(node) {
+        var kids = Array.prototype.slice.call(node.childNodes), frag = [];
+        kids.forEach(function (ch) {
+          if (ch.nodeType === 3) {
+            ch.textContent.split(/(\s+)/).forEach(function (p) {
+              if (p === '') return;
+              if (/^\s+$/.test(p)) { frag.push(document.createTextNode(p)); return; }
+              var w = document.createElement('span'); w.className = 'fx-w';
+              var i = document.createElement('span'); i.className = 'fx-wi'; i.textContent = p;
+              i.style.transitionDelay = (c.n * 55) + 'ms'; c.n++;
+              w.appendChild(i); frag.push(w);
+            });
+          } else if (ch.nodeType === 1) { process(ch); frag.push(ch); }
+          else { frag.push(ch); }
+        });
+        node.innerHTML = ''; frag.forEach(function (n) { node.appendChild(n); });
+      }
+      process(el); el.classList.add('fx-title');
+    }
+    var titles = document.querySelectorAll('.sec-title');
+    titles.forEach(splitTitle);
+    var tio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); tio.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    titles.forEach(function (t) { tio.observe(t); });
+    setTimeout(function () { titles.forEach(function (t) { t.classList.add('in'); }); }, 3000);
+  })();
+
+  /* ============ NEWSFEED ============ */
+  const NEWS_FEEDS = [
+    'https://nursetimes.org/feed/',
+    'https://www.nurse24.it/feed.html',
+    'https://www.assocarenews.it/feed/',
+    'https://www.quotidianosanita.it/rss/qs.php',
+    'https://www.sanitainformazione.it/lavoro-e-professioni/feed/',
+    'https://www.sanitainformazione.it/feed/'
+  ];
+
+  function stripHtml(html) {
+    const d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+  function fmtDate(s) {
+    const d = new Date(s);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  // Catena di proxy: prima la funzione Netlify (affidabile, stesso dominio), poi proxy pubblici di riserva
+  function proxyChain(url) {
+    return [
+      '/.netlify/functions/feed?url=' + encodeURIComponent(url),
+      'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(url),
+      'https://api.allorigins.win/raw?url=' + encodeURIComponent(url)
+    ];
+  }
+  async function proxyText(url) {
+    for (const endpoint of proxyChain(url)) {
+      try {
+        const r = await fetch(endpoint);
+        if (!r.ok) continue;
+        const txt = await r.text();
+        if (txt && txt.length > 80 && txt.indexOf('<') !== -1) return txt;
+      } catch (e) {}
+    }
+    throw new Error('proxy failed');
+  }
+  function ytThumb(link, vid) {
+    let id = vid || '';
+    const m = (link || '').match(/[?&]v=([^&]+)/);
+    if (m) id = m[1];
+    return id ? 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg' : '';
+  }
+  function parseRss(xmlText) {
+    const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    let nodes = [...doc.getElementsByTagName('item')];
+    const atom = nodes.length === 0;
+    if (atom) nodes = [...doc.getElementsByTagName('entry')];
+    if (!nodes.length) throw new Error('empty');
+    const titleEls = doc.getElementsByTagName('title');
+    const src = (titleEls[0] || {}).textContent || 'Fonte';
+    return nodes.map(n => {
+      const t = (n.getElementsByTagName('title')[0] || {}).textContent || '';
+      if (atom) {
+        const linkEl = n.getElementsByTagName('link')[0];
+        const link = linkEl ? linkEl.getAttribute('href') : '';
+        const vid = (n.getElementsByTagName('yt:videoId')[0] || {}).textContent || '';
+        const thEl = n.getElementsByTagName('media:thumbnail')[0];
+        return { title: t, link: link || ('https://www.youtube.com/watch?v=' + vid),
+                 date: (n.getElementsByTagName('published')[0] || {}).textContent || '', source: src, desc: '',
+                 thumb: thEl ? thEl.getAttribute('url') : ytThumb(link, vid) };
+      }
+      return { title: t, link: (n.getElementsByTagName('link')[0] || {}).textContent || '#',
+               date: (n.getElementsByTagName('pubDate')[0] || {}).textContent || '', source: src,
+               desc: (n.getElementsByTagName('description')[0] || {}).textContent || '' };
+    });
+  }
+
+  const NEWS_KEYWORDS = ['rischio','sicurezza','qualit','infermier','nursing','protocoll','procedur','errore','avvers','audit','accreditament','linee guida','sentinella','near miss','pdca','paziente','governo clinico','raccomandazion','appropriatezza','assistenz','cure','farmac','igiene','infezion','lesion'];
+  function normTxt(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  function matchesKw(it) { const t = normTxt((it.title || '') + ' ' + (it.desc || '')); return NEWS_KEYWORDS.some(k => t.includes(k)); }
+  function pickRelevant(items) {
+    const matched = items.filter(matchesKw);
+    if (matched.length >= 4) return matched;
+    const rest = items.filter(it => !matchesKw(it));
+    return matched.concat(rest);
+  }
+
+  function renderNews(items) {
+    const list = document.getElementById('news-list');
+    list.innerHTML = items.slice(0, 6).map(it => {
+      const ex = stripHtml(it.desc).slice(0, 130);
+      return '<a class="news-card" href="' + it.link + '" target="_blank" rel="noopener">' +
+        '<div class="news-date">' + (fmtDate(it.date) || 'Aggiornamento') + '</div>' +
+        '<div class="news-title">' + stripHtml(it.title) + '</div>' +
+        '<div class="news-excerpt">' + ex + (ex.length >= 130 ? '…' : '') + '</div>' +
+        '<div class="news-source">' + stripHtml(it.source) + ' ↗</div>' +
+        '</a>';
+    }).join('');
+  }
+
+  function renderFallback() {
+    const list = document.getElementById('news-list');
+    const res = [
+      { t: 'Sicurezza delle cure e gestione del rischio clinico', s: 'Ministero della Salute', u: 'https://www.salute.gov.it/portale/sicurezzacure/homeSicurezzaCure.jsp' },
+      { t: 'Osservatorio buone pratiche per la sicurezza in sanità', s: 'AGENAS', u: 'https://www.buonepratichesicurezzasanita.it/' },
+      { t: 'Notizie e attualità della professione infermieristica', s: 'Nurse24.it', u: 'https://www.nurse24.it/' },
+      { t: 'Informazione sanitaria, lavoro e professioni', s: 'Quotidiano Sanità', u: 'https://www.quotidianosanita.it/lavoro-e-professioni/' },
+      { t: 'Federazione Nazionale degli Ordini delle Professioni Infermieristiche', s: 'FNOPI', u: 'https://www.fnopi.it/' },
+      { t: 'Raccomandazioni ministeriali per la sicurezza del paziente', s: 'Ministero della Salute', u: 'https://www.salute.gov.it/portale/sicurezzacure/dettaglioContenutiSicurezzaCure.jsp?id=250&area=qualita&menu=sicurezza' }
+    ];
+    list.innerHTML = res.map(x =>
+      '<a class="news-card res" href="' + x.u + '" target="_blank" rel="noopener">' +
+      '<div class="news-date">Risorsa permanente</div>' +
+      '<div class="news-title">' + x.t + '</div>' +
+      '<div class="news-source">' + x.s + ' ↗</div>' +
+      '</a>'
+    ).join('');
+    const note = document.querySelector('.news-note');
+    if (note) note.innerHTML = 'Il flusso di notizie in tempo reale non è al momento raggiungibile: vengono mostrate risorse istituzionali permanenti. Le notizie dinamiche compariranno automaticamente quando il sito sarà online e le fonti disponibili.';
+  }
+
+  async function fetchFeedSafe(feed) {
+    try { return parseRss(await proxyText(feed)); } catch (e) {}
+    return [];
+  }
+  function interleave(arrays) {
+    const out = []; let i = 0, added = true;
+    while (added) {
+      added = false;
+      for (const arr of arrays) { if (arr[i]) { out.push(arr[i]); added = true; } }
+      i++;
+    }
+    return out;
+  }
+  async function loadNews() {
+    const results = await Promise.all(NEWS_FEEDS.map(fetchFeedSafe));
+    // per ogni sito tieni le notizie in tema (o tutte se nessuna combacia)
+    const perSite = results.map(items => {
+      const m = items.filter(matchesKw);
+      return (m.length ? m : items).slice(0, 4);
+    });
+    // round-robin: una notizia per sito a turno, così compaiono tutte le fonti
+    let merged = interleave(perSite);
+    // dedup per titolo
+    const seen = new Set();
+    merged = merged.filter(it => { const k = normTxt(it.title); if (seen.has(k)) return false; seen.add(k); return true; });
+    if (!merged.length) { renderFallback(); return; }
+    renderNews(merged);
+  }
+  loadNews();
+
+  /* ============ VIDEO (YouTube: IHI + FNOPI) ============ */
+  const VIDEO_CHANNELS = [
+    { id: 'UCapHQvNqZ40z-aC2PHFzc5Q', el: 'video-ihi',   label: 'IHI' },
+    { id: 'UCI6FH28XOIeOZUJ_pCinoCA', el: 'video-fnopi', label: 'FNOPI' }
+  ];
+
+  function renderChannel(items, ch) {
+    document.getElementById(ch.el).innerHTML = items.slice(0, 2).map(v =>
+      '<a class="video-card" href="' + v.link + '" target="_blank" rel="noopener">' +
+      '<div class="video-thumb" style="background-image:url(' + v.thumb + ')"><span class="video-play">&#9658;</span></div>' +
+      '<div class="video-title">' + stripHtml(v.title) + '</div>' +
+      '<div class="video-src">' + ch.label + ' &middot; YouTube &#8599;</div>' +
+      '</a>'
+    ).join('');
+  }
+  function renderChannelFallback(ch) {
+    document.getElementById(ch.el).innerHTML =
+      '<a class="video-card" href="https://www.youtube.com/channel/' + ch.id + '" target="_blank" rel="noopener" style="grid-column:1/-1;">' +
+      '<div class="video-title" style="padding:24px 22px 8px;">Apri il canale YouTube &rarr;</div>' +
+      '<div class="video-src" style="padding:0 22px 24px;">' + ch.label + ' &middot; YouTube &#8599;</div></a>';
+  }
+  async function loadChannel(ch) {
+    const feed = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + ch.id;
+    try {
+      const items = parseRss(await proxyText(feed));
+      if (items.length) { renderChannel(items, ch); return; }
+    } catch (e) {}
+    renderChannelFallback(ch);
+  }
+  VIDEO_CHANNELS.forEach(loadChannel);
+</script>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n,d){ return n.toLocaleString('it-IT',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+  // mini-osservatorio count-up
+  var nums = document.querySelectorAll('.mo-num[data-to]');
+  if (nums.length) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(!e.isIntersecting) return; var el=e.target; io.unobserve(el);
+      var target=parseFloat((el.dataset.to||'0').replace(',','.'));
+      var dec=parseInt(el.dataset.dec||'0',10), suf=el.dataset.suffix||'', pre=el.dataset.prefix||'';
+      if(reduce||isNaN(target)){ el.textContent=pre+(isNaN(target)?(el.dataset.to||''):fmt(target,dec))+suf; return; }
+      var dur=1300,t0=null;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); var eased=1-Math.pow(1-p,3);
+        el.textContent=pre+fmt(target*eased,dec)+suf; if(p<1)requestAnimationFrame(step); else el.textContent=pre+fmt(target,dec)+suf; }
+      requestAnimationFrame(step);
+    });},{threshold:0.5});
+    nums.forEach(function(el){ io.observe(el); });
+  }
+  // autovalutazione quiz
+  var quiz = document.getElementById('autoQuiz');
+  if (quiz) {
+    var items = quiz.querySelectorAll('.q-item'), ans = {};
+    quiz.addEventListener('click', function(e){
+      var b = e.target.closest('.q-opt'); if(!b) return;
+      var it = b.closest('.q-item'), qi = it.dataset.q;
+      it.querySelectorAll('.q-opt').forEach(function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel'); ans[qi] = parseInt(b.dataset.v,10);
+      if (Object.keys(ans).length === items.length) {
+        var score = Object.keys(ans).reduce(function(a,k){ return a+ans[k]; },0), max = items.length;
+        var band, tip;
+        if (score>=4){ band='Cultura della sicurezza matura'; tip='Ottimo presidio: continua a misurare e a valorizzare i dati. <a href="osservatorio.html">Osservatorio</a> e <a href="toolkit.html">Toolkit</a> ti aiutano a migliorare ancora.'; }
+        else if (score>=2){ band='Buona base, con margini'; tip='Ci sono leve concrete su cui agire: parti dalle <a href="toolkit.html">19 Raccomandazioni</a> e dagli strumenti del Toolkit per colmare i punti scoperti.'; }
+        else { band='Diverse priorità da rafforzare'; tip='Conviene ripartire dalle basi della sicurezza delle cure: le <a href="toolkit.html">Raccomandazioni</a> e i materiali ANIQRC sono un buon punto di partenza.'; }
+        var r = document.getElementById('quizResult');
+        r.innerHTML = '<div class="qr-score">'+score+'/'+max+'</div><div class="qr-band">'+band+'</div><div class="qr-tip">'+tip+'</div>';
+        r.classList.add('show');
+      }
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var fx = document.querySelector('.hexfx'); if(!fx) return;
+  var acr = document.querySelector('.hero-acronym'); if(!acr) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function place(){
+    if (window.innerWidth < 1181){ fx.style.display='none'; return; }
+    var a = acr.getBoundingClientRect(), f = fx.getBoundingClientRect();
+    // hide if there is not enough room on the right
+    if (a.right + 20 + 180 > window.innerWidth - 10){ fx.style.display='none'; return; }
+    fx.style.display='';
+    fx.style.setProperty('--sx', (a.right - f.left) + 'px');
+    fx.style.setProperty('--sy', (a.top + a.height*0.46 - f.top) + 'px');
+  }
+  place();
+  window.addEventListener('resize', place);
+  if (fx.style.display==='none') return;
+  if (reduce) return;
+  function explode(){
+    var dot=fx.querySelector('.hx-dot'); if(dot) dot.classList.add('out');
+    var colors=['#E63946','#E63946','#0A0A0A','#0A0A0A','#FFFFFF','#FFFFFF'];
+    for(var i=0;i<16;i++){
+      var p=document.createElement('span'); p.className='dot-particle';
+      var size=(4+Math.random()*9);
+      var col=colors[(Math.random()*colors.length)|0];
+      p.style.width=p.style.height=size.toFixed(1)+'px';
+      p.style.left='100px'; p.style.top='80px'; p.style.background=col;
+      if(col==='#FFFFFF') p.style.boxShadow='0 0 0 1px rgba(10,10,10,.12)';
+      fx.appendChild(p);
+      var ang=Math.random()*Math.PI*2, dist=34+Math.random()*82;
+      var dx=Math.cos(ang)*dist, dy=Math.sin(ang)*dist*0.8;
+      var dur=950+Math.random()*650, del=Math.random()*180;
+      if(p.animate){
+        p.animate([
+          {transform:'translate(-50%,-50%) translate(0px,0px) scale(.4)',opacity:0,offset:0},
+          {opacity:1,offset:.10},{opacity:.35,offset:.32},{opacity:1,offset:.52},{opacity:.4,offset:.72},
+          {transform:'translate(-50%,-50%) translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale(1)',opacity:.85,offset:.86},
+          {transform:'translate(-50%,-50%) translate('+(dx*1.1).toFixed(1)+'px,'+(dy*1.1).toFixed(1)+'px) scale(.5)',opacity:0,offset:1}
+        ],{duration:dur,delay:del,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'});
+      }
+      (function(el,t){ setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, t); })(p, dur+del+160);
+    }
+  }
+  document.addEventListener('aniqrc:introdone', function(){
+    place();
+    if (fx.style.display==='none') return;
+    setTimeout(function(){
+      if (fx.style.display==='none') return;
+      fx.classList.add('go');        // il puntino rosso appare, si muove e lampeggia
+      setTimeout(explode, 1700);     // poi esplode e si dissolve
+    }, 1300);
+  });
+})();
+</script>
+<script>
+(function(){
+  var input=document.getElementById('askInput'), btn=document.getElementById('askBtn'), out=document.getElementById('askResults');
+  if(!input||!out) return;
+  var INTENTS=[
+    {title:"Osservatorio dei dati", href:"osservatorio.html", cta:"Apri l'Osservatorio",
+     answer:"Indicatori ufficiali su qualità e sicurezza delle cure in Italia: esiti clinici, LEA regionali, mappa e confronti nel tempo.",
+     kw:["dati","dato","indicatori","indicatore","statistiche","statistica","numeri","numero","esiti","esito","mortalita","femore","fratture","frattura","infermieri","infermiere","lea","mappa","regioni","regione","regionale","divario","pne","performance","grafici","grafico","monitoraggio","osservatorio","sicurezza delle cure","nord sud"]},
+    {title:"Toolkit operativo", href:"toolkit.html", cta:"Apri il Toolkit",
+     answer:"Calcolatori (Kappa di Cohen, dimensione del campione), le 19 Raccomandazioni ministeriali e una libreria di strumenti validati.",
+     kw:["strumenti","strumento","toolkit","calcolatori","calcolatore","calcolo","kappa","cohen","campione","sample","raccomandazioni","raccomandazione","linee guida","linea guida","prom","proms","prem","prems","mmat","prisma","metodi","metodo","libreria","appraisal","checklist","ministeriali"]},
+    {title:"Eventi e formazione", href:"eventi.html", cta:"Vai agli Eventi",
+     answer:"Congressi, corsi ECM e appuntamenti formativi dell'associazione.",
+     kw:["eventi","evento","congressi","congresso","corsi","corso","formazione","ecm","webinar","convegni","convegno","seminari","seminario","appuntamenti","appuntamento","calendario","prossimi eventi"]},
+    {title:"Associarsi ad ANIQRC", href:"adesione.html", cta:"Scopri come associarti",
+     answer:"Come diventare socio: requisiti, quota associativa e modulo di adesione.",
+     kw:["iscriversi","iscrizione","iscrivermi","iscrivere","iscrivo","associarsi","associarmi","associo","socio","soci","tesseramento","tessera","quota","quote","aderire","adesione","membership","diventare socio","entrare"]},
+    {title:"Autovalutazione", href:"#autovalutazione", cta:"Fai il test",
+     answer:"Un test rapido di 5 domande per capire quanto è sicura la tua pratica.",
+     kw:["test","quiz","autovalutazione","valutazione","valutarmi","valutare","punteggio","check","verifica","mettermi alla prova","quanto sicura","quanto e sicura","quanto sono sicuro","quanto siamo sicuri","sicura","struttura","pratica","reparto","sono pronto","siamo pronti","pronta"]},
+    {title:"Documenti", href:"#documenti", cta:"Vai ai Documenti",
+     answer:"Statuto, atto costitutivo e modulistica scaricabili in PDF.",
+     kw:["documenti","documento","statuto","modulistica","modulo","moduli","atto costitutivo","regolamento","pdf","scaricare","download","carte"]},
+    {title:"Chi siamo", href:"#manifesto", cta:"Leggi il Manifesto",
+     answer:"Chi siamo, perché nasce ANIQRC e i valori che ci guidano.",
+     kw:["chi siamo","chi siete","manifesto","missione","mission","valori","scopo","obiettivi","identita","cosa fate","perche esiste","perche nasce"]},
+    {title:"I nostri ambiti", href:"#ambiti", cta:"Esplora gli Ambiti",
+     answer:"Le quattro aree in cui operiamo: rischio clinico, quality improvement, processi e ricerca.",
+     kw:["ambiti","ambito","discipline","disciplina","aree","area","rischio clinico","risk management","quality improvement","miglioramento","ricerca","processi","governance","temi","segnalazione","segnalo","segnala","segnalare","evento avverso","eventi sentinella","near miss","incident reporting","reporting","root cause","audit clinici","audit"]},
+    {title:"Video e podcast", href:"#media", cta:"Vai a Media",
+     answer:"Contenuti video e podcast su qualità, rischio e professione infermieristica.",
+     kw:["video","podcast","ascoltare","ascolto","guardare","canale","youtube","spotify","multimedia","contenuti","interviste"]},
+    {title:"Consiglio direttivo", href:"#direttivo", cta:"Vedi il Direttivo",
+     answer:"I soci fondatori e i ruoli del consiglio direttivo dell'associazione.",
+     kw:["direttivo","consiglio","fondatori","fondatore","presidente","vicepresidente","segretario","tesoriere","membri","persone","chi guida","fumai","morelli","colonna","menolascina"]},
+    {title:"Contatti e newsletter", href:"#newsletter", cta:"Vai alla Newsletter",
+     answer:"Iscriviti alla newsletter per restare aggiornato sulle attività dell'associazione.",
+     kw:["contatti","contatto","contattare","scrivere","scrivervi","scriverci","email","mail","posta","newsletter","aggiornamenti"]},
+    {title:"News", href:"#news", cta:"Leggi le News",
+     answer:"Le ultime notizie su sanità, qualità e sicurezza delle cure.",
+     kw:["news","notizie","novita","ultime notizie","rassegna","articoli","attualita"]},
+    {title:"Storia e normativa", href:"#storia-sicurezza", cta:"Vedi la timeline",
+     answer:"La linea del tempo della sicurezza delle cure: dalla Legge Gelli-Bianco al DM 77 e all'EHDS.",
+     kw:["storia","normativa","leggi","legge","gelli","gelli bianco","dm 70","dm 77","ehds","timeline","linea del tempo","evoluzione","cronologia","decreto"]},
+    {title:"Contesto e fonti", href:"#contesto", cta:"Vai al Contesto",
+     answer:"I riferimenti normativi e le fonti istituzionali ufficiali su cui ci basiamo.",
+     kw:["fonti","fonte","riferimenti","ministero","agenas","iss","who","oms","fnopi","istituzionali","standard","iso","jci","su cosa poggiamo"]}
+  ];
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+  function lev(a,b){ var m=a.length,n=b.length; if(Math.abs(m-n)>1) return 2; var d=[],i,j; for(i=0;i<=m;i++) d[i]=[i]; for(j=0;j<=n;j++) d[0][j]=j; for(i=1;i<=m;i++){ for(j=1;j<=n;j++){ var c=a.charAt(i-1)===b.charAt(j-1)?0:1; d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c); } } return d[m][n]; }
+  function score(q,it){
+    var n=norm(q); if(!n) return 0;
+    var toks=n.split(' ').filter(function(t){return t.length>=2;}); var sc=0;
+    it.kw.forEach(function(kw){
+      if(kw.indexOf(' ')>=0){ if(n.indexOf(kw)>=0) sc+=3.2; return; }
+      toks.forEach(function(t){
+        if(t===kw) sc+=2.2;
+        else if(t.length>=4 && kw.length>=4 && (t.indexOf(kw)>=0||kw.indexOf(t)>=0)) sc+=1.3;
+        else if(t.length>=4 && kw.length>=4 && lev(t,kw)<=1) sc+=1.1;
+      });
+    });
+    return sc;
+  }
+  function esc(x){ return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function render(q){
+    out.innerHTML='';
+    if(!q.trim()) return;
+    var ranked=INTENTS.map(function(it){ return {it:it,s:score(q,it)}; }).sort(function(a,b){ return b.s-a.s; });
+    if(ranked[0].s<1.2){
+      var f=document.createElement('div'); f.className='ask-card';
+      f.innerHTML='<h4>Non sono sicuro di aver capito</h4><p>Prova a riformulare la domanda, oppure parti da queste sezioni:</p>'+
+        '<div class="ask-chips"><a class="chip" href="osservatorio.html">Osservatorio</a><a class="chip" href="toolkit.html">Toolkit</a><a class="chip" href="eventi.html">Eventi</a><a class="chip" href="adesione.html">Associarsi</a><a class="chip" href="#documenti">Documenti</a></div>';
+      out.appendChild(f); return;
+    }
+    var best=ranked[0].s;
+    var top=ranked.filter(function(r){ return r.s>=1.2 && r.s>=best*0.62; }).slice(0,3);
+    top.forEach(function(r,i){
+      var it=r.it, c=document.createElement('div'); c.className='ask-card'; c.style.animationDelay=(i*0.06)+'s';
+      c.innerHTML='<h4>'+esc(it.title)+'</h4><p>'+esc(it.answer)+'</p><a class="ask-cta" href="'+it.href+'">'+esc(it.cta)+' \u2192</a>';
+      out.appendChild(c);
+    });
+  }
+  btn.addEventListener('click', function(){ render(input.value); });
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); render(input.value); } });
+  var t; input.addEventListener('input', function(){ clearTimeout(t); t=setTimeout(function(){ render(input.value); }, 220); });
+  document.querySelectorAll('#assistente .ask-chips .chip[data-q]').forEach(function(ch){
+    ch.addEventListener('click', function(){ input.value=ch.getAttribute('data-q'); render(input.value); input.focus(); });
+  });
+  var navSearch=document.getElementById('navSearch');
+  if(navSearch){ navSearch.addEventListener('click', function(e){ e.preventDefault(); var sec=document.getElementById('assistente'); if(sec){ sec.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ try{ input.focus({preventScroll:true}); }catch(_){ input.focus(); } }, 650); } }); }
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = !window.matchMedia || matchMedia('(pointer:fine)').matches;
+
+  // THEME TOGGLE + persistence
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function applyMeta(){ if(meta) meta.setAttribute('content', root.getAttribute('data-theme')==='dark' ? '#15140F' : '#0A0A0A'); }
+  applyMeta();
+  var tbtn=document.getElementById('navTheme');
+  if(tbtn){ tbtn.addEventListener('click', function(){
+    var isDark = root.getAttribute('data-theme')==='dark';
+    if(isDark){ root.removeAttribute('data-theme'); try{localStorage.setItem('aniqrc-theme','light');}catch(e){} }
+    else { root.setAttribute('data-theme','dark'); try{localStorage.setItem('aniqrc-theme','dark');}catch(e){} }
+    applyMeta();
+  }); }
+
+  // TITLE WIPE
+  var titles=[].slice.call(document.querySelectorAll('.sec-title'));
+  titles.forEach(function(el){
+    el.classList.remove('reveal');
+    el.classList.add('wipe');
+    var span=document.createElement('span'); span.className='t'; span.innerHTML=el.innerHTML;
+    el.innerHTML=''; el.appendChild(span);
+  });
+  if(reduce || !('IntersectionObserver' in window)){
+    titles.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.5});
+    titles.forEach(function(el){ io.observe(el); });
+  }
+
+  // MAGNETIC BUTTONS
+  if(!reduce && fine){
+    [].slice.call(document.querySelectorAll('.btn, .nav-cta, .ask-cta')).forEach(function(b){
+      b.classList.add('magnetic');
+      b.addEventListener('mousemove', function(e){ var r=b.getBoundingClientRect(); var x=e.clientX-(r.left+r.width/2), y=e.clientY-(r.top+r.height/2); b.style.transform='translate('+(x*0.25).toFixed(1)+'px,'+(y*0.4).toFixed(1)+'px)'; });
+      b.addEventListener('mouseleave', function(){ b.style.transform=''; });
+    });
+  }
+
+  // SPOTLIGHT on dark sections
+  if(!reduce && fine){
+    [].slice.call(document.querySelectorAll('.manifesto, .nl-card')).forEach(function(sec){
+      if(getComputedStyle(sec).position==='static') sec.style.position='relative';
+      var spot=document.createElement('div'); spot.className='spot'; spot.setAttribute('aria-hidden','true');
+      sec.insertBefore(spot, sec.firstChild);
+      sec.addEventListener('mousemove', function(e){ var r=sec.getBoundingClientRect(); sec.style.setProperty('--mx',(e.clientX-r.left)+'px'); sec.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+      sec.addEventListener('mouseenter', function(){ spot.classList.add('on'); });
+      sec.addEventListener('mouseleave', function(){ spot.classList.remove('on'); });
+    });
+  }
+})();
+</script>
+<script>
+(function(){
+  var q=document.querySelector('.manifesto-quote.light-read'); if(!q) return;
+  var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(rm || !('IntersectionObserver' in window)){ q.style.webkitMaskImage='none'; q.style.maskImage='none'; return; }
+  var o=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ q.classList.add('lit'); setTimeout(function(){ q.style.webkitMaskImage='none'; q.style.maskImage='none'; }, 3800); o.disconnect(); } }); },{threshold:.45});
+  o.observe(q);
+})();
+</script>
+<script>
+(function(){
+  var fired=false;
+  function fireDone(){ if(fired) return; fired=true; document.dispatchEvent(new Event('aniqrc:introdone')); }
+  // hero light-fill (titolo) parte DOPO l'intro
+  document.addEventListener('aniqrc:introdone', function(){
+    var acr=document.querySelector('.hero-acronym');
+    if(acr){ acr.classList.add('lit'); setTimeout(function(){ acr.style.webkitMaskImage='none'; acr.style.maskImage='none'; }, 1500); }
+  });
+  var intro=document.getElementById('intro');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen=false; try{ seen=sessionStorage.getItem('aniqrc-intro')==='1'; }catch(e){}
+  if(!intro || reduce || seen){
+    if(intro && intro.parentNode) intro.parentNode.removeChild(intro);
+    fireDone(); return;
+  }
+  try{ sessionStorage.setItem('aniqrc-intro','1'); }catch(e){}
+  document.body.style.overflow='hidden';
+  var coin=document.getElementById('introCoin');
+  var navmark=document.querySelector('.nav-logo .nm');
+  var stage=document.querySelector('.intro-stage');
+  setTimeout(function(){
+    if(stage) stage.classList.add('flyout');
+    if(coin && navmark){ try{
+      coin.style.animation='none'; coin.style.opacity='1'; coin.style.transform='none';
+      requestAnimationFrame(function(){
+        var c=coin.getBoundingClientRect(), n=navmark.getBoundingClientRect();
+        var sc=n.width/c.width;
+        var dx=(n.left+n.width/2)-(c.left+c.width/2);
+        var dy=(n.top+n.height/2)-(c.top+c.height/2);
+        coin.style.transition='transform 1.7s cubic-bezier(.42,.04,.18,1)';
+        requestAnimationFrame(function(){ coin.style.transform='translate('+dx+'px,'+dy+'px) scale('+sc+')'; });
+      });
+    }catch(e){} }
+  }, 11600);
+  setTimeout(function(){ intro.classList.add('out'); }, 13000);
+  setTimeout(function(){ document.body.style.overflow=''; if(intro.parentNode) intro.parentNode.removeChild(intro); fireDone(); }, 13800);
+})();
+</script>
+<script>(function(){
+  var bar=document.querySelector('.scroll-progress');
+  if(bar){ var tk=false; var up=function(){ tk=false; var h=document.documentElement; var m=(h.scrollHeight-window.innerHeight)||1; var y=window.scrollY||h.scrollTop||0; bar.style.transform='scaleX('+Math.min(1,Math.max(0,y/m))+')'; };
+    window.addEventListener('scroll',function(){ if(!tk){ tk=true; requestAnimationFrame(up); } },{passive:true}); up(); }
+  var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!fine) return;
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('pointermove',function(e){ var r=b.getBoundingClientRect();
+      var x=(e.clientX-r.left-r.width/2)/r.width, y=(e.clientY-r.top-r.height/2)/r.height;
+      b.style.transform='translate('+(x*10).toFixed(1)+'px,'+(y*8).toFixed(1)+'px)'; });
+    b.addEventListener('pointerleave',function(){ b.style.transform=''; });
+  });
+  var fr=document.querySelector('.racconto-frame'), vd=document.querySelector('.racconto-video');
+  if(fr&&vd){ fr.addEventListener('pointermove',function(e){ var r=fr.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      vd.style.transform='rotateY('+(x*7).toFixed(2)+'deg) rotateX('+(-y*7).toFixed(2)+'deg)'; });
+    fr.addEventListener('pointerleave',function(){ vd.style.transform=''; }); }
+})();</script>
+<script>(function(){var v=document.querySelector(".racconto-video");if(!v)return;v.muted=true;try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});io.observe(v);}catch(e){}})();</script>
+</body>
+</html>
+

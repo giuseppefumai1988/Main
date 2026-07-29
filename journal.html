@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>Il Journal — PNJ. Primum Nursing Journal · ANIQRC</title>
+<meta name="description" content="PNJ — Primum Nursing Journal (Quality & Risk): la rivista scientifica diamond open access di ANIQRC. In costruzione: due numeri l'anno, peer review in doppio anonimato, nessun costo per autori e lettori.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="canonical" href="https://www.aniqrc.it/journal.html">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="PNJ. — Primum Nursing Journal · il journal di ANIQRC">
+<meta property="og:description" content="Quality & Risk · diamond open access · in costruzione. Due numeri l'anno, nessun costo per autori e lettori.">
+<meta property="og:image" content="https://www.aniqrc.it/og-journal.png">
+<meta property="og:url" content="https://www.aniqrc.it/journal.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F2EC; --bg-warm:#EAE6DC; --ink:#0A0A0A; --ink-soft:#34332F; --mute:#75736B; --accent:#E63946; --rule:#D4D0C5; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--accent); color:var(--bg); }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  nav { border-bottom:1px solid var(--rule); background:var(--bg); position:sticky; top:0; z-index:50; }
+  .nav-inner { max-width:1240px; margin:0 auto; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo .nm { width:34px; height:34px; }
+  .nav-logo .nt { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; letter-spacing:-0.03em; color:var(--ink); }
+  .nav-logo .nt .q { color:var(--accent); }
+  .nav-links { display:flex; gap:26px; align-items:center; overflow-x:auto; scrollbar-width:none; }
+  .nav-links::-webkit-scrollbar{ display:none; }
+  .nav-links a { font-size:13.5px; font-weight:500; color:var(--ink-soft); text-decoration:none; white-space:nowrap; }
+  .nav-links a:hover, .nav-links a.active { color:var(--accent); }
+  .nav-cta { border:1.5px solid var(--ink); padding:8px 16px; color:var(--ink) !important; }
+  .nav-cta:hover { background:var(--ink); color:var(--bg) !important; }
+
+  .hero { padding:88px 0 64px; border-bottom:1px solid var(--rule); }
+  .hero-grid { display:grid; grid-template-columns:405px 1fr; gap:56px; align-items:center; }
+  /* costruzione geometrica: marchio grande + 4 varianti colore in proporzione aurea */
+  .hero-mark { width:405px; max-width:100%; }
+  .hero-mark svg { width:100%; height:auto; display:block; filter:drop-shadow(0 18px 40px rgba(10,10,10,.20)); }
+  .kicker { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+  .badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; border:1px solid var(--accent); color:var(--accent); padding:6px 12px; margin-left:14px; vertical-align:middle; }
+  h1 { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(38px,6vw,72px); letter-spacing:-0.035em; line-height:1.0; margin-bottom:14px; }
+  h1 .q { color:var(--accent); }
+  .hero-sub { font-family:'Bricolage Grotesque',sans-serif; font-weight:500; letter-spacing:.16em; text-transform:uppercase; font-size:clamp(12px,1.5vw,15px); color:var(--ink-soft); margin-bottom:20px; }
+  .hero-lead { font-size:clamp(16px,2vw,20px); font-weight:300; color:var(--ink-soft); max-width:44em; margin-bottom:30px; }
+  .btn { display:inline-block; font-weight:600; font-size:14.5px; text-decoration:none; padding:13px 24px; transition:transform .2s, background .2s, color .2s; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-primary:hover { transform:translateY(-2px); }
+  .btn-ghost { border:1.5px solid var(--ink); color:var(--ink); margin-left:12px; }
+  .btn-ghost:hover { background:var(--ink); color:var(--bg); }
+  .arrow { display:inline-block; transition:transform .2s; }
+  .btn:hover .arrow { transform:translateX(4px); }
+  .hero-ids { margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; }
+  .idchip { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--rule); background:var(--bg-card,#FBFAF6); color:var(--ink-soft); padding:7px 13px; display:inline-flex; align-items:center; gap:9px; }
+  .idchip .st { color:var(--accent); }
+  .idchip .sep { color:var(--rule); }
+
+  .sec { padding:72px 0; }
+  .sec-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+  .sec-title { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,40px); letter-spacing:-0.025em; line-height:1.1; margin-bottom:18px; }
+  .sec-intro { font-size:clamp(15px,1.8vw,18px); color:var(--ink-soft); max-width:46em; margin-bottom:36px; }
+
+  .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .feat { background:var(--bg); padding:26px 24px; }
+  .feat .n { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; color:var(--accent); display:block; margin-bottom:12px; }
+  .feat h3 { font-size:16px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
+  .feat p { font-size:14px; color:var(--ink-soft); }
+
+  .dark { background:var(--ink); color:var(--bg); }
+  .dark .sec-title { color:var(--bg); }
+  .dark .sec-intro { color:rgba(244,242,236,.78); }
+  .tipi { display:grid; grid-template-columns:1fr 1fr; gap:0 44px; max-width:920px; }
+  .tipo { display:flex; gap:16px; padding:15px 0; border-bottom:1px solid rgba(244,242,236,.14); align-items:baseline; }
+  .tipo b { font-size:15px; letter-spacing:-0.005em; min-width:0; }
+  .tipo span { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:rgba(244,242,236,.55); margin-left:auto; text-align:right; white-space:nowrap; }
+  .tipo .dot { width:7px; height:7px; background:var(--accent); flex:0 0 auto; transform:translateY(-1px); }
+  .nota-tipi { margin-top:26px; font-size:14px; color:rgba(244,242,236,.66); max-width:56em; }
+
+  .road { max-width:760px; }
+  .step { display:grid; grid-template-columns:34px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--rule); }
+  .step:last-child { border-bottom:0; }
+  .step .st { width:24px; height:24px; border-radius:50%; border:2px solid var(--ink); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
+  .step.done .st { background:var(--ink); color:var(--bg); }
+  .step.now .st { border-color:var(--accent); color:var(--accent); }
+  .step h3 { font-size:16.5px; font-weight:700; margin-bottom:4px; letter-spacing:-0.01em; }
+  .step h3 em { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-left:10px; }
+  .step p { font-size:14.5px; color:var(--ink-soft); max-width:52em; }
+
+  .primum { background:var(--bg-warm); }
+  .primum blockquote { font-family:'Bricolage Grotesque',sans-serif; font-weight:500; font-size:clamp(22px,3vw,32px); letter-spacing:-0.02em; line-height:1.25; max-width:24em; }
+  .primum blockquote .q { color:var(--accent); }
+  .primum figcaption { margin-top:16px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); }
+  .primum p.expl { margin-top:22px; font-size:15.5px; color:var(--ink-soft); max-width:48em; }
+
+  .cta-final { text-align:center; padding:80px 0; }
+  .cta-final h2 { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,40px); letter-spacing:-0.025em; margin-bottom:14px; }
+  .cta-final p { color:var(--ink-soft); max-width:40em; margin:0 auto 28px; }
+
+  footer { border-top:1px solid var(--rule); padding:34px 0 46px; }
+  .foot { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; }
+  .foot p { font-size:12.5px; color:var(--mute); }
+  .foot a { color:var(--ink-soft); text-decoration:none; font-size:13px; margin-left:18px; }
+  .foot a:hover { color:var(--accent); }
+
+  @media (max-width:860px){
+    .hero-grid { grid-template-columns:1fr; gap:34px; }
+    .hero-mark { width:min(340px,100%); height:auto; }
+    .feat-grid { grid-template-columns:1fr; }
+    .tipi { grid-template-columns:1fr; }
+    .btn-ghost { margin-left:0; margin-top:12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nm"><img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%"></span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#manifesto">Manifesto</a>
+      <a href="index.html#ambiti">Ambiti</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="journal.html" class="active">Journal</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-mark"><svg viewBox="0 0 405 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PNJ. Primum Nursing Journal — il marchio nelle varianti colore della testata">
+        <defs>
+          <path id="pnj-l" d="M24.00720720720721 113.1171171171171V102.43603603603603H37.311711711711716Q43.96396396396397 102.43603603603603 47.24324324324325 99.76576576576576Q50.52252252252253 97.09549549549548 50.52252252252253 91.00540540540538Q50.52252252252253 85.38378378378377 47.524324324324326 82.57297297297296Q44.52612612612613 79.76216216216216 38.15495495495496 79.76216216216216H24.00720720720721V69.08108108108107H38.71711711711712Q44.432432432432435 69.08108108108107 49.11711711711712 70.43963963963962Q53.80180180180181 71.79819819819818 57.22162162162162 74.51531531531529Q60.641441441441444 77.23243243243242 62.46846846846847 81.35495495495493Q64.2954954954955 85.47747747747746 64.2954954954955 91.09909909909908Q64.2954954954955 98.3135135135135 61.01621621621622 103.23243243243242Q57.73693693693694 108.15135135135134 51.41261261261262 110.63423423423421Q45.08828828828829 113.1171171171171 35.718918918918924 113.1171171171171ZM14.450450450450452 130.9189189189189V69.08108108108107H27.942342342342343V130.9189189189189Z M70.47927927927927 130.9189189189189V69.08108108108107H88.28108108108108L114.70270270270271 113.1171171171171H115.45225225225225L114.89009009009008 69.08108108108107H128.1945945945946V130.9189189189189H111.7045045045045L83.87747747747747 85.29009009009008H83.22162162162162L83.69009009009008 130.9189189189189Z M134.19099099099097 131.57477477477477 132.97297297297297 119.20720720720719Q134.00360360360358 119.39459459459458 135.03423423423422 119.48828828828827Q136.06486486486486 119.58198198198197 136.53333333333333 119.58198198198197Q140.18738738738736 119.58198198198197 142.15495495495492 118.4108108108108Q144.1225225225225 117.23963963963962 144.9189189189189 114.80360360360359Q145.7153153153153 112.36756756756756 145.7153153153153 108.33873873873873V69.08108108108107H159.3009009009009V108.52612612612612Q159.3009009009009 116.209009009009 157.09909909909908 121.409009009009Q154.89729729729729 126.609009009009 150.35315315315313 129.23243243243243Q145.809009009009 131.85585585585585 138.68828828828828 131.85585585585585Q137.65765765765764 131.85585585585585 136.67387387387384 131.76216216216216Q135.69009009009008 131.66846846846846 134.19099099099097 131.57477477477477Z"/>
+          <path id="pnj-d" d="M177.29009009009008 132.13693693693693Q172.88648648648646 132.13693693693693 170.73153153153152 130.26306306306304Q168.57657657657654 128.38918918918918 168.57657657657654 124.45405405405404Q168.57657657657654 120.4252252252252 170.73153153153152 118.55135135135134Q172.88648648648646 116.67747747747747 177.29009009009008 116.67747747747747Q181.69369369369366 116.67747747747747 183.89549549549548 118.55135135135134Q186.09729729729727 120.4252252252252 186.09729729729727 124.45405405405404Q186.09729729729727 132.13693693693693 177.29009009009008 132.13693693693693Z"/>
+        </defs>
+        <g transform="translate(0,0) scale(1.2500)"><rect width="200" height="200" fill="#0A0A0A"/><use href="#pnj-l" fill="#F4F2EC"/><use href="#pnj-d" fill="#E63946"/></g>
+        <g transform="translate(250,95) scale(0.7750)"><rect width="200" height="200" fill="#E63946"/><use href="#pnj-l" fill="#F4F2EC"/><use href="#pnj-d" fill="#0A0A0A"/></g>
+        <g transform="translate(310,0) scale(0.4750)"><rect width="200" height="200" fill="#F4F2EC" stroke="#D4D0C5" stroke-width="1" vector-effect="non-scaling-stroke"/><use href="#pnj-l" fill="#0A0A0A"/><use href="#pnj-d" fill="#E63946"/></g>
+        <g transform="translate(250,0) scale(0.3000)"><rect width="200" height="200" fill="#EAE6DC" stroke="#D4D0C5" stroke-width="1" vector-effect="non-scaling-stroke"/><use href="#pnj-l" fill="#0A0A0A"/><use href="#pnj-d" fill="#E63946"/></g>
+        <g transform="translate(250,60) scale(0.1750)"><rect width="200" height="200" fill="#C0202E"/><use href="#pnj-l" fill="#F4F2EC"/><use href="#pnj-d" fill="#E63946"/></g>
+      </svg></div>
+    <div>
+      <div class="kicker">Il journal di ANIQRC<span class="badge">In costruzione</span></div>
+      <h1>PNJ<span class="q">.</span></h1>
+      <div class="hero-sub">Primum Nursing Journal · Quality &amp; Risk</div>
+      <p class="hero-lead">La rivista scientifica della comunità ANIQRC: qualità dell'assistenza, rischio clinico, procedure e ricerca infermieristica. Ad accesso aperto <strong>diamante</strong>: nessun costo, mai — né per chi scrive né per chi legge.</p>
+      <div>
+        <a href="index.html#newsletter" class="btn btn-primary">Avvisami al lancio <span class="arrow">→</span></a>
+        <a href="adesione.html" class="btn btn-ghost">Entra in ANIQRC</a>
+      </div>
+      <div class="hero-ids" aria-label="Identificativi della rivista">
+        <span class="idchip">ISSN <span class="sep">·</span> <span class="st">In costruzione</span></span>
+        <span class="idchip">DOI — Crossref <span class="sep">·</span> <span class="st">In costruzione</span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">Come sarà</div>
+    <h2 class="sec-title">Poche regole, tutte pubbliche.</h2>
+    <p class="sec-intro">Il journal nasce con le regole scritte prima degli articoli: è la condizione per essere credibili dal primo numero e per il percorso di indicizzazione che segue.</p>
+    <div class="feat-grid">
+      <div class="feat"><span class="n">01</span><h3>Diamond open access</h3><p>Nessuna APC, nessuna submission fee, nessun abbonamento. I costi vivi li sostiene l'associazione con le quote sociali.</p></div>
+      <div class="feat"><span class="n">02</span><h3>Due numeri l'anno</h3><p>Maggio e novembre. Meglio due uscite rispettate che quattro promesse: la regolarità è il primo requisito degli indici.</p></div>
+      <div class="feat"><span class="n">03</span><h3>Doppio anonimato</h3><p>Due revisori esterni per ogni manoscritto, griglia strutturata, tempi dichiarati. Le date di ricezione, accettazione e pubblicazione stampate su ogni articolo.</p></div>
+      <div class="feat"><span class="n">04</span><h3>Il copyright resta agli autori</h3><p>Licenza CC BY 4.0 su tutti gli articoli: chiunque può leggere, riusare e tradurre, citando la fonte.</p></div>
+      <div class="feat"><span class="n">05</span><h3>Italiano e inglese</h3><p>Ogni articolo con titolo, abstract e parole chiave in entrambe le lingue.</p></div>
+      <div class="feat"><span class="n">06</span><h3>Identificativi permanenti</h3><p>ISSN e DOI (registrati via Crossref) arrivano subito dopo il primo numero — è la sequenza prevista per le pubblicazioni online — e si applicano a ritroso agli articoli già usciti.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap">
+    <div class="sec-label">Cosa pubblicherà</div>
+    <h2 class="sec-title">Ricerca primaria e secondaria.</h2>
+    <p class="sec-intro">Studi su come l'assistenza è organizzata, misurata e resa sicura — non il singolo gesto clinico, ma il sistema che lo rende possibile.</p>
+    <div class="tipi">
+      <div class="tipo"><span class="dot"></span><b>Ricerca originale</b><span>4.000 parole</span></div>
+      <div class="tipo"><span class="dot"></span><b>Quality improvement report</b><span>SQUIRE 2.0</span></div>
+      <div class="tipo"><span class="dot"></span><b>Analisi di evento</b><span>anonimizzata</span></div>
+      <div class="tipo"><span class="dot"></span><b>Scoping review</b><span>protocollo OSF</span></div>
+      <div class="tipo"><span class="dot"></span><b>Revisione sistematica</b><span>PRISMA</span></div>
+      <div class="tipo"><span class="dot"></span><b>Protocolli di studio</b><span>3.000 parole</span></div>
+      <div class="tipo"><span class="dot"></span><b>Revisione narrativa</b><span>su invito</span></div>
+      <div class="tipo"><span class="dot"></span><b>Commentary ed editoriali</b><span>su invito</span></div>
+    </div>
+    <p class="nota-tipi">Per le scoping review chiederemo la registrazione del protocollo su OSF prima della ricerca bibliografica e una valutazione della qualità delle fonti — usata per informare la discussione, non per escludere studi dalla mappatura.</p>
+  </div>
+</section>
+
+<section class="sec primum">
+  <div class="wrap">
+    <div class="sec-label">Perché «Primum»</div>
+    <figure>
+      <blockquote>Primum non nocere<span class="q">.</span></blockquote>
+      <figcaption>Prima di tutto, non nuocere</figcaption>
+    </figure>
+    <p class="expl">È il principio da cui parte ogni discorso sulla sicurezza delle cure — e la parola con cui inizia. Il punto rosso che chiude il nostro marchio è lo stesso che chiude il marchio dell'associazione: la decisione, il ciclo che si conclude, l'errore che si ferma. Lì dove finisce la frase, comincia la rivista.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">A che punto siamo</div>
+    <h2 class="sec-title">Il cantiere, alla luce del sole.</h2>
+    <div class="road">
+      <div class="step done"><div class="st">✓</div><div><h3>Identità e regole editoriali</h3><p>Nome, marchio, ambito e le dodici policy — peer review, etica, conflitti di interesse, accesso aperto, archiviazione — sono definiti e saranno pubblicati integralmente prima della call.</p></div></div>
+      <div class="step now"><div class="st">2</div><div><h3>Comitato editoriale <em>in corso</em></h3><p>Direzione, comitato con affiliazioni verificabili e ORCID, e la rete dei revisori. È la parte che decide la credibilità della rivista: la stiamo componendo con cura.</p></div></div>
+      <div class="step"><div class="st">3</div><div><h3>Prima call for papers</h3><p>Aperta a ricerca originale, quality improvement report e revisioni. La data sarà annunciata qui e nella newsletter.</p></div></div>
+      <div class="step"><div class="st">4</div><div><h3>Numero 1 — poi ISSN e DOI</h3><p>Per le riviste online l'ISSN si ottiene dopo la prima uscita: pubblicheremo il numero inaugurale e registreremo subito ISSN, DOI su Crossref e metadati, applicandoli a ritroso agli articoli già pubblicati.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Vuoi esserci dal numero uno?</h2>
+    <p>Iscriviti alla newsletter per sapere quando apre la call — o entra in ANIQRC e costruisci la rivista con noi, come autore, revisore o parte della redazione.</p>
+    <a href="index.html#newsletter" class="btn btn-primary">Avvisami al lancio <span class="arrow">→</span></a>
+    <a href="adesione.html" class="btn btn-ghost">Associati</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <p>© ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico. PNJ · Primum Nursing Journal è il journal ufficiale dell'associazione, in costruzione.</p>
+    <div><a href="index.html">Home</a><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="aniqrc-bg.js" defer></script>
+<script src="aniqrc-app.js" defer></script>
+</body>
+</html>
