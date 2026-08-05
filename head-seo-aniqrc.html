@@ -1,0 +1,88 @@
+<!--
+  =============================================================
+  ANIQRC — blocco SEO da inserire dentro <head> di index.html
+  =============================================================
+
+  1) Il tag <link rel="canonical"> va replicato in OGNI pagina,
+     cambiando ogni volta l'URL con quello della pagina stessa
+     (es. https://aniqrc.it/toolkit.html su toolkit.html).
+
+  2) Il blocco JSON-LD va inserito SOLO nella home (index.html).
+     Serve a dichiarare ANIQRC come entità: è la contromisura
+     tecnica al fatto che i motori correggono "ANIQRC" in "Aniq".
+
+  3) Correggere anche og:image, che oggi è un percorso relativo:
+     va indicato in forma assoluta, altrimenti l'anteprima non
+     viene generata da LinkedIn, WhatsApp e Facebook.
+  =============================================================
+-->
+
+<link rel="canonical" href="https://aniqrc.it/">
+
+<meta property="og:url" content="https://aniqrc.it/">
+<meta property="og:image" content="https://aniqrc.it/og-image.png">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="ANIQRC">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "@id": "https://aniqrc.it/#organization",
+  "name": "ANIQRC",
+  "legalName": "Associazione Nazionale Infermieri Qualità e Rischio Clinico",
+  "alternateName": [
+    "Associazione Nazionale Infermieri Qualità e Rischio Clinico",
+    "Associazione Nazionale Infermieri per la Qualità e il Rischio Clinico",
+    "A.N.I.Q.R.C."
+  ],
+  "url": "https://aniqrc.it/",
+  "logo": "https://aniqrc.it/og-image.png",
+  "image": "https://aniqrc.it/og-image.png",
+  "description": "Associazione professionale italiana degli infermieri che operano nella qualità dell'assistenza, nel rischio clinico, nello sviluppo di procedure e protocolli e nella ricerca sulla sicurezza delle cure.",
+  "foundingDate": "2026",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Italia"
+  },
+  "knowsAbout": [
+    "Rischio clinico",
+    "Quality improvement in sanità",
+    "Sicurezza delle cure",
+    "Procedure e protocolli infermieristici",
+    "Ricerca infermieristica",
+    "ISO 7101",
+    "ISO 9001",
+    "ISO 31000",
+    "Legge 24/2017 Gelli-Bianco"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/aniqrc",
+    "https://www.linkedin.com/company/aniqrc"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "informazioni",
+    "email": "giuseppe.fumai@aniqrc.it",
+    "availableLanguage": "Italian"
+  },
+  "founder": [
+    { "@type": "Person", "name": "Giuseppe Fumai", "jobTitle": "Presidente" },
+    { "@type": "Person", "name": "Claudio Morelli", "jobTitle": "Vicepresidente" },
+    { "@type": "Person", "name": "Giuseppe Colonna", "jobTitle": "Segretario-Tesoriere" },
+    { "@type": "Person", "name": "Francesco Menolascina", "jobTitle": "Coordinatore della rete e sviluppo nazionale" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://aniqrc.it/#website",
+  "url": "https://aniqrc.it/",
+  "name": "ANIQRC",
+  "inLanguage": "it-IT",
+  "publisher": { "@id": "https://aniqrc.it/#organization" }
+}
+</script>
