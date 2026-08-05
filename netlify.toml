@@ -1,5 +1,40 @@
-# Configurazione Netlify per ANIQRC
-# Indica dove si trovano le funzioni serverless. Non modifica la pubblicazione del sito.
+# =============================================================
+# ANIQRC — configurazione Netlify per sito statico
+# Nessun build step: i file HTML vengono pubblicati così come sono.
+#
+# ATTENZIONE — verifica "publish":
+#   deve puntare alla cartella che contiene index.html.
+#   Se index.html sta nella radice del repository, lascia "."
+#   Se sta in una sottocartella (es. public/), scrivi "public"
+# =============================================================
 
-[functions]
-  directory = "netlify/functions"
+[build]
+  publish = "."
+
+# Nessuna direttiva "command": Netlify non esegue alcun build.
+# I moduli Netlify Forms continuano a funzionare: il modulo di
+# adesione viene rilevato in fase di deploy leggendo l'HTML.
+
+# Cache lunga per gli asset statici, che cambiano di rado.
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# L'HTML non va messo in cache a lungo: deve poter cambiare subito.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# La pagina di ringraziamento post-invio modulo non ha valore per
+# la ricerca ed è bene tenerla fuori dall'indice.
+[[headers]]
+  for = "/grazie.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
