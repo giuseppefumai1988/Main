@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+# File di servizio e anteprime: non devono finire nell'indice
+Disallow: /anteprima-
+Disallow: /email-rinnovo-tessera.html
+Disallow: /netlify/
+Disallow: /README.md
+Disallow: /INTEGRAZIONE.md
+Disallow: /GUIDA-1-Integrazione.md
+Disallow: /GUIDA-2-GitHub-Netlify.md
+Disallow: /REGISTRAZIONI-SOCI.md
+Disallow: /cloudcannon.config.yml
+Disallow: /netlify.toml
+
 Sitemap: https://aniqrc.it/sitemap.xml

@@ -14,6 +14,7 @@
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://aniqrc.it/eventi.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:url" content="https://aniqrc.it/eventi.html">
 <meta property="og:site_name" content="ANIQRC">
 <meta property="og:locale" content="it_IT">
@@ -329,20 +330,45 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .ac-d{ font-size:14px; line-height:1.55; color:var(--ink-soft); }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://aniqrc.it/eventi.html#webpage",
+      "url": "https://aniqrc.it/eventi.html",
+      "name": "Gli eventi di ANIQRC",
+      "inLanguage": "it-IT",
+      "isPartOf": { "@id": "https://aniqrc.it/#website" },
+      "about": { "@id": "https://aniqrc.it/#organization" },
+      "publisher": { "@id": "https://aniqrc.it/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://aniqrc.it/eventi.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ANIQRC", "item": "https://aniqrc.it/" },
+        { "@type": "ListItem", "position": 2, "name": "Eventi" }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html">
+    <a class="nav-logo" href="/">
       <span class="nm">
         <img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%">
       </span>
       <span class="nt">ANI<span class="q">Q</span>RC</span>
     </a>
     <div class="nav-links">
-      <a href="index.html#manifesto">Manifesto</a>
-      <a href="index.html#ambiti">Ambiti</a>
+      <a href="/#manifesto">Manifesto</a>
+      <a href="/#ambiti">Ambiti</a>
       <a href="osservatorio.html">Osservatorio</a>
       <a href="toolkit.html">Toolkit</a>
       <a href="ricerca.html">La ricerca</a>
@@ -355,7 +381,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 
 <header class="page-hero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">ANIQRC</a><span class="sep">/</span>Eventi</div>
+    <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span>Eventi</div>
     <h1 class="page-title">Dove la qualità <span class="accent">si incontra</span>.</h1>
     <p class="page-lead">Congressi, corsi, tavoli di lavoro, giornate di studio: qui raccogliamo tutti gli appuntamenti in cui ANIQRC sarà presente — come relatori, partner o semplicemente per esserci, perché fare rete significa anche incontrarsi di persona.</p>
   </div>
@@ -368,7 +394,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       <h2 class="sec-title">Stiamo costruendo il <span class="accent">calendario</span>.</h2>
       <p class="sec-intro" style="margin-left:0;">Questa pagina raccoglierà presto tutti gli eventi nazionali a cui parteciperemo: date, luoghi, programmi e modalità di iscrizione. Stiamo definendo i primi appuntamenti — torna a trovarci, oppure iscriviti alla newsletter per riceverli appena pubblicati.</p>
       <div class="alle-actions">
-        <a href="index.html#newsletter" class="btn-alle primary">Avvisami dei prossimi eventi</a>
+        <a href="/#newsletter" class="btn-alle primary">Avvisami dei prossimi eventi</a>
         <a href="mailto:francesco.menolascina@aniqrc.it?subject=Eventi%20ANIQRC" class="btn-alle ghost">Proponi un evento</a>
       </div>
       <p class="alle-ref">Per collaborazioni e inviti come relatori: <a href="mailto:francesco.menolascina@aniqrc.it">Francesco Menolascina</a> — Coordinatore della rete e sviluppo nazionale.</p>
@@ -385,7 +411,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 <footer>
   <div class="wrap">
     <div class="foot-bottom" style="margin-top:0;border-top:none;padding-top:0;">
-      <span>© MMXXVI ANIQRC · <a href="index.html" style="color:inherit;">torna alla home</a></span>
+      <span>© MMXXVI ANIQRC · <a href="/" style="color:inherit;">torna alla home</a></span>
       <span>Associazione Nazionale Infermieri Qualità e Rischio Clinico</span>
     </div>
   </div>

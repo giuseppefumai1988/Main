@@ -1,7 +1,7 @@
 /* ANIQRC — Service Worker. Rende il sito installabile come app e disponibile offline.
    Strategia: navigazioni network-first (contenuti sempre freschi, fallback offline),
    asset cache-first con runtime cache. © ANIQRC */
-var VERSION = 'aniqrc-v4';
+var VERSION = 'aniqrc-v5';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
