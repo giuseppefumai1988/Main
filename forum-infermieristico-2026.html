@@ -9,22 +9,22 @@
 <meta name="apple-mobile-web-app-title" content="ANIQRC">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>Forum Infermieristico ANIQRC — 30 ottobre 2026</title>
-<meta name="description" content="Forum Infermieristico ANIQRC, 30 ottobre 2026: programma, Call for Abstract, workbook dei lavori in PDF e recap dell'evento. Qualità dell'assistenza, rischio clinico e ricerca infermieristica.">
+<title>Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026</title>
+<meta name="description" content="Il racconto del Forum infermieristico «Qualità, sicurezza e rischio clinico», Bari, 30 ottobre 2026, Sala consiliare del Comune di Bari. Organizzato dall'IRCCS Istituto Tumori «Giovanni Paolo II» — Bari: recap, video, galleria e il libro dei lavori in PDF.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://aniqrc.it/forum-infermieristico-2026.html">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Forum Infermieristico ANIQRC — 30 ottobre 2026">
-<meta property="og:description" content="Programma, Call for Abstract e workbook dei lavori. Una giornata su qualità dell'assistenza, rischio clinico e ricerca infermieristica.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026">
+<meta property="og:description" content="Recap, video, galleria e il libro dei lavori del Forum. Pathway, ricerca, eccellenza.">
 <meta property="og:url" content="https://aniqrc.it/forum-infermieristico-2026.html">
 <meta property="og:site_name" content="ANIQRC">
 <meta property="og:locale" content="it_IT">
 <meta property="og:image" content="https://aniqrc.it/og-forum-2026.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Forum Infermieristico ANIQRC — 30 ottobre 2026">
-<meta name="twitter:description" content="Programma, Call for Abstract e workbook dei lavori in PDF.">
+<meta name="twitter:title" content="Forum infermieristico — Bari, 30 ottobre 2026">
+<meta name="twitter:description" content="Recap, video, galleria e il libro dei lavori in PDF.">
 <meta name="twitter:image" content="https://aniqrc.it/og-forum-2026.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,9 +32,13 @@
 <link rel="stylesheet" href="qualita.css">
 <style>
 /* =========================================================
-   FORUM INFERMIERISTICO 2026 — stili specifici della pagina
-   (il resto arriva dal foglio condiviso qualita.css)
+   FORUM INFERMIERISTICO — Bari, 30 ottobre 2026
+   Pagina di racconto post-evento.
+   (il resto degli stili arriva dal foglio condiviso qualita.css)
    ========================================================= */
+
+/* palette dell'evento, sovrascrive l'accento del sito solo qui */
+.forum{ --ev: #9E3742; --ev-soft: #B0424F; --ev-pale: #E9D6D9; }
 
 /* transizioni tra pagine, coerenti con le altre schede */
 @view-transition { navigation: auto; }
@@ -49,33 +53,62 @@
 .btn-e{ display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:100px;
   font-size:14.5px; font-weight:600; text-decoration:none; cursor:pointer; border:none;
   font-family:'Manrope',sans-serif; transition:all .3s cubic-bezier(0.16,1,0.3,1); }
-.btn-e.primary{ background:var(--accent); color:var(--bg); }
-.btn-e.primary:hover{ background:var(--accent-deep); transform:translateY(-2px); box-shadow:0 8px 24px rgba(230,57,70,.26); }
+.btn-e.primary{ background:#9E3742; color:#FBF7F5; }
+.btn-e.primary:hover{ background:#832B36; transform:translateY(-2px); box-shadow:0 8px 24px rgba(158,55,66,.28); }
 .btn-e.dark{ background:var(--ink); color:var(--bg); }
-.btn-e.dark:hover{ background:var(--accent); transform:translateY(-2px); }
+.btn-e.dark:hover{ background:#9E3742; transform:translateY(-2px); }
 .btn-e.ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--ink); }
 .btn-e.ghost:hover{ background:var(--ink); color:var(--bg); }
 .btn-e .ar{ transition:transform .3s; }
 .btn-e:hover .ar{ transform:translateX(4px); }
 
 /* ---------- HERO DELL'EVENTO ---------- */
+.ev-hero{ position:relative; padding:140px 0 24px; overflow:hidden; }
+.ev-hero::after{ content:''; position:absolute; top:-14%; right:-8%; width:620px; height:620px;
+  background:radial-gradient(circle, rgba(158,55,66,.07) 0%, transparent 70%); pointer-events:none; z-index:0; }
+.ev-hero .wrap{ position:relative; z-index:2; }
+.ev-grid{ display:grid; grid-template-columns:minmax(0,1fr) 390px; gap:56px; align-items:center; }
+@media(max-width:980px){ .ev-grid{ grid-template-columns:1fr; gap:34px; } }
+
 .ev-badges{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px; animation:fadeUp .7s cubic-bezier(0.16,1,0.3,1) both; }
 .evb{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-  padding:5px 12px; border-radius:100px; }
-.evb.first{ background:var(--accent); color:var(--bg); }
-.evb.type{ background:var(--bg-warm); color:var(--ink-soft); }
-.evb.ecm{ border:1px solid var(--rule); color:var(--ink-mute); }
+  padding:5px 12px; border-radius:100px; display:inline-flex; align-items:center; gap:7px; }
+.evb.done{ background:#9E3742; color:#FBF7F5; }
+.evb.ed{ background:var(--bg-warm); color:var(--ink-soft); }
+.evb.tag{ border:1px solid var(--rule); color:var(--ink-mute); }
 
-.facts{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:40px;
+.ev-title{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600;
+  font-size:clamp(31px,4.6vw,56px); letter-spacing:-.035em; line-height:1.04; color:var(--ink);
+  animation:fadeUp .85s cubic-bezier(0.16,1,0.3,1) .08s both; }
+.ev-title .accent{ color:#9E3742; }
+.ev-kick{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--ink-mute); margin-top:18px; }
+.ev-lead{ font-size:clamp(15.5px,2.1vw,18.5px); color:var(--ink-soft); max-width:60ch;
+  margin-top:22px; line-height:1.62; animation:fadeUp .85s cubic-bezier(0.16,1,0.3,1) .16s both; }
+.ev-lead b{ color:var(--ink); font-weight:600; }
+
+.ev-key{ width:100%; height:auto; display:block; border-radius:14px;
+  box-shadow:0 22px 56px rgba(20,18,14,.16); border:1px solid var(--rule); background:#fff; }
+
+.facts{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:46px;
   border:1px solid var(--rule); border-radius:8px; overflow:hidden; background:var(--rule); }
-@media(max-width:860px){ .facts{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:900px){ .facts{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:460px){ .facts{ grid-template-columns:1fr; } }
 .fact{ background:var(--bg-card); padding:22px 24px; }
 .fact .l{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:9px; }
-.fact .v{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:19px; letter-spacing:-.02em; color:var(--ink); line-height:1.25; }
+.fact .v{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:18px; letter-spacing:-.02em; color:var(--ink); line-height:1.25; }
 .fact .v small{ display:block; font-family:'Manrope',sans-serif; font-weight:400; font-size:12.5px; color:var(--ink-mute); margin-top:5px; letter-spacing:0; }
 
-.hero-cta{ display:flex; flex-wrap:wrap; gap:13px; margin-top:34px; }
+.hero-cta{ display:flex; flex-wrap:wrap; gap:13px; margin-top:32px; }
+
+/* riga ente organizzatore */
+.ente{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:34px;
+  border-top:1px solid var(--rule); padding-top:24px; }
+.ente .k{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-mute); }
+.ente .n{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:16px;
+  letter-spacing:-.015em; color:var(--ink); line-height:1.35; }
+.ente img{ height:52px; width:auto; display:block; }
 
 /* ---------- PROGRAMMA ---------- */
 .prog{ margin-top:38px; border-top:1px solid var(--rule); }
@@ -83,15 +116,19 @@
   border-bottom:1px solid var(--rule-soft); transition:background .3s; }
 .prog-row:hover{ background:var(--bg-card); }
 @media(max-width:640px){ .prog-row{ grid-template-columns:1fr; gap:8px; padding:18px 0; } }
-.prog-h{ font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--accent); padding-top:3px; }
+.prog-h{ font-family:'JetBrains Mono',monospace; font-size:13px; color:#9E3742; padding-top:3px; }
 .prog-t{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:17px; letter-spacing:-.015em; color:var(--ink); margin-bottom:6px; }
 .prog-d{ font-size:14px; line-height:1.6; color:var(--ink-soft); max-width:62ch; }
-.prog-note{ font-size:13px; color:var(--ink-mute); margin-top:22px; }
+.prog-note{ display:flex; gap:13px; align-items:flex-start; margin-top:26px; border:1px solid var(--rule);
+  border-left:3px solid #9E3742; border-radius:8px; background:var(--bg-card); padding:16px 20px;
+  font-size:13.5px; line-height:1.55; color:var(--ink-soft); }
+.prog-note b{ color:var(--ink); font-weight:600; }
 
 /* ---------- RECAP ---------- */
 .recap{ background:var(--ink); color:var(--bg); }
 .recap .sec-label{ color:rgba(244,242,236,.55); }
 .recap .sec-title{ color:var(--bg); }
+.recap .sec-title .accent{ color:#D4737E; }
 .recap .sec-intro{ color:rgba(244,242,236,.75); }
 
 .rc-video{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:40px; }
@@ -106,8 +143,8 @@
 .rc-gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px; }
 @media(max-width:900px){ .rc-gallery{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:560px){ .rc-gallery{ grid-template-columns:1fr; } }
-.rc-g{ position:relative; border-radius:10px; overflow:hidden; background:#141310; border:1px solid rgba(244,242,236,.12);
-  aspect-ratio:4/3; cursor:zoom-in; }
+.rc-g{ position:relative; border-radius:10px; overflow:hidden; background:#141310;
+  border:1px solid rgba(244,242,236,.12); aspect-ratio:4/3; margin:0; }
 .rc-g.wide{ grid-column:span 2; }
 @media(max-width:560px){ .rc-g.wide{ grid-column:span 1; } }
 .rc-g img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(0.16,1,0.3,1); }
@@ -118,47 +155,50 @@
 /* stato di attesa del recap */
 .rc-wait{ margin-top:40px; border:1px dashed rgba(244,242,236,.24); border-radius:12px; padding:44px 40px; }
 @media(max-width:640px){ .rc-wait{ padding:32px 24px; } }
-.rc-wait .ic{ font-size:26px; color:var(--accent); margin-bottom:16px; }
+.rc-wait .ic{ font-size:26px; color:#D4737E; margin-bottom:16px; }
 .rc-wait h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:21px; letter-spacing:-.02em; margin-bottom:12px; }
 .rc-wait p{ font-size:14.5px; line-height:1.62; color:rgba(244,242,236,.72); max-width:64ch; }
 .rc-slots{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
 @media(max-width:760px){ .rc-slots{ grid-template-columns:1fr; } }
 .rc-slot{ border:1px solid rgba(244,242,236,.14); border-radius:8px; padding:18px 18px; background:rgba(244,242,236,.03); }
-.rc-slot .k{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+.rc-slot .k{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#D4737E; margin-bottom:8px; }
 .rc-slot .d{ font-size:13px; line-height:1.55; color:rgba(244,242,236,.68); }
 
-/* ---------- CALL FOR ABSTRACT ---------- */
+/* ---------- I LAVORI ---------- */
 .call-grid{ display:grid; grid-template-columns:340px 1fr; gap:52px; align-items:start; margin-top:42px; }
 @media(max-width:900px){ .call-grid{ grid-template-columns:1fr; gap:34px; } }
-.call-logo{ width:100%; max-width:340px; border-radius:12px; display:block;
-  box-shadow:0 20px 50px rgba(20,18,14,.22); border:1px solid var(--rule); }
-.call-deadline{ margin-top:18px; border:1px solid var(--rule); border-left:3px solid var(--accent);
+.call-logo{ width:100%; max-width:340px; height:auto; aspect-ratio:1/1; object-fit:contain;
+  border-radius:12px; display:block; box-shadow:0 20px 50px rgba(20,18,14,.22); border:1px solid var(--rule); }
+.call-deadline{ margin-top:18px; border:1px solid var(--rule); border-left:3px solid #9E3742;
   border-radius:8px; background:var(--bg-card); padding:16px 18px; }
 .call-deadline .k{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute); }
-.call-deadline .v{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:22px; letter-spacing:-.02em; color:var(--accent-deep); margin-top:6px; }
+.call-deadline .v{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:22px; letter-spacing:-.02em; color:#9E3742; margin-top:6px; }
 .call-deadline .n{ font-size:12.5px; color:var(--ink-mute); margin-top:4px; }
 
-.call-steps{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:26px; }
-@media(max-width:620px){ .call-steps{ grid-template-columns:1fr; } }
-.cs{ background:var(--bg-card); border:1px solid var(--rule); border-radius:9px; padding:20px 22px; }
-.cs .n{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; color:var(--accent); margin-bottom:8px; }
-.cs .h{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:15.5px; letter-spacing:-.01em; margin-bottom:6px; }
-.cs .d{ font-size:13.5px; line-height:1.55; color:var(--ink-soft); }
+/* aree tematiche dei lavori */
+.aree{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:26px; }
+@media(max-width:620px){ .aree{ grid-template-columns:1fr; } }
+.area-card{ background:var(--bg-card); border:1px solid var(--rule); border-radius:9px; padding:18px 20px;
+  display:flex; gap:14px; align-items:baseline; }
+.area-card .c{ font-family:'JetBrains Mono',monospace; font-size:12px; color:#9E3742; flex:0 0 auto; }
+.area-card .n{ font-size:14px; line-height:1.45; color:var(--ink); font-weight:600; }
+.area-card .n em{ display:block; font-style:normal; font-weight:400; font-size:12.5px; color:var(--ink-mute); margin-top:4px; }
+
 .call-actions{ display:flex; flex-wrap:wrap; gap:13px; margin-top:28px; }
 
-/* download del workbook */
+/* download del volume */
 .wb-dl{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:26px;
   background:var(--ink); color:var(--bg); border-radius:12px; padding:26px 30px; position:relative; overflow:hidden; }
 .wb-dl::after{ content:''; position:absolute; right:-8%; bottom:-60%; width:300px; height:300px;
-  background:radial-gradient(circle, rgba(230,57,70,.2) 0%, transparent 70%); pointer-events:none; }
-.wb-dl .ico{ width:52px; height:52px; border-radius:10px; background:var(--accent); display:flex; align-items:center;
+  background:radial-gradient(circle, rgba(158,55,66,.34) 0%, transparent 70%); pointer-events:none; }
+.wb-dl .ico{ width:52px; height:52px; border-radius:10px; background:#9E3742; display:flex; align-items:center;
   justify-content:center; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; color:#fff; flex:0 0 auto; position:relative; z-index:2; }
 .wb-dl .tx{ flex:1 1 260px; position:relative; z-index:2; }
 .wb-dl .tx b{ display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:18px; letter-spacing:-.015em; }
 .wb-dl .tx span{ display:block; font-size:13.5px; color:rgba(244,242,236,.68); margin-top:5px; line-height:1.5; }
 .wb-dl .btn-e{ position:relative; z-index:2; }
 
-/* ---------- CAROSELLO DEL WORKBOOK ---------- */
+/* ---------- CAROSELLO DEL VOLUME ---------- */
 .car{ margin-top:44px; }
 .car-stage{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.85fr); gap:44px; align-items:center; }
 @media(max-width:900px){ .car-stage{ grid-template-columns:1fr; gap:28px; } }
@@ -175,7 +215,7 @@
   font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; padding:6px 13px; border-radius:100px; }
 
 .car-cap .k{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--accent); margin-bottom:14px; }
+  color:#9E3742; margin-bottom:14px; }
 .car-cap h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(22px,3vw,30px);
   letter-spacing:-.03em; line-height:1.12; color:var(--ink); margin-bottom:14px; }
 .car-cap p{ font-size:15px; line-height:1.65; color:var(--ink-soft); max-width:46ch; }
@@ -187,11 +227,9 @@
   color:var(--ink); font-size:17px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
   transition:all .3s cubic-bezier(0.16,1,0.3,1); }
 .car-btn:hover{ background:var(--ink); border-color:var(--ink); color:var(--bg); }
-.car-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-.car-btn[disabled]{ opacity:.32; cursor:default; }
-.car-btn[disabled]:hover{ background:transparent; color:var(--ink); border-color:var(--rule); }
+.car-btn:focus-visible{ outline:2px solid #9E3742; outline-offset:3px; }
 .car-prog{ flex:1 1 auto; height:3px; background:var(--rule); border-radius:100px; overflow:hidden; margin-left:6px; }
-.car-prog i{ display:block; height:100%; background:var(--accent); border-radius:100px; transition:width .45s cubic-bezier(0.16,1,0.3,1); }
+.car-prog i{ display:block; height:100%; background:#9E3742; border-radius:100px; transition:width .45s cubic-bezier(0.16,1,0.3,1); }
 
 .car-thumbs{ display:flex; gap:10px; overflow-x:auto; padding:24px 2px 8px; scrollbar-width:thin; }
 .car-thumbs::-webkit-scrollbar{ height:6px; }
@@ -200,8 +238,8 @@
   background:var(--bg-card); cursor:pointer; padding:0; line-height:0; opacity:.55; transition:all .3s; }
 .car-th img{ width:100%; display:block; }
 .car-th:hover{ opacity:.9; }
-.car-th.on{ opacity:1; border-color:var(--accent); box-shadow:0 4px 14px var(--shadow); }
-.car-th:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.car-th.on{ opacity:1; border-color:#9E3742; box-shadow:0 4px 14px var(--shadow); }
+.car-th:focus-visible{ outline:2px solid #9E3742; outline-offset:2px; }
 
 .car-hint{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; color:var(--ink-mute); margin-top:6px; }
 
@@ -210,8 +248,9 @@
   .rc-g img{ transition:none; }
 }
 
-/* ---------- FOOTER LOCALE ---------- */
 .foot-cta{ display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
+.credit{ font-size:13px; color:var(--ink-mute); margin-top:26px; line-height:1.6; max-width:78ch; }
+.credit b{ color:var(--ink-soft); font-weight:600; }
 </style>
 <script type="application/ld+json">
 {
@@ -220,8 +259,9 @@
     {
       "@type": "Event",
       "@id": "https://aniqrc.it/forum-infermieristico-2026.html#event",
-      "name": "Forum Infermieristico ANIQRC 2026",
-      "description": "Prima edizione del Forum Infermieristico ANIQRC: sessioni plenarie, tavoli di lavoro e presentazione degli abstract selezionati su qualità dell'assistenza e rischio clinico.",
+      "name": "Forum infermieristico: Qualità, sicurezza e rischio clinico",
+      "alternateName": "Pathway, ricerca, eccellenza",
+      "description": "Forum infermieristico su qualità dell'assistenza, sicurezza delle cure e rischio clinico, con sessioni plenarie, tavoli di lavoro e presentazione dei lavori raccolti nel libro dei lavori.",
       "startDate": "2026-10-30T09:00:00+01:00",
       "endDate": "2026-10-30T17:30:00+01:00",
       "eventStatus": "https://schema.org/EventScheduled",
@@ -229,10 +269,19 @@
       "url": "https://aniqrc.it/forum-infermieristico-2026.html",
       "image": "https://aniqrc.it/og-forum-2026.png",
       "inLanguage": "it-IT",
+      "location": {
+        "@type": "Place",
+        "name": "Sala consiliare del Comune di Bari",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bari",
+          "addressRegion": "Puglia",
+          "addressCountry": "IT"
+        }
+      },
       "organizer": {
         "@type": "Organization",
-        "name": "ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico",
-        "url": "https://aniqrc.it/"
+        "name": "IRCCS Istituto Tumori «Giovanni Paolo II» — Bari"
       }
     },
     {
@@ -241,14 +290,14 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "ANIQRC", "item": "https://aniqrc.it/" },
         { "@type": "ListItem", "position": 2, "name": "Eventi", "item": "https://aniqrc.it/eventi.html" },
-        { "@type": "ListItem", "position": 3, "name": "Forum Infermieristico 2026" }
+        { "@type": "ListItem", "position": 3, "name": "Forum infermieristico — Bari 2026" }
       ]
     }
   ]
 }
 </script>
 </head>
-<body>
+<body class="forum">
 
 <nav id="nav">
   <div class="nav-inner">
@@ -272,50 +321,70 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="page-hero">
+<header class="ev-hero">
   <div class="wrap">
-    <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span><a href="eventi.html">Eventi</a><span class="sep">/</span>Forum Infermieristico 2026</div>
-    <div class="ev-badges">
-      <span class="evb first">Prima edizione</span>
-      <span class="evb type">Forum nazionale</span>
-      <span class="evb ecm">Crediti ECM richiesti</span>
+    <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span><a href="eventi.html">Eventi</a><span class="sep">/</span>Forum infermieristico — Bari 2026</div>
+
+    <div class="ev-grid">
+      <div>
+        <div class="ev-badges">
+          <span class="evb done">Evento concluso</span>
+          <span class="evb ed">Bari · 30 ottobre 2026</span>
+          <span class="evb tag">Libro dei lavori disponibile</span>
+        </div>
+        <h1 class="ev-title">Forum infermieristico:<br><span class="accent">Qualità, sicurezza<br>e rischio clinico</span>.</h1>
+        <div class="ev-kick">Pathway, ricerca, eccellenza</div>
+        <p class="ev-lead">Una giornata nella <b>Sala consiliare del Comune di Bari</b> per mettere in fila quello che funziona: ricerche, progetti di miglioramento e casi studio portati da chi lavora in reparto. Qui trovi il racconto della giornata, i materiali e <b>il libro dei lavori</b> presentati.</p>
+      </div>
+      <div>
+        <img class="ev-key" src="forum-2026-key.png" alt="Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026, Sala consiliare del Comune di Bari" width="1000" height="1200" loading="eager" decoding="async">
+      </div>
     </div>
-    <h1 class="page-title">Forum Infermieristico <span class="accent">ANIQRC</span>.</h1>
-    <p class="page-lead">Una giornata intera per mettere in fila quello che funziona: <b>ricerche, progetti di miglioramento e casi studio</b> su qualità dell'assistenza, rischio clinico e sicurezza delle cure. Al mattino le plenarie fissano il metodo, al pomeriggio parlano i lavori.</p>
 
     <div class="facts">
-      <div class="fact"><div class="l">Data</div><div class="v">30 ottobre 2026<small>venerdì</small></div></div>
-      <div class="fact"><div class="l">Orario</div><div class="v">09:00 — 17:30<small>registrazione dalle 08:30</small></div></div>
-      <div class="fact"><div class="l">Sede</div><div class="v">In via di definizione<small>confermata entro giugno 2026</small></div></div>
-      <div class="fact"><div class="l">Call for Abstract</div><div class="v">Aperta<small>invii entro il 15 settembre 2026</small></div></div>
+      <div class="fact"><div class="l">Data</div><div class="v">30 ottobre 2026<small>venerdì · 09:00 — 17:30</small></div></div>
+      <div class="fact"><div class="l">Sede</div><div class="v">Sala consiliare<small>Comune di Bari</small></div></div>
+      <div class="fact"><div class="l">Lavori presentati</div><div class="v">12<small>in sei aree tematiche</small></div></div>
+      <div class="fact"><div class="l">Materiali</div><div class="v">Libro dei lavori<small>PDF scaricabile · 17 pagine</small></div></div>
     </div>
 
     <div class="hero-cta">
-      <a href="#call" class="btn-e primary">Invia un abstract <span class="ar">→</span></a>
-      <a href="documenti/ANIQRC-Workbook-Call-for-Abstract-2026.pdf" target="_blank" rel="noopener" class="btn-e dark">Scarica il workbook (PDF)</a>
-      <a href="#programma" class="btn-e ghost">Il programma</a>
+      <a href="documenti/Forum-Infermieristico-2026-Libro-dei-Lavori.pdf" target="_blank" rel="noopener" class="btn-e primary">Scarica il libro dei lavori <span class="ar">↓</span></a>
+      <a href="#recap" class="btn-e ghost">Vai al recap</a>
+      <a href="#lavori" class="btn-e ghost">I lavori presentati</a>
+    </div>
+
+    <div class="ente" id="ente">
+      <div>
+        <div class="k">Organizzato da</div>
+        <div class="n">IRCCS Istituto Tumori «Giovanni Paolo II» — Bari</div>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- ============ PROGRAMMA ============ -->
-<section class="sec-pad" id="programma" style="padding-top:40px;">
+<section class="sec-pad" id="programma" style="padding-top:64px;">
   <div class="wrap">
     <div class="sec-label reveal">Programma</div>
-    <h2 class="sec-title reveal">Come è fatta <span class="accent">la giornata</span>.</h2>
-    <p class="sec-intro reveal">Mattino in plenaria, pomeriggio in sessioni parallele, chiusura con la restituzione dei tavoli. Il programma di dettaglio, con i nomi dei relatori, viene pubblicato qui dopo la chiusura della Call.</p>
+    <h2 class="sec-title reveal">Com'è andata <span class="accent" style="color:#9E3742;">la giornata</span>.</h2>
+    <p class="sec-intro reveal">Mattino in plenaria per fissare il quadro metodologico, pomeriggio in sessioni parallele per i lavori, chiusura con la restituzione dei tavoli.</p>
 
     <div class="prog reveal">
-      <div class="prog-row"><div class="prog-h">08:30</div><div><div class="prog-t">Registrazione dei partecipanti</div><div class="prog-d">Accoglienza, consegna del workbook e del materiale della giornata.</div></div></div>
-      <div class="prog-row"><div class="prog-h">09:15</div><div><div class="prog-t">Apertura dei lavori</div><div class="prog-d">Perché una rete nazionale sulla qualità e sul rischio clinico, e che cosa ci aspettiamo da questa prima edizione.</div></div></div>
+      <div class="prog-row"><div class="prog-h">08:30</div><div><div class="prog-t">Registrazione dei partecipanti</div><div class="prog-d">Accoglienza e consegna del volume dei lavori.</div></div></div>
+      <div class="prog-row"><div class="prog-h">09:15</div><div><div class="prog-t">Apertura dei lavori</div><div class="prog-d">Qualità, sicurezza e rischio clinico: da dove ripartiamo.</div></div></div>
       <div class="prog-row"><div class="prog-h">09:45</div><div><div class="prog-t">Plenaria I — Misurare la qualità dell'assistenza</div><div class="prog-d">Che cosa conta davvero tra gli indicatori che raccogliamo, e come si distingue una misura utile da un adempimento.</div></div></div>
       <div class="prog-row"><div class="prog-h">11:15</div><div><div class="prog-t">Plenaria II — Dal rischio clinico alla cultura della sicurezza</div><div class="prog-d">Segnalazione, analisi degli eventi, risposta non punitiva: come si costruisce un contesto in cui gli errori emergono.</div></div></div>
       <div class="prog-row"><div class="prog-h">13:00</div><div><div class="prog-t">Pausa</div><div class="prog-d">Spazio poster e confronto informale tra gli autori dei lavori.</div></div></div>
-      <div class="prog-row"><div class="prog-h">14:00</div><div><div class="prog-t">Sessioni parallele — presentazione degli abstract</div><div class="prog-d">I lavori selezionati vengono presentati per area tematica. Ogni sessione ha un discussant che raccoglie le domande e prepara la sintesi.</div></div></div>
+      <div class="prog-row"><div class="prog-h">14:00</div><div><div class="prog-t">Sessioni parallele — presentazione dei lavori</div><div class="prog-d">I lavori raccolti nel volume, presentati per area tematica. Ogni sessione con un discussant che raccoglie le domande e prepara la sintesi.</div></div></div>
       <div class="prog-row"><div class="prog-h">16:15</div><div><div class="prog-t">Tavoli di lavoro</div><div class="prog-d">Che cosa portiamo a casa: un tavolo per area tematica, con l'obiettivo di scrivere tre righe utilizzabili da subito.</div></div></div>
-      <div class="prog-row"><div class="prog-h">17:00</div><div><div class="prog-t">Restituzione in plenaria e chiusura</div><div class="prog-d">Le sintesi dei tavoli, gli impegni per l'anno che viene, la data della seconda edizione.</div></div></div>
+      <div class="prog-row"><div class="prog-h">17:00</div><div><div class="prog-t">Restituzione in plenaria e chiusura</div><div class="prog-d">Le sintesi dei tavoli e gli impegni per l'anno che viene.</div></div></div>
     </div>
-    <p class="prog-note reveal">Il programma può subire variazioni. Iscrivendoti alla <a href="/#newsletter" style="color:var(--accent);text-decoration:none;">newsletter</a> ricevi ogni aggiornamento.</p>
+
+    <div class="prog-note reveal">
+      <span style="color:#9E3742;">◷</span>
+      <span><b>Programma definitivo in via di definizione.</b> Questa è la scansione della giornata; i nomi dei relatori e i titoli esatti degli interventi vengono pubblicati qui appena consolidati.</span>
+    </div>
   </div>
 </section>
 
@@ -324,7 +393,7 @@
   <div class="wrap">
     <div class="sec-label reveal">Recap dell'evento</div>
     <h2 class="sec-title reveal">Come è andata, <span class="accent">per chi non c'era</span>.</h2>
-    <p class="sec-intro reveal" id="rcIntro">Video degli interventi, immagini della giornata e sintesi dei tavoli di lavoro. Questa sezione si popola dopo il 30 ottobre 2026.</p>
+    <p class="sec-intro reveal" id="rcIntro">Video degli interventi, immagini della giornata e sintesi dei tavoli di lavoro.</p>
 
     <!-- video: si popolano da forum-2026-media.js (FORUM_VIDEO) -->
     <div class="rc-video" id="rcVideo" hidden></div>
@@ -335,83 +404,84 @@
     <!-- stato di attesa: sparisce da solo quando video o foto vengono aggiunti -->
     <div class="rc-wait reveal" id="rcWait">
       <div class="ic">◷</div>
-      <h3>Il recap arriva dopo il Forum.</h3>
-      <p>Appena la giornata sarà conclusa, qui trovi i video degli interventi, la galleria fotografica e la sintesi scritta dei tavoli di lavoro. Nel frattempo puoi già leggere il workbook dei lavori e inviare il tuo abstract.</p>
+      <h3>Video e fotografie sono in lavorazione.</h3>
+      <p>I materiali della giornata vengono pubblicati qui appena pronti: i video degli interventi, la galleria fotografica e la sintesi scritta dei tavoli di lavoro. Nel frattempo puoi già leggere e scaricare il libro dei lavori presentati.</p>
       <div class="rc-slots">
         <div class="rc-slot"><div class="k">Video</div><div class="d">Apertura, plenarie e sintesi della giornata, con i passaggi più utili tagliati in clip brevi.</div></div>
-        <div class="rc-slot"><div class="k">Galleria</div><div class="d">Le immagini della giornata: sala, sessioni parallele, tavoli di lavoro e momenti di confronto.</div></div>
+        <div class="rc-slot"><div class="k">Galleria</div><div class="d">Le immagini della giornata: la sala, le sessioni parallele, i tavoli di lavoro e i momenti di confronto.</div></div>
         <div class="rc-slot"><div class="k">Sintesi</div><div class="d">Che cosa è emerso dai tavoli, area per area, in una pagina leggibile in cinque minuti.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CALL FOR ABSTRACT ============ -->
-<section class="sec-pad" id="call">
+<!-- ============ I LAVORI PRESENTATI ============ -->
+<section class="sec-pad" id="lavori">
   <div class="wrap">
-    <div class="sec-label reveal">Call for Abstract</div>
-    <h2 class="sec-title reveal">Porta il tuo lavoro <span class="accent">al Forum</span>.</h2>
-    <p class="sec-intro reveal">Non serve un lavoro concluso né un risultato positivo. Serve un lavoro onesto: un problema reale, un metodo dichiarato, dei numeri e una conclusione che non prometta più di quanto i dati sostengano.</p>
+    <div class="sec-label reveal">I lavori presentati</div>
+    <h2 class="sec-title reveal">Dodici lavori, <span class="accent" style="color:#9E3742;">dodici modi di misurarsi</span>.</h2>
+    <p class="sec-intro reveal">Ricerche originali, progetti di miglioramento, casi studio e revisioni della letteratura, arrivati dalla Call for Abstract e discussi nelle sessioni del pomeriggio. Sono tutti raccolti nel volume, uno per pagina, nella forma in cui sono stati presentati.</p>
 
     <div class="call-grid">
       <div class="reveal">
-        <img class="call-logo" src="call-for-abstract-logo.png" alt="Call for Abstract — Forum Infermieristico ANIQRC 2026" width="900" height="900">
+        <img class="call-logo" src="call-for-abstract-logo.png" alt="Call for Abstract — Forum infermieristico, Bari 30 ottobre 2026" width="900" height="900">
         <div class="call-deadline">
-          <div class="k">Chiusura degli invii</div>
-          <div class="v">15 settembre 2026</div>
-          <div class="n">ore 23:59 — esito della revisione entro il 30 settembre</div>
+          <div class="k">Call for Abstract</div>
+          <div class="v">Chiusa</div>
+          <div class="n">i lavori selezionati sono raccolti nel volume</div>
         </div>
       </div>
 
       <div class="reveal">
-        <div class="call-steps">
-          <div class="cs"><div class="n">01</div><div class="h">Scegli l'area tematica</div><div class="d">Sei aree, dal rischio clinico agli esiti sensibili all'assistenza. Se il lavoro ne tocca più di una, indica quella prevalente.</div></div>
-          <div class="cs"><div class="n">02</div><div class="h">Scrivi in forma strutturata</div><div class="d">Introduzione, Obiettivi, Metodi, Risultati, Conclusioni. Massimo 2.800 caratteri spazi inclusi, da 3 a 5 parole chiave.</div></div>
-          <div class="cs"><div class="n">03</div><div class="h">Dichiara i numeri</div><div class="d">I risultati vanno riportati con i valori misurati, non con aggettivi. Un dato dice qualcosa; «nettamente migliorato» non dice nulla.</div></div>
-          <div class="cs"><div class="n">04</div><div class="h">Invia entro la scadenza</div><div class="d">Due revisori in cieco valutano su cinque criteri. Riceverai un codice: conservalo per ogni comunicazione successiva.</div></div>
-        </div>
-
-        <div class="call-actions">
-          <a href="mailto:abstract@aniqrc.it?subject=Call%20for%20Abstract%20—%20Forum%20Infermieristico%202026" class="btn-e primary">Invia il tuo abstract <span class="ar">→</span></a>
-          <a href="#workbook" class="btn-e ghost">Sfoglia il workbook</a>
+        <div class="aree">
+          <div class="area-card"><span class="c">A1</span><span class="n">Sicurezza del paziente e rischio clinico<em>Eventi avversi, near miss, incident reporting, bundle di prevenzione.</em></span></div>
+          <div class="area-card"><span class="c">A2</span><span class="n">Misurazione, indicatori e cruscotti<em>Audit clinici, benchmarking, qualità del dato e validità delle misure.</em></span></div>
+          <div class="area-card"><span class="c">A3</span><span class="n">Procedure e percorsi assistenziali<em>Scrittura, revisione, aderenza e usabilità al punto di cura.</em></span></div>
+          <div class="area-card"><span class="c">A4</span><span class="n">Esiti sensibili all'assistenza<em>Cadute, lesioni da pressione, ICA, missed care, dotazione infermieristica.</em></span></div>
+          <div class="area-card"><span class="c">A5</span><span class="n">Dati, digitale e supporto alla decisione<em>Cartella informatizzata, sistemi di allerta, uso secondario dei dati.</em></span></div>
+          <div class="area-card"><span class="c">A6</span><span class="n">Cultura della sicurezza e formazione<em>Just culture, seconda vittima, simulazione, leadership clinica.</em></span></div>
         </div>
 
         <div class="wb-dl">
           <div class="ico">PDF</div>
           <div class="tx">
-            <b>Workbook Call for Abstract 2026</b>
-            <span>20 pagine: istruzioni per l'invio, aree tematiche, criteri di valutazione e i lavori raccolti. Edizione 1.0 · 210 KB</span>
+            <b>Il libro dei lavori — edizione 2026</b>
+            <span>17 pagine: il racconto della giornata, l'indice dei lavori e i 12 abstract presentati. 177 KB</span>
           </div>
-          <a href="documenti/ANIQRC-Workbook-Call-for-Abstract-2026.pdf" download class="btn-e primary">Scarica <span class="ar">↓</span></a>
+          <a href="documenti/Forum-Infermieristico-2026-Libro-dei-Lavori.pdf" download class="btn-e primary">Scarica <span class="ar">↓</span></a>
+        </div>
+
+        <div class="call-actions">
+          <a href="#volume" class="btn-e ghost">Sfoglialo qui sotto</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CAROSELLO WORKBOOK ============ -->
-<section class="sec-pad" id="workbook" style="padding-top:0;">
+<!-- ============ CAROSELLO DEL VOLUME ============ -->
+<section class="sec-pad" id="volume" style="padding-top:0;">
   <div class="wrap">
-    <div class="sec-label reveal">Dentro il workbook</div>
-    <h2 class="sec-title reveal">Sfoglialo <span class="accent">pagina per pagina</span>.</h2>
-    <p class="sec-intro reveal">Venti pagine, dalla copertina ai dodici lavori raccolti. Usa le frecce, la tastiera o le miniature per muoverti; ogni pagina ha la sua nota.</p>
+    <div class="sec-label reveal">Dentro il volume</div>
+    <h2 class="sec-title reveal">Sfoglialo <span class="accent" style="color:#9E3742;">pagina per pagina</span>.</h2>
+    <p class="sec-intro reveal">Diciassette pagine, dalla copertina ai dodici lavori raccolti. Usa le frecce, la tastiera o le miniature per muoverti; ogni pagina ha la sua nota.</p>
 
     <div class="car reveal" id="car">
       <div class="car-stage">
         <div class="car-frame">
-          <div class="car-count" id="carCount">01 / 20</div>
-          <div class="car-track" id="carTrack" role="group" aria-roledescription="carosello" aria-label="Pagine del workbook"></div>
+          <div class="car-count" id="carCount">01 / 17</div>
+          <div class="car-track" id="carTrack" role="group" aria-roledescription="carosello" aria-label="Pagine del libro dei lavori"></div>
         </div>
 
         <div class="car-cap">
           <div class="k" id="carK">Copertina</div>
           <h3 id="carT">Un volume, non un volantino</h3>
-          <p id="carP">Caricamento delle pagine del workbook…</p>
+          <p id="carP">Caricamento delle pagine del volume…</p>
 
           <div class="car-nav">
             <button class="car-btn" id="carPrev" type="button" aria-label="Pagina precedente">←</button>
             <button class="car-btn" id="carNext" type="button" aria-label="Pagina successiva">→</button>
-            <span class="car-prog"><i id="carBar" style="width:5%"></i></span>
+            <span class="car-prog"><i id="carBar" style="width:6%"></i></span>
           </div>
           <div class="car-hint">Frecce ← → da tastiera · scorri con il dito su mobile</div>
         </div>
@@ -421,9 +491,11 @@
     </div>
 
     <div class="foot-cta reveal">
-      <a href="documenti/ANIQRC-Workbook-Call-for-Abstract-2026.pdf" download class="btn-e dark">Scarica il workbook completo <span class="ar">↓</span></a>
+      <a href="documenti/Forum-Infermieristico-2026-Libro-dei-Lavori.pdf" download class="btn-e dark">Scarica il volume completo <span class="ar">↓</span></a>
       <a href="eventi.html" class="btn-e ghost">Torna agli eventi</a>
     </div>
+
+    <p class="credit reveal">Il <b>Forum infermieristico: Qualità, sicurezza e rischio clinico</b> si è svolto a Bari il 30 ottobre 2026 nella Sala consiliare del Comune di Bari, organizzato dall'<b>IRCCS Istituto Tumori «Giovanni Paolo II» — Bari</b>. Questa pagina ne raccoglie il racconto e i materiali. I contenuti del volume pubblicato in questa versione sono dimostrativi e verranno sostituiti dagli atti definitivi.</p>
   </div>
 </section>
 
@@ -451,11 +523,23 @@ document.documentElement.classList.add('js');
   setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')), 2500);
 })();
 
+const escHtml = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+
+/* ---------- LOGO DELL'ENTE ORGANIZZATORE ---------- */
+(function () {
+  const src = typeof window.FORUM_LOGO_ENTE === 'string' ? window.FORUM_LOGO_ENTE.trim() : '';
+  const box = document.getElementById('ente');
+  if (!src || !box) return;
+  const img = new Image();
+  img.alt = 'IRCCS Istituto Tumori «Giovanni Paolo II» — Bari';
+  img.decoding = 'async';
+  img.onload = () => box.insertBefore(img, box.firstChild);
+  img.src = src;
+})();
+
 /* ---------- RECAP: video + galleria ---------- */
 (function () {
-  const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-
   const videos  = Array.isArray(window.FORUM_VIDEO) ? window.FORUM_VIDEO : [];
   const gallery = Array.isArray(window.FORUM_GALLERIA) ? window.FORUM_GALLERIA : [];
   const vBox = document.getElementById('rcVideo');
@@ -466,15 +550,15 @@ document.documentElement.classList.add('js');
     vBox.innerHTML = videos.map(v => {
       let frame;
       if (v.tipo === 'youtube' && v.id) {
-        frame = '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.id) + '" title="' +
-          esc(v.titolo || 'Video') + '" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+        frame = '<iframe src="https://www.youtube-nocookie.com/embed/' + escHtml(v.id) + '" title="' +
+          escHtml(v.titolo || 'Video') + '" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
       } else if (v.src) {
-        frame = '<video controls preload="metadata"' + (v.poster ? ' poster="' + esc(v.poster) + '"' : '') +
-          '><source src="' + esc(v.src) + '"></video>';
+        frame = '<video controls preload="metadata"' + (v.poster ? ' poster="' + escHtml(v.poster) + '"' : '') +
+          '><source src="' + escHtml(v.src) + '"></video>';
       } else { return ''; }
       return '<div class="rc-v"><div class="fr">' + frame + '</div>' +
-        (v.titolo ? '<div class="cap"><b>' + esc(v.titolo) + '</b>' +
-          (v.nota ? '<span>' + esc(v.nota) + '</span>' : '') + '</div>' : '') + '</div>';
+        (v.titolo ? '<div class="cap"><b>' + escHtml(v.titolo) + '</b>' +
+          (v.nota ? '<span>' + escHtml(v.nota) + '</span>' : '') + '</div>' : '') + '</div>';
     }).join('');
     vBox.hidden = false;
   }
@@ -482,8 +566,8 @@ document.documentElement.classList.add('js');
   if (gallery.length) {
     gBox.innerHTML = gallery.map(g =>
       '<figure class="rc-g' + (g.grande ? ' wide' : '') + '">' +
-        '<img src="' + esc(g.src) + '" alt="' + esc(g.alt || g.didascalia || '') + '" loading="lazy">' +
-        (g.didascalia ? '<figcaption>' + esc(g.didascalia) + '</figcaption>' : '') +
+        '<img src="' + escHtml(g.src) + '" alt="' + escHtml(g.alt || g.didascalia || '') + '" loading="lazy">' +
+        (g.didascalia ? '<figcaption>' + escHtml(g.didascalia) + '</figcaption>' : '') +
       '</figure>').join('');
     gBox.hidden = false;
   }
@@ -495,7 +579,7 @@ document.documentElement.classList.add('js');
   }
 })();
 
-/* ---------- CAROSELLO DEL WORKBOOK ---------- */
+/* ---------- CAROSELLO DEL VOLUME ---------- */
 (function () {
   const pages = Array.isArray(window.FORUM_WORKBOOK) ? window.FORUM_WORKBOOK : [];
   const car    = document.getElementById('car');
@@ -506,18 +590,16 @@ document.documentElement.classList.add('js');
   const prev = document.getElementById('carPrev'), next = document.getElementById('carNext');
   if (!car || !track || !pages.length) { if (car) car.style.display = 'none'; return; }
 
-  const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   const pad = n => String(n).padStart(2, '0');
   let i = 0;
 
   track.innerHTML = pages.map((p, n) =>
-    '<img src="' + esc(p.img) + '" alt="Workbook Call for Abstract, pagina ' + (n + 1) + '"' +
+    '<img src="' + escHtml(p.img) + '" alt="Libro dei lavori, pagina ' + (n + 1) + '"' +
     (n === 0 ? ' class="on"' : '') + ' loading="' + (n < 2 ? 'eager' : 'lazy') + '" decoding="async">').join('');
 
   thumbs.innerHTML = pages.map((p, n) =>
     '<button class="car-th' + (n === 0 ? ' on' : '') + '" type="button" data-i="' + n +
-    '" aria-label="Vai alla pagina ' + (n + 1) + '"><img src="' + esc(p.thumb || p.img) +
+    '" aria-label="Vai alla pagina ' + (n + 1) + '"><img src="' + escHtml(p.thumb || p.img) +
     '" alt="" loading="lazy" decoding="async"></button>').join('');
 
   const imgs = Array.from(track.querySelectorAll('img'));
@@ -534,7 +616,6 @@ document.documentElement.classList.add('js');
     count.textContent = pad(i + 1) + ' / ' + pad(pages.length);
     bar.style.width = (((i + 1) / pages.length) * 100).toFixed(1) + '%';
     [kEl, tEl, pEl].forEach(el => { el.classList.remove('anim'); void el.offsetWidth; el.classList.add('anim'); });
-    // precarica la successiva
     const nx = imgs[(i + 1) % imgs.length];
     if (nx && nx.loading === 'lazy') nx.loading = 'eager';
     if (scrollThumb && ths[i]) ths[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
@@ -552,7 +633,6 @@ document.documentElement.classList.add('js');
     if (e.key === 'ArrowRight') { e.preventDefault(); show(i + 1, true); }
   });
 
-  // swipe
   let x0 = null, y0 = null;
   track.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
   track.addEventListener('touchend', e => {

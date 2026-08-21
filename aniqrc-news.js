@@ -25,8 +25,8 @@ window.ANIQRC_NEWS = [
   { tag: "Eventi", testo: "Nuovi eventi", link: "eventi.html", nuovo: true },
 
   // Esempi già pronti — togli le // per attivarli:
-  // { tag: "Evento", testo: "Forum Infermieristico — 30 ottobre 2026", link: "forum-infermieristico-2026.html" },
-  // { tag: "Call",   testo: "Call for Abstract aperta: invia il tuo lavoro", link: "forum-infermieristico-2026.html#call" },
+  // { tag: "Evento", testo: "Forum infermieristico — Bari, 30 ottobre 2026", link: "forum-infermieristico-2026.html" },
+  // { tag: "Lavori", testo: "Online il libro dei lavori del Forum di Bari", link: "forum-infermieristico-2026.html#lavori" },
   // { tag: "Journal", testo: "È online il primo numero del Journal", link: "journal.html" },
   // { tag: "Toolkit", testo: "Nuovo strumento nel Toolkit: calcolo del campione", link: "strumenti-campione.html" },
 

@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Eventi — ANIQRC</title>
-<meta name="description" content="Gli eventi ANIQRC: convegni, corsi e appuntamenti formativi su qualità dell'assistenza, rischio clinico, procedure e ricerca infermieristica. Il 30 ottobre 2026 il Forum Infermieristico ANIQRC.">
+<meta name="description" content="Gli eventi seguiti da ANIQRC: convegni, corsi e appuntamenti formativi su qualità dell'assistenza, rischio clinico, procedure e ricerca infermieristica. Il Forum infermieristico di Bari, 30 ottobre 2026.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://aniqrc.it/eventi.html">
@@ -406,7 +406,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     {
       "@type": "ItemList",
       "@id": "https://aniqrc.it/eventi.html#eventlist",
-      "name": "Calendario eventi ANIQRC",
+      "name": "Eventi seguiti da ANIQRC",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -414,14 +414,19 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
           "item": {
             "@type": "Event",
             "@id": "https://aniqrc.it/forum-infermieristico-2026.html#event",
-            "name": "Forum Infermieristico ANIQRC 2026",
+            "name": "Forum infermieristico: Qualità, sicurezza e rischio clinico",
             "startDate": "2026-10-30T09:00:00+01:00",
             "endDate": "2026-10-30T17:30:00+01:00",
             "eventStatus": "https://schema.org/EventScheduled",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "url": "https://aniqrc.it/forum-infermieristico-2026.html",
             "inLanguage": "it-IT",
-            "organizer": { "@id": "https://aniqrc.it/#organization" }
+            "location": {
+              "@type": "Place",
+              "name": "Sala consiliare del Comune di Bari",
+              "address": { "@type": "PostalAddress", "addressLocality": "Bari", "addressRegion": "Puglia", "addressCountry": "IT" }
+            },
+            "organizer": { "@type": "Organization", "name": "IRCCS Istituto Tumori «Giovanni Paolo II» — Bari" }
           }
         }
       ]
@@ -464,12 +469,12 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 <!-- ============ CALENDARIO ============ -->
 <section class="sec-pad" style="padding-top:24px;" id="calendario">
   <div class="wrap">
-    <div class="sec-label reveal">Prossimi appuntamenti</div>
-    <h2 class="sec-title reveal">Il primo appuntamento <span class="accent">è fissato</span>.</h2>
+    <div class="sec-label reveal">Gli appuntamenti</div>
+    <h2 class="sec-title reveal">Dove siamo <span class="accent">stati</span>.</h2>
 
     <div class="ev-list">
 
-      <!-- ===== EVENTO: Forum Infermieristico 2026 ===== -->
+      <!-- ===== EVENTO: Forum infermieristico — Bari, 30 ottobre 2026 ===== -->
       <a class="ev-card reveal fx-card" href="forum-infermieristico-2026.html">
         <span class="fx-lens" aria-hidden="true"></span>
         <div class="ev-date">
@@ -479,24 +484,24 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
         </div>
         <div class="ev-body">
           <div class="ev-pills">
-            <span class="ev-pill live">Prima edizione</span>
-            <span class="ev-pill type">Forum nazionale</span>
-            <span class="ev-pill call">Call for Abstract aperta</span>
+            <span class="ev-pill live">Evento concluso</span>
+            <span class="ev-pill type">Bari</span>
+            <span class="ev-pill call">Libro dei lavori disponibile</span>
           </div>
-          <h3 class="ev-t">Forum Infermieristico <span class="accent">ANIQRC</span></h3>
+          <h3 class="ev-t">Forum infermieristico: <span class="accent">Qualità, sicurezza e rischio clinico</span></h3>
           <div class="ev-meta">
             <span>◷ 30 ottobre 2026 · 09:00 — 17:30</span>
-            <span>⌖ Sede in via di definizione</span>
-            <span>◇ Crediti ECM richiesti</span>
+            <span>⌖ Sala consiliare del Comune di Bari</span>
+            <span>◇ IRCCS Istituto Tumori «Giovanni Paolo II»</span>
           </div>
-          <p class="ev-desc">Una giornata intera dedicata a qualità dell'assistenza, rischio clinico e ricerca infermieristica: sessioni plenarie, tavoli di lavoro e presentazione degli abstract selezionati. Programma, Call for Abstract e workbook nella pagina dell'evento.</p>
+          <p class="ev-desc">Pathway, ricerca, eccellenza. Una giornata su qualità dell'assistenza, sicurezza delle cure e rischio clinico, con dodici lavori presentati nelle sessioni del pomeriggio. Nella pagina dell'evento: il recap, i materiali e il libro dei lavori in PDF.</p>
         </div>
         <span class="ev-go" aria-hidden="true">→</span>
       </a>
 
       <div class="ev-soon reveal">
         <span class="ic">◷</span>
-        <span>Gli altri appuntamenti del 2026 e del 2027 sono in via di definizione: appena confermati compaiono qui e nel nastro delle news in home.</span>
+        <span>I prossimi appuntamenti sono in via di definizione: appena confermati compaiono qui e nel nastro delle news in home.</span>
       </div>
 
     </div>
