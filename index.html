@@ -306,27 +306,6 @@
   .hero-pride-2 { margin-top: 30px; animation-delay: 1.15s; }
   .hero-actions-3 { margin-top: 18px; animation-delay: 1.25s; }
 
-  /* ============ MARQUEE ============ */
-  .marquee {
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 22px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    background: var(--bg-warm);
-  }
-  .marquee-track {
-    display: inline-flex;
-    gap: 48px;
-    animation: scroll-x 32s linear infinite;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 17px; font-weight: 500;
-    color: var(--ink-soft);
-    letter-spacing: 0.02em;
-  }
-  .marquee-track span .sep { color: var(--accent); margin-left: 48px; }
-  @keyframes scroll-x { to { transform: translateX(-50%); } }
-
   /* ============ SECTION FRAMEWORK ============ */
   section { position: relative; z-index: 2; }
   .sec-pad { padding: 120px 0; }
@@ -1140,6 +1119,82 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 /* ===== MICRO-INTERAZIONI ===== */
 .scroll-progress{ position:fixed; top:0; left:0; height:3px; width:100%; z-index:1200; pointer-events:none; transform-origin:0 50%; transform:scaleX(0); background:linear-gradient(90deg,var(--accent),var(--accent-deep)); }
 .btn{ will-change:transform; }
+
+
+/* =========================================================
+   NASTRO NEWS — il nastro rosso subito sotto il menu.
+   Contenuti in aniqrc-news.js (window.ANIQRC_NEWS).
+   ========================================================= */
+.newsbar{
+  --nb-bg:#C0202E;
+  --nb-ink:#FBF6F1;
+  position:relative; z-index:2;
+  display:flex; align-items:stretch;
+  height:44px; overflow:hidden;
+  background:var(--nb-bg); color:var(--nb-ink);
+  border-top:1px solid rgba(255,255,255,.16);
+  box-shadow:0 6px 18px rgba(192,32,46,.16);
+}
+html[data-theme="dark"] .newsbar{ --nb-bg:#A8172A; }
+.newsbar[hidden]{ display:none; }
+
+/* etichetta fissa a sinistra, allineata alla griglia del menu */
+.newsbar-label{
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:9px;
+  padding-left:max(22px, calc((100vw - 1240px) / 2 + 32px));
+  padding-right:20px;
+  background:rgba(0,0,0,.17);
+  font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:#fff; white-space:nowrap;
+}
+.nb-dot{ width:7px; height:7px; border-radius:50%; background:#fff; flex:0 0 auto; animation:nbPulse 2s ease-in-out infinite; }
+@keyframes nbPulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.28; transform:scale(.6); } }
+
+/* pista scorrevole */
+.newsbar-viewport{
+  flex:1 1 auto; min-width:0; overflow:hidden; position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);
+}
+.newsbar-track{
+  display:inline-flex; align-items:center; height:100%;
+  white-space:nowrap; will-change:transform;
+  animation:nbScroll var(--nb-dur,34s) linear infinite;
+}
+@keyframes nbScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+.newsbar:hover .newsbar-track,
+.newsbar:focus-within .newsbar-track{ animation-play-state:paused; }
+
+.nb-item{
+  display:inline-flex; align-items:center; gap:9px; padding:0 22px;
+  font-family:'Manrope',sans-serif; font-size:13.5px; font-weight:600;
+  letter-spacing:.01em; color:var(--nb-ink); text-decoration:none;
+  transition:color .25s;
+}
+.nb-item:not(.nb-static):hover{ color:#fff; }
+.nb-item:not(.nb-static):hover .nb-txt{ text-decoration:underline; text-underline-offset:4px; }
+.nb-item:not(.nb-static):hover .nb-arr{ transform:translateX(4px); }
+.nb-item:focus-visible{ outline:2px solid #fff; outline-offset:-3px; border-radius:4px; }
+.nb-tag{
+  font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:3px 9px; border-radius:100px; background:rgba(255,255,255,.2); color:#fff;
+}
+.nb-new{ width:6px; height:6px; border-radius:50%; background:#FFD9A0; flex:0 0 auto; animation:nbPulse 1.6s ease-in-out infinite; }
+.nb-arr{ font-size:13px; opacity:.8; transition:transform .3s; }
+.nb-sep{ opacity:.42; font-size:12px; }
+
+@media (max-width:640px){
+  .newsbar{ height:40px; }
+  .newsbar-label{ padding-left:18px; padding-right:14px; font-size:0; gap:0; }
+  .newsbar-label .nb-dot{ width:8px; height:8px; }
+  .nb-item{ font-size:12.5px; padding:0 16px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .newsbar-track{ animation:none; }
+  .nb-dot,.nb-new{ animation:none; }
+  .newsbar-viewport{ overflow-x:auto; -webkit-mask-image:none; mask-image:none; }
+}
 .racconto-frame{ perspective:900px; }
 .racconto-video{ transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
 
@@ -1240,6 +1295,16 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
       <a href="adesione.html" class="nav-cta">Associati</a>
     </div>
   </div>
+
+  <!-- ===== NASTRO NEWS — contenuti in aniqrc-news.js ===== -->
+  <div class="newsbar" id="newsbar" role="region" aria-label="Ultime novità di ANIQRC">
+    <div class="newsbar-label"><span class="nb-dot"></span>News</div>
+    <div class="newsbar-viewport">
+      <div class="newsbar-track" id="newsbarTrack">
+        <a class="nb-item" href="eventi.html"><span class="nb-tag">Eventi</span><span class="nb-txt">Nuovi eventi</span><span class="nb-arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -1287,24 +1352,6 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
     </div>
   </div>
 </header>
-
-<!-- ============ MARQUEE ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Rischio Clinico<span class="sep">·</span></span>
-    <span>Quality Improvement<span class="sep">·</span></span>
-    <span>Procedure & Protocolli<span class="sep">·</span></span>
-    <span>Ricerca Infermieristica<span class="sep">·</span></span>
-    <span>Sicurezza delle Cure<span class="sep">·</span></span>
-    <span>Ciclo PDCA<span class="sep">·</span></span>
-    <span>Rischio Clinico<span class="sep">·</span></span>
-    <span>Quality Improvement<span class="sep">·</span></span>
-    <span>Procedure & Protocolli<span class="sep">·</span></span>
-    <span>Ricerca Infermieristica<span class="sep">·</span></span>
-    <span>Sicurezza delle Cure<span class="sep">·</span></span>
-    <span>Ciclo PDCA<span class="sep">·</span></span>
-  </div>
-</div>
 
 <!-- ============ MANIFESTO ============ -->
 <section class="manifesto sec-pad" id="manifesto">
@@ -2482,6 +2529,7 @@ html[data-theme="dark"] svg circle[r="160"]{ fill:#201E18; }
 <script>(function(){var v=document.querySelector(".racconto-video");if(!v)return;v.muted=true;try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});io.observe(v);}catch(e){}})();</script>
 <script src="aniqrc-bg.js" defer></script>
 <script src="aniqrc-app.js" defer></script>
+<script src="aniqrc-news.js" defer></script>
 </body>
 </html>
 

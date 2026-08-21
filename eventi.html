@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Eventi — ANIQRC</title>
-<meta name="description" content="Gli eventi ANIQRC: convegni, corsi e appuntamenti formativi su qualità dell'assistenza, rischio clinico, procedure e ricerca infermieristica.">
+<meta name="description" content="Gli eventi ANIQRC: convegni, corsi e appuntamenti formativi su qualità dell'assistenza, rischio clinico, procedure e ricerca infermieristica. Il 30 ottobre 2026 il Forum Infermieristico ANIQRC.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://aniqrc.it/eventi.html">
@@ -329,6 +329,57 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .ac-t{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:18px; letter-spacing:-.01em; margin-bottom:10px; }
 .ac-d{ font-size:14px; line-height:1.55; color:var(--ink-soft); }
 
+
+/* ============ CALENDARIO EVENTI ============ */
+.ev-list{ display:flex; flex-direction:column; gap:18px; margin-top:34px; }
+
+.ev-card{
+  display:grid; grid-template-columns:132px 1fr auto; align-items:center; gap:30px;
+  background:var(--bg-card); border:1px solid var(--rule); border-radius:12px;
+  padding:28px 30px; text-decoration:none; color:inherit; position:relative; overflow:hidden;
+  transition:transform .4s cubic-bezier(0.16,1,0.3,1), box-shadow .4s, border-color .35s;
+}
+.ev-card::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform .45s cubic-bezier(0.16,1,0.3,1); }
+.ev-card:hover{ transform:translateY(-3px); box-shadow:0 18px 44px var(--shadow); border-color:var(--accent); }
+.ev-card:hover::before{ transform:scaleY(1); }
+.ev-card:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+@media(max-width:760px){ .ev-card{ grid-template-columns:1fr; gap:20px; padding:24px 22px; } }
+
+/* blocco data */
+.ev-date{
+  flex:0 0 auto; text-align:center; border:1px solid var(--rule); border-radius:10px;
+  padding:14px 10px; background:var(--bg); transition:background .35s, border-color .35s;
+}
+.ev-card:hover .ev-date{ background:var(--accent); border-color:var(--accent); }
+.ev-d{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:40px; line-height:1; letter-spacing:-.04em; color:var(--ink); transition:color .35s; }
+.ev-m{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-mute); margin-top:6px; transition:color .35s; }
+.ev-y{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; color:var(--ink-mute); transition:color .35s; }
+.ev-card:hover .ev-d,.ev-card:hover .ev-m,.ev-card:hover .ev-y{ color:var(--bg); }
+@media(max-width:760px){ .ev-date{ display:inline-flex; align-items:baseline; gap:10px; padding:10px 16px; }
+  .ev-d{ font-size:26px; } .ev-m,.ev-y{ margin-top:0; } }
+
+/* corpo */
+.ev-pills{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+.ev-pill{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:100px; }
+.ev-pill.live{ background:rgba(230,57,70,.12); color:var(--accent-deep); }
+.ev-pill.type{ background:var(--bg-warm); color:var(--ink-soft); }
+.ev-pill.call{ background:rgba(47,143,91,.14); color:var(--good); }
+.ev-t{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(21px,2.6vw,28px); letter-spacing:-.025em; line-height:1.15; color:var(--ink); }
+.ev-t .accent{ color:var(--accent); }
+.ev-meta{ display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; font-size:13px; color:var(--ink-mute); }
+.ev-meta span{ display:inline-flex; align-items:center; gap:7px; }
+.ev-desc{ font-size:14.5px; line-height:1.6; color:var(--ink-soft); margin-top:12px; max-width:62ch; }
+
+/* freccia */
+.ev-go{ display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:50%; border:1.5px solid var(--rule); color:var(--accent); font-size:19px; flex:0 0 auto; transition:all .35s cubic-bezier(0.16,1,0.3,1); }
+.ev-card:hover .ev-go{ background:var(--accent); border-color:var(--accent); color:var(--bg); transform:translateX(4px); }
+@media(max-width:760px){ .ev-go{ width:44px; height:44px; } }
+
+/* stato vuoto per i prossimi mesi */
+.ev-soon{ display:flex; align-items:center; gap:16px; border:1px dashed var(--rule); border-radius:12px; padding:24px 28px; color:var(--ink-mute); font-size:14px; line-height:1.55; }
+.ev-soon .ic{ font-size:20px; color:var(--rule); }
+@media(max-width:560px){ .ev-soon{ padding:20px 20px; } }
+
 </style>
 <script type="application/ld+json">
 {
@@ -350,6 +401,29 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "ANIQRC", "item": "https://aniqrc.it/" },
         { "@type": "ListItem", "position": 2, "name": "Eventi" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://aniqrc.it/eventi.html#eventlist",
+      "name": "Calendario eventi ANIQRC",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Event",
+            "@id": "https://aniqrc.it/forum-infermieristico-2026.html#event",
+            "name": "Forum Infermieristico ANIQRC 2026",
+            "startDate": "2026-10-30T09:00:00+01:00",
+            "endDate": "2026-10-30T17:30:00+01:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "url": "https://aniqrc.it/forum-infermieristico-2026.html",
+            "inLanguage": "it-IT",
+            "organizer": { "@id": "https://aniqrc.it/#organization" }
+          }
+        }
       ]
     }
   ]
@@ -387,12 +461,50 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   </div>
 </header>
 
-<section class="sec-pad" style="padding-top:24px;">
+<!-- ============ CALENDARIO ============ -->
+<section class="sec-pad" style="padding-top:24px;" id="calendario">
   <div class="wrap">
-    <div class="allestimento reveal">
-      <div class="alle-badge"><span class="alle-dot"></span> Sezione in allestimento</div>
-      <h2 class="sec-title">Stiamo costruendo il <span class="accent">calendario</span>.</h2>
-      <p class="sec-intro" style="margin-left:0;">Questa pagina raccoglierà presto tutti gli eventi nazionali a cui parteciperemo: date, luoghi, programmi e modalità di iscrizione. Stiamo definendo i primi appuntamenti — torna a trovarci, oppure iscriviti alla newsletter per riceverli appena pubblicati.</p>
+    <div class="sec-label reveal">Prossimi appuntamenti</div>
+    <h2 class="sec-title reveal">Il primo appuntamento <span class="accent">è fissato</span>.</h2>
+
+    <div class="ev-list">
+
+      <!-- ===== EVENTO: Forum Infermieristico 2026 ===== -->
+      <a class="ev-card reveal fx-card" href="forum-infermieristico-2026.html">
+        <span class="fx-lens" aria-hidden="true"></span>
+        <div class="ev-date">
+          <div class="ev-d">30</div>
+          <div class="ev-m">Ottobre</div>
+          <div class="ev-y">2026</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-pills">
+            <span class="ev-pill live">Prima edizione</span>
+            <span class="ev-pill type">Forum nazionale</span>
+            <span class="ev-pill call">Call for Abstract aperta</span>
+          </div>
+          <h3 class="ev-t">Forum Infermieristico <span class="accent">ANIQRC</span></h3>
+          <div class="ev-meta">
+            <span>◷ 30 ottobre 2026 · 09:00 — 17:30</span>
+            <span>⌖ Sede in via di definizione</span>
+            <span>◇ Crediti ECM richiesti</span>
+          </div>
+          <p class="ev-desc">Una giornata intera dedicata a qualità dell'assistenza, rischio clinico e ricerca infermieristica: sessioni plenarie, tavoli di lavoro e presentazione degli abstract selezionati. Programma, Call for Abstract e workbook nella pagina dell'evento.</p>
+        </div>
+        <span class="ev-go" aria-hidden="true">→</span>
+      </a>
+
+      <div class="ev-soon reveal">
+        <span class="ic">◷</span>
+        <span>Gli altri appuntamenti del 2026 e del 2027 sono in via di definizione: appena confermati compaiono qui e nel nastro delle news in home.</span>
+      </div>
+
+    </div>
+
+    <div class="allestimento reveal" style="margin-top:64px;">
+      <div class="alle-badge"><span class="alle-dot"></span> Calendario in aggiornamento</div>
+      <h2 class="sec-title">E il calendario <span class="accent">continua a crescere</span>.</h2>
+      <p class="sec-intro" style="margin-left:0;">Questa pagina raccoglie tutti gli eventi nazionali a cui parteciperemo: date, luoghi, programmi e modalità di iscrizione. Stiamo definendo i prossimi appuntamenti — torna a trovarci, oppure iscriviti alla newsletter per riceverli appena pubblicati.</p>
       <div class="alle-actions">
         <a href="/#newsletter" class="btn-alle primary">Avvisami dei prossimi eventi</a>
         <a href="mailto:francesco.menolascina@aniqrc.it?subject=Eventi%20ANIQRC" class="btn-alle ghost">Proponi un evento</a>
