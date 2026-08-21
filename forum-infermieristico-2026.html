@@ -108,7 +108,7 @@
   text-transform:uppercase; color:var(--ink-mute); }
 .ente .n{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:16px;
   letter-spacing:-.015em; color:var(--ink); line-height:1.35; }
-.ente img{ height:52px; width:auto; display:block; }
+.ente img{ max-height:58px; max-width:170px; height:auto; width:auto; display:block; flex:0 0 auto; }
 
 /* ---------- PROGRAMMA ---------- */
 .prog{ margin-top:38px; border-top:1px solid var(--rule); }
@@ -175,6 +175,24 @@
 .call-deadline .v{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:22px; letter-spacing:-.02em; color:#9E3742; margin-top:6px; }
 .call-deadline .n{ font-size:12.5px; color:var(--ink-mute); margin-top:4px; }
 
+/* loghi dell'evento sotto al marchio della Call */
+.loghi{ margin-top:14px; border:1px solid var(--rule); border-radius:9px; background:var(--bg-card);
+  overflow:hidden; }
+.loghi-row{ padding:18px 20px; display:flex; align-items:center; gap:18px; }
+.loghi-row + .loghi-row{ border-top:1px solid var(--rule-soft); }
+.loghi-k{ font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-mute); margin-bottom:6px; }
+.loghi-n{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:14.5px;
+  letter-spacing:-.012em; line-height:1.35; color:var(--ink); }
+.loghi-mk{ width:86px; height:86px; flex:0 0 auto; display:block; border-radius:6px; }
+.loghi-ente{ display:flex; align-items:center; gap:18px; width:100%; }
+.loghi-ente img{ max-width:150px; max-height:66px; width:auto; height:auto; flex:0 0 auto; display:block; }
+.ente-slot.con-logo .loghi-n, .ente-slot.con-logo .n{ display:none; }
+@media(max-width:520px){
+  .loghi-row{ flex-direction:column; align-items:flex-start; gap:12px; }
+  .loghi-ente{ flex-direction:column; align-items:flex-start; gap:12px; }
+}
+
 /* aree tematiche dei lavori */
 .aree{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:26px; }
 @media(max-width:620px){ .aree{ grid-template-columns:1fr; } }
@@ -200,19 +218,83 @@
 
 /* ---------- CAROSELLO DEL VOLUME ---------- */
 .car{ margin-top:44px; }
-.car-stage{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.85fr); gap:44px; align-items:center; }
-@media(max-width:900px){ .car-stage{ grid-template-columns:1fr; gap:28px; } }
+.car-stage{ display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:44px; align-items:center; }
+@media(max-width:1000px){ .car-stage{ grid-template-columns:1fr; gap:28px; } }
 
 .car-frame{ position:relative; background:var(--bg-warm); border:1px solid var(--rule); border-radius:12px;
-  padding:24px; box-shadow:0 18px 46px var(--shadow); max-width:540px; width:100%; justify-self:end; }
-@media(max-width:900px){ .car-frame{ justify-self:center; } }
-@media(max-width:560px){ .car-frame{ padding:14px; } }
-.car-track{ position:relative; aspect-ratio:1/1.414; overflow:hidden; border-radius:4px; background:#FBFAF6; }
+  padding:18px; box-shadow:0 18px 46px var(--shadow); max-width:720px; width:100%; justify-self:end; }
+@media(max-width:1000px){ .car-frame{ justify-self:center; } }
+@media(max-width:560px){ .car-frame{ padding:12px; } }
+.car-track{ position:relative; aspect-ratio:1/1.414; overflow:hidden; border-radius:4px; background:#FBFAF6;
+  cursor:zoom-in; }
 .car-track img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block;
   opacity:0; transform:scale(1.015); transition:opacity .55s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1); }
 .car-track img.on{ opacity:1; transform:none; }
 .car-count{ position:absolute; top:-13px; right:22px; background:var(--ink); color:var(--bg);
   font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; padding:6px 13px; border-radius:100px; }
+
+/* pulsante lente sull'anteprima */
+.car-zoom{ position:absolute; right:16px; bottom:16px; z-index:3;
+  display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:100px; border:none;
+  background:rgba(10,10,10,.82); color:#F4F2EC; cursor:pointer; backdrop-filter:blur(6px);
+  font-family:'Manrope',sans-serif; font-size:13px; font-weight:600;
+  box-shadow:0 6px 20px rgba(20,18,14,.28); transition:all .3s cubic-bezier(0.16,1,0.3,1); }
+.car-frame:hover .car-zoom{ background:#9E3742; }
+.car-zoom:hover{ background:#832B36; transform:translateY(-2px); }
+.car-zoom:focus-visible{ outline:2px solid #9E3742; outline-offset:3px; }
+.car-zoom svg{ width:15px; height:15px; }
+
+/* ---------- LENTE A TUTTO SCHERMO ---------- */
+.lb{ position:fixed; inset:0; z-index:9999; background:#0B0B0A;
+  display:flex; flex-direction:column; opacity:0; transition:opacity .28s ease; }
+.lb.on{ opacity:1; }
+.lb[hidden]{ display:none; }
+
+.lb-bar{ flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px 20px; border-bottom:1px solid rgba(244,242,236,.14); color:#F4F2EC; }
+.lb-title{ display:flex; align-items:baseline; gap:10px; min-width:0; }
+.lb-title .n{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; color:#D4737E; flex:0 0 auto; }
+.lb-title .t{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:15px; letter-spacing:-.015em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+@media(max-width:640px){ .lb-title .t{ display:none; } }
+.lb-tools{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.lb-btn{ min-width:40px; height:40px; padding:0 12px; border-radius:100px; cursor:pointer;
+  border:1px solid rgba(244,242,236,.24); background:transparent; color:#F4F2EC;
+  font-family:'JetBrains Mono',monospace; font-size:14px; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; transition:all .25s; }
+.lb-btn:hover{ background:rgba(244,242,236,.14); border-color:rgba(244,242,236,.5); }
+.lb-btn:focus-visible{ outline:2px solid #D4737E; outline-offset:2px; }
+.lb-btn.pct{ font-size:12px; letter-spacing:.04em; min-width:64px; }
+.lb-btn.close{ border-color:transparent; background:rgba(244,242,236,.14); font-size:17px; }
+.lb-btn.close:hover{ background:#9E3742; }
+
+.lb-stage{ flex:1 1 auto; position:relative; overflow:hidden; display:flex;
+  align-items:center; justify-content:center; padding:18px; touch-action:none; }
+.lb-stage img{ max-width:100%; max-height:100%; display:block; user-select:none; -webkit-user-drag:none;
+  background:#FBFAF6; box-shadow:0 24px 70px rgba(0,0,0,.6); border-radius:2px;
+  transform-origin:center center; will-change:transform; transition:transform .18s ease-out; }
+.lb-stage.grab img{ cursor:grab; }
+.lb-stage.grabbing img{ cursor:grabbing; transition:none; }
+.lb-stage.zoomable img{ cursor:zoom-in; }
+.lb-load{ position:absolute; font-family:'JetBrains Mono',monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:rgba(244,242,236,.5); }
+
+.lb-nav{ position:absolute; top:50%; transform:translateY(-50%); z-index:4;
+  width:54px; height:54px; border-radius:50%; cursor:pointer;
+  border:1px solid rgba(244,242,236,.24); background:rgba(10,10,10,.7); color:#F4F2EC;
+  font-size:19px; display:inline-flex; align-items:center; justify-content:center; transition:all .25s; }
+.lb-nav:hover{ background:#9E3742; border-color:#9E3742; }
+.lb-nav:focus-visible{ outline:2px solid #D4737E; outline-offset:3px; }
+.lb-nav.prev{ left:18px; } .lb-nav.next{ right:18px; }
+@media(max-width:640px){ .lb-nav{ width:44px; height:44px; } .lb-nav.prev{ left:8px; } .lb-nav.next{ right:8px; } }
+
+.lb-hint{ flex:0 0 auto; padding:10px 20px 16px; text-align:center;
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; color:rgba(244,242,236,.45); }
+.lb-hint .m{ display:none; }
+@media(max-width:640px){ .lb-hint{ font-size:10px; padding:8px 16px 12px; }
+  .lb-hint .d{ display:none; } .lb-hint .m{ display:inline; } }
+body.lb-open{ overflow:hidden; }
+@media (prefers-reduced-motion:reduce){ .lb, .lb-stage img{ transition:none; } }
 
 .car-cap .k{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
   color:#9E3742; margin-bottom:14px; }
@@ -354,7 +436,7 @@
       <a href="#lavori" class="btn-e ghost">I lavori presentati</a>
     </div>
 
-    <div class="ente" id="ente">
+    <div class="ente ente-slot" id="ente">
       <div>
         <div class="k">Organizzato da</div>
         <div class="n">IRCCS Istituto Tumori «Giovanni Paolo II» — Bari</div>
@@ -430,6 +512,24 @@
           <div class="v">Chiusa</div>
           <div class="n">i lavori selezionati sono raccolti nel volume</div>
         </div>
+
+        <div class="loghi">
+          <div class="loghi-row">
+            <img class="loghi-mk" src="forum-2026-marchio.png" alt="Marchio del Forum infermieristico — Bari, 30 ottobre 2026" width="900" height="900" loading="lazy" decoding="async">
+            <div>
+              <div class="loghi-k">L'evento</div>
+              <div class="loghi-n">Forum infermieristico:<br>Qualità, sicurezza e rischio clinico</div>
+            </div>
+          </div>
+          <div class="loghi-row">
+            <div class="loghi-ente ente-slot">
+              <div>
+                <div class="loghi-k">Organizzato da</div>
+                <div class="loghi-n">IRCCS Istituto Tumori<br>«Giovanni Paolo II» — Bari</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="reveal">
@@ -446,7 +546,7 @@
           <div class="ico">PDF</div>
           <div class="tx">
             <b>Il libro dei lavori — edizione 2026</b>
-            <span>17 pagine: il racconto della giornata, l'indice dei lavori e i 12 abstract presentati. 177 KB</span>
+            <span>17 pagine: il racconto della giornata, l'indice dei lavori e i 12 abstract presentati. 250 KB</span>
           </div>
           <a href="documenti/Forum-Infermieristico-2026-Libro-dei-Lavori.pdf" download class="btn-e primary">Scarica <span class="ar">↓</span></a>
         </div>
@@ -464,13 +564,17 @@
   <div class="wrap">
     <div class="sec-label reveal">Dentro il volume</div>
     <h2 class="sec-title reveal">Sfoglialo <span class="accent" style="color:#9E3742;">pagina per pagina</span>.</h2>
-    <p class="sec-intro reveal">Diciassette pagine, dalla copertina ai dodici lavori raccolti. Usa le frecce, la tastiera o le miniature per muoverti; ogni pagina ha la sua nota.</p>
+    <p class="sec-intro reveal">Diciassette pagine, dalla copertina ai dodici lavori raccolti. Clicca su una pagina per aprirla a tutto schermo e ingrandirla fino a leggerla.</p>
 
     <div class="car reveal" id="car">
       <div class="car-stage">
         <div class="car-frame">
           <div class="car-count" id="carCount">01 / 17</div>
           <div class="car-track" id="carTrack" role="group" aria-roledescription="carosello" aria-label="Pagine del libro dei lavori"></div>
+          <button class="car-zoom" id="carZoom" type="button" aria-label="Apri la pagina a tutto schermo e ingrandiscila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            Ingrandisci per leggere
+          </button>
         </div>
 
         <div class="car-cap">
@@ -483,7 +587,7 @@
             <button class="car-btn" id="carNext" type="button" aria-label="Pagina successiva">→</button>
             <span class="car-prog"><i id="carBar" style="width:6%"></i></span>
           </div>
-          <div class="car-hint">Frecce ← → da tastiera · scorri con il dito su mobile</div>
+          <div class="car-hint">Frecce ← → da tastiera · clicca la pagina per ingrandirla</div>
         </div>
       </div>
 
@@ -498,6 +602,29 @@
     <p class="credit reveal">Il <b>Forum infermieristico: Qualità, sicurezza e rischio clinico</b> si è svolto a Bari il 30 ottobre 2026 nella Sala consiliare del Comune di Bari, organizzato dall'<b>IRCCS Istituto Tumori «Giovanni Paolo II» — Bari</b>. Questa pagina ne raccoglie il racconto e i materiali. I contenuti del volume pubblicato in questa versione sono dimostrativi e verranno sostituiti dagli atti definitivi.</p>
   </div>
 </section>
+
+<!-- ===== LENTE A TUTTO SCHERMO ===== -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Pagina del libro dei lavori a tutto schermo">
+  <div class="lb-bar">
+    <div class="lb-title">
+      <span class="n" id="lbCount">01 / 17</span>
+      <span class="t" id="lbTitle"></span>
+    </div>
+    <div class="lb-tools">
+      <button class="lb-btn" id="lbOut" type="button" aria-label="Riduci">−</button>
+      <button class="lb-btn pct" id="lbFit" type="button" aria-label="Adatta la pagina allo schermo">100%</button>
+      <button class="lb-btn" id="lbIn" type="button" aria-label="Ingrandisci">+</button>
+      <button class="lb-btn close" id="lbClose" type="button" aria-label="Chiudi">✕</button>
+    </div>
+  </div>
+  <div class="lb-stage" id="lbStage">
+    <span class="lb-load" id="lbLoad">Caricamento…</span>
+    <img id="lbImg" alt="">
+  </div>
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="Pagina precedente">←</button>
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="Pagina successiva">→</button>
+  <div class="lb-hint"><span class="d">Rotella o pizzica per ingrandire · trascina per spostare · doppio clic per zoom rapido · Esc per chiudere</span><span class="m">Pizzica per ingrandire · trascina per spostare</span></div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -526,16 +653,24 @@ document.documentElement.classList.add('js');
 const escHtml = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
   .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 
-/* ---------- LOGO DELL'ENTE ORGANIZZATORE ---------- */
+/* ---------- LOGO DELL'ENTE ORGANIZZATORE ----------
+   Se in forum-2026-media.js è indicato un file di logo e il file esiste,
+   viene inserito in ogni blocco «Organizzato da». Altrimenti resta il testo. */
 (function () {
   const src = typeof window.FORUM_LOGO_ENTE === 'string' ? window.FORUM_LOGO_ENTE.trim() : '';
-  const box = document.getElementById('ente');
-  if (!src || !box) return;
-  const img = new Image();
-  img.alt = 'IRCCS Istituto Tumori «Giovanni Paolo II» — Bari';
-  img.decoding = 'async';
-  img.onload = () => box.insertBefore(img, box.firstChild);
-  img.src = src;
+  const slots = document.querySelectorAll('.ente-slot');
+  if (!src || !slots.length) return;
+  const probe = new Image();
+  probe.onload = () => slots.forEach(box => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'IRCCS Istituto Tumori «Giovanni Paolo II» — Bari';
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    box.insertBefore(img, box.firstChild);
+    box.classList.add('con-logo');
+  });
+  probe.src = src;
 })();
 
 /* ---------- RECAP: video + galleria ---------- */
@@ -645,6 +780,174 @@ const escHtml = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/<
 
   car.setAttribute('tabindex', '0');
   show(0, false);
+
+  /* ---------- LENTE A TUTTO SCHERMO ---------- */
+  const lb      = document.getElementById('lb');
+  const stage   = document.getElementById('lbStage');
+  const lbImg   = document.getElementById('lbImg');
+  const lbLoad  = document.getElementById('lbLoad');
+  const lbCount = document.getElementById('lbCount');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbPct   = document.getElementById('lbFit');
+  if (!lb) return;
+
+  const MIN = 1, MAX = 6;
+  let z = 1, tx = 0, ty = 0, lbIndex = 0, lastFocus = null;
+
+  function apply(animate) {
+    lbImg.style.transition = animate === false ? 'none' : '';
+    lbImg.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + z.toFixed(3) + ')';
+    lbPct.textContent = Math.round(z * 100) + '%';
+    stage.classList.toggle('grab', z > 1);
+    stage.classList.toggle('zoomable', z <= 1);
+  }
+
+  function clamp() {
+    // il contenuto non può uscire dallo schermo più di quanto trabocchi
+    const s = stage.getBoundingClientRect();
+    const w = lbImg.offsetWidth * z, h = lbImg.offsetHeight * z;
+    const mx = Math.max(0, (w - s.width) / 2 + 20);
+    const my = Math.max(0, (h - s.height) / 2 + 20);
+    tx = Math.min(mx, Math.max(-mx, tx));
+    ty = Math.min(my, Math.max(-my, ty));
+  }
+
+  function setZoom(nz, cx, cy, animate) {
+    nz = Math.min(MAX, Math.max(MIN, nz));
+    if (cx != null) {
+      // mantiene fermo il punto sotto il cursore
+      const s = stage.getBoundingClientRect();
+      const px = cx - (s.left + s.width / 2);
+      const py = cy - (s.top + s.height / 2);
+      tx = px - (px - tx) * (nz / z);
+      ty = py - (py - ty) * (nz / z);
+    }
+    z = nz;
+    if (z === MIN) { tx = 0; ty = 0; }
+    clamp();
+    apply(animate);
+  }
+
+  function load(n) {
+    lbIndex = (n + pages.length) % pages.length;
+    const p = pages[lbIndex];
+    lbCount.textContent = pad(lbIndex + 1) + ' / ' + pad(pages.length);
+    lbTitle.textContent = p.titolo || '';
+    lbImg.alt = 'Libro dei lavori, pagina ' + (lbIndex + 1) + (p.titolo ? ' — ' + p.titolo : '');
+    z = 1; tx = 0; ty = 0; apply(false);
+    lbImg.style.visibility = 'hidden';
+    lbLoad.hidden = false;
+    const src = p.full || p.img;
+    lbImg.onload = () => { lbImg.style.visibility = 'visible'; lbLoad.hidden = true; apply(false); };
+    lbImg.onerror = () => {
+      if (lbImg.src.indexOf(p.img) === -1) { lbImg.src = p.img; return; }   // ripiega sull'immagine del carosello
+      lbLoad.hidden = false; lbLoad.textContent = 'Immagine non disponibile';
+    };
+    lbImg.src = src;
+    // precarica la pagina successiva
+    const nx = pages[(lbIndex + 1) % pages.length];
+    if (nx) { const pre = new Image(); pre.src = nx.full || nx.img; }
+  }
+
+  function open(n) {
+    lastFocus = document.activeElement;
+    lb.hidden = false;
+    document.body.classList.add('lb-open');
+    requestAnimationFrame(() => lb.classList.add('on'));
+    load(n);
+    document.getElementById('lbClose').focus();
+  }
+
+  function close() {
+    lb.classList.remove('on');
+    document.body.classList.remove('lb-open');
+    setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 260);
+    show(lbIndex, true);                       // il carosello resta sulla stessa pagina
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.getElementById('carZoom').addEventListener('click', () => open(i));
+  track.addEventListener('click', () => open(i));
+  thumbs.addEventListener('dblclick', e => {
+    const b = e.target.closest('.car-th');
+    if (b) open(Number(b.dataset.i));
+  });
+
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', () => load(lbIndex - 1));
+  document.getElementById('lbNext').addEventListener('click', () => load(lbIndex + 1));
+  document.getElementById('lbIn').addEventListener('click', () => setZoom(z * 1.5));
+  document.getElementById('lbOut').addEventListener('click', () => setZoom(z / 1.5));
+  lbPct.addEventListener('click', () => setZoom(z > 1 ? 1 : 2));
+
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  document.addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape')     { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); load(lbIndex - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); load(lbIndex + 1); }
+    if (e.key === '+' || e.key === '=') { e.preventDefault(); setZoom(z * 1.5); }
+    if (e.key === '-' || e.key === '_') { e.preventDefault(); setZoom(z / 1.5); }
+    if (e.key === '0')          { e.preventDefault(); setZoom(1); }
+  });
+
+  stage.addEventListener('wheel', e => {
+    e.preventDefault();
+    setZoom(z * (e.deltaY < 0 ? 1.16 : 1 / 1.16), e.clientX, e.clientY, false);
+  }, { passive: false });
+
+  stage.addEventListener('dblclick', e => {
+    e.preventDefault();
+    setZoom(z > 1.2 ? 1 : 2.6, e.clientX, e.clientY);
+  });
+
+  /* trascinamento con mouse e con un dito */
+  let drag = null;
+  stage.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch' && pinch) return;
+    if (z <= 1) return;
+    drag = { x: e.clientX, y: e.clientY, tx: tx, ty: ty };
+    stage.classList.add('grabbing');
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove', e => {
+    if (!drag) return;
+    tx = drag.tx + (e.clientX - drag.x);
+    ty = drag.ty + (e.clientY - drag.y);
+    clamp(); apply(false);
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev =>
+    stage.addEventListener(ev, () => { drag = null; stage.classList.remove('grabbing'); }));
+
+  /* pizzico a due dita */
+  let pinch = null;
+  function dist(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
+  stage.addEventListener('touchstart', e => {
+    if (e.touches.length !== 2) return;
+    drag = null;
+    pinch = { d: dist(e.touches), z: z };
+  }, { passive: true });
+  stage.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    setZoom(pinch.z * (dist(e.touches) / pinch.d), cx, cy, false);
+  }, { passive: false });
+  stage.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; }, { passive: true });
+
+  /* scorrimento con un dito quando la pagina è a dimensione piena */
+  let sx = null;
+  stage.addEventListener('touchstart', e => { if (e.touches.length === 1 && z <= 1) sx = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (z <= 1 && Math.abs(dx) > 50) load(lbIndex + (dx < 0 ? 1 : -1));
+    sx = null;
+  }, { passive: true });
+
+  window.addEventListener('resize', () => { if (!lb.hidden) { clamp(); apply(false); } });
 })();
 </script>
 <script src="qualita-fx.js" defer></script>
