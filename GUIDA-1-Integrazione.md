@@ -97,17 +97,21 @@ Tutto si regola in fondo a `index.html`, nel blocco `<script>`:
 
 ---
 
-## 6. Recapiti e dati da completare
+## 6. Recapiti e dati istituzionali
 
-Quando l'associazione sarà costituita, cerca e sostituisci nel codice questi segnaposto:
+I dati dell'associazione sono già inseriti in tutto il sito e nei PDF di `documenti/`:
 
-| Cerca | Sostituisci con |
-|-------|-----------------|
-| `info@aniqrc.it` | l'email reale dell'associazione |
-| `PEC — da attivare` | l'indirizzo PEC |
-| `Sede — da definire` | la sede legale |
-| `Associazione in costituzione` | rimuovi l'avviso quando sei fondato |
-| `[indirizzo]`, `[email]`, `[PEC]` in `privacy.html` | i dati reali nell'informativa |
+| Dato | Valore |
+|------|--------|
+| Sede legale | Via Napoli 369/Q — 70132 Bari (BA) |
+| Codice fiscale | 93568220722 |
+| PEC | fondazione@pec.aniqrc.it |
+| Email | giuseppe.fumai@aniqrc.it |
+| Forma giuridica | associazione non riconosciuta ex art. 36 c.c. |
+
+Se cambiano, cerca `93568220722` e `Via Napoli 369/Q` nell'HTML — comprese le proprietà
+`taxID` e `address` nei blocchi JSON-LD di `index.html` e `head-seo-aniqrc.html` — e
+rigenera i PDF istituzionali.
 
 ---
 

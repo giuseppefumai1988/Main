@@ -71,8 +71,14 @@ Quotidiano Sanità, FNOPI). Puoi modificarle nell'array `res` dentro la funzione
 `renderFallback()` nel blocco `<script>`.
 
 ### Contatti e sede
-Cerca `info@aniqrc.it` e `PEC — da attivare` / `Sede — da definire` nell'HTML e sostituisci
-con i recapiti reali a fondazione avvenuta.
+Dati istituzionali in uso su tutto il sito e nei PDF di `documenti/`:
+
+- **Sede legale**: Via Napoli 369/Q — 70132 Bari (BA)
+- **Codice fiscale**: 93568220722
+- **PEC**: fondazione@pec.aniqrc.it — **email**: giuseppe.fumai@aniqrc.it
+
+Se cambiano, cerca `93568220722` e `Via Napoli 369/Q` nell'HTML (footer, `privacy.html`,
+blocchi JSON-LD `taxID`/`address`) e rigenera i PDF istituzionali.
 
 ---
 
@@ -82,6 +88,6 @@ con i recapiti reali a fondazione avvenuta.
   da Google Fonts: serve connessione a internet per la resa tipografica completa.
 - Nessun dato personale viene raccolto dal sito in sé (la newsletter dipende dal servizio
   che collegherai).
-- Avviso "in costituzione": rimuovilo dalla sezione *Associati* quando l'associazione sarà fondata.
+- L'associazione è costituita (associazione non riconosciuta ex art. 36 c.c.): gli avvisi "in costituzione" sono stati rimossi.
 
 © MMXXVI ANIQRC
