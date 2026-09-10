@@ -1,0 +1,541 @@
+From 6aa482265f653490f65787c2613afc7e94f042bd Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 10 Sep 2026 08:45:11 +0000
+Subject: [PATCH] Barra newsfeed delle testate e menu che non taglia piu i
+ pulsanti
+
+Il menu usava overflow-x: auto e a finestre intermedie tagliava i due
+pulsanti a destra: rimosso lo scorrimento, aggiunto white-space: nowrap
+e una scaletta di media query che ritira le voci secondarie una alla
+volta, cosi "Newsletter" e "Associati" restano sempre interi.
+
+Nuova barra rossa sotto l'hero con gli ultimi titoli di Nurse Times,
+Nurse24 e InfermieriAttivi. I feed non sono leggibili dal browser per
+via del CORS, quindi vengono raccolti da un workflow GitHub Actions ogni
+tre ore in news-feed.json, che la pagina legge dal proprio dominio: nessun
+proxy di terze parti. Senza quel file la barra mostra i collegamenti alle
+tre testate invece di restare vuota.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01CvGT1WYjLoKZfRmdTDWRGU
+---
+ .github/workflows/newsfeed.yml |  45 ++++++++
+ README.md                      |  25 +++++
+ aniqrc-newsfeed.js             | 150 ++++++++++++++++++++++++++
+ index.html                     |  33 ++++--
+ tools/build-newsfeed.mjs       | 186 +++++++++++++++++++++++++++++++++
+ 5 files changed, 433 insertions(+), 6 deletions(-)
+ create mode 100644 .github/workflows/newsfeed.yml
+ create mode 100644 aniqrc-newsfeed.js
+ create mode 100644 tools/build-newsfeed.mjs
+
+diff --git a/.github/workflows/newsfeed.yml b/.github/workflows/newsfeed.yml
+new file mode 100644
+index 0000000..ee26dae
+--- /dev/null
++++ b/.github/workflows/newsfeed.yml
+@@ -0,0 +1,45 @@
++name: Newsfeed testate infermieristiche
++
++# Raccoglie i titoli dai feed RSS di Nurse Times, Nurse24 e InfermieriAttivi
++# e aggiorna news-feed.json, che alimenta la barra rossa sotto l'hero della home.
++#
++# Perché serve: i browser non possono leggere quei feed direttamente (blocco CORS).
++# Raccogliendoli qui, il sito legge un file del proprio dominio: niente errori,
++# niente servizi di terze parti, nessun dato dei visitatori che esce dal sito.
++
++on:
++  schedule:
++    - cron: '17 */3 * * *'   # ogni tre ore
++  workflow_dispatch:          # e quando lo lanci a mano dalla scheda Actions
++
++permissions:
++  contents: write
++
++concurrency:
++  group: newsfeed
++  cancel-in-progress: false
++
++jobs:
++  aggiorna:
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v4
++
++      - uses: actions/setup-node@v4
++        with:
++          node-version: '20'
++
++      - name: Raccogli i titoli
++        run: node tools/build-newsfeed.mjs
++
++      - name: Pubblica se qualcosa è cambiato
++        run: |
++          if [ -n "$(git status --porcelain news-feed.json)" ]; then
++            git config user.name  "github-actions[bot]"
++            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
++            git add news-feed.json
++            git commit -m "Newsfeed: aggiornamento automatico dei titoli"
++            git push
++          else
++            echo "Nessuna novità da pubblicare."
++          fi
+diff --git a/README.md b/README.md
+index 8468301..c6821b5 100644
+--- a/README.md
++++ b/README.md
+@@ -82,6 +82,31 @@ blocchi JSON-LD `taxID`/`address`) e rigenera i PDF istituzionali.
+ 
+ ---
+ 
++## Newsfeed delle testate infermieristiche
++
++La seconda barra rossa, sotto l'hero della home, scorre gli ultimi titoli di
++**Nurse Times**, **Nurse24** e **InfermieriAttivi**.
++
++I browser non possono leggere quei feed RSS direttamente (blocco CORS), quindi i titoli
++vengono raccolti a monte: l'automazione `.github/workflows/newsfeed.yml` gira ogni tre ore,
++esegue `tools/build-newsfeed.mjs` e aggiorna `news-feed.json` nella radice del repository.
++La pagina legge quel file — stesso dominio, nessun servizio di terze parti, nessun dato dei
++visitatori che esce dal sito.
++
++- **Per attivarlo**: su GitHub apri *Actions*, abilita i workflow e lancia una volta a mano
++  «Newsfeed testate infermieristiche». Da lì in poi va da solo.
++- **Finché `news-feed.json` non esiste**, la barra mostra i collegamenti alle tre testate:
++  non resta mai vuota e non finge di essere aggiornata.
++- **Per cambiare le testate**: modifica `TESTATE` in `tools/build-newsfeed.mjs` e l'elenco
++  gemello `ANIQRC_TESTATE` in `aniqrc-newsfeed.js`. Ogni testata accetta più indirizzi di
++  feed: viene usato il primo che risponde.
++- **Per provarlo in locale**: `node tools/build-newsfeed.mjs` (serve Node 20).
++
++Il nastro rosso in cima, quello sotto il menu, è un'altra cosa: contenuti scritti a mano in
++`aniqrc-news.js`.
++
++---
++
+ ## Note
+ 
+ - Il sito carica i caratteri **Bricolage Grotesque**, **Manrope** e **JetBrains Mono**
+diff --git a/aniqrc-newsfeed.js b/aniqrc-newsfeed.js
+new file mode 100644
+index 0000000..3a33ae3
+--- /dev/null
++++ b/aniqrc-newsfeed.js
+@@ -0,0 +1,150 @@
++/* =========================================================
++   ANIQRC — NEWSFEED DELLE TESTATE INFERMIERISTICHE
++   La seconda barra rossa, subito sotto l'hero della home.
++   =========================================================
++
++   ┌──────────────────────────────────────────────────────────┐
++   │  COME FUNZIONA                                           │
++   └──────────────────────────────────────────────────────────┘
++
++   Le testate non permettono di leggere i loro feed RSS
++   direttamente dal browser (blocco CORS): il sito riceverebbe
++   un errore e la barra resterebbe vuota.
++
++   Perciò i titoli vengono raccolti a monte, una volta ogni tre
++   ore, dall'automazione .github/workflows/newsfeed.yml, che
++   scrive il file news-feed.json qui nel repository. Questa
++   pagina legge quel file: stesso dominio, nessun blocco,
++   nessuna chiamata a servizi di terze parti e nessun dato dei
++   visitatori che esce dal sito.
++
++   Se news-feed.json non c'è ancora (automazione non attiva),
++   la barra mostra comunque i collegamenti alle tre testate:
++   non resta mai vuota e non finge di essere aggiornata.
++
++   ┌──────────────────────────────────────────────────────────┐
++   │  PERSONALIZZAZIONE                                       │
++   └──────────────────────────────────────────────────────────┘
++
++   Per aggiungere o togliere una testata modifica l'elenco qui
++   sotto E l'elenco identico in tools/build-newsfeed.mjs.
++   ========================================================= */
++
++window.ANIQRC_TESTATE = [
++  { nome: 'Nurse Times',      sito: 'https://www.nursetimes.org/' },
++  { nome: 'Nurse24',          sito: 'https://www.nurse24.it/' },
++  { nome: 'InfermieriAttivi', sito: 'https://www.infermieriattivi.it/' },
++];
++
++/* Quante notizie far scorrere al massimo, e velocità in pixel al secondo. */
++window.ANIQRC_FEED_MAX = 12;
++window.ANIQRC_FEED_SPEED = 52;
++
++
++/* =========================================================
++   ── DA QUI IN GIÙ NON SERVE MODIFICARE NULLA ──
++   ========================================================= */
++(function () {
++  'use strict';
++
++  var BAR = 'newsfeed', TRACK = 'newsfeedTrack';
++
++  function esc(s) {
++    return String(s == null ? '' : s)
++      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
++      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
++  }
++
++  /* accetta solo link http(s): un feed è pur sempre contenuto di terzi */
++  function linkSicuro(u) {
++    try {
++      var url = new URL(String(u), location.href);
++      return (url.protocol === 'https:' || url.protocol === 'http:') ? url.href : '';
++    } catch (e) { return ''; }
++  }
++
++  function taglia(t, max) {
++    t = String(t || '').replace(/\s+/g, ' ').trim();
++    return t.length > max ? t.slice(0, max - 1).trim() + '…' : t;
++  }
++
++  function itemHTML(it) {
++    var href = linkSicuro(it.link);
++    var inner = '';
++    if (it.fonte) inner += '<span class="nb-tag">' + esc(it.fonte) + '</span>';
++    inner += '<span class="nb-txt">' + esc(taglia(it.titolo, 110)) + '</span>';
++    var html;
++    if (href) {
++      inner += '<span class="nb-arr" aria-hidden="true">→</span>';
++      html = '<a class="nb-item" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>';
++    } else {
++      html = '<span class="nb-item nb-static">' + inner + '</span>';
++    }
++    return html + '<span class="nb-sep" aria-hidden="true">•</span>';
++  }
++
++  /* riga di ripiego: le tre testate, senza titoli */
++  function ripiego() {
++    var testate = Array.isArray(window.ANIQRC_TESTATE) ? window.ANIQRC_TESTATE : [];
++    if (!testate.length) return [];
++    return testate.map(function (t) {
++      return { fonte: t.nome, titolo: 'Le notizie di ' + t.nome, link: t.sito };
++    });
++  }
++
++  function anima(bar, track, view) {
++    var seq = track.getAttribute('data-seq') || '';
++    track.style.animation = 'none';
++    track.innerHTML = seq;
++    var unit = track.scrollWidth;
++    if (!unit) { track.innerHTML = seq + seq; return; }
++    var need = Math.max(1, Math.ceil((view.clientWidth + 80) / unit));
++    var half = '';
++    for (var i = 0; i < need; i++) half += seq;
++    track.innerHTML = half + half;
++    var speed = Number(window.ANIQRC_FEED_SPEED) || 52;
++    track.style.setProperty('--nb-dur', ((unit * need) / speed).toFixed(2) + 's');
++    track.style.animation = '';
++    bar.classList.add('ready');
++  }
++
++  function mostra(voci) {
++    var bar = document.getElementById(BAR);
++    var track = document.getElementById(TRACK);
++    var view = bar && bar.querySelector('.newsbar-viewport');
++    if (!bar || !track || !view) return;
++
++    voci = (voci || []).filter(function (v) { return v && v.titolo; });
++    if (!voci.length) voci = ripiego();
++    if (!voci.length) { bar.hidden = true; return; }
++
++    var max = Number(window.ANIQRC_FEED_MAX) || 12;
++    track.setAttribute('data-seq', voci.slice(0, max).map(itemHTML).join(''));
++    bar.hidden = false;
++    anima(bar, track, view);
++
++    var t;
++    window.addEventListener('resize', function () {
++      clearTimeout(t);
++      t = setTimeout(function () { anima(bar, track, view); }, 250);
++    });
++    if (document.fonts && document.fonts.ready) {
++      document.fonts.ready.then(function () { anima(bar, track, view); }).catch(function () {});
++    }
++  }
++
++  function carica() {
++    /* la marca oraria evita che la cache del browser tenga un file vecchio */
++    var url = 'news-feed.json?v=' + Math.floor(Date.now() / 3600000);
++    fetch(url, { cache: 'no-cache' })
++      .then(function (r) { return r.ok ? r.json() : null; })
++      .then(function (d) { mostra(d && Array.isArray(d.voci) ? d.voci : null); })
++      .catch(function () { mostra(null); });
++  }
++
++  if (document.readyState === 'loading') {
++    document.addEventListener('DOMContentLoaded', carica);
++  } else {
++    carica();
++  }
++})();
+diff --git a/index.html b/index.html
+index b153f0b..a88c746 100644
+--- a/index.html
++++ b/index.html
+@@ -113,9 +113,11 @@
+   }
+   .nav-logo .nt .q { color: var(--accent); }
+ 
+-  /* le voci si ridimensionano con la finestra, così il menu entra sempre tutto */
+-  .nav-links { display: flex; gap: clamp(11px, 1.4vw, 22px); align-items: center; overflow-x: auto; scrollbar-width: none; padding: 6px 0; }
+-  .nav-links::-webkit-scrollbar { display: none; }
++  /* le voci si ridimensionano con la finestra, così il menu entra sempre tutto.
++     Niente overflow: scorrere il menu tagliava i due pulsanti a destra. */
++  .nav-links { display: flex; flex-wrap: nowrap; gap: clamp(11px, 1.4vw, 22px); align-items: center;
++               padding: 6px 0; min-width: 0; overflow: visible; }
++  .nav-links a, .nav-links button { white-space: nowrap; }
+   .nav-links a {
+     font-size: clamp(11px, 0.92vw, 13px);
+     font-weight: 500;
+@@ -147,9 +149,13 @@
+   }
+   .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+ 
+-  /* su finestre strette le due àncore secondarie lasciano spazio alle voci principali
+-     (Standard ISO e Documenti restano raggiungibili scorrendo la pagina) */
+-  @media (max-width: 1120px) { .nav-links a[href="#standard-iso"], .nav-links a[href="#documenti"] { display: none; } }
++  /* su finestre strette le voci si ritirano una alla volta, così «Newsletter» e
++     «Associati» restano sempre interi (erano loro a venire tagliati).
++     Le sezioni nascoste restano raggiungibili dal menu e scorrendo la pagina. */
++  @media (max-width: 1180px) { .nav-links a[href="#standard-iso"], .nav-links a[href="#documenti"] { display: none; } }
++  @media (max-width: 1060px) { .nav-links a[href="journal.html"] { display: none; } }
++  @media (max-width: 980px)  { .nav-links a[href="ricerca.html"] { display: none; } }
++  @media (max-width: 920px)  { .nav-links a[href="#ambiti"] { display: none; } }
+   @media (max-width: 860px) { .nav-links a:not(.nav-cta) { display: none; } }
+ 
+   /* ============ HERO ============ */
+@@ -1205,6 +1211,12 @@ html[data-theme="dark"] .newsbar{ --nb-bg:#A8172A; }
+   .nb-dot,.nb-new{ animation:none; }
+   .newsbar-viewport{ overflow-x:auto; -webkit-mask-image:none; mask-image:none; }
+ }
++
++/* seconda barra: le notizie delle testate infermieristiche, sotto l'hero */
++.newsbar-feed{ border-top:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(0,0,0,.10); }
++.newsbar-feed .nb-tag{ background:rgba(0,0,0,.22); letter-spacing:.1em; }
++.newsbar-feed .nb-item{ font-weight:500; }
++.newsbar-feed .nb-txt{ font-weight:600; }
+ .racconto-frame{ perspective:900px; }
+ .racconto-video{ transition:transform .35s cubic-bezier(.2,.8,.2,1); will-change:transform; }
+ 
+@@ -1372,6 +1384,14 @@ html[data-theme="dark"] .newsbar{ --nb-bg:#A8172A; }
+   </div>
+ </header>
+ 
++<!-- ===== NEWSFEED — testate infermieristiche, contenuti in aniqrc-newsfeed.js ===== -->
++<div class="newsbar newsbar-feed" id="newsfeed" role="region" aria-label="Ultime notizie dalle testate infermieristiche" hidden>
++  <div class="newsbar-label"><span class="nb-dot"></span>Newsfeed</div>
++  <div class="newsbar-viewport">
++    <div class="newsbar-track" id="newsfeedTrack"></div>
++  </div>
++</div>
++
+ <!-- ============ MANIFESTO ============ -->
+ <section class="manifesto sec-pad" id="manifesto">
+   <div class="deco-q">Q</div>
+@@ -2554,6 +2574,7 @@ html[data-theme="dark"] .newsbar{ --nb-bg:#A8172A; }
+ <script src="aniqrc-bg.js" defer></script>
+ <script src="aniqrc-app.js" defer></script>
+ <script src="aniqrc-news.js" defer></script>
++<script src="aniqrc-newsfeed.js" defer></script>
+ </body>
+ </html>
+ 
+diff --git a/tools/build-newsfeed.mjs b/tools/build-newsfeed.mjs
+new file mode 100644
+index 0000000..2dc569d
+--- /dev/null
++++ b/tools/build-newsfeed.mjs
+@@ -0,0 +1,186 @@
++/* =========================================================
++   ANIQRC — costruttore del newsfeed
++   Legge i feed RSS/Atom delle testate infermieristiche e scrive
++   news-feed.json nella radice del sito. Lo esegue l'automazione
++   .github/workflows/newsfeed.yml; si può lanciare anche a mano:
++
++       node tools/build-newsfeed.mjs
++
++   Nessuna dipendenza: solo Node 20 o superiore.
++
++   Per aggiungere o togliere una testata modifica TESTATE qui
++   sotto e l'elenco gemello in aniqrc-newsfeed.js.
++   ========================================================= */
++
++import { writeFile, readFile } from 'node:fs/promises';
++
++const TESTATE = [
++  {
++    nome: 'Nurse Times',
++    sito: 'https://www.nursetimes.org/',
++    // provate in ordine: vince la prima che restituisce voci
++    feed: [
++      'https://nursetimes.org/feed/',            // indirizzo già usato dal sito
++      'https://www.nursetimes.org/feed',
++      'https://www.nursetimes.org/rss',
++    ],
++  },
++  {
++    nome: 'Nurse24',
++    sito: 'https://www.nurse24.it/',
++    feed: [
++      'https://www.nurse24.it/feed.html',        // indirizzo già usato dal sito
++      'https://www.nurse24.it/rss.xml',
++      'https://www.nurse24.it/feed',
++      'https://www.nurse24.it/rss',
++    ],
++  },
++  {
++    nome: 'InfermieriAttivi',
++    sito: 'https://www.infermieriattivi.it/',
++    feed: [
++      'https://www.infermieriattivi.it/feed',
++      'https://www.infermieriattivi.it/feed/',
++      'https://www.infermieriattivi.it/rss',
++      'https://www.infermieriattivi.it/index.php?format=feed&type=rss',
++    ],
++  },
++];
++
++const PER_TESTATA = 5;   // voci prese da ciascuna testata
++const TOTALE = 12;       // voci scritte nel file finale
++const OUT = 'news-feed.json';
++
++/* ---------- utilità ---------- */
++
++const ENTITA = {
++  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
++  laquo: '«', raquo: '»', hellip: '…', egrave: 'è', eacute: 'é',
++  agrave: 'à', ograve: 'ò', ugrave: 'ù', igrave: 'ì', rsquo: '’', lsquo: '‘',
++  ldquo: '“', rdquo: '”', ndash: '–', mdash: '—', euro: '€',
++};
++
++function decodifica(t) {
++  return String(t || '')
++    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
++    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
++    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
++    .replace(/&([a-z]+);/gi, (m, n) => ENTITA[n.toLowerCase()] ?? m)
++    .replace(/<[^>]+>/g, '')
++    .replace(/\s+/g, ' ')
++    .trim();
++}
++
++function primo(xml, tag) {
++  const m = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, 'i'));
++  return m ? decodifica(m[1]) : '';
++}
++
++/* il <link> di Atom porta l'indirizzo nell'attributo href */
++function estraiLink(blocco) {
++  const rss = blocco.match(/<link[^>]*>([\s\S]*?)<\/link>/i);
++  if (rss && rss[1].trim()) return decodifica(rss[1]);
++  const atom = blocco.match(/<link[^>]*rel=["']?alternate["']?[^>]*href=["']([^"']+)["']/i)
++            || blocco.match(/<link[^>]*href=["']([^"']+)["']/i);
++  return atom ? decodifica(atom[1]) : '';
++}
++
++function parseFeed(xml) {
++  const blocchi = xml.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/gi) || [];
++  const voci = [];
++  for (const b of blocchi) {
++    const titolo = primo(b, 'title');
++    const link = estraiLink(b);
++    if (!titolo || !/^https?:\/\//i.test(link)) continue;
++    const data = primo(b, 'pubDate') || primo(b, 'published') || primo(b, 'updated') || primo(b, 'dc:date');
++    const t = Date.parse(data);
++    voci.push({ titolo, link, data: Number.isNaN(t) ? null : new Date(t).toISOString() });
++  }
++  return voci;
++}
++
++async function scarica(url) {
++  const ctrl = new AbortController();
++  const stop = setTimeout(() => ctrl.abort(), 20000);
++  try {
++    const r = await fetch(url, {
++      redirect: 'follow',
++      signal: ctrl.signal,
++      headers: {
++        'user-agent': 'ANIQRC-newsfeed/1.0 (+https://aniqrc.it)',
++        'accept': 'application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.5',
++      },
++    });
++    if (!r.ok) return null;
++    return await r.text();
++  } catch {
++    return null;
++  } finally {
++    clearTimeout(stop);
++  }
++}
++
++async function leggiTestata(t) {
++  for (const url of t.feed) {
++    const xml = await scarica(url);
++    if (!xml) { console.log(`  · ${url} — non raggiungibile`); continue; }
++    const voci = parseFeed(xml);
++    if (voci.length) {
++      console.log(`  ✓ ${url} — ${voci.length} voci`);
++      return voci.slice(0, PER_TESTATA).map(v => ({ ...v, fonte: t.nome }));
++    }
++    console.log(`  · ${url} — nessuna voce riconosciuta`);
++  }
++  console.log(`  ✗ ${t.nome}: nessun feed utilizzabile`);
++  return [];
++}
++
++/* alterna le testate, così la barra non è monopolizzata da una sola */
++function intreccia(gruppi) {
++  const out = [];
++  for (let i = 0; out.length < TOTALE; i++) {
++    let aggiunto = false;
++    for (const g of gruppi) {
++      if (g[i]) { out.push(g[i]); aggiunto = true; }
++      if (out.length >= TOTALE) break;
++    }
++    if (!aggiunto) break;
++  }
++  return out;
++}
++
++/* ---------- esecuzione ---------- */
++
++console.log('Newsfeed ANIQRC — raccolta dei titoli');
++const gruppi = [];
++for (const t of TESTATE) {
++  console.log(`${t.nome}:`);
++  gruppi.push(await leggiTestata(t));
++}
++
++const voci = intreccia(gruppi);
++
++if (!voci.length) {
++  console.error('Nessuna voce raccolta: il file non viene toccato.');
++  process.exit(1);
++}
++
++const nuovo = {
++  aggiornato: new Date().toISOString(),
++  fonti: TESTATE.map(t => ({ nome: t.nome, sito: t.sito })),
++  voci,
++};
++
++/* riscrive solo se i titoli sono cambiati: evita commit inutili */
++let uguale = false;
++try {
++  const vecchio = JSON.parse(await readFile(OUT, 'utf8'));
++  uguale = JSON.stringify(vecchio.voci) === JSON.stringify(nuovo.voci);
++} catch { /* il file non c'è ancora */ }
++
++if (uguale) {
++  console.log('Nessuna novità: news-feed.json invariato.');
++} else {
++  await writeFile(OUT, JSON.stringify(nuovo, null, 2) + '\n', 'utf8');
++  console.log(`Scritto ${OUT} — ${voci.length} voci.`);
++}
+-- 
+2.43.0
+

@@ -82,6 +82,31 @@ blocchi JSON-LD `taxID`/`address`) e rigenera i PDF istituzionali.
 
 ---
 
+## Newsfeed delle testate infermieristiche
+
+La seconda barra rossa, sotto l'hero della home, scorre gli ultimi titoli di
+**Nurse Times**, **Nurse24** e **InfermieriAttivi**.
+
+I browser non possono leggere quei feed RSS direttamente (blocco CORS), quindi i titoli
+vengono raccolti a monte: l'automazione `.github/workflows/newsfeed.yml` gira ogni tre ore,
+esegue `tools/build-newsfeed.mjs` e aggiorna `news-feed.json` nella radice del repository.
+La pagina legge quel file — stesso dominio, nessun servizio di terze parti, nessun dato dei
+visitatori che esce dal sito.
+
+- **Per attivarlo**: su GitHub apri *Actions*, abilita i workflow e lancia una volta a mano
+  «Newsfeed testate infermieristiche». Da lì in poi va da solo.
+- **Finché `news-feed.json` non esiste**, la barra mostra i collegamenti alle tre testate:
+  non resta mai vuota e non finge di essere aggiornata.
+- **Per cambiare le testate**: modifica `TESTATE` in `tools/build-newsfeed.mjs` e l'elenco
+  gemello `ANIQRC_TESTATE` in `aniqrc-newsfeed.js`. Ogni testata accetta più indirizzi di
+  feed: viene usato il primo che risponde.
+- **Per provarlo in locale**: `node tools/build-newsfeed.mjs` (serve Node 20).
+
+Il nastro rosso in cima, quello sotto il menu, è un'altra cosa: contenuti scritti a mano in
+`aniqrc-news.js`.
+
+---
+
 ## Note
 
 - Il sito carica i caratteri **Bricolage Grotesque**, **Manrope** e **JetBrains Mono**

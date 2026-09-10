@@ -1,0 +1,22 @@
+ANIQRC — barra newsfeed e correzione del menu (10 settembre 2026)
+
+FILE DA CARICARE SU GITHUB, ai percorsi indicati:
+
+  index.html                          (radice — sostituisce)
+  aniqrc-newsfeed.js                  (radice — nuovo)
+  README.md                           (radice — sostituisce)
+  tools/build-newsfeed.mjs            (nuovo — crea la cartella "tools")
+  .github/workflows/newsfeed.yml      (nuovo — crea le cartelle ".github/workflows")
+
+In alternativa: newsfeed-e-menu.patch, applicabile con  git am newsfeed-e-menu.patch
+
+DOPO IL CARICAMENTO, un passaggio solo:
+  GitHub -> scheda Actions -> abilita i workflow ->
+  "Newsfeed testate infermieristiche" -> Run workflow
+
+Da quel momento i titoli si aggiornano da soli ogni tre ore.
+Finché non lo lanci, la barra mostra i collegamenti alle tre testate:
+non resta mai vuota.
+
+Nota: la cartella .github inizia con un punto e su macOS è nascosta.
+Nel Finder si mostra con Cmd+Shift+punto.
