@@ -132,86 +132,71 @@
 </header>
 
 <div class="wrap">
-  <!-- INIZIO MODULO DI ADESIONE OPTIMIZZATO PER FORMSPREE -->
-<form action="https://splitforms.com/api/submit" method="POST">
-  <input type="hidden" name="access_key" value="0788cff844bb4b5f9f6cc7e4f6d261b4">
-    
-    <!-- Configurazione: reindirizza l'utente a grazie.html dopo l'invio -->
-    <input type="hidden" name="_next" value="https://aniqrc.it">
-    <!-- Configurazione: imposta l'oggetto dell'email che ti arriverà -->
-    <input type="hidden" name="_subject" value="Nuova domanda di adesione socio ANIQRC">
+  <!-- NETLIFY FORM: le richieste arrivano in Netlify > Forms > "adesione" -->
+  <form name="adesione" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie.html">
+    <input type="hidden" name="form-name" value="adesione">
+    <p hidden><label>Non compilare: <input name="bot-field"></label></p>
 
-    <fieldset>
-        <legend>Dati anagrafici</legend>
-        
-        <label for="nome">Nome *</label>
-        <input type="text" id="nome" name="Nome" required placeholder="Il tuo nome">
-
-        <label for="cognome">Cognome *</label>
-        <input type="text" id="cognome" name="Cognome" required placeholder="Il tuo cognome">
-
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="_replyto" required placeholder="la-tua@email.com">
-
-        <label for="telefono">Telefono</label>
-        <input type="tel" id="telefono" name="Telefono" placeholder="Il tuo numero di telefono">
-
-        <label for="cf">Codice fiscale</label>
-        <input type="text" id="cf" name="Codice_Fiscale" placeholder="Codice Fiscale">
-
-        <label for="regione">Regione *</label>
-        <input type="text" id="regione" name="Regione" required placeholder="La tua regione">
-    </fieldset>
-
-    <fieldset>
-        <legend>Dati professionali</legend>
-
-        <label for="qualifica">Professione / qualifica (anche non sanitaria) *</label>
-        <input type="text" id="qualifica" name="Qualifica_Professionale" required placeholder="Es. Infermiere">
-
-        <label for="albo">N. iscrizione Albo OPI</label>
-        <input type="text" id="albo" name="Numero_Albo_OPI" placeholder="Numero iscrizione">
-
-        <label for="struttura">Ente / struttura di appartenenza</label>
-        <input type="text" id="struttura" name="Struttura_Appartenenza" placeholder="Ospedale, ASL, ecc.">
-    </fieldset>
-
-    <fieldset>
-        <legend>Categoria di socio</legend>
-        <label for="categoria">Seleziona la categoria…</label>
-        <select id="categoria" name="Categoria_Socio">
-            <option value="Socio ordinario">Socio ordinario</option>
-            <option value="Socio sostenitore">Socio sostenitore (Anche non sanitario)</option>
-            <option value="Socio studente">Socio studente</option>
-        </select>
-    </fieldset>
-
-    <fieldset>
-        <legend>Aree di interesse</legend>
-        <label><input type="checkbox" name="Interesse_Rischio_Clinico" value="Sì"> Rischio clinico</label><br>
-        <label><input type="checkbox" name="Interesse_Quality_Improvement" value="Sì"> Quality improvement</label><br>
-        <label><input type="checkbox" name="Interesse_Procedure_Protocolli" value="Sì"> Procedure e protocolli</label><br>
-        <label><input type="checkbox" name="Interesse_Ricerca" value="Sì"> Ricerca</label>
-    </fieldset>
-
-    <fieldset>
-        <legend>Consensi Obbligatori</legend>
-        <label>
-            <input type="checkbox" name="Accettazione_Privacy" value="Accettato" required> 
-            Ho letto l'Informativa sulla privacy e acconsento al trattamento dei miei dati personali per le finalità associative. *
-        </label>
-        <br><br>
-        <label>
-            <input type="checkbox" name="Iscrizione_Newsletter" value="Accettato"> 
-            Acconsento a ricevere la newsletter e le comunicazioni di ANIQRC (facoltativo).
-        </label>
-    </fieldset>
-
-    <div style="margin-top: 20px;">
-        <button type="submit" style="padding: 10px 20px; cursor: pointer;">Invia la domanda →</button>
+    <div class="grp">
+      <div class="grp-title">Dati anagrafici</div>
+      <div class="fields">
+        <div class="f"><label>Nome <span class="req">*</span></label><input type="text" name="nome" required></div>
+        <div class="f"><label>Cognome <span class="req">*</span></label><input type="text" name="cognome" required></div>
+        <div class="f"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+        <div class="f"><label>Telefono</label><input type="tel" name="telefono"></div>
+        <div class="f"><label>Codice fiscale</label><input type="text" name="codice_fiscale"></div>
+        <div class="f"><label>Regione <span class="req">*</span></label><input type="text" name="regione" required></div>
+      </div>
     </div>
-</form>
-<!-- FINE MODULO DI ADESIONE OPTIMIZZATO PER FORMSPREE -->
+
+    <div class="grp">
+      <div class="grp-title">Dati professionali</div>
+      <div class="fields">
+        <div class="f"><label>Professione / qualifica <span class="req">*</span></label><input type="text" name="professione" required></div>
+        <div class="f"><label>N. iscrizione Albo OPI</label><input type="text" name="albo_opi"></div>
+        <div class="f full"><label>Ente / struttura di appartenenza</label><input type="text" name="ente"></div>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title">Categoria di socio</div>
+      <div class="fields">
+        <div class="f full">
+          <select name="categoria_socio" required>
+            <option value="">Seleziona la categoria…</option>
+            <option value="Ordinario">Socio ordinario</option>
+            <option value="Sostenitore">Socio sostenitore</option>
+            <option value="Studente">Socio studente</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title">Aree di interesse</div>
+      <div class="choices">
+        <label class="choice"><input type="checkbox" name="interessi" value="Rischio clinico"> Rischio clinico</label>
+        <label class="choice"><input type="checkbox" name="interessi" value="Quality improvement"> Quality improvement</label>
+        <label class="choice"><input type="checkbox" name="interessi" value="Procedure e protocolli"> Procedure e protocolli</label>
+        <label class="choice"><input type="checkbox" name="interessi" value="Ricerca"> Ricerca</label>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title">Note</div>
+      <div class="fields"><div class="f full"><textarea name="messaggio" placeholder="Eventuali note o messaggi (facoltativo)"></textarea></div></div>
+    </div>
+
+    <div class="consent">
+      <label class="choice"><input type="checkbox" name="consenso_privacy" value="si" required>
+        <span>Ho letto l'<a href="privacy.html" target="_blank">Informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali per le finalità associative. <span class="req">*</span></span></label>
+      <label class="choice"><input type="checkbox" name="consenso_newsletter" value="si">
+        <span>Acconsento a ricevere la newsletter e le comunicazioni di ANIQRC (facoltativo).</span></label>
+    </div>
+
+    <button type="submit" class="btn">Invia la domanda →</button>
+    <p class="alt">Preferisci la versione cartacea? Scarica il <a href="documenti/Modulo_Adesione_ANIQRC.pdf" target="_blank">modulo PDF</a> da compilare e firmare.</p>
+  </form>
 </div>
 
 <footer>
@@ -221,6 +206,7 @@
   </div>
 </footer>
 
+<script src="aniqrc-adesione.js" defer></script>
 <script src="aniqrc-bg.js" defer></script>
 <script src="aniqrc-app.js" defer></script>
 </body>

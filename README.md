@@ -82,6 +82,37 @@ blocchi JSON-LD `taxID`/`address`) e rigenera i PDF istituzionali.
 
 ---
 
+## Tesserino associativo
+
+`tesserino.html` è lo strumento interno per emettere le tessere: compili i dati, l'anteprima
+si aggiorna dal vivo e scarichi il **PDF** (vettoriale, formato carta di credito 85,6 × 54 mm,
+circa 70 KB), il **PNG** a 1400 px e la **vCard**.
+
+Il disegno della tessera sta tutto in `tessera-core.js`, scritto una volta sola ed eseguito da
+due adattatori — uno per il PDF, uno per la tela dell'anteprima. Per questo l'anteprima non può
+divergere dal file scaricato. Il file pesa circa 680 KB perché porta con sé i caratteri del
+marchio: **non va incluso nelle pagine pubbliche**, si carica solo quando serve.
+
+### Generazione automatica all'iscrizione
+
+`aniqrc-adesione.js`, collegato a `adesione.html`, alla conferma del modulo genera la **bozza
+di tesserino** con i dati appena inseriti e la invia in allegato alla presidenza. La bozza porta
+la scritta «BOZZA» e il numero «DA ASSEGNARE»: il numero lo attribuisce il Consiglio Direttivo
+quando delibera, e la tessera definitiva si rigenera da `tesserino.html`.
+
+Un sito statico non può spedire email da solo: serve un recapito esterno, da indicare in
+`ENDPOINT` dentro `aniqrc-adesione.js`. Nel repository ce ne sono due pronti, se ne sceglie uno:
+
+- `netlify/functions/iscrizione.mjs` — funzione Netlify, spedisce dalla casella Aruba
+  dell'Associazione (variabili `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`).
+- `tools/apps-script-iscrizione.gs` — Google Apps Script, spedisce da una casella Gmail,
+  gratuito, si attiva in cinque minuti (istruzioni in testa al file).
+
+Finché `ENDPOINT` resta vuoto il modulo si comporta come prima e in console compare un
+promemoria.
+
+---
+
 ## Newsfeed delle testate infermieristiche
 
 La seconda barra rossa, sotto l'hero della home, scorre gli ultimi titoli di
