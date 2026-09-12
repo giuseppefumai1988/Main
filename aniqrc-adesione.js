@@ -28,7 +28,7 @@
    ========================================================= */
 
 window.ANIQRC_ADESIONE = {
-  ENDPOINT: '',
+  ENDPOINT: 'https://script.google.com/macros/s/CODICE/exec',
   DESTINATARIO: 'giuseppe.fumai@aniqrc.it',
   /* La tessera generata qui è una BOZZA: il numero lo assegna il
      Consiglio Direttivo quando delibera sulla domanda. Rimane
