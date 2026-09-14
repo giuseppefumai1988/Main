@@ -1,0 +1,17 @@
+paths:
+  static: ''
+  uploads: uploads
+timezone: Europe/Rome
+markdown:
+  engine: commonmark
+  options: {}
+collections_config:
+  pages:
+    path: src/pages
+    icon: wysiwyg
+  source:
+    path: ''
+    icon: package_2
+  netlify:
+    path: netlify
+    icon: clarify
