@@ -3,17 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ANIQRC — Il rischio non si elimina, si governa</title>
-<meta name="description" content="Associazione Nazionale Infermieri Qualità e Rischio Clinico. Il danno non nasce da un errore isolato, ma da un sistema che lo ha lasciato passare.">
+<title>ANIQRC — La sicurezza delle cure si costruisce</title>
+<meta name="description" content="Associazione Nazionale Infermieri Qualità e Rischio Clinico: gli infermieri che lavorano sulla qualità dell'assistenza e sulla sicurezza delle cure.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://aniqrc.it/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aniqrc.it/">
-<meta property="og:title" content="ANIQRC — Il rischio non si elimina, si governa">
+<meta property="og:title" content="ANIQRC — La sicurezza delle cure si costruisce">
 <meta property="og:description" content="Associazione Nazionale Infermieri Qualità e Rischio Clinico.">
 <meta property="og:image" content="https://aniqrc.it/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization",
  "name":"ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico",
@@ -22,30 +25,23 @@
  "address":{"@type":"PostalAddress","streetAddress":"Via Napoli 369/Q","postalCode":"70132","addressLocality":"Bari","addressCountry":"IT"},
  "email":"giuseppe.fumai@aniqrc.it"}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================================
-   ANIQRC — apertura cinematica
+   ANIQRC — pre-home
    -------------------------------------------------------------------------
-   IL MOMENTO FIRMA
-   La pagina si apre DENTRO un punto rosso: un evento avverso visto da
-   cosi' vicino da sembrare un fatto isolato. Scorrendo, la camera arretra
-   — zoom-out progressivo con un filo di rollio — e quel punto si rivela
-   una sola cella di un reticolo di difese che continua oltre il quadro.
-   Piu' la camera si allontana, piu' il sistema entra in scena e la luce
-   rossa si ritira. E' la tesi della disciplina resa come movimento:
-   l'errore non e' mai la storia, il sistema lo e'.
+   Questa pagina E' la radice del sito. Si scorre o si salta: il pulsante
+   rosso in alto porta dritto alla home (home.html).
 
-   COME E' COSTRUITA
-   L'impaginazione impilata, nel flusso normale di lettura, e' il DEFAULT:
-   vale senza JavaScript, su schermo stretto e per chi ha chiesto meno
-   movimento. Lo stato cinematografico si aggiunge sopra, ed e' lo script
-   ad attivarlo mettendo la classe «cinema» sulla pagina — solo se c'e'
-   spazio, il movimento e' consentito e GSAP si e' caricato davvero.
-   Cosi' nessun contenuto dipende da uno script per essere leggibile.
+   COME E' COSTRUITA LA FLUIDITA'
+   Il fondale non disegna nulla di complicato a ogni fotogramma. Le forme
+   (il telaio della cella, l'apertura, l'alone rosso) sono disegnate UNA
+   VOLTA su tele nascoste e poi ricopiate: copiare un'immagine costa una
+   frazione di un gradiente. Inoltre il ciclo ridisegna solo quando lo
+   scorrimento cambia davvero — da fermo la pagina non consuma nulla.
+   I testi si muovono con opacita' e spostamento, mai con la sfocatura:
+   la sfocatura obbliga il browser a ridisegnare il testo a ogni fotogramma
+   ed e' la prima causa di scatti.
 
    DOVE METTERE MANO
      · i testi         -> cerca «BATTUTA 1 … 5» nel corpo
@@ -56,223 +52,161 @@
    ========================================================================= */
 
 :root{
-  --fondo:      #06070A;
-  --crema:      #F4F2EC;
-  --crema-soft: #A8A9AE;
-  --muto:       #70737C;
-  --rosso:      #E63946;
-
-  --display: 'Bricolage Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --testo:   'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-
-  --battute: 6;
+  --fondo:#06070A; --crema:#F4F2EC; --crema-soft:#A8A9AE;
+  --muto:#70737C; --rosso:#E63946;
+  --display:'Bricolage Grotesque','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --testo:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --battute:6;
 }
-
 *{ margin:0; padding:0; box-sizing:border-box; }
-
-html{ overflow-x: clip; }
+html{ overflow-x:clip; }
 body{
-  background: var(--fondo);
-  color: var(--crema);
-  font-family: var(--testo);
-  line-height: 1.6;
-  overflow-x: clip;
-  -webkit-font-smoothing: antialiased;
+  background:var(--fondo); color:var(--crema); font-family:var(--testo);
+  line-height:1.6; overflow-x:clip; -webkit-font-smoothing:antialiased;
 }
 
-/* =========================================================================
-   STATO BASE — impilato, nel flusso di lettura.
-   E' quello che vede chi non ha JavaScript, chi legge da telefono e chi
-   ha chiesto meno movimento. Tutti i messaggi e l'azione sono presenti.
-   ========================================================================= */
-.traccia{ position: relative; }
-
-.palco{ position: relative; padding-block: 7vh 12vh; }
-
+/* ---- stato base: impilato, nel flusso. Senza JavaScript, da telefono,
+        e per chi ha chiesto meno movimento. ---- */
+.traccia{ position:relative; }
+.palco{ position:relative; padding-block:7vh 12vh; }
 #tela{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 50svh;
-  margin-bottom: 7vh;
-  /* composizione permanente anche a tela vuota (script assente o fallito) */
+  position:relative; display:block; width:100%; height:50svh; margin-bottom:7vh;
   background:
     radial-gradient(38% 55% at 50% 50%, rgba(230,57,70,.34), rgba(230,57,70,0) 70%),
     radial-gradient(120% 100% at 50% 50%, #0B0D13 0%, #06070A 72%);
 }
+.velo, .grana{ display:none; }
+.colonna{ max-width:720px; margin-inline:auto; padding-inline:26px; }
+.battuta{ padding-block:7vh; text-align:center; }
+.battuta + .battuta{ border-top:1px solid rgba(244,242,236,.1); }
+.invito{ display:none; }
 
-.velo, .grana{ display: none; }
-
-.colonna{ max-width: 720px; margin-inline: auto; padding-inline: 26px; }
-
-.battuta{ padding-block: 7vh; text-align: center; }
-.battuta + .battuta{ border-top: 1px solid rgba(244,242,236,.1); }
-
-.invito{ display: none; }
-
-/* =========================================================================
-   STATO CINEMA — lo attiva lo script. Il palco si incolla, le battute si
-   sovrappongono nello stesso punto e la colonna di lettura non si muove
-   piu': cambia solo quale battuta e' in scena.
-   ========================================================================= */
-.cinema .traccia{ height: calc(var(--battute) * 100svh); }
-
+/* ---- stato cinema ---- */
+.cinema .traccia{ height:calc(var(--battute) * 100svh); }
 .cinema .palco{
-  position: sticky; top: 0;
-  height: 100svh;
-  padding: 0;
-  overflow: hidden;
-  display: grid; place-items: center;
+  position:sticky; top:0; height:100svh; padding:0; overflow:hidden;
+  display:grid; place-items:center;
 }
 .cinema .palco::before{
   content:""; position:absolute; inset:0;
   background:
-    radial-gradient(42% 42% at 50% 50%, rgba(230,57,70,.26), rgba(230,57,70,0) 68%),
+    radial-gradient(42% 42% at 50% 50%, rgba(230,57,70,.22), rgba(230,57,70,0) 68%),
     radial-gradient(120% 90% at 50% 50%, #0B0D13 0%, #06070A 70%);
 }
-.cinema #tela{
-  position:absolute; inset:0; width:100%; height:100%;
-  margin:0; background:none;
-}
+.cinema #tela{ position:absolute; inset:0; width:100%; height:100%; margin:0; background:none; }
 .cinema .velo{
   display:block; position:absolute; inset:0; pointer-events:none;
-  background: radial-gradient(125% 88% at 50% 50%, rgba(6,7,10,0) 34%, rgba(6,7,10,.70) 76%, rgba(6,7,10,.95) 100%);
+  background:radial-gradient(125% 88% at 50% 50%, rgba(6,7,10,0) 34%, rgba(6,7,10,.70) 76%, rgba(6,7,10,.95) 100%);
 }
+/* la grana e' un'immagine statica spostata dal compositore: non ridisegna nulla */
 .cinema .grana{
-  display:block; position:absolute; inset:-40%; pointer-events:none; opacity:.038;
+  display:block; position:absolute; inset:-30%; pointer-events:none; opacity:.032;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grana 1.05s steps(3) infinite;
+  animation:grana 1.2s steps(3) infinite;
+  will-change:transform;
 }
 @keyframes grana{
-  0%{transform:translate(0,0)} 33%{transform:translate(-2.5%,2%)}
-  66%{transform:translate(2%,-2.5%)} 100%{transform:translate(0,0)}
+  0%{transform:translate3d(0,0,0)} 33%{transform:translate3d(-2%,1.5%,0)}
+  66%{transform:translate3d(1.5%,-2%,0)} 100%{transform:translate3d(0,0,0)}
 }
-.cinema .colonna{
-  position: relative; width: 100%; max-width: 780px;
-  display: grid; place-items: center;
-}
-/* velatura di lettura: scurisce appena il fondo dove cadono le parole,
-   cosi' il testo regge qualunque cosa la camera stia inquadrando */
+.cinema .colonna{ position:relative; width:100%; max-width:800px; display:grid; place-items:center; }
 .cinema .colonna::before{
   content:""; position:absolute; z-index:0;
   left:50%; top:50%; transform:translate(-50%,-50%);
-  width:150%; height:260%;
-  background: radial-gradient(50% 42% at 50% 50%, rgba(6,7,10,.80), rgba(6,7,10,.45) 55%, rgba(6,7,10,0) 78%);
-  pointer-events:none;
+  width:150%; height:260%; pointer-events:none;
+  background:radial-gradient(50% 42% at 50% 50%, rgba(6,7,10,.82), rgba(6,7,10,.46) 55%, rgba(6,7,10,0) 78%);
 }
-.cinema .battuta{ position: relative; z-index: 1; }
 .cinema .battuta{
-  grid-area: 1 / 1; width: 100%;
-  padding-block: 0; border-top: 0;
-  will-change: transform, opacity, filter;
+  grid-area:1/1; width:100%; position:relative; z-index:1;
+  padding-block:0; border-top:0;
+  /* solo opacita' e spostamento: entrambi li gestisce il compositore */
+  will-change:transform, opacity;
 }
-.cinema .invito{ display: flex; }
+.cinema .invito{ display:flex; }
 
-/* =========================================================================
-   TIPOGRAFIA
-   ========================================================================= */
+/* ---- tipografia ---- */
 .occhiello{
-  font-family: var(--mono);
-  font-size: clamp(9.5px, 1.7vw, 11px);
+  font-family:var(--mono); font-size:clamp(9.5px,1.7vw,11px);
   font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color: var(--muto); margin-bottom: 24px;
+  color:var(--muto); margin-bottom:24px;
 }
 h1{
-  font-family: var(--display); font-weight:600;
-  font-size: clamp(2.3rem, 7.6vw, 5.6rem);
-  line-height:.98; letter-spacing:-.035em; text-wrap: balance;
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(2.1rem,6.6vw,4.9rem);
+  line-height:1.02; letter-spacing:-.033em; text-wrap:balance;
 }
-h1 .fioco{ display:block; color: var(--crema-soft); }
-h1 .forte{ display:block; color: var(--crema); }
-
+h1 .fioco{ display:block; color:var(--crema-soft); }
+h1 .forte{ display:block; color:var(--crema); }
 .frase{
-  font-family: var(--display); font-weight:500;
-  font-size: clamp(1.5rem, 4.4vw, 3.1rem);
-  line-height:1.12; letter-spacing:-.022em; text-wrap: balance;
+  font-family:var(--display); font-weight:500;
+  font-size:clamp(1.45rem,4.1vw,2.9rem);
+  line-height:1.14; letter-spacing:-.022em; text-wrap:balance;
 }
-.frase .tenue{ color: var(--crema-soft); }
-
+.frase .tenue{ color:var(--crema-soft); }
 .glossa{
-  font-size: clamp(14.5px, 2.2vw, 17px);
-  color: var(--crema-soft); max-width: 54ch; margin: 24px auto 0;
+  font-size:clamp(14.5px,2.1vw,17px); color:var(--crema-soft);
+  max-width:56ch; margin:24px auto 0;
 }
+.glossa b{ color:var(--crema); font-weight:600; }
 
-.prove{
-  display:grid; grid-template-columns: repeat(3, 1fr);
-  gap: 28px; margin-top: 32px; text-align: left;
-}
+.prove{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:32px; text-align:left; }
 .prova dt{
-  font-family: var(--mono);
-  font-size: clamp(10px, 1.6vw, 11.5px);
-  font-weight:500; letter-spacing:.14em; text-transform:uppercase;
-  color: var(--crema);
-  padding-bottom: 11px; margin-bottom: 11px;
-  border-bottom: 1px solid rgba(244,242,236,.16);
+  font-family:var(--mono); font-size:clamp(10px,1.6vw,11.5px);
+  font-weight:500; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--crema); padding-bottom:11px; margin-bottom:11px;
+  border-bottom:1px solid rgba(244,242,236,.16);
 }
-.prova dd{ font-size: clamp(13.5px, 1.9vw, 15px); color: var(--crema-soft); line-height:1.55; }
-@media (max-width: 700px){ .prove{ grid-template-columns: 1fr; gap: 22px; } }
+.prova dd{ font-size:clamp(13.5px,1.85vw,15px); color:var(--crema-soft); line-height:1.58; }
+@media (max-width:700px){ .prove{ grid-template-columns:1fr; gap:22px; } }
 
-.marchio{
-  width: clamp(128px, 21vw, 205px);
-  height:auto; display:block; margin: 0 auto 28px;
-  will-change: transform, opacity;
-}
-.marchio .lettera{ fill: var(--crema); }
-.marchio .q{ fill: var(--rosso); }
-
+.marchio{ width:clamp(128px,21vw,205px); height:auto; display:block; margin:0 auto 28px; will-change:transform; }
+.marchio .lettera{ fill:var(--crema); }
+.marchio .q{ fill:var(--rosso); }
 .didascalia{
-  font-family: var(--mono);
-  font-size: clamp(9.5px, 1.7vw, 11px);
-  letter-spacing:.18em; text-transform:uppercase;
-  color: var(--muto); line-height:1.9;
+  font-family:var(--mono); font-size:clamp(9.5px,1.7vw,11px);
+  letter-spacing:.18em; text-transform:uppercase; color:var(--muto); line-height:1.9;
 }
-
 .ingresso{
   display:inline-flex; align-items:center; gap:14px;
-  margin-top: 38px; padding: 17px 34px;
+  margin-top:38px; padding:17px 34px;
   border:1px solid rgba(244,242,236,.3); border-radius:100px;
-  background: rgba(244,242,236,.04);
-  color: var(--crema); font-size:15px; font-weight:600; text-decoration:none;
+  background:rgba(244,242,236,.04); color:var(--crema);
+  font-size:15px; font-weight:600; text-decoration:none;
   position:relative; overflow:hidden;
-  transition: border-color .4s, background .4s, transform .4s cubic-bezier(.2,.7,.3,1);
+  transition:border-color .35s, background .35s, transform .35s cubic-bezier(.2,.7,.3,1);
 }
 .ingresso::before{
   content:""; position:absolute; inset:-2px; opacity:0;
-  background: radial-gradient(60% 140% at 50% 120%, rgba(230,57,70,.6), rgba(230,57,70,0) 70%);
-  transition: opacity .4s;
+  background:radial-gradient(60% 140% at 50% 120%, rgba(230,57,70,.6), rgba(230,57,70,0) 70%);
+  transition:opacity .35s;
 }
 .ingresso > *{ position:relative; }
 .ingresso:hover, .ingresso:focus-visible{
-  border-color: rgba(244,242,236,.6); background: rgba(244,242,236,.08);
-  transform: translateY(-2px);
+  border-color:rgba(244,242,236,.6); background:rgba(244,242,236,.08); transform:translateY(-2px);
 }
 .ingresso:hover::before, .ingresso:focus-visible::before{ opacity:1; }
 .ingresso:focus-visible{ outline:2px solid var(--rosso); outline-offset:4px; }
-.ingresso .freccia{ transition: transform .4s cubic-bezier(.2,.7,.3,1); }
-.ingresso:hover .freccia{ transform: translateX(5px); }
-
+.ingresso .freccia{ transition:transform .35s cubic-bezier(.2,.7,.3,1); }
+.ingresso:hover .freccia{ transform:translateX(5px); }
 .piede{
-  font-family: var(--mono); font-size:10px; letter-spacing:.16em;
-  text-transform:uppercase; color:#4A4D55; margin-top: 32px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  text-transform:uppercase; color:#4A4D55; margin-top:32px;
 }
 
-/* IL PULSANTE PER SALTARE: rosso pieno, in alto, sopra ogni altra cosa.
-   Chi non vuole l'introduzione deve vederlo al primo sguardo. */
+/* IL PULSANTE PER SALTARE: rosso pieno, in alto, sopra ogni altra cosa. */
 .salta{
   position:fixed; top:18px; right:18px; z-index:999;
   display:inline-flex; align-items:center; gap:9px;
-  font-family: var(--mono); font-size:11px; font-weight:500;
+  font-family:var(--mono); font-size:11px; font-weight:500;
   letter-spacing:.16em; text-transform:uppercase;
   color:#FFF3F3; text-decoration:none;
   padding:13px 22px; border-radius:100px; border:0;
-  background: var(--rosso);
-  box-shadow: 0 6px 26px rgba(230,57,70,.42);
-  transition: background .25s, transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s;
+  background:var(--rosso); box-shadow:0 6px 26px rgba(230,57,70,.42);
+  transition:background .25s, transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s;
 }
 .salta:hover, .salta:focus-visible{
-  background:#C0202E; transform:translateY(-1px);
-  box-shadow:0 10px 32px rgba(230,57,70,.55);
+  background:#C0202E; transform:translateY(-1px); box-shadow:0 10px 32px rgba(230,57,70,.55);
 }
 .salta:focus-visible{ outline:2px solid #FFF3F3; outline-offset:3px; }
 .salta .frec{ transition:transform .25s cubic-bezier(.2,.7,.3,1); }
@@ -282,23 +216,21 @@ h1 .forte{ display:block; color: var(--crema); }
 }
 
 .invito{
-  position:fixed; left:50%; bottom:30px; transform:translateX(-50%); z-index:5;
+  position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2;
   flex-direction:column; align-items:center; gap:9px;
   font-family:var(--mono); font-size:10px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--muto);
-  transition: opacity .5s;
+  text-transform:uppercase; color:var(--muto); transition:opacity .4s;
 }
 .invito .filo{
-  width:1px; height:42px; transform-origin:top;
+  width:1px; height:40px; transform-origin:top; will-change:transform;
   background:linear-gradient(180deg, rgba(112,115,124,.8), rgba(112,115,124,0));
-  animation: filo 2.3s cubic-bezier(.7,0,.3,1) infinite;
+  animation:filo 2.3s cubic-bezier(.7,0,.3,1) infinite;
 }
 @keyframes filo{
   0%{transform:scaleY(0);opacity:0} 40%{transform:scaleY(1);opacity:1}
-  100%{transform:scaleY(1) translateY(42px);opacity:0}
+  100%{transform:scaleY(1) translateY(40px);opacity:0}
 }
-
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion:reduce){
   .grana, .invito .filo{ animation:none; }
 }
 </style>
@@ -310,7 +242,7 @@ h1 .forte{ display:block; color: var(--crema); }
 
 <main>
   <div class="traccia" id="traccia">
-    <section class="palco" id="palco" aria-label="Introduzione">
+    <section class="palco" aria-label="Introduzione">
 
       <canvas id="tela" aria-hidden="true"></canvas>
       <div class="velo" aria-hidden="true"></div>
@@ -318,47 +250,47 @@ h1 .forte{ display:block; color: var(--crema); }
 
       <div class="colonna">
 
-        <!-- ============ BATTUTA 1 — apertura ============ -->
+        <!-- ============ BATTUTA 1 ============ -->
         <div class="battuta" id="b1">
           <p class="occhiello">ANIQRC · Associazione Nazionale Infermieri Qualità e Rischio Clinico</p>
           <h1>
-            <span class="fioco">Il rischio non si elimina.</span>
-            <span class="forte">Si governa.</span>
+            <span class="fioco">La sicurezza delle cure</span>
+            <span class="forte">non accade. Si costruisce.</span>
           </h1>
         </div>
 
-        <!-- ============ BATTUTA 2 — il punto ============ -->
+        <!-- ============ BATTUTA 2 ============ -->
         <div class="battuta" id="b2">
-          <p class="frase">Da vicino, un evento avverso sembra un punto.</p>
-          <p class="glossa">Un gesto, una persona, un istante. È la lettura più rapida, ed è quasi sempre quella sbagliata.</p>
+          <p class="frase">In un turno, un infermiere decide centinaia di volte.</p>
+          <p class="glossa">Chi vedere per primo. Se quel parametro è un'oscillazione o l'inizio di qualcosa. Se fermarsi e chiedere. Nessuna di queste decisioni è isolata: ognuna poggia su <b>come è organizzato il lavoro</b> intorno a chi lo fa.</p>
         </div>
 
-        <!-- ============ BATTUTA 3 — il sistema ============ -->
+        <!-- ============ BATTUTA 3 ============ -->
         <div class="battuta" id="b3">
-          <p class="frase"><span class="tenue">Allontanandosi,</span><br>si vede il sistema.</p>
-          <p class="glossa">Le difese che c'erano. I varchi che quel giorno si sono allineati. Le condizioni che dormivano nel processo da mesi.</p>
+          <p class="frase"><span class="tenue">Quando qualcosa va storto,</span><br>la domanda facile è «chi».</p>
+          <p class="glossa">Quella utile è un'altra: che cosa, nel modo in cui abbiamo organizzato il reparto, ha reso possibile quell'errore — e perché nessuna delle difese che avevamo l'ha fermato prima di arrivare al paziente.</p>
         </div>
 
-        <!-- ============ BATTUTA 4 — gli strumenti ============ -->
+        <!-- ============ BATTUTA 4 ============ -->
         <div class="battuta" id="b4">
-          <p class="frase">Il mestiere è guardare da lì.</p>
+          <p class="frase">È di questo che ci occupiamo.</p>
           <dl class="prove">
             <div class="prova">
-              <dt>Near miss</dt>
-              <dd>L'evento che si è fermato prima del paziente. L'apprendimento più ricco e meno costoso che un'organizzazione abbia.</dd>
+              <dt>Segnalare senza temere</dt>
+              <dd>Un quasi-evento raccontato insegna più di dieci nascosti. Ma la segnalazione arriva solo dove chi segnala non rischia niente.</dd>
             </div>
             <div class="prova">
-              <dt>Condizione latente</dt>
-              <dd>La debolezza che dorme nel processo finché un fattore contingente non la sveglia.</dd>
+              <dt>Procedure scritte con chi le applica</dt>
+              <dd>Una procedura costruita insieme agli infermieri del reparto è una difesa. Scritta altrove e calata dall'alto, resta un documento.</dd>
             </div>
             <div class="prova">
-              <dt>Root Cause Analysis</dt>
-              <dd>Risalire dall'esito alle cause di sistema, invece di fermarsi all'ultimo gesto della catena.</dd>
+              <dt>Misurare il cambiamento</dt>
+              <dd>Se un miglioramento non si vede in un indicatore, non è un miglioramento: è un'intenzione. Anche buona, ma un'intenzione.</dd>
             </div>
           </dl>
         </div>
 
-        <!-- ============ BATTUTA 5 — ingresso ============ -->
+        <!-- ============ BATTUTA 5 ============ -->
         <div class="battuta" id="b5">
           <svg class="marchio" id="marchio" viewBox="0 0 200 200" role="img" aria-label="ANIQRC">
             <path class="lettera" d="M31.90591534931157 90.15349311575727 48.42809790922998 41.68842427332993H63.18791432942376L79.71009688934217 90.15349311575727H68.25471698113208L56.211881693013765 50.20652728199898H55.40413054563997L43.287863335033144 90.15349311575727ZM41.01147373788883 80.75420703722591V73.41101478837328H71.99974502804692V80.75420703722591Z"/>
@@ -370,7 +302,7 @@ h1 .forte{ display:block; color: var(--crema); }
             <path class="lettera" d="M172.46328403875575 149.26619071902093Q169.01198368179502 149.26619071902093 167.3230494645589 147.7975522692504Q165.6341152473228 146.32891381947985 165.6341152473228 143.24477307496176Q165.6341152473228 140.08720040795512 167.3230494645589 138.6185619581846Q169.01198368179502 137.14992350841408 172.46328403875575 137.14992350841408Q175.91458439571647 137.14992350841408 177.64023457419682 138.6185619581846Q179.3658847526772 140.08720040795512 179.3658847526772 143.24477307496176Q179.3658847526772 149.26619071902093 172.46328403875575 149.26619071902093Z"/>
           </svg>
           <p class="didascalia">Associazione Nazionale Infermieri<br>Qualità e Rischio Clinico</p>
-          <a class="ingresso" id="ingresso" href="index.html">
+          <a class="ingresso" id="ingresso" href="home.html">
             <span>Entra nel sito</span>
             <span class="freccia" aria-hidden="true">→</span>
           </a>
@@ -378,13 +310,14 @@ h1 .forte{ display:block; color: var(--crema); }
         </div>
 
       </div>
+
+      <div class="invito" id="invito" aria-hidden="true">
+        <span>Scorri</span><span class="filo"></span>
+      </div>
+
     </section>
   </div>
 </main>
-
-<div class="invito" id="invito" aria-hidden="true">
-  <span>Scorri</span><span class="filo"></span>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -393,232 +326,256 @@ h1 .forte{ display:block; color: var(--crema); }
 (function () {
   'use strict';
 
-  /* =======================================================================
-     ▸ DESTINAZIONE — la riga che vorrai cambiare.
-       Questa pagina E' la radice del sito (aniqrc.it). La home vera e'
-       home.html: e' li' che porta il pulsante.
-     ======================================================================= */
+  /* ▸ DESTINAZIONE — questa pagina e' la radice; la home vera e' home.html */
   var DESTINAZIONE = 'home.html';
-  var pulsante = document.getElementById('ingresso');
-  if (pulsante) pulsante.setAttribute('href', DESTINAZIONE);
+  var bottone = document.getElementById('ingresso');
+  if (bottone) bottone.setAttribute('href', DESTINAZIONE);
 
-  /* =======================================================================
-     LA TABELLA DEI TEMPI — la rivelazione scaglionata, in percentuale di
-     scorrimento. Ogni battuta entra, RESTA FERMA mentre si legge, esce.
-        [ id, entra, a fuoco, inizia a uscire, uscita completata ]
-     ======================================================================= */
+  /* La rivelazione scaglionata, in percentuale di scorrimento.
+     Ogni battuta entra, RESTA FERMA mentre si legge, poi esce.
+       [ id, entra, a fuoco, inizia a uscire, uscita completata ] */
   var BATTUTE = [
     ['b1', 0.00, 0.00, 0.11, 0.17],
     ['b2', 0.15, 0.22, 0.33, 0.39],
     ['b3', 0.37, 0.44, 0.55, 0.61],
     ['b4', 0.59, 0.66, 0.77, 0.83],
-    ['b5', 0.81, 0.89, 1.01, 1.01]   /* l'ultima non esce mai */
+    ['b5', 0.81, 0.89, 1.01, 1.01]
   ];
 
-  var fermi    = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var stretto  = window.matchMedia('(max-width: 700px)').matches;
-  var haGSAP   = !!(window.gsap && window.ScrollTrigger);
-  var cinema   = haGSAP && !fermi && !stretto;
+  var fermi   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stretto = window.matchMedia('(max-width: 700px)').matches;
+  var haGSAP  = !!(window.gsap && window.ScrollTrigger);
+  var cinema  = haGSAP && !fermi && !stretto;
 
   var tela = document.getElementById('tela');
-  var ctx  = tela.getContext && tela.getContext('2d');
-  var W = 0, H = 0, DPR = 1;
-  var avanzamento = 0;      /* 0..1 — l'unico orologio della pagina */
-  var apertura = 0;         /* 0..1 — la dissolvenza d'ingresso al caricamento */
-  var t0 = performance.now();
+  var ctx  = tela && tela.getContext ? tela.getContext('2d', { alpha: true }) : null;
+  var W=0, H=0, DPR=1, avanzamento=0, apertura=0;
+  var PASSO=165, RAGGIO=8;
 
-  function lerp(a,b,k){ return a + (b-a)*k; }
+  function lerp(a,b,k){ return a+(b-a)*k; }
   function clamp01(v){ return v<0?0:v>1?1:v; }
-  function easeOut(p){ return 1 - Math.pow(1-p, 2.1); }
+  function easeOut(p){ return 1-Math.pow(1-p,2.1); }
   function easeIO(p){ return p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; }
+  /* scarto deterministico: lo stesso reticolo a ogni caricamento, e
+     nessun movimento nel tempo — si muove solo con lo scorrimento */
+  function scarto(i,j,s){
+    var n = Math.sin(i*12.9898 + j*78.233 + s*3.77)*43758.5453;
+    return (n - Math.floor(n))*2 - 1;
+  }
 
   /* =======================================================================
-     IL RETICOLO DELLE DIFESE
-
-     Un'unica variabile comanda tutto: «avanzamento». Da essa si ricava la
-     distanza della camera:
-
-        0     k = 9.2   sei dentro una cella: vedi solo il punto rosso
-        0.5   k = 2.4   il reticolo vicino entra nel quadro
-        1     k = 0.8   il sistema intero, la luce rossa ormai lontana
-
-     Le celle esistono tutte fin dall'inizio: non «appaiono», entrano nel
-     quadro perche' la camera arretra. Il varco di ogni cella e' tanto piu'
-     fuori asse quanto piu' la cella e' lontana dal centro — l'evento e'
-     accaduto proprio dove le difese erano allineate.
+     LE TESSERE PRE-DISEGNATE
+     Telaio, apertura e alone rosso si disegnano UNA VOLTA su tele nascoste.
+     Nel ciclo si copiano soltanto: copiare un'immagine costa una frazione
+     di quel che costa costruire un gradiente.
      ======================================================================= */
-  var PASSO = 165, RAGGIO = 9;
+  var sTelaio, sApertura, sAlone;
+  function costruisciTessere(){
+    var S = 256;
+    sTelaio = document.createElement('canvas'); sTelaio.width = sTelaio.height = S;
+    var c = sTelaio.getContext('2d');
+    c.strokeStyle = '#F4F2EC'; c.lineWidth = S*0.009;
+    var m = S*0.05, r = S*0.085;
+    c.beginPath();
+    if (c.roundRect) c.roundRect(m, m, S-2*m, S-2*m, r); else c.rect(m, m, S-2*m, S-2*m);
+    c.stroke();
 
-  function disturbo(i,j,s){
-    var n = Math.sin(i*12.9898 + j*78.233 + s*3.77) * 43758.5453;
-    return (n - Math.floor(n)) * 2 - 1;
+    var A = 160;
+    sApertura = document.createElement('canvas'); sApertura.width = sApertura.height = A;
+    var a = sApertura.getContext('2d');
+    var ga = a.createRadialGradient(A/2,A/2,A*0.12, A/2,A/2,A*0.50);
+    ga.addColorStop(0,    'rgba(244,242,236,0)');
+    ga.addColorStop(0.76, 'rgba(244,242,236,0.12)');
+    ga.addColorStop(0.90, 'rgba(244,242,236,0.62)');
+    ga.addColorStop(1,    'rgba(244,242,236,0)');
+    a.fillStyle = ga; a.fillRect(0,0,A,A);
+
+    var L = 320;
+    sAlone = document.createElement('canvas'); sAlone.width = sAlone.height = L;
+    var l = sAlone.getContext('2d');
+    var gl = l.createRadialGradient(L/2,L/2,0, L/2,L/2,L/2);
+    gl.addColorStop(0,    'rgba(255,240,240,1)');
+    gl.addColorStop(0.045,'rgba(240,90,100,1)');
+    gl.addColorStop(0.30, 'rgba(230,57,70,0.36)');
+    gl.addColorStop(1,    'rgba(230,57,70,0)');
+    l.fillStyle = gl; l.fillRect(0,0,L,L);
   }
 
   function ridimensiona(){
     if (!ctx) return;
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    /* Il fondale e' fatto di sfumature morbide e di righe sottilissime al 6-17%
+       di opacita': non guadagna nulla dai pixel in piu' di uno schermo Retina,
+       mentre il costo di riempimento cresce col quadrato. Quindi si disegna a
+       1 pixel per pixel-CSS e si lascia ingrandire al browser, che lo fa
+       gratis. E' questa la differenza fra 30 e 60 fotogrammi al secondo. */
+    DPR = 1;
     W = tela.clientWidth; H = tela.clientHeight;
     if (!W || !H) return;
-    tela.width = Math.round(W*DPR); tela.height = Math.round(H*DPR);
+    tela.width  = Math.round(W*DPR);
+    tela.height = Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);
   }
 
-  function disegna(ora){
+  /* =======================================================================
+     IL DISEGNO
+        avanzamento 0    sei dentro l'evento: nessun bordo, solo la luce
+        avanzamento 0.5  il reticolo delle difese entra nel quadro
+        avanzamento 1    il sistema intero, la luce ormai lontana
+     ======================================================================= */
+  function disegna(){
     if (!ctx || !W || !H) return;
-    var t = (ora - t0)/1000, p = avanzamento;
+    var p = avanzamento;
     ctx.clearRect(0,0,W,H);
 
-    /* il fuoco della scena sta SOTTO la colonna di lettura: il nucleo e' l'elemento
-       piu' contrastato della pagina e non deve mai finire dentro le parole */
     var cx = W/2, cy = H*0.71, base = Math.max(W,H);
-    var k    = lerp(14.0, 0.80, easeOut(p)) * lerp(1.3, 1, apertura);
+    var k    = lerp(14.0, 0.80, easeOut(p)) * lerp(1.28, 1, apertura);
     var roll = lerp(-7.5, 0, easeOut(p)) * Math.PI/180;
-    var cosr = Math.cos(roll), sinr = Math.sin(roll);
     var fine = p > 0.90 ? clamp01((p-0.90)/0.10) : 0;
     var vis  = (1-fine) * apertura;
     if (vis <= 0.004) return;
 
-    /* la luce dell'evento */
-    var rr = base * lerp(0.42, 0.055, easeOut(p));
-    var luce = ctx.createRadialGradient(cx,cy,0,cx,cy,rr);
-    luce.addColorStop(0,   'rgba(230,57,70,'+(0.80*vis)+')');
-    luce.addColorStop(0.35,'rgba(230,57,70,'+(0.32*vis)+')');
-    luce.addColorStop(1,   'rgba(230,57,70,0)');
-    ctx.fillStyle = luce;
-    ctx.fillRect(cx-rr, cy-rr, rr*2, rr*2);
+    /* l'alone e il nucleo: una sola copia d'immagine, niente ombre */
+    /* l'alone e' il disegno piu' esteso della scena: oltre una certa misura
+       riempirebbe comunque tutto lo schermo, quindi lo si limita */
+    var ar = Math.min(base * lerp(1.05, 0.135, easeOut(p)), base*0.80);
+    ctx.globalAlpha = vis;
+    ctx.drawImage(sAlone, cx-ar, cy-ar, ar*2, ar*2);
 
-    /* le celle */
-    var lato = PASSO*0.80*k, margine = lato*1.6;
-    var spess = Math.max(0.5, Math.min(1.4, 1.1*Math.sqrt(k)));
-    for (var i=-RAGGIO; i<=RAGGIO; i++){
-      for (var j=-RAGGIO; j<=RAGGIO; j++){
-        var wx = i*PASSO*k, wy = j*PASSO*k;
-        var x = cx + wx*cosr - wy*sinr, y = cy + wx*sinr + wy*cosr;
-        if (x < -margine || x > W+margine || y < -margine || y > H+margine) continue;
-
-        var dist  = Math.hypot(i,j);
-        var fuoco = 1 - clamp01((dist-1.2)/7.5)*0.78;   /* profondita' di campo */
-        var a = lerp(0.05, 0.15, clamp01(k/3)) * fuoco * vis;
-
-        ctx.save();
-        ctx.translate(x,y); ctx.rotate(roll);
-        ctx.beginPath();
-        var r = Math.min(lato*0.12, 14);
-        if (ctx.roundRect) ctx.roundRect(-lato/2,-lato/2,lato,lato,r);
-        else ctx.rect(-lato/2,-lato/2,lato,lato);
-        ctx.strokeStyle = 'rgba(244,242,236,'+a+')';
-        ctx.lineWidth = spess;
-        ctx.stroke();
-
-        var scarto = clamp01(dist/6)*0.30;
-        var ox = disturbo(i,j,1)*lato*scarto + Math.sin(t*0.35+i+j)*lato*0.012;
-        var oy = disturbo(i,j,2)*lato*scarto + Math.cos(t*0.31+i-j)*lato*0.012;
-        var vr = lato*0.20;
-        var g = ctx.createRadialGradient(ox,oy,vr*0.25,ox,oy,vr*1.3);
-        g.addColorStop(0,   'rgba(244,242,236,0)');
-        g.addColorStop(0.76,'rgba(244,242,236,'+(a*0.62)+')');
-        g.addColorStop(1,   'rgba(244,242,236,0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(ox,oy,vr*1.3,0,Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(ox,oy,vr,0,Math.PI*2);
-        ctx.strokeStyle = 'rgba(244,242,236,'+(a*1.7)+')';
-        ctx.lineWidth = spess*0.8;
-        ctx.stroke();
-        ctx.restore();
-      }
+    /* a camera vicinissima il rosso riempie il quadro: un rettangolo pieno
+       costa una frazione di un'immagine ingrandita a dismisura */
+    var pieno = clamp01((0.12 - p) / 0.12);
+    if (pieno > 0.01){
+      ctx.globalAlpha = pieno * 0.20 * vis;
+      ctx.fillStyle = '#5C1420';
+      ctx.fillRect(0, 0, W, H);
     }
 
-    /* il nucleo: l'evento, sempre al centro */
-    var nr = Math.max(1.6, base * lerp(0.030, 0.0040, easeOut(p)));
+    /* il reticolo: la rotazione si applica una volta sola, non per cella */
+    var lato = PASSO*0.80*k;
+    var dia  = lato*0.52;               /* diametro dell'apertura */
+    var lim  = Math.max(W,H)*0.75 + lato;
     ctx.save();
-    ctx.shadowColor = 'rgba(230,57,70,.9)';
-    ctx.shadowBlur = nr*3.2;
-    ctx.fillStyle = 'rgba(255,240,240,'+(0.80*vis)+')';
-    ctx.beginPath(); ctx.arc(cx,cy,nr,0,Math.PI*2); ctx.fill();
+    ctx.translate(cx, cy);
+    ctx.rotate(roll);
+    for (var i=-RAGGIO; i<=RAGGIO; i++){
+      var wx = i*PASSO*k;
+      if (wx < -lim || wx > lim) continue;
+      for (var j=-RAGGIO; j<=RAGGIO; j++){
+        var wy = j*PASSO*k;
+        if (wy < -lim || wy > lim) continue;
+
+        var dist  = Math.sqrt(i*i + j*j);
+        var fuoco = 1 - clamp01((dist-1.0)/6.4)*0.88;   /* profondita' di campo */
+        var al = lerp(0.06, 0.17, clamp01(k/3)) * fuoco * vis;
+        if (al < 0.004) continue;
+
+        ctx.globalAlpha = al;
+        ctx.drawImage(sTelaio, wx-lato/2, wy-lato/2, lato, lato);
+
+        /* il varco: tanto piu' fuori asse quanto piu' la cella e' lontana
+           dal centro — l'evento e' accaduto dove le difese erano allineate */
+        var sc = clamp01(dist/6)*0.30;
+        var ox = scarto(i,j,1)*lato*sc, oy = scarto(i,j,2)*lato*sc;
+        ctx.globalAlpha = al*1.15;
+        ctx.drawImage(sApertura, wx+ox-dia, wy+oy-dia, dia*2, dia*2);
+      }
+    }
     ctx.restore();
+    ctx.globalAlpha = 1;
   }
 
   /* =======================================================================
-     LE BATTUTE — funzione pura dell'avanzamento.
-
-     Niente timeline separate: lo stato di ogni battuta si CALCOLA dalla
-     percentuale di scorrimento. Percorrere all'indietro ripercorre da se',
-     perche' non c'e' nessuno stato da ricordare.
+     I TESTI — funzione pura dell'avanzamento, quindi tornare indietro
+     ripercorre da se'. Solo opacita' e spostamento: niente sfocatura, che
+     costringerebbe il browser a ridisegnare il testo ogni fotogramma.
+     E si scrive nel DOM soltanto quando il valore cambia davvero.
      ======================================================================= */
   var elementi = BATTUTE.map(function(b){ return document.getElementById(b[0]); });
+  var ultimo   = BATTUTE.map(function(){ return { o:-1, y:-999 }; });
 
-  function stato(p, e0, e1, u0, u1){
-    if (p <= e0) return e0 === 0 ? {o:1,y:0,b:0} : {o:0, y:46, b:10};
-    if (p <  e1){ var t = easeIO((p-e0)/(e1-e0)); return {o:t, y:46*(1-t), b:10*(1-t)}; }
-    if (p <  u0) return {o:1, y:0, b:0};                       /* la tenuta */
-    if (p <  u1){ var s = easeIO((p-u0)/(u1-u0)); return {o:1-s, y:-46*s, b:10*s}; }
-    return {o:0, y:-46, b:10};
+  function stato(p,e0,e1,u0,u1){
+    if (p<=e0) return e0===0 ? {o:1,y:0} : {o:0,y:40};
+    if (p< e1){ var t=easeIO((p-e0)/(e1-e0)); return {o:t, y:40*(1-t)}; }
+    if (p< u0) return {o:1,y:0};
+    if (p< u1){ var s=easeIO((p-u0)/(u1-u0)); return {o:1-s, y:-40*s}; }
+    return {o:0,y:-40};
   }
+
+  var ultimeProve = -1, ultimoMarchio = -1, ultimoInvito = -1;
 
   function muoviTesti(){
     if (!cinema) return;
     var p = avanzamento;
     for (var n=0; n<BATTUTE.length; n++){
-      var b = BATTUTE[n], el = elementi[n];
+      var b=BATTUTE[n], el=elementi[n];
       if (!el) continue;
       var s = stato(p, b[1], b[2], b[3], b[4]);
-      var o = n === 0 ? s.o * apertura : s.o;          /* la prima entra al caricamento */
-      var y = n === 0 ? s.y + (1-apertura)*20 : s.y;
-      var bl = n === 0 ? s.b + (1-apertura)*14 : s.b;
-      el.style.opacity   = o.toFixed(3);
-      el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
-      el.style.filter    = bl > 0.05 ? 'blur(' + bl.toFixed(1) + 'px)' : 'none';
+      var o = n===0 ? s.o*apertura : s.o;
+      var y = n===0 ? s.y + (1-apertura)*16 : s.y;
+      var u = ultimo[n];
+      if (Math.abs(o-u.o) > 0.004){ el.style.opacity = o.toFixed(3); u.o = o; }
+      if (Math.abs(y-u.y) > 0.25){ el.style.transform = 'translate3d(0,'+y.toFixed(1)+'px,0)'; u.y = y; }
     }
-    /* le tre prove, scaglionate dentro la loro battuta */
-    var prove = document.querySelectorAll('#b4 .prova');
-    for (var q=0; q<prove.length; q++){
-      var d0 = 0.615 + q*0.028;
-      var tq = easeIO(clamp01((p - d0)/0.05));
-      prove[q].style.opacity = tq.toFixed(3);
-      prove[q].style.transform = 'translate3d(0,'+((1-tq)*24).toFixed(1)+'px,0)';
+    var tp = easeIO(clamp01((p-0.615)/0.06));
+    if (Math.abs(tp-ultimeProve) > 0.004){
+      var prove = document.querySelectorAll('#b4 .prova');
+      for (var q=0; q<prove.length; q++){
+        var d = easeIO(clamp01((p-(0.615+q*0.030))/0.055));
+        prove[q].style.opacity = d.toFixed(3);
+        prove[q].style.transform = 'translate3d(0,'+((1-d)*20).toFixed(1)+'px,0)';
+      }
+      ultimeProve = tp;
     }
-    /* il marchio arriva grande e si posa */
-    var mk = document.getElementById('marchio');
-    if (mk){
-      var tm = easeIO(clamp01((p - 0.82)/0.10));
-      mk.style.transform = 'scale(' + (1.8 - 0.8*tm).toFixed(3) + ')';
+    var tm = easeIO(clamp01((p-0.82)/0.10));
+    if (Math.abs(tm-ultimoMarchio) > 0.004){
+      var mk = document.getElementById('marchio');
+      if (mk) mk.style.transform = 'scale('+(1.7-0.7*tm).toFixed(3)+')';
+      ultimoMarchio = tm;
     }
-    /* l'invito sparisce appena si parte */
-    var inv = document.getElementById('invito');
-    if (inv) inv.style.opacity = (1 - clamp01(p/0.04)).toFixed(2);
+    var ti = 1 - clamp01(p/0.04);
+    if (Math.abs(ti-ultimoInvito) > 0.01){
+      var inv = document.getElementById('invito');
+      if (inv) inv.style.opacity = ti.toFixed(2);
+      ultimoInvito = ti;
+    }
   }
 
-  function ciclo(ora){
-    if (apertura < 1) apertura = Math.min(1, apertura + 0.016);
-    disegna(ora);
-    muoviTesti();
+  /* il ciclo ridisegna SOLO quando qualcosa e' cambiato: da fermo, zero lavoro */
+  var pDisegnato = -1, serve = true;
+  function ciclo(){
+    if (apertura < 1){ apertura = Math.min(1, apertura + 0.022); serve = true; }
+    if (serve || avanzamento !== pDisegnato){
+      pDisegnato = avanzamento;
+      disegna();
+      muoviTesti();
+      serve = false;
+    }
     requestAnimationFrame(ciclo);
   }
 
-  /* =======================================================================
-     AVVIO
-     ======================================================================= */
+  costruisciTessere();
   if (cinema) document.documentElement.classList.add('cinema');
   ridimensiona();
 
+  var attesaResize;
   window.addEventListener('resize', function(){
-    ridimensiona();
-    if (!cinema){ apertura = 1; disegna(performance.now()); }
-    if (haGSAP && cinema) ScrollTrigger.refresh();
+    clearTimeout(attesaResize);
+    attesaResize = setTimeout(function(){
+      ridimensiona(); serve = true;
+      if (!cinema){ apertura = 1; disegna(); }
+      if (cinema && haGSAP) ScrollTrigger.refresh();
+    }, 120);
   });
 
   if (!cinema){
-    /* stato composto: un solo fotogramma, quello che spiega meglio —
-       il reticolo abbastanza largo da far leggere il sistema */
     apertura = 1; avanzamento = 0.72;
-    disegna(performance.now());
+    disegna();
+    var inv0 = document.getElementById('invito');
+    if (inv0) inv0.style.display = 'none';
     return;
   }
 
-  /* un solo ScrollTrigger: produce «avanzamento», e nient'altro.
-     Lo scrub gli da' l'inerzia — e' li' che nasce la sensazione di camera. */
-  /* chi continua a scorrere oltre la fine entra nel sito: l'introduzione
-     si attraversa, non si subisce */
+  /* chi continua a scorrere oltre la fine entra nel sito */
   var uscita = false;
   window.addEventListener('wheel', function(e){
     if (uscita || e.deltaY <= 0) return;
@@ -629,17 +586,15 @@ h1 .forte{ display:block; color: var(--crema); }
     setTimeout(function(){ window.location.href = DESTINAZIONE; }, 430);
   }, { passive: true });
 
+  /* un solo orologio: lo scrub gli da' l'inerzia, ed e' li' che nasce
+     la sensazione di camera */
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.create({
-    trigger: '#traccia',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 1.15,
+    trigger: '#traccia', start: 'top top', end: 'bottom bottom', scrub: 1,
     onUpdate: function(self){ avanzamento = self.progress; }
   });
 
   requestAnimationFrame(ciclo);
-
 })();
 </script>
 </body>
