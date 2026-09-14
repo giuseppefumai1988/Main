@@ -14,6 +14,7 @@
 <meta property="og:image" content="https://aniqrc.it/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preload" as="image" href="intro-aniqrc.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,27 +29,28 @@
 
 <style>
 /* =========================================================================
-   ANIQRC — pre-home
+   ANIQRC — pre-home a video
    -------------------------------------------------------------------------
-   Questa pagina E' la radice del sito. Si scorre o si salta: il pulsante
-   rosso in alto porta dritto alla home (home.html).
+   Niente scorrimento da guidare: il filmato parte da solo e dura venti
+   secondi. Chi non lo vuole preme il pulsante rosso in alto.
 
-   COME E' COSTRUITA LA FLUIDITA'
-   Il fondale non disegna nulla di complicato a ogni fotogramma. Le forme
-   (il telaio della cella, l'apertura, l'alone rosso) sono disegnate UNA
-   VOLTA su tele nascoste e poi ricopiate: copiare un'immagine costa una
-   frazione di un gradiente. Inoltre il ciclo ridisegna solo quando lo
-   scorrimento cambia davvero — da fermo la pagina non consuma nulla.
-   I testi si muovono con opacita' e spostamento, mai con la sfocatura:
-   la sfocatura obbliga il browser a ridisegnare il testo a ogni fotogramma
-   ed e' la prima causa di scatti.
+   PERCHE' IL TESTO NON E' DENTRO AL VIDEO
+   Le parole sono HTML vero, sovrapposto al filmato e sincronizzato sul suo
+   tempo. Cosi' restano selezionabili, leggibili dagli screen reader e
+   indicizzabili da Google — che su questa pagina conta, visto che e' la
+   radice del sito. E si correggono senza rigenerare il video.
+
+   STATO BASE / STATO FILM
+   Il DEFAULT e' la pagina impilata e leggibile: vale senza JavaScript, se
+   il browser blocca la riproduzione automatica e per chi ha chiesto meno
+   movimento. Lo stato «film» lo aggiunge lo script solo quando il video
+   parte davvero.
 
    DOVE METTERE MANO
-     · i testi         -> cerca «BATTUTA 1 … 5» nel corpo
-     · la destinazione -> costante DESTINAZIONE, in fondo allo script
-     · i tempi         -> tabella BATTUTE, in fondo allo script
-     · i colori        -> le variabili qui sotto
-     · la durata       -> --battute (schermate di scorrimento)
+     · i testi        -> cerca «BATTUTA 1 … 5» nel corpo
+     · i tempi        -> tabella BATTUTE, in fondo allo script (secondi)
+     · la destinazione-> costante DESTINAZIONE, in fondo allo script
+     · il video       -> intro-aniqrc.mp4 / .webm, poster intro-aniqrc.jpg
    ========================================================================= */
 
 :root{
@@ -57,110 +59,95 @@
   --display:'Bricolage Grotesque','Helvetica Neue',Helvetica,Arial,sans-serif;
   --testo:'Manrope','Helvetica Neue',Helvetica,Arial,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
-  --battute:6;
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
-html{ overflow-x:clip; }
 body{
   background:var(--fondo); color:var(--crema); font-family:var(--testo);
-  line-height:1.6; overflow-x:clip; -webkit-font-smoothing:antialiased;
+  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:clip;
 }
 
-/* ---- stato base: impilato, nel flusso. Senza JavaScript, da telefono,
-        e per chi ha chiesto meno movimento. ---- */
-.traccia{ position:relative; }
-.palco{ position:relative; padding-block:7vh 12vh; }
-#tela{
-  position:relative; display:block; width:100%; height:50svh; margin-bottom:7vh;
-  background:
-    radial-gradient(38% 55% at 50% 50%, rgba(230,57,70,.34), rgba(230,57,70,0) 70%),
-    radial-gradient(120% 100% at 50% 50%, #0B0D13 0%, #06070A 72%);
+/* ---------- STATO BASE: impilato, si legge tutto ---------- */
+.scena{ position:relative; padding-block:0 12vh; }
+#video{
+  display:block; width:100%; height:46svh; object-fit:cover;
+  background:#06070A; margin-bottom:7vh;
 }
-.velo, .grana{ display:none; }
+.velo, .barra{ display:none; }
 .colonna{ max-width:720px; margin-inline:auto; padding-inline:26px; }
-.battuta{ padding-block:7vh; text-align:center; }
+.battuta{ padding-block:6vh; text-align:center; }
 .battuta + .battuta{ border-top:1px solid rgba(244,242,236,.1); }
-.invito{ display:none; }
 
-/* ---- stato cinema ---- */
-.cinema .traccia{ height:calc(var(--battute) * 100svh); }
-.cinema .palco{
-  position:sticky; top:0; height:100svh; padding:0; overflow:hidden;
+/* ---------- STATO FILM: una sola schermata, niente scorrimento ---------- */
+.film, .film body{ height:100%; }
+.film body{ overflow:hidden; height:100svh; }
+.film .scena{
+  position:fixed; inset:0; padding:0;
+  display:grid; place-items:center; overflow:hidden;
+}
+.film #video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; margin:0;
+}
+.film .velo{
+  display:block; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(58% 46% at 50% 48%, rgba(6,7,10,.62), rgba(6,7,10,.24) 60%, rgba(6,7,10,0) 82%),
+    radial-gradient(125% 90% at 50% 50%, rgba(6,7,10,0) 40%, rgba(6,7,10,.72) 82%, rgba(6,7,10,.94) 100%);
+}
+.film .colonna{
+  position:relative; z-index:2; width:100%; max-width:820px;
   display:grid; place-items:center;
 }
-.cinema .palco::before{
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(42% 42% at 50% 50%, rgba(230,57,70,.22), rgba(230,57,70,0) 68%),
-    radial-gradient(120% 90% at 50% 50%, #0B0D13 0%, #06070A 70%);
+.film .battuta{
+  grid-area:1/1; width:100%; padding-block:0; border-top:0;
+  opacity:0; will-change:transform,opacity;
 }
-.cinema #tela{ position:absolute; inset:0; width:100%; height:100%; margin:0; background:none; }
-.cinema .velo{
-  display:block; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(125% 88% at 50% 50%, rgba(6,7,10,0) 34%, rgba(6,7,10,.70) 76%, rgba(6,7,10,.95) 100%);
+/* la barra dice quanto dura: un'introduzione deve dichiarare la sua fine */
+.film .barra{
+  display:block; position:absolute; left:0; right:0; bottom:0; height:2px;
+  background:rgba(244,242,236,.10); z-index:3;
 }
-/* la grana e' un'immagine statica spostata dal compositore: non ridisegna nulla */
-.cinema .grana{
-  display:block; position:absolute; inset:-30%; pointer-events:none; opacity:.032;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation:grana 1.2s steps(3) infinite;
-  will-change:transform;
+.film .barra i{
+  display:block; height:100%; width:0; background:var(--rosso);
+  box-shadow:0 0 12px rgba(230,57,70,.7);
 }
-@keyframes grana{
-  0%{transform:translate3d(0,0,0)} 33%{transform:translate3d(-2%,1.5%,0)}
-  66%{transform:translate3d(1.5%,-2%,0)} 100%{transform:translate3d(0,0,0)}
-}
-.cinema .colonna{ position:relative; width:100%; max-width:800px; display:grid; place-items:center; }
-.cinema .colonna::before{
-  content:""; position:absolute; z-index:0;
-  left:50%; top:50%; transform:translate(-50%,-50%);
-  width:150%; height:260%; pointer-events:none;
-  background:radial-gradient(50% 42% at 50% 50%, rgba(6,7,10,.82), rgba(6,7,10,.46) 55%, rgba(6,7,10,0) 78%);
-}
-.cinema .battuta{
-  grid-area:1/1; width:100%; position:relative; z-index:1;
-  padding-block:0; border-top:0;
-  /* solo opacita' e spostamento: entrambi li gestisce il compositore */
-  will-change:transform, opacity;
-}
-.cinema .invito{ display:flex; }
 
-/* ---- tipografia ---- */
+/* ---------- tipografia ---------- */
 .occhiello{
   font-family:var(--mono); font-size:clamp(9.5px,1.7vw,11px);
   font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--muto); margin-bottom:24px;
+  color:var(--muto); margin-bottom:22px;
 }
 h1{
   font-family:var(--display); font-weight:600;
-  font-size:clamp(2.1rem,6.6vw,4.9rem);
-  line-height:1.02; letter-spacing:-.033em; text-wrap:balance;
+  font-size:clamp(2rem,6.2vw,4.6rem);
+  line-height:1.03; letter-spacing:-.033em; text-wrap:balance;
 }
 h1 .fioco{ display:block; color:var(--crema-soft); }
 h1 .forte{ display:block; color:var(--crema); }
 .frase{
   font-family:var(--display); font-weight:500;
-  font-size:clamp(1.45rem,4.1vw,2.9rem);
-  line-height:1.14; letter-spacing:-.022em; text-wrap:balance;
+  font-size:clamp(1.35rem,3.8vw,2.7rem);
+  line-height:1.16; letter-spacing:-.022em; text-wrap:balance;
 }
 .frase .tenue{ color:var(--crema-soft); }
 .glossa{
-  font-size:clamp(14.5px,2.1vw,17px); color:var(--crema-soft);
-  max-width:56ch; margin:24px auto 0;
+  font-size:clamp(14px,2vw,16.5px); color:var(--crema-soft);
+  max-width:56ch; margin:20px auto 0;
 }
 .glossa b{ color:var(--crema); font-weight:600; }
 
-.prove{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:32px; text-align:left; }
+.prove{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:28px; text-align:left; }
 .prova dt{
-  font-family:var(--mono); font-size:clamp(10px,1.6vw,11.5px);
+  font-family:var(--mono); font-size:clamp(9.5px,1.5vw,11px);
   font-weight:500; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--crema); padding-bottom:11px; margin-bottom:11px;
-  border-bottom:1px solid rgba(244,242,236,.16);
+  color:var(--crema); padding-bottom:10px; margin-bottom:10px;
+  border-bottom:1px solid rgba(244,242,236,.18);
 }
-.prova dd{ font-size:clamp(13.5px,1.85vw,15px); color:var(--crema-soft); line-height:1.58; }
-@media (max-width:700px){ .prove{ grid-template-columns:1fr; gap:22px; } }
+.prova dd{ font-size:clamp(13px,1.75vw,14.5px); color:var(--crema-soft); line-height:1.55; }
+@media (max-width:760px){ .prove{ grid-template-columns:1fr; gap:16px; } }
 
-.marchio{ width:clamp(128px,21vw,205px); height:auto; display:block; margin:0 auto 28px; will-change:transform; }
+.marchio{ width:clamp(116px,19vw,190px); height:auto; display:block; margin:0 auto 24px; }
 .marchio .lettera{ fill:var(--crema); }
 .marchio .q{ fill:var(--rosso); }
 .didascalia{
@@ -169,9 +156,9 @@ h1 .forte{ display:block; color:var(--crema); }
 }
 .ingresso{
   display:inline-flex; align-items:center; gap:14px;
-  margin-top:38px; padding:17px 34px;
-  border:1px solid rgba(244,242,236,.3); border-radius:100px;
-  background:rgba(244,242,236,.04); color:var(--crema);
+  margin-top:32px; padding:17px 34px;
+  border:1px solid rgba(244,242,236,.32); border-radius:100px;
+  background:rgba(244,242,236,.05); color:var(--crema);
   font-size:15px; font-weight:600; text-decoration:none;
   position:relative; overflow:hidden;
   transition:border-color .35s, background .35s, transform .35s cubic-bezier(.2,.7,.3,1);
@@ -183,7 +170,7 @@ h1 .forte{ display:block; color:var(--crema); }
 }
 .ingresso > *{ position:relative; }
 .ingresso:hover, .ingresso:focus-visible{
-  border-color:rgba(244,242,236,.6); background:rgba(244,242,236,.08); transform:translateY(-2px);
+  border-color:rgba(244,242,236,.62); background:rgba(244,242,236,.09); transform:translateY(-2px);
 }
 .ingresso:hover::before, .ingresso:focus-visible::before{ opacity:1; }
 .ingresso:focus-visible{ outline:2px solid var(--rosso); outline-offset:4px; }
@@ -191,7 +178,7 @@ h1 .forte{ display:block; color:var(--crema); }
 .ingresso:hover .freccia{ transform:translateX(5px); }
 .piede{
   font-family:var(--mono); font-size:10px; letter-spacing:.16em;
-  text-transform:uppercase; color:#4A4D55; margin-top:32px;
+  text-transform:uppercase; color:#4A4D55; margin-top:26px;
 }
 
 /* IL PULSANTE PER SALTARE: rosso pieno, in alto, sopra ogni altra cosa. */
@@ -214,25 +201,6 @@ h1 .forte{ display:block; color:var(--crema); }
 @media (max-width:620px){
   .salta{ top:12px; right:12px; padding:11px 17px; font-size:10px; letter-spacing:.13em; }
 }
-
-.invito{
-  position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2;
-  flex-direction:column; align-items:center; gap:9px;
-  font-family:var(--mono); font-size:10px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--muto); transition:opacity .4s;
-}
-.invito .filo{
-  width:1px; height:40px; transform-origin:top; will-change:transform;
-  background:linear-gradient(180deg, rgba(112,115,124,.8), rgba(112,115,124,0));
-  animation:filo 2.3s cubic-bezier(.7,0,.3,1) infinite;
-}
-@keyframes filo{
-  0%{transform:scaleY(0);opacity:0} 40%{transform:scaleY(1);opacity:1}
-  100%{transform:scaleY(1) translateY(40px);opacity:0}
-}
-@media (prefers-reduced-motion:reduce){
-  .grana, .invito .filo{ animation:none; }
-}
 </style>
 </head>
 
@@ -241,86 +209,81 @@ h1 .forte{ display:block; color:var(--crema); }
 <a class="salta" href="home.html">Salta l'introduzione <span class="frec" aria-hidden="true">→</span></a>
 
 <main>
-  <div class="traccia" id="traccia">
-    <section class="palco" aria-label="Introduzione">
+  <section class="scena" aria-label="Introduzione">
 
-      <canvas id="tela" aria-hidden="true"></canvas>
-      <div class="velo" aria-hidden="true"></div>
-      <div class="grana" aria-hidden="true"></div>
+    <video id="video" playsinline muted autoplay preload="auto"
+           poster="intro-aniqrc.jpg" aria-hidden="true" tabindex="-1"
+           disablepictureinpicture>
+      <source src="intro-aniqrc.webm" type="video/webm">
+      <source src="intro-aniqrc.mp4" type="video/mp4">
+    </video>
+    <div class="velo" aria-hidden="true"></div>
+    <div class="barra" aria-hidden="true"><i id="avanza"></i></div>
 
-      <div class="colonna">
+    <div class="colonna">
 
-        <!-- ============ BATTUTA 1 ============ -->
-        <div class="battuta" id="b1">
-          <p class="occhiello">ANIQRC · Associazione Nazionale Infermieri Qualità e Rischio Clinico</p>
-          <h1>
-            <span class="fioco">La sicurezza delle cure</span>
-            <span class="forte">non accade. Si costruisce.</span>
-          </h1>
-        </div>
-
-        <!-- ============ BATTUTA 2 ============ -->
-        <div class="battuta" id="b2">
-          <p class="frase">In un turno, un infermiere decide centinaia di volte.</p>
-          <p class="glossa">Chi vedere per primo. Se quel parametro è un'oscillazione o l'inizio di qualcosa. Se fermarsi e chiedere. Nessuna di queste decisioni è isolata: ognuna poggia su <b>come è organizzato il lavoro</b> intorno a chi lo fa.</p>
-        </div>
-
-        <!-- ============ BATTUTA 3 ============ -->
-        <div class="battuta" id="b3">
-          <p class="frase"><span class="tenue">Quando qualcosa va storto,</span><br>la domanda facile è «chi».</p>
-          <p class="glossa">Quella utile è un'altra: che cosa, nel modo in cui abbiamo organizzato il reparto, ha reso possibile quell'errore — e perché nessuna delle difese che avevamo l'ha fermato prima di arrivare al paziente.</p>
-        </div>
-
-        <!-- ============ BATTUTA 4 ============ -->
-        <div class="battuta" id="b4">
-          <p class="frase">È di questo che ci occupiamo.</p>
-          <dl class="prove">
-            <div class="prova">
-              <dt>Segnalare senza temere</dt>
-              <dd>Un quasi-evento raccontato insegna più di dieci nascosti. Ma la segnalazione arriva solo dove chi segnala non rischia niente.</dd>
-            </div>
-            <div class="prova">
-              <dt>Procedure scritte con chi le applica</dt>
-              <dd>Una procedura costruita insieme agli infermieri del reparto è una difesa. Scritta altrove e calata dall'alto, resta un documento.</dd>
-            </div>
-            <div class="prova">
-              <dt>Misurare il cambiamento</dt>
-              <dd>Se un miglioramento non si vede in un indicatore, non è un miglioramento: è un'intenzione. Anche buona, ma un'intenzione.</dd>
-            </div>
-          </dl>
-        </div>
-
-        <!-- ============ BATTUTA 5 ============ -->
-        <div class="battuta" id="b5">
-          <svg class="marchio" id="marchio" viewBox="0 0 200 200" role="img" aria-label="ANIQRC">
-            <path class="lettera" d="M31.90591534931157 90.15349311575727 48.42809790922998 41.68842427332993H63.18791432942376L79.71009688934217 90.15349311575727H68.25471698113208L56.211881693013765 50.20652728199898H55.40413054563997L43.287863335033144 90.15349311575727ZM41.01147373788883 80.75420703722591V73.41101478837328H71.99974502804692V80.75420703722591Z"/>
-            <path class="lettera" d="M83.52855685874555 90.15349311575727V41.68842427332993H97.48062213156553L118.18842427332994 76.20142784293728H118.77587965323815L118.33528811830699 41.68842427332993H128.76262111167773V90.15349311575727H115.8386027536971L94.0293217746048 54.39214686384498H93.51529831718511L93.88245792962775 90.15349311575727Z"/>
-            <path class="lettera" d="M136.03238143804182 90.15349311575727V41.68842427332993H146.75344212136667V90.15349311575727Z"/>
-            <path class="q" d="M66.89622641509433 159.39979602243753Q61.82942376338602 160.42784293727692 58.19454360020397 160.68485466598676Q54.55966343702192 160.9418663946966 51.76925038245792 160.68485466598676Q48.97883732789392 160.42784293727692 46.29857215706271 159.87710351861296Q43.6183069862315 159.32636409994902 40.49745028046914 158.77562468128508Q37.376593574706774 158.22488526262111 33.11754207037225 157.96787353391127Q28.858490566037723 157.71086180520143 22.763640999490043 158.00458949515553V149.26619071902093Q24.96659867414583 149.33962264150944 27.830443651198355 149.30290668026518Q30.69428862825088 149.26619071902093 33.85186129525751 149.00917899031106Q37.00943396226414 148.75216726160122 40.09357470678224 148.31157572667007Q43.177715451300344 147.87098419173893 45.85798062213155 147.1733809280979Q48.53824579296276 146.47577766445693 50.30061193268739 145.44773074961753V144.7134115247323Q44.64635390107087 146.32891381947985 40.130290668026504 146.1820499745028Q35.61422743498214 146.03518612952575 32.199643039265666 144.34625191228963Q28.785058643549196 142.65731769505354 26.582100968893407 139.68332483426823Q24.37914329423762 136.70933197348293 23.240948495665464 132.70729219785824Q22.102753697093306 128.70525242223357 22.102753697093306 123.93217746047935Q22.102753697093306 118.4982151963284 23.534676185619567 113.90872004079552Q24.96659867414583 109.31922488526263 27.867159612442617 105.94135645079041Q30.767720550739405 102.5634880163182 34.990056093829665 100.69097399286079Q39.212391636919925 98.81845996940336 44.86664966853645 98.81845996940336Q51.916114227434974 98.81845996940336 56.90948495665476 101.82916879143295Q61.90285568587454 104.83987761346252 64.58312085670576 110.42070372259052Q67.26338602753697 116.00152983171851 67.26338602753697 123.93217746047935Q67.26338602753697 130.68791432942376 65.35415604283529 135.3508414074452Q63.444926058133596 140.0137684854666 60.067057623661384 143.02447730749617Q56.68918918918918 146.03518612952575 52.02626211116776 147.7608363080061Q47.36333503314634 149.48648648648648 41.782508924018344 150.3676695563488V151.10198878123407Q45.89469658337582 151.61601223865375 49.08898521162671 151.94645588985213Q52.2832738398776 152.27689954105048 55.14711881693013 152.31361550229474Q58.010963793982654 152.35033146353902 60.87480877103518 151.94645588985213Q63.7386537480877 151.5425803161652 66.89622641509433 150.5879653238144ZM44.86664966853645 141.04181540030598Q48.46481387047424 141.04181540030598 51.03493115757266 139.27944926058134Q53.60504844467108 137.5170831208567 55.000254971953076 133.88220295767468Q56.395461499235076 130.24732279449262 56.395461499235076 124.51963284038756Q56.395461499235076 118.86537480877104 55.03697093319734 115.08363080061193Q53.6784803671596 111.30188679245283 51.03493115757266 109.39265680775114Q48.39138194798571 107.48342682304946 44.57292197858234 107.48342682304946Q41.04818969913308 107.48342682304946 38.441356450790394 109.28250892401836Q35.83452320244771 111.08159102498726 34.40260071392145 114.78990311065783Q32.97067822539519 118.4982151963284 32.97067822539519 124.22590515043345Q32.97067822539519 130.02702702702703 34.40260071392145 133.77205507394189Q35.83452320244771 137.5170831208567 38.514788373278925 139.27944926058134Q41.19505354411014 141.04181540030598 44.86664966853645 141.04181540030598Z"/>
-            <path class="lettera" d="M73.13793982661906 148.31157572667007V99.84650688424273H92.67083120856705Q96.34242733299335 99.84650688424273 99.42656807751146 100.43396226415094Q102.51070882202956 101.02141764405914 104.93396226415092 102.19632840387557Q107.3572157062723 103.371239163692 109.11958184599692 105.06017338092809Q110.88194798572155 106.7491075981642 111.76313105558387 109.02549719530852Q112.64431412544619 111.30188679245283 112.64431412544619 114.16573176950536Q112.64431412544619 116.58898521162672 111.87327893931666 118.64507904130545Q111.10224375318714 120.7011728709842 109.48674145843955 122.27995920448751Q107.87123916369198 123.85874553799083 105.3745537990821 124.88679245283019Q102.87786843447219 125.91483936766956 99.42656807751146 126.28199898011219V127.16318204997451Q103.53875573686892 127.53034166241713 105.88857725650176 128.96226415094338Q108.2383987761346 130.39418663946967 109.52345741968381 132.74400815910252Q110.80851606323303 135.09382967873535 111.68969913309535 138.3248342682305L114.40668026517082 148.31157572667007H102.73100458949514L100.67491075981641 139.1325854156043Q100.08745537990819 136.3421723610403 98.94926058133603 134.65323814380417Q97.81106578276388 132.96430392656808 95.93855175930646 132.19326874043855Q94.06603773584905 131.42223355430903 91.12876083630799 131.42223355430903H83.71213666496683V148.31157572667007ZM83.71213666496683 123.34472208057113H91.7162162162162Q96.56272310045894 123.34472208057113 99.13284038755737 121.50892401835799Q101.70295767465578 119.67312595614483 101.70295767465578 115.85466598674145Q101.70295767465578 111.96277409484956 99.27970423253441 110.05354411014788Q96.85645079041305 108.1443141254462 92.0099439061703 108.1443141254462H83.71213666496683Z"/>
-            <path class="lettera" d="M141.2093319734829 149.33962264150944Q135.40821009688932 149.33962264150944 131.00229474757776 147.61397246302909Q126.59637939826618 145.8883222845487 123.62238653748086 142.62060173380928Q120.64839367669555 139.35288118306985 119.17975522692501 134.76338602753697Q117.71111677715449 130.17389087200408 117.71111677715449 124.44620091789903Q117.71111677715449 118.64507904130545 119.25318714941355 113.90872004079552Q120.7952575216726 109.17236104028557 123.73253442121364 105.79449260581336Q126.6698113207547 102.41662417134114 130.92886282508923 100.61754207037225Q135.18791432942373 98.81845996940336 140.69530851606322 98.81845996940336Q145.10122386537478 98.81845996940336 148.66267210606833 100.03008669046405Q152.22412034676185 101.24171341152473 154.64737378888321 103.48138704742479Q157.07062723100458 105.72106068332484 158.3189699133095 108.7317695053544Q159.56731259561445 111.74247832738399 159.42044875063743 115.41407445181031L149.6540030596634 117.47016828148904Q149.72743498215195 114.23916369199388 148.479092299847 112.03620601733809Q147.23074961754205 109.83324834268231 145.13793982661906 108.69505354411015Q143.04513003569605 107.556858745538 140.3281489036206 107.556858745538Q138.05175930647627 107.556858745538 135.922233554309 108.47475777664457Q133.79270780214176 109.39265680775114 132.21392146863843 111.37531871494136Q130.63513513513513 113.35798062213156 129.6805201427843 116.44212136664967Q128.72590515043345 119.52626211116777 128.72590515043345 123.85874553799083Q128.72590515043345 129.51300356960735 130.30469148393675 133.22131565527792Q131.88347781744005 136.9296277409485 134.7473227944926 138.76542580316163Q137.61116777154513 140.6012238653748 141.4296277409485 140.6012238653748Q145.24808771035185 140.6012238653748 147.45104538500763 138.98572157062722Q149.6540030596634 137.37021927587966 150.64533401325852 134.61652218255992Q151.63666496685363 131.86282508924018 151.56323304436512 128.63182049974503L161.18281489036204 129.88016318204998Q161.25624681285058 133.91891891891893 160.19148393676693 137.44365119836817Q159.1267210606833 140.96838347781744 156.77689954105045 143.64864864864865Q154.42707802141763 146.32891381947985 150.57190209076998 147.83426823049464Q146.71672616012236 149.33962264150944 141.2093319734829 149.33962264150944Z"/>
-            <path class="lettera" d="M172.46328403875575 149.26619071902093Q169.01198368179502 149.26619071902093 167.3230494645589 147.7975522692504Q165.6341152473228 146.32891381947985 165.6341152473228 143.24477307496176Q165.6341152473228 140.08720040795512 167.3230494645589 138.6185619581846Q169.01198368179502 137.14992350841408 172.46328403875575 137.14992350841408Q175.91458439571647 137.14992350841408 177.64023457419682 138.6185619581846Q179.3658847526772 140.08720040795512 179.3658847526772 143.24477307496176Q179.3658847526772 149.26619071902093 172.46328403875575 149.26619071902093Z"/>
-          </svg>
-          <p class="didascalia">Associazione Nazionale Infermieri<br>Qualità e Rischio Clinico</p>
-          <a class="ingresso" id="ingresso" href="home.html">
-            <span>Entra nel sito</span>
-            <span class="freccia" aria-hidden="true">→</span>
-          </a>
-          <p class="piede">C.F. 93568220722 · Via Napoli 369/Q — 70132 Bari</p>
-        </div>
-
+      <!-- ============ BATTUTA 1 ============ -->
+      <div class="battuta" id="b1">
+        <p class="occhiello">ANIQRC · Associazione Nazionale Infermieri Qualità e Rischio Clinico</p>
+        <h1>
+          <span class="fioco">La sicurezza delle cure</span>
+          <span class="forte">non accade. Si costruisce.</span>
+        </h1>
       </div>
 
-      <div class="invito" id="invito" aria-hidden="true">
-        <span>Scorri</span><span class="filo"></span>
+      <!-- ============ BATTUTA 2 ============ -->
+      <div class="battuta" id="b2">
+        <p class="frase">In un turno, un infermiere decide centinaia di volte.</p>
+        <p class="glossa">Chi vedere per primo. Se quel parametro è un'oscillazione o l'inizio di qualcosa. Se fermarsi e chiedere. Nessuna di queste decisioni è isolata: ognuna poggia su <b>come è organizzato il lavoro</b> intorno a chi lo fa.</p>
       </div>
 
-    </section>
-  </div>
+      <!-- ============ BATTUTA 3 ============ -->
+      <div class="battuta" id="b3">
+        <p class="frase"><span class="tenue">Quando qualcosa va storto,</span><br>la domanda facile è «chi».</p>
+        <p class="glossa">Quella utile è un'altra: che cosa, nel modo in cui abbiamo organizzato il reparto, ha reso possibile quell'errore — e perché nessuna delle difese che avevamo l'ha fermato prima di arrivare al paziente.</p>
+      </div>
+
+      <!-- ============ BATTUTA 4 ============ -->
+      <div class="battuta" id="b4">
+        <p class="frase">È di questo che ci occupiamo.</p>
+        <dl class="prove">
+          <div class="prova">
+            <dt>Segnalare senza temere</dt>
+            <dd>Un quasi-evento raccontato insegna più di dieci nascosti. Ma la segnalazione arriva solo dove chi segnala non rischia niente.</dd>
+          </div>
+          <div class="prova">
+            <dt>Procedure scritte con chi le applica</dt>
+            <dd>Una procedura costruita insieme agli infermieri del reparto è una difesa. Calata dall'alto, resta un documento.</dd>
+          </div>
+          <div class="prova">
+            <dt>Misurare il cambiamento</dt>
+            <dd>Se un miglioramento non si vede in un indicatore, non è un miglioramento: è un'intenzione.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- ============ BATTUTA 5 ============ -->
+      <div class="battuta" id="b5">
+        <svg class="marchio" id="marchio" viewBox="0 0 200 200" role="img" aria-label="ANIQRC">
+          <path class="lettera" d="M31.90591534931157 90.15349311575727 48.42809790922998 41.68842427332993H63.18791432942376L79.71009688934217 90.15349311575727H68.25471698113208L56.211881693013765 50.20652728199898H55.40413054563997L43.287863335033144 90.15349311575727ZM41.01147373788883 80.75420703722591V73.41101478837328H71.99974502804692V80.75420703722591Z"/>
+          <path class="lettera" d="M83.52855685874555 90.15349311575727V41.68842427332993H97.48062213156553L118.18842427332994 76.20142784293728H118.77587965323815L118.33528811830699 41.68842427332993H128.76262111167773V90.15349311575727H115.8386027536971L94.0293217746048 54.39214686384498H93.51529831718511L93.88245792962775 90.15349311575727Z"/>
+          <path class="lettera" d="M136.03238143804182 90.15349311575727V41.68842427332993H146.75344212136667V90.15349311575727Z"/>
+          <path class="q" d="M66.89622641509433 159.39979602243753Q61.82942376338602 160.42784293727692 58.19454360020397 160.68485466598676Q54.55966343702192 160.9418663946966 51.76925038245792 160.68485466598676Q48.97883732789392 160.42784293727692 46.29857215706271 159.87710351861296Q43.6183069862315 159.32636409994902 40.49745028046914 158.77562468128508Q37.376593574706774 158.22488526262111 33.11754207037225 157.96787353391127Q28.858490566037723 157.71086180520143 22.763640999490043 158.00458949515553V149.26619071902093Q24.96659867414583 149.33962264150944 27.830443651198355 149.30290668026518Q30.69428862825088 149.26619071902093 33.85186129525751 149.00917899031106Q37.00943396226414 148.75216726160122 40.09357470678224 148.31157572667007Q43.177715451300344 147.87098419173893 45.85798062213155 147.1733809280979Q48.53824579296276 146.47577766445693 50.30061193268739 145.44773074961753V144.7134115247323Q44.64635390107087 146.32891381947985 40.130290668026504 146.1820499745028Q35.61422743498214 146.03518612952575 32.199643039265666 144.34625191228963Q28.785058643549196 142.65731769505354 26.582100968893407 139.68332483426823Q24.37914329423762 136.70933197348293 23.240948495665464 132.70729219785824Q22.102753697093306 128.70525242223357 22.102753697093306 123.93217746047935Q22.102753697093306 118.4982151963284 23.534676185619567 113.90872004079552Q24.96659867414583 109.31922488526263 27.867159612442617 105.94135645079041Q30.767720550739405 102.5634880163182 34.990056093829665 100.69097399286079Q39.212391636919925 98.81845996940336 44.86664966853645 98.81845996940336Q51.916114227434974 98.81845996940336 56.90948495665476 101.82916879143295Q61.90285568587454 104.83987761346252 64.58312085670576 110.42070372259052Q67.26338602753697 116.00152983171851 67.26338602753697 123.93217746047935Q67.26338602753697 130.68791432942376 65.35415604283529 135.3508414074452Q63.444926058133596 140.0137684854666 60.067057623661384 143.02447730749617Q56.68918918918918 146.03518612952575 52.02626211116776 147.7608363080061Q47.36333503314634 149.48648648648648 41.782508924018344 150.3676695563488V151.10198878123407Q45.89469658337582 151.61601223865375 49.08898521162671 151.94645588985213Q52.2832738398776 152.27689954105048 55.14711881693013 152.31361550229474Q58.010963793982654 152.35033146353902 60.87480877103518 151.94645588985213Q63.7386537480877 151.5425803161652 66.89622641509433 150.5879653238144ZM44.86664966853645 141.04181540030598Q48.46481387047424 141.04181540030598 51.03493115757266 139.27944926058134Q53.60504844467108 137.5170831208567 55.000254971953076 133.88220295767468Q56.395461499235076 130.24732279449262 56.395461499235076 124.51963284038756Q56.395461499235076 118.86537480877104 55.03697093319734 115.08363080061193Q53.6784803671596 111.30188679245283 51.03493115757266 109.39265680775114Q48.39138194798571 107.48342682304946 44.57292197858234 107.48342682304946Q41.04818969913308 107.48342682304946 38.441356450790394 109.28250892401836Q35.83452320244771 111.08159102498726 34.40260071392145 114.78990311065783Q32.97067822539519 118.4982151963284 32.97067822539519 124.22590515043345Q32.97067822539519 130.02702702702703 34.40260071392145 133.77205507394189Q35.83452320244771 137.5170831208567 38.514788373278925 139.27944926058134Q41.19505354411014 141.04181540030598 44.86664966853645 141.04181540030598Z"/>
+          <path class="lettera" d="M73.13793982661906 148.31157572667007V99.84650688424273H92.67083120856705Q96.34242733299335 99.84650688424273 99.42656807751146 100.43396226415094Q102.51070882202956 101.02141764405914 104.93396226415092 102.19632840387557Q107.3572157062723 103.371239163692 109.11958184599692 105.06017338092809Q110.88194798572155 106.7491075981642 111.76313105558387 109.02549719530852Q112.64431412544619 111.30188679245283 112.64431412544619 114.16573176950536Q112.64431412544619 116.58898521162672 111.87327893931666 118.64507904130545Q111.10224375318714 120.7011728709842 109.48674145843955 122.27995920448751Q107.87123916369198 123.85874553799083 105.3745537990821 124.88679245283019Q102.87786843447219 125.91483936766956 99.42656807751146 126.28199898011219V127.16318204997451Q103.53875573686892 127.53034166241713 105.88857725650176 128.96226415094338Q108.2383987761346 130.39418663946967 109.52345741968381 132.74400815910252Q110.80851606323303 135.09382967873535 111.68969913309535 138.3248342682305L114.40668026517082 148.31157572667007H102.73100458949514L100.67491075981641 139.1325854156043Q100.08745537990819 136.3421723610403 98.94926058133603 134.65323814380417Q97.81106578276388 132.96430392656808 95.93855175930646 132.19326874043855Q94.06603773584905 131.42223355430903 91.12876083630799 131.42223355430903H83.71213666496683V148.31157572667007ZM83.71213666496683 123.34472208057113H91.7162162162162Q96.56272310045894 123.34472208057113 99.13284038755737 121.50892401835799Q101.70295767465578 119.67312595614483 101.70295767465578 115.85466598674145Q101.70295767465578 111.96277409484956 99.27970423253441 110.05354411014788Q96.85645079041305 108.1443141254462 92.0099439061703 108.1443141254462H83.71213666496683Z"/>
+          <path class="lettera" d="M141.2093319734829 149.33962264150944Q135.40821009688932 149.33962264150944 131.00229474757776 147.61397246302909Q126.59637939826618 145.8883222845487 123.62238653748086 142.62060173380928Q120.64839367669555 139.35288118306985 119.17975522692501 134.76338602753697Q117.71111677715449 130.17389087200408 117.71111677715449 124.44620091789903Q117.71111677715449 118.64507904130545 119.25318714941355 113.90872004079552Q120.7952575216726 109.17236104028557 123.73253442121364 105.79449260581336Q126.6698113207547 102.41662417134114 130.92886282508923 100.61754207037225Q135.18791432942373 98.81845996940336 140.69530851606322 98.81845996940336Q145.10122386537478 98.81845996940336 148.66267210606833 100.03008669046405Q152.22412034676185 101.24171341152473 154.64737378888321 103.48138704742479Q157.07062723100458 105.72106068332484 158.3189699133095 108.7317695053544Q159.56731259561445 111.74247832738399 159.42044875063743 115.41407445181031L149.6540030596634 117.47016828148904Q149.72743498215195 114.23916369199388 148.479092299847 112.03620601733809Q147.23074961754205 109.83324834268231 145.13793982661906 108.69505354411015Q143.04513003569605 107.556858745538 140.3281489036206 107.556858745538Q138.05175930647627 107.556858745538 135.922233554309 108.47475777664457Q133.79270780214176 109.39265680775114 132.21392146863843 111.37531871494136Q130.63513513513513 113.35798062213156 129.6805201427843 116.44212136664967Q128.72590515043345 119.52626211116777 128.72590515043345 123.85874553799083Q128.72590515043345 129.51300356960735 130.30469148393675 133.22131565527792Q131.88347781744005 136.9296277409485 134.7473227944926 138.76542580316163Q137.61116777154513 140.6012238653748 141.4296277409485 140.6012238653748Q145.24808771035185 140.6012238653748 147.45104538500763 138.98572157062722Q149.6540030596634 137.37021927587966 150.64533401325852 134.61652218255992Q151.63666496685363 131.86282508924018 151.56323304436512 128.63182049974503L161.18281489036204 129.88016318204998Q161.25624681285058 133.91891891891893 160.19148393676693 137.44365119836817Q159.1267210606833 140.96838347781744 156.77689954105045 143.64864864864865Q154.42707802141763 146.32891381947985 150.57190209076998 147.83426823049464Q146.71672616012236 149.33962264150944 141.2093319734829 149.33962264150944Z"/>
+          <path class="lettera" d="M172.46328403875575 149.26619071902093Q169.01198368179502 149.26619071902093 167.3230494645589 147.7975522692504Q165.6341152473228 146.32891381947985 165.6341152473228 143.24477307496176Q165.6341152473228 140.08720040795512 167.3230494645589 138.6185619581846Q169.01198368179502 137.14992350841408 172.46328403875575 137.14992350841408Q175.91458439571647 137.14992350841408 177.64023457419682 138.6185619581846Q179.3658847526772 140.08720040795512 179.3658847526772 143.24477307496176Q179.3658847526772 149.26619071902093 172.46328403875575 149.26619071902093Z"/>
+        </svg>
+        <p class="didascalia">Associazione Nazionale Infermieri<br>Qualità e Rischio Clinico</p>
+        <a class="ingresso" id="ingresso" href="home.html">
+          <span>Entra nel sito</span>
+          <span class="freccia" aria-hidden="true">→</span>
+        </a>
+        <p class="piede">C.F. 93568220722 · Via Napoli 369/Q — 70132 Bari</p>
+      </div>
+
+    </div>
+  </section>
 </main>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
 (function () {
@@ -328,273 +291,90 @@ h1 .forte{ display:block; color:var(--crema); }
 
   /* ▸ DESTINAZIONE — questa pagina e' la radice; la home vera e' home.html */
   var DESTINAZIONE = 'home.html';
+
+  /* I tempi delle battute, in SECONDI sul filmato (che dura 20").
+     [ id, entra, a fuoco, inizia a uscire, uscita completata ] */
+  var BATTUTE = [
+    ['b1',  0.4,  1.5,  3.6,  4.4],
+    ['b2',  4.7,  5.8,  7.8,  8.6],
+    ['b3',  8.9, 10.0, 12.0, 12.8],
+    ['b4', 13.1, 14.2, 16.3, 17.1],
+    ['b5', 17.4, 18.5,  999,  999]   /* l'ultima resta in scena */
+  ];
+
+  var video = document.getElementById('video');
+  var radice = document.documentElement;
+  var fermi = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   var bottone = document.getElementById('ingresso');
   if (bottone) bottone.setAttribute('href', DESTINAZIONE);
 
-  /* La rivelazione scaglionata, in percentuale di scorrimento.
-     Ogni battuta entra, RESTA FERMA mentre si legge, poi esce.
-       [ id, entra, a fuoco, inizia a uscire, uscita completata ] */
-  var BATTUTE = [
-    ['b1', 0.00, 0.00, 0.11, 0.17],
-    ['b2', 0.15, 0.22, 0.33, 0.39],
-    ['b3', 0.37, 0.44, 0.55, 0.61],
-    ['b4', 0.59, 0.66, 0.77, 0.83],
-    ['b5', 0.81, 0.89, 1.01, 1.01]
-  ];
-
-  var fermi   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var stretto = window.matchMedia('(max-width: 700px)').matches;
-  var haGSAP  = !!(window.gsap && window.ScrollTrigger);
-  var cinema  = haGSAP && !fermi && !stretto;
-
-  var tela = document.getElementById('tela');
-  var ctx  = tela && tela.getContext ? tela.getContext('2d', { alpha: true }) : null;
-  var W=0, H=0, DPR=1, avanzamento=0, apertura=0;
-  var PASSO=165, RAGGIO=8;
-
-  function lerp(a,b,k){ return a+(b-a)*k; }
-  function clamp01(v){ return v<0?0:v>1?1:v; }
-  function easeOut(p){ return 1-Math.pow(1-p,2.1); }
-  function easeIO(p){ return p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; }
-  /* scarto deterministico: lo stesso reticolo a ogni caricamento, e
-     nessun movimento nel tempo — si muove solo con lo scorrimento */
-  function scarto(i,j,s){
-    var n = Math.sin(i*12.9898 + j*78.233 + s*3.77)*43758.5453;
-    return (n - Math.floor(n))*2 - 1;
+  /* chi ha chiesto meno movimento resta nello stato impilato, col poster fermo */
+  if (fermi || !video){
+    if (video){ video.removeAttribute('autoplay'); try{ video.pause(); }catch(e){} }
+    return;
   }
 
-  /* =======================================================================
-     LE TESSERE PRE-DISEGNATE
-     Telaio, apertura e alone rosso si disegnano UNA VOLTA su tele nascoste.
-     Nel ciclo si copiano soltanto: copiare un'immagine costa una frazione
-     di quel che costa costruire un gradiente.
-     ======================================================================= */
-  var sTelaio, sApertura, sAlone;
-  function costruisciTessere(){
-    var S = 256;
-    sTelaio = document.createElement('canvas'); sTelaio.width = sTelaio.height = S;
-    var c = sTelaio.getContext('2d');
-    c.strokeStyle = '#F4F2EC'; c.lineWidth = S*0.009;
-    var m = S*0.05, r = S*0.085;
-    c.beginPath();
-    if (c.roundRect) c.roundRect(m, m, S-2*m, S-2*m, r); else c.rect(m, m, S-2*m, S-2*m);
-    c.stroke();
-
-    var A = 160;
-    sApertura = document.createElement('canvas'); sApertura.width = sApertura.height = A;
-    var a = sApertura.getContext('2d');
-    var ga = a.createRadialGradient(A/2,A/2,A*0.12, A/2,A/2,A*0.50);
-    ga.addColorStop(0,    'rgba(244,242,236,0)');
-    ga.addColorStop(0.76, 'rgba(244,242,236,0.12)');
-    ga.addColorStop(0.90, 'rgba(244,242,236,0.62)');
-    ga.addColorStop(1,    'rgba(244,242,236,0)');
-    a.fillStyle = ga; a.fillRect(0,0,A,A);
-
-    var L = 320;
-    sAlone = document.createElement('canvas'); sAlone.width = sAlone.height = L;
-    var l = sAlone.getContext('2d');
-    var gl = l.createRadialGradient(L/2,L/2,0, L/2,L/2,L/2);
-    gl.addColorStop(0,    'rgba(255,240,240,1)');
-    gl.addColorStop(0.045,'rgba(240,90,100,1)');
-    gl.addColorStop(0.30, 'rgba(230,57,70,0.36)');
-    gl.addColorStop(1,    'rgba(230,57,70,0)');
-    l.fillStyle = gl; l.fillRect(0,0,L,L);
-  }
-
-  function ridimensiona(){
-    if (!ctx) return;
-    /* Il fondale e' fatto di sfumature morbide e di righe sottilissime al 6-17%
-       di opacita': non guadagna nulla dai pixel in piu' di uno schermo Retina,
-       mentre il costo di riempimento cresce col quadrato. Quindi si disegna a
-       1 pixel per pixel-CSS e si lascia ingrandire al browser, che lo fa
-       gratis. E' questa la differenza fra 30 e 60 fotogrammi al secondo. */
-    DPR = 1;
-    W = tela.clientWidth; H = tela.clientHeight;
-    if (!W || !H) return;
-    tela.width  = Math.round(W*DPR);
-    tela.height = Math.round(H*DPR);
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-  }
-
-  /* =======================================================================
-     IL DISEGNO
-        avanzamento 0    sei dentro l'evento: nessun bordo, solo la luce
-        avanzamento 0.5  il reticolo delle difese entra nel quadro
-        avanzamento 1    il sistema intero, la luce ormai lontana
-     ======================================================================= */
-  function disegna(){
-    if (!ctx || !W || !H) return;
-    var p = avanzamento;
-    ctx.clearRect(0,0,W,H);
-
-    var cx = W/2, cy = H*0.71, base = Math.max(W,H);
-    var k    = lerp(14.0, 0.80, easeOut(p)) * lerp(1.28, 1, apertura);
-    var roll = lerp(-7.5, 0, easeOut(p)) * Math.PI/180;
-    var fine = p > 0.90 ? clamp01((p-0.90)/0.10) : 0;
-    var vis  = (1-fine) * apertura;
-    if (vis <= 0.004) return;
-
-    /* l'alone e il nucleo: una sola copia d'immagine, niente ombre */
-    /* l'alone e' il disegno piu' esteso della scena: oltre una certa misura
-       riempirebbe comunque tutto lo schermo, quindi lo si limita */
-    var ar = Math.min(base * lerp(1.05, 0.135, easeOut(p)), base*0.80);
-    ctx.globalAlpha = vis;
-    ctx.drawImage(sAlone, cx-ar, cy-ar, ar*2, ar*2);
-
-    /* a camera vicinissima il rosso riempie il quadro: un rettangolo pieno
-       costa una frazione di un'immagine ingrandita a dismisura */
-    var pieno = clamp01((0.12 - p) / 0.12);
-    if (pieno > 0.01){
-      ctx.globalAlpha = pieno * 0.20 * vis;
-      ctx.fillStyle = '#5C1420';
-      ctx.fillRect(0, 0, W, H);
-    }
-
-    /* il reticolo: la rotazione si applica una volta sola, non per cella */
-    var lato = PASSO*0.80*k;
-    var dia  = lato*0.52;               /* diametro dell'apertura */
-    var lim  = Math.max(W,H)*0.75 + lato;
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(roll);
-    for (var i=-RAGGIO; i<=RAGGIO; i++){
-      var wx = i*PASSO*k;
-      if (wx < -lim || wx > lim) continue;
-      for (var j=-RAGGIO; j<=RAGGIO; j++){
-        var wy = j*PASSO*k;
-        if (wy < -lim || wy > lim) continue;
-
-        var dist  = Math.sqrt(i*i + j*j);
-        var fuoco = 1 - clamp01((dist-1.0)/6.4)*0.88;   /* profondita' di campo */
-        var al = lerp(0.06, 0.17, clamp01(k/3)) * fuoco * vis;
-        if (al < 0.004) continue;
-
-        ctx.globalAlpha = al;
-        ctx.drawImage(sTelaio, wx-lato/2, wy-lato/2, lato, lato);
-
-        /* il varco: tanto piu' fuori asse quanto piu' la cella e' lontana
-           dal centro — l'evento e' accaduto dove le difese erano allineate */
-        var sc = clamp01(dist/6)*0.30;
-        var ox = scarto(i,j,1)*lato*sc, oy = scarto(i,j,2)*lato*sc;
-        ctx.globalAlpha = al*1.15;
-        ctx.drawImage(sApertura, wx+ox-dia, wy+oy-dia, dia*2, dia*2);
-      }
-    }
-    ctx.restore();
-    ctx.globalAlpha = 1;
-  }
-
-  /* =======================================================================
-     I TESTI — funzione pura dell'avanzamento, quindi tornare indietro
-     ripercorre da se'. Solo opacita' e spostamento: niente sfocatura, che
-     costringerebbe il browser a ridisegnare il testo ogni fotogramma.
-     E si scrive nel DOM soltanto quando il valore cambia davvero.
-     ======================================================================= */
   var elementi = BATTUTE.map(function(b){ return document.getElementById(b[0]); });
   var ultimo   = BATTUTE.map(function(){ return { o:-1, y:-999 }; });
+  var avanza   = document.getElementById('avanza');
+  var ultimaBarra = -1;
 
-  function stato(p,e0,e1,u0,u1){
-    if (p<=e0) return e0===0 ? {o:1,y:0} : {o:0,y:40};
-    if (p< e1){ var t=easeIO((p-e0)/(e1-e0)); return {o:t, y:40*(1-t)}; }
-    if (p< u0) return {o:1,y:0};
-    if (p< u1){ var s=easeIO((p-u0)/(u1-u0)); return {o:1-s, y:-40*s}; }
-    return {o:0,y:-40};
+  function easeIO(p){ return p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; }
+  function clamp01(v){ return v<0?0:v>1?1:v; }
+
+  function stato(t,e0,e1,u0,u1){
+    if (t<=e0) return {o:0, y:34};
+    if (t< e1){ var a=easeIO((t-e0)/(e1-e0)); return {o:a, y:34*(1-a)}; }
+    if (t< u0) return {o:1, y:0};
+    if (t< u1){ var b=easeIO((t-u0)/(u1-u0)); return {o:1-b, y:-34*b}; }
+    return {o:0, y:-34};
   }
 
-  var ultimeProve = -1, ultimoMarchio = -1, ultimoInvito = -1;
-
-  function muoviTesti(){
-    if (!cinema) return;
-    var p = avanzamento;
+  /* Un solo ciclo, che legge il tempo del filmato. Si scrive nel DOM
+     soltanto quando un valore cambia davvero: e' la stessa disciplina
+     che rende fluida l'animazione, applicata al testo. */
+  function ciclo(){
+    var t = video.currentTime;
     for (var n=0; n<BATTUTE.length; n++){
       var b=BATTUTE[n], el=elementi[n];
       if (!el) continue;
-      var s = stato(p, b[1], b[2], b[3], b[4]);
-      var o = n===0 ? s.o*apertura : s.o;
-      var y = n===0 ? s.y + (1-apertura)*16 : s.y;
+      var s = stato(t, b[1], b[2], b[3], b[4]);
       var u = ultimo[n];
-      if (Math.abs(o-u.o) > 0.004){ el.style.opacity = o.toFixed(3); u.o = o; }
-      if (Math.abs(y-u.y) > 0.25){ el.style.transform = 'translate3d(0,'+y.toFixed(1)+'px,0)'; u.y = y; }
+      if (Math.abs(s.o-u.o) > 0.004){ el.style.opacity = s.o.toFixed(3); u.o = s.o; }
+      if (Math.abs(s.y-u.y) > 0.25){ el.style.transform = 'translate3d(0,'+s.y.toFixed(1)+'px,0)'; u.y = s.y; }
     }
-    var tp = easeIO(clamp01((p-0.615)/0.06));
-    if (Math.abs(tp-ultimeProve) > 0.004){
-      var prove = document.querySelectorAll('#b4 .prova');
-      for (var q=0; q<prove.length; q++){
-        var d = easeIO(clamp01((p-(0.615+q*0.030))/0.055));
-        prove[q].style.opacity = d.toFixed(3);
-        prove[q].style.transform = 'translate3d(0,'+((1-d)*20).toFixed(1)+'px,0)';
-      }
-      ultimeProve = tp;
-    }
-    var tm = easeIO(clamp01((p-0.82)/0.10));
-    if (Math.abs(tm-ultimoMarchio) > 0.004){
-      var mk = document.getElementById('marchio');
-      if (mk) mk.style.transform = 'scale('+(1.7-0.7*tm).toFixed(3)+')';
-      ultimoMarchio = tm;
-    }
-    var ti = 1 - clamp01(p/0.04);
-    if (Math.abs(ti-ultimoInvito) > 0.01){
-      var inv = document.getElementById('invito');
-      if (inv) inv.style.opacity = ti.toFixed(2);
-      ultimoInvito = ti;
-    }
-  }
-
-  /* il ciclo ridisegna SOLO quando qualcosa e' cambiato: da fermo, zero lavoro */
-  var pDisegnato = -1, serve = true;
-  function ciclo(){
-    if (apertura < 1){ apertura = Math.min(1, apertura + 0.022); serve = true; }
-    if (serve || avanzamento !== pDisegnato){
-      pDisegnato = avanzamento;
-      disegna();
-      muoviTesti();
-      serve = false;
+    if (avanza && video.duration){
+      var q = clamp01(t/video.duration);
+      if (Math.abs(q-ultimaBarra) > 0.002){ avanza.style.width = (q*100).toFixed(2)+'%'; ultimaBarra = q; }
     }
     requestAnimationFrame(ciclo);
   }
 
-  costruisciTessere();
-  if (cinema) document.documentElement.classList.add('cinema');
-  ridimensiona();
-
-  var attesaResize;
-  window.addEventListener('resize', function(){
-    clearTimeout(attesaResize);
-    attesaResize = setTimeout(function(){
-      ridimensiona(); serve = true;
-      if (!cinema){ apertura = 1; disegna(); }
-      if (cinema && haGSAP) ScrollTrigger.refresh();
-    }, 120);
-  });
-
-  if (!cinema){
-    apertura = 1; avanzamento = 0.72;
-    disegna();
-    var inv0 = document.getElementById('invito');
-    if (inv0) inv0.style.display = 'none';
-    return;
+  /* Lo stato «film» si accende solo quando il filmato parte DAVVERO:
+     se il browser blocca la riproduzione automatica, la pagina resta
+     impilata e leggibile invece di mostrare uno schermo nero. */
+  function accendi(){
+    if (radice.classList.contains('film')) return;
+    if (video.paused) return;
+    radice.classList.add('film');
+    requestAnimationFrame(ciclo);
   }
+  /* Il filmato ha l'attributo autoplay, quindi puo' essere gia' partito
+     PRIMA che questo script giri: aspettare il solo evento «playing»
+     sarebbe una corsa persa a caso. Percio' si controlla anche subito,
+     e si tiene un paio di ascoltatori come rete di sicurezza. */
+  video.addEventListener('playing', accendi);
+  video.addEventListener('timeupdate', accendi);
+  if (!video.paused) accendi();
 
-  /* chi continua a scorrere oltre la fine entra nel sito */
-  var uscita = false;
-  window.addEventListener('wheel', function(e){
-    if (uscita || e.deltaY <= 0) return;
-    if (window.innerHeight + window.scrollY < document.body.scrollHeight - 2) return;
-    uscita = true;
-    document.body.style.transition = 'opacity .45s';
-    document.body.style.opacity = '0';
-    setTimeout(function(){ window.location.href = DESTINAZIONE; }, 430);
-  }, { passive: true });
+  var tentativo = video.play();
+  if (tentativo && tentativo.then) tentativo.then(accendi, function(){ /* resta impilata */ });
 
-  /* un solo orologio: lo scrub gli da' l'inerzia, ed e' li' che nasce
-     la sensazione di camera */
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.create({
-    trigger: '#traccia', start: 'top top', end: 'bottom bottom', scrub: 1,
-    onUpdate: function(self){ avanzamento = self.progress; }
+  /* l'ultimo fotogramma resta: niente schermo nero alla fine */
+  video.addEventListener('ended', function(){
+    try { video.pause(); video.currentTime = Math.max(0, video.duration - 0.05); } catch(e){}
   });
-
-  requestAnimationFrame(ciclo);
 })();
 </script>
 </body>
