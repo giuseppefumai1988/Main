@@ -358,10 +358,10 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span><a href="toolkit.html">Toolkit</a>
       <a href="journal.html">Journal</a><span class="sep">/</span>Kappa</div>
-    <h1 class="page-title">Concordanza <span class="accent">inter-osservatore</span></h1>
-    <p class="page-lead">Misura l'accordo tra due valutatori — per la doppia codifica negli screening delle revisioni sistematiche, negli audit clinici e nella validazione di strumenti. Calcola il <b>Cohen's kappa</b>, l'accordo percentuale, l'intervallo di confidenza al 95% e l'interpretazione secondo Landis &amp; Koch.</p>
-    <div class="databanner reveal"><span class="ic">i</span><p>Tutti i calcoli avvengono <b>nel tuo browser</b>: nessun dato viene trasmesso. Per più di due valutatori serve il <b>Fleiss' kappa</b> (vedi nota a fondo pagina).</p></div>
-    <p class="reveal" style="font-size:14px;line-height:1.55;color:var(--ink-soft);background:var(--bg-warm);border-radius:8px;padding:16px 18px;margin-top:16px;max-width:800px;"><b>In parole semplici:</b> due persone valutano gli stessi casi (per esempio: includere o no un articolo in una revisione). Questo strumento misura <b>quanto sono d'accordo, al netto del caso</b>. Il valore Kappa va da 0 (accordo casuale, come tirare a sorte) a 1 (accordo perfetto).</p>
+    <h1 class="page-title" data-editable="source" data-path="/strumenti-kappa.html" data-key="concordanza-inter-osservatore">Concordanza <span class="accent">inter-osservatore</span></h1>
+    <p class="page-lead" data-editable="source" data-path="/strumenti-kappa.html" data-key="misura-l-accordo-tra-due-valutatori-per-la-d">Misura l'accordo tra due valutatori — per la doppia codifica negli screening delle revisioni sistematiche, negli audit clinici e nella validazione di strumenti. Calcola il <b>Cohen's kappa</b>, l'accordo percentuale, l'intervallo di confidenza al 95% e l'interpretazione secondo Landis &amp; Koch.</p>
+    <div class="databanner reveal"><span class="ic">i</span><p data-editable="source" data-path="/strumenti-kappa.html" data-key="tutti-i-calcoli-avvengono-nel-tuo-browser-ne">Tutti i calcoli avvengono <b>nel tuo browser</b>: nessun dato viene trasmesso. Per più di due valutatori serve il <b>Fleiss' kappa</b> (vedi nota a fondo pagina).</p></div>
+    <p class="reveal" style="font-size:14px;line-height:1.55;color:var(--ink-soft);background:var(--bg-warm);border-radius:8px;padding:16px 18px;margin-top:16px;max-width:800px;" data-editable="source" data-path="/strumenti-kappa.html" data-key="in-parole-semplici-due-persone-valutano-gli-"><b>In parole semplici:</b> due persone valutano gli stessi casi (per esempio: includere o no un articolo in una revisione). Questo strumento misura <b>quanto sono d'accordo, al netto del caso</b>. Il valore Kappa va da 0 (accordo casuale, come tirare a sorte) a 1 (accordo perfetto).</p>
   </div>
 </header>
 
@@ -369,7 +369,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="calc-grid">
       <div class="calc-panel reveal">
-        <h3>1 · Inserisci le valutazioni</h3>
+        <h3 data-editable="source" data-path="/strumenti-kappa.html" data-key="1-inserisci-le-valutazioni">1 · Inserisci le valutazioni</h3>
         <div class="field">
           <label>Coppie di giudizi <span class="hint">— una riga per soggetto: valore del Valutatore A e del Valutatore B, separati da virgola, tab o spazio.</span></label>
           <textarea id="data" spellcheck="false" placeholder="Esempio (Include / Exclude):
@@ -421,12 +421,12 @@ exclude, exclude"></textarea>
 <section class="sec-pad" style="background:var(--bg-warm);">
   <div class="wrap">
     <div class="sec-label reveal">Come si legge</div>
-    <h2 class="sec-title reveal">Le soglie di <span class="accent">Landis &amp; Koch</span>.</h2>
-    <p class="sec-intro reveal">Il kappa corregge l'accordo osservato per quello atteso dal caso. Valori sotto 0,40 indicano una concordanza debole; per la doppia codifica nelle revisioni si punta in genere ad almeno «substantial» (≥0,61).</p>
+    <h2 class="sec-title reveal" data-editable="source" data-path="/strumenti-kappa.html" data-key="le-soglie-di-landis-koch">Le soglie di <span class="accent">Landis &amp; Koch</span>.</h2>
+    <p class="sec-intro reveal" data-editable="source" data-path="/strumenti-kappa.html" data-key="il-kappa-corregge-l-accordo-osservato-per-qu">Il kappa corregge l'accordo osservato per quello atteso dal caso. Valori sotto 0,40 indicano una concordanza debole; per la doppia codifica nelle revisioni si punta in genere ad almeno «substantial» (≥0,61).</p>
     <div class="reveal" style="max-width:760px;font-size:14px;color:var(--ink-soft);line-height:1.7;margin-top:18px;">
-      <p style="margin-bottom:12px;"><b>Formula.</b> κ = (P<sub>o</sub> − P<sub>e</sub>) / (1 − P<sub>e</sub>), dove P<sub>o</sub> è la proporzione di accordo osservato e P<sub>e</sub> quella attesa per caso. L'IC 95% usa SE = √[P<sub>o</sub>(1−P<sub>o</sub>)] / [√N · (1−P<sub>e</sub>)].</p>
-      <p style="margin-bottom:12px;"><b>Più di due valutatori.</b> Per concordanza tra 3+ codificatori serve il Fleiss' kappa; per dati ordinali si preferisce il weighted kappa. Questo strumento implementa il Cohen's kappa non pesato (due valutatori, categorie nominali).</p>
-      <p><b>Riferimento.</b> Landis JR, Koch GG. <i>The measurement of observer agreement for categorical data.</i> Biometrics 1977;33(1):159–174.</p>
+      <p style="margin-bottom:12px;" data-editable="source" data-path="/strumenti-kappa.html" data-key="formula-p-o-p-e-1-p-e-dove-p-o-e-la-proporzi"><b>Formula.</b> κ = (P<sub>o</sub> − P<sub>e</sub>) / (1 − P<sub>e</sub>), dove P<sub>o</sub> è la proporzione di accordo osservato e P<sub>e</sub> quella attesa per caso. L'IC 95% usa SE = √[P<sub>o</sub>(1−P<sub>o</sub>)] / [√N · (1−P<sub>e</sub>)].</p>
+      <p style="margin-bottom:12px;" data-editable="source" data-path="/strumenti-kappa.html" data-key="piu-di-due-valutatori-per-concordanza-tra-3-"><b>Più di due valutatori.</b> Per concordanza tra 3+ codificatori serve il Fleiss' kappa; per dati ordinali si preferisce il weighted kappa. Questo strumento implementa il Cohen's kappa non pesato (due valutatori, categorie nominali).</p>
+      <p data-editable="source" data-path="/strumenti-kappa.html" data-key="riferimento-landis-jr-koch-gg-the-measuremen"><b>Riferimento.</b> Landis JR, Koch GG. <i>The measurement of observer agreement for categorical data.</i> Biometrics 1977;33(1):159–174.</p>
     </div>
   </div>
 </section>

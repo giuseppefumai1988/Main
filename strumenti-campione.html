@@ -358,10 +358,10 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
   <div class="wrap">
     <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span><a href="toolkit.html">Toolkit</a>
       <a href="journal.html">Journal</a><span class="sep">/</span>Campione</div>
-    <h1 class="page-title">Dimensione del <span class="accent">campione</span></h1>
-    <p class="page-lead">Quanti soggetti servono? Calcola la numerosità per una <b>stima di prevalenza</b> (formula di Cochran, con correzione per popolazione finita e design effect) o per il <b>confronto tra due proporzioni</b>. Per audit, indagini di prevalenza (es. lesioni da pressione) e protocolli di ricerca.</p>
-    <div class="databanner reveal"><span class="ic">i</span><p>Calcolo locale nel browser. I risultati sono stime: la scelta finale va sempre discussa con un metodologo/statistico in base al disegno dello studio.</p></div>
-    <p class="reveal" style="font-size:14px;line-height:1.55;color:var(--ink-soft);background:var(--bg-warm);border-radius:8px;padding:16px 18px;margin-top:16px;max-width:800px;"><b>In parole semplici:</b> prima di un'indagine o di uno studio serve sapere <b>quante persone coinvolgere</b> per ottenere risultati affidabili e non casuali. Questo strumento calcola quel numero in base alla precisione che vuoi raggiungere.</p>
+    <h1 class="page-title" data-editable="source" data-path="/strumenti-campione.html" data-key="dimensione-del-campione">Dimensione del <span class="accent">campione</span></h1>
+    <p class="page-lead" data-editable="source" data-path="/strumenti-campione.html" data-key="quanti-soggetti-servono-calcola-la-numerosit">Quanti soggetti servono? Calcola la numerosità per una <b>stima di prevalenza</b> (formula di Cochran, con correzione per popolazione finita e design effect) o per il <b>confronto tra due proporzioni</b>. Per audit, indagini di prevalenza (es. lesioni da pressione) e protocolli di ricerca.</p>
+    <div class="databanner reveal"><span class="ic">i</span><p data-editable="source" data-path="/strumenti-campione.html" data-key="calcolo-locale-nel-browser-i-risultati-sono-">Calcolo locale nel browser. I risultati sono stime: la scelta finale va sempre discussa con un metodologo/statistico in base al disegno dello studio.</p></div>
+    <p class="reveal" style="font-size:14px;line-height:1.55;color:var(--ink-soft);background:var(--bg-warm);border-radius:8px;padding:16px 18px;margin-top:16px;max-width:800px;" data-editable="source" data-path="/strumenti-campione.html" data-key="in-parole-semplici-prima-di-un-indagine-o-di"><b>In parole semplici:</b> prima di un'indagine o di uno studio serve sapere <b>quante persone coinvolgere</b> per ottenere risultati affidabili e non casuali. Questo strumento calcola quel numero in base alla precisione che vuoi raggiungere.</p>
   </div>
 </header>
 
@@ -375,7 +375,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     <!-- PREVALENZA -->
     <div class="calc-grid" id="panel-prev">
       <div class="calc-panel reveal">
-        <h3>Parametri — prevalenza</h3>
+        <h3 data-editable="source" data-path="/strumenti-campione.html" data-key="parametri-prevalenza">Parametri — prevalenza</h3>
         <div class="field">
           <label>Prevalenza attesa (p) <span class="hint">— %. In assenza di stime usa 50% (caso più conservativo).</span></label>
           <input id="p_prev" type="number" value="50" min="0.1" max="99.9" step="0.1">
@@ -420,7 +420,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
     <!-- DUE PROPORZIONI -->
     <div class="calc-grid" id="panel-two" style="display:none;">
       <div class="calc-panel reveal">
-        <h3>Parametri — due proporzioni</h3>
+        <h3 data-editable="source" data-path="/strumenti-campione.html" data-key="parametri-due-proporzioni">Parametri — due proporzioni</h3>
         <div class="field">
           <label>Proporzione gruppo 1 (p₁) <span class="hint">— %, es. tasso di eventi nel gruppo di controllo.</span></label>
           <input id="p1" type="number" value="30" min="0.1" max="99.9" step="0.1">
@@ -463,10 +463,10 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 <section class="sec-pad" style="background:var(--bg-warm);">
   <div class="wrap">
     <div class="sec-label reveal">Le formule</div>
-    <h2 class="sec-title reveal">Trasparenza <span class="accent">metodologica</span>.</h2>
+    <h2 class="sec-title reveal" data-editable="source" data-path="/strumenti-campione.html" data-key="trasparenza-metodologica">Trasparenza <span class="accent">metodologica</span>.</h2>
     <div class="reveal" style="max-width:760px;font-size:14px;color:var(--ink-soft);line-height:1.8;margin-top:18px;">
-      <p style="margin-bottom:12px;"><b>Prevalenza (Cochran).</b> n₀ = Z²·p·(1−p) / d². Correzione per popolazione finita: n = n₀ / [1 + (n₀−1)/N]. Si moltiplica poi per il design effect e si divide per il tasso di risposta. <i>Rif.: Cochran W.G., Sampling Techniques, 3ª ed., Wiley, 1977.</i></p>
-      <p><b>Due proporzioni.</b> n per gruppo = [Z<sub>α/2</sub>·√(2·p̄·(1−p̄)) + Z<sub>β</sub>·√(p₁(1−p₁)+p₂(1−p₂))]² / (p₁−p₂)², con p̄ = (p₁+p₂)/2. <i>Rif.: Fleiss, Levin & Paik, Statistical Methods for Rates and Proportions, 3ª ed., Wiley, 2003.</i></p>
+      <p style="margin-bottom:12px;" data-editable="source" data-path="/strumenti-campione.html" data-key="prevalenza-cochran-n0-z2p-1p-d2-correzione-p"><b>Prevalenza (Cochran).</b> n₀ = Z²·p·(1−p) / d². Correzione per popolazione finita: n = n₀ / [1 + (n₀−1)/N]. Si moltiplica poi per il design effect e si divide per il tasso di risposta. <i>Rif.: Cochran W.G., Sampling Techniques, 3ª ed., Wiley, 1977.</i></p>
+      <p data-editable="source" data-path="/strumenti-campione.html" data-key="due-proporzioni-n-per-gruppo-z-2-2p-1p-z-p1-"><b>Due proporzioni.</b> n per gruppo = [Z<sub>α/2</sub>·√(2·p̄·(1−p̄)) + Z<sub>β</sub>·√(p₁(1−p₁)+p₂(1−p₂))]² / (p₁−p₂)², con p̄ = (p₁+p₂)/2. <i>Rif.: Fleiss, Levin & Paik, Statistical Methods for Rates and Proportions, 3ª ed., Wiley, 2003.</i></p>
     </div>
   </div>
 </section>
