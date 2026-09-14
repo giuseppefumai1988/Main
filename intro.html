@@ -602,5 +602,15 @@ h1 .forte{ display:block; color: var(--crema); }
 
 })();
 </script>
+<script>
+/* Chi entra nel sito da questa pagina ha gia' visto l'introduzione:
+   segnandolo, la soglia dentro index.html non gliela ripropone. */
+(function(){
+  var a = document.getElementById('ingresso');
+  if (a) a.addEventListener('click', function(){
+    try { localStorage.setItem('aniqrc-soglia-vista','1'); } catch(e){}
+  });
+})();
+</script>
 </body>
 </html>

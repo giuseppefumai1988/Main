@@ -1,0 +1,134 @@
+# =============================================================
+# ANIQRC — Decap CMS
+# -------------------------------------------------------------
+# PRIMA DI USARLO, DUE COSE DA SAPERE
+#
+# 1. AUTENTICAZIONE. Decap con backend GitHub ha bisogno di un
+#    server OAuth: GitHub non permette il login da una pagina
+#    statica. Il sito sta su GitHub Pages, che server non ne ha.
+#    Va quindi pubblicato un piccolo servizio OAuth (Cloudflare
+#    Workers, Vercel o simili) e il suo indirizzo va scritto in
+#    base_url qui sotto. Finche' base_url e' commentato, il
+#    pannello su aniqrc.it/admin/ NON riesce ad autenticarsi.
+#
+# 2. SENZA SERVER, IN LOCALE, FUNZIONA SUBITO. Con local_backend
+#    attivo puoi provare tutto dal tuo Mac, senza OAuth:
+#       cd nella cartella del sito
+#       npx decap-server            (lascialo aperto)
+#       poi, in un'altra finestra:  npx serve .
+#       e apri  http://localhost:3000/admin/
+#    Le modifiche finiscono nei file sul disco: le rivedi e fai
+#    il commit a mano, come fai adesso.
+# =============================================================
+
+backend:
+  name: github
+  repo: giuseppefumai1988/Main
+  branch: main
+  # Togli il commento e metti l'indirizzo del tuo servizio OAuth:
+  # base_url: https://oauth.esempio.workers.dev
+  # auth_endpoint: auth
+
+# Permette di lavorare in locale senza autenticazione (vedi sopra).
+local_backend: true
+
+# Dove finiscono le immagini caricate dal pannello.
+media_folder: media
+public_folder: /media
+
+# Le modifiche vanno dritte sul branch, senza flusso di revisione:
+# la revisione la fai tu prima del commit.
+publish_mode: simple
+
+collections:
+
+  # -----------------------------------------------------------
+  # Toolkit — l'unico file del sito che Decap puo' gestire bene:
+  # e' JSON strutturato, letto da toolkit.html.
+  #
+  # ATTENZIONE: una collection Decap riscrive il file INTERO a
+  # partire dai campi dichiarati qui. Tutte e quattro le chiavi
+  # di toolkit-data.json (_meta, strumenti, raccomandazioni,
+  # metodi) sono dichiarate apposta: se ne togli una, al primo
+  # salvataggio quella parte del file sparisce.
+  # -----------------------------------------------------------
+  - name: dati
+    label: Contenuti del sito
+    files:
+      - name: toolkit
+        label: Toolkit — strumenti, raccomandazioni, metodi
+        file: toolkit-data.json
+        description: >-
+          Catalogo mostrato in toolkit.html. Solo metadati descrittivi:
+          nessun item dei questionari, per tutela del copyright degli editori.
+        fields:
+
+          - label: Informazioni sul catalogo
+            name: _meta
+            widget: object
+            fields:
+              - { label: Nota, name: nota, widget: text }
+              - { label: Ultimo aggiornamento, name: ultimo_aggiornamento, widget: string, hint: "Formato anno-mese, es. 2026-05" }
+
+          - label: Strumenti
+            name: strumenti
+            widget: list
+            label_singular: strumento
+            summary: "{{fields.acr}} — {{fields.nome}}"
+            collapsed: true
+            fields:
+              - { label: Acronimo, name: acr, widget: string }
+              - { label: Nome esteso, name: nome, widget: string }
+              - label: Tipo
+                name: tipo
+                widget: select
+                hint: "Pilota i filtri della pagina: un valore diverso da questi rende lo strumento invisibile."
+                options:
+                  - { label: "PROM — esito riferito dal paziente", value: prom }
+                  - { label: "PREM — esperienza riferita dal paziente", value: prem }
+                  - { label: "Strumento infermieristico", value: nurse }
+                  - { label: "Metodologia", value: method }
+              - { label: Categoria, name: cat, widget: string, hint: "Es. Generico, Oncologia, Esperienza — ricovero, Reporting guideline" }
+              - { label: Costrutto misurato, name: costrutto, widget: text }
+              - { label: Numero di item, name: item, widget: string, hint: "Testo libero: es. «5 + VAS», «30»" }
+              - { label: Sviluppato da, name: dev, widget: string }
+              - { label: Versione italiana, name: it, widget: string, hint: "Es. Sì / No / Sì (validata)" }
+              - { label: Licenza, name: lic, widget: string }
+              - { label: Riferimento bibliografico, name: rif, widget: string }
+              - { label: Indirizzo web, name: url, widget: string, required: false }
+              - { label: In parole semplici, name: facile, widget: text, hint: "Spiegazione per chi dell'argomento mastica poco." }
+
+          - label: Raccomandazioni ministeriali
+            name: raccomandazioni
+            widget: list
+            label_singular: raccomandazione
+            summary: "{{fields.n}} — {{fields.t}}"
+            collapsed: true
+            fields:
+              - { label: Numero, name: n, widget: number, value_type: int, min: 1 }
+              - { label: Titolo, name: t, widget: text }
+              - { label: In parole semplici, name: facile, widget: text }
+
+          - label: Metodi
+            name: metodi
+            widget: list
+            label_singular: metodo
+            summary: "{{fields.acr}}"
+            collapsed: true
+            fields:
+              - { label: Nome, name: acr, widget: string }
+              - { label: Descrizione, name: desc, widget: text }
+              - { label: Riferimento, name: rif, widget: string }
+              - { label: In parole semplici, name: facile, widget: text }
+
+# -------------------------------------------------------------
+# NON incluso di proposito: qualita-data.json.
+# Ha quattordici sezioni di serie storiche per i grafici
+# dell'osservatorio. Dichiararle tutte a mano e' laborioso e un
+# errore costerebbe la perdita di una sezione al primo
+# salvataggio. Meglio continuare a modificarlo come file.
+#
+# NON incluso perche' Decap non puo' farlo: le pagine .html.
+# Decap legge file strutturati (markdown, YAML, JSON, TOML), non
+# sa modificare il testo dentro pagine HTML scritte a mano.
+# -------------------------------------------------------------
