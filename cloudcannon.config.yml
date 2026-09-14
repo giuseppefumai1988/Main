@@ -1,17 +1,73 @@
+# =============================================================
+# ANIQRC — configurazione CloudCannon
+# -------------------------------------------------------------
+# Sito statico in HTML puro, pubblicato da GitHub Pages.
+# Nessun generatore e nessuna compilazione: i file che stanno nel
+# repository sono esattamente quelli serviti al pubblico.
+#
+# Le zone modificabili dall'editor visuale sono marcate dentro
+# l'HTML con  data-editable="source"  (vedi gli attributi
+# data-path e data-key su titoli e paragrafi).
+# =============================================================
+
 paths:
+  # Gli asset stanno nella radice, non in una sottocartella di build.
   static: ''
-  uploads: uploads
+  # Dove CloudCannon deposita le immagini caricate dall'editor.
+  uploads: media
+
 timezone: Europe/Rome
+
 markdown:
   engine: commonmark
-  options: {}
+
 collections_config:
-  pages:
-    path: src/pages
-    icon: wysiwyg
-  source:
+
+  pagine:
+    name: Pagine del sito
     path: ''
-    icon: package_2
-  netlify:
-    path: netlify
-    icon: clarify
+    icon: wysiwyg
+    description: >-
+      Le pagine pubbliche di aniqrc.it. Nell'editor visuale sono
+      modificabili i titoli e i testi marcati; il resto della pagina
+      resta protetto.
+    glob:
+      - '*.html'
+      - '!head-seo-aniqrc.html'      # frammento, non e' una pagina
+      - '!email-rinnovo-tessera.html' # modello per la posta
+      - '!tesserino.html'            # strumento interno
+      - '!grazie.html'
+      - '!404.html'
+    # Le pagine si modificano, non si creano dall'editor:
+    # una pagina nuova va aggiunta a mano con la sua struttura.
+    disable_add: true
+    _enabled_editors:
+      - visual
+      - content
+
+  documenti:
+    name: Documenti e modulistica
+    path: documenti
+    icon: picture_as_pdf
+    description: >-
+      Statuto e atto costitutivo, informativa privacy, modulo di
+      adesione, workbook. Si sostituiscono caricando il PDF nuovo
+      con lo stesso nome.
+    glob:
+      - '*.pdf'
+    _enabled_editors:
+      - data
+
+  dati:
+    name: Dati delle pagine
+    path: ''
+    icon: data_object
+    description: >-
+      Contenuti strutturati che alimentano il toolkit e
+      l'osservatorio. Si modificano voce per voce.
+    glob:
+      - 'toolkit-data.json'
+      - 'qualita-data.json'
+    disable_add: true
+    _enabled_editors:
+      - data
