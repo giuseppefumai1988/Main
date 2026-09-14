@@ -11,3 +11,4 @@ Disallow: /REGISTRAZIONI-SOCI.md
 Disallow: /cloudcannon.config.yml
 
 Sitemap: https://aniqrc.it/sitemap.xml
+Disallow: /admin/
