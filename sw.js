@@ -1,7 +1,15 @@
 /* ANIQRC — Service Worker. Rende il sito installabile come app e disponibile offline.
    Strategia: navigazioni network-first (contenuti sempre freschi, fallback offline),
-   asset cache-first con runtime cache. © ANIQRC */
-var VERSION = 'aniqrc-v5';
+   asset del sito cache-first con runtime cache. © ANIQRC
+
+   v6 (21 settembre 2026)
+   · la home è tornata alla radice: cambiare VERSION svuota le cache vecchie,
+     così nessuno si ritrova l'introduzione o gli script precedenti;
+   · le richieste verso ALTRI siti (servizi ponte delle notizie, YouTube, Spotify…)
+     non passano più dalla cache: prima ci restavano per sempre e le notizie
+     non si aggiornavano. Fanno eccezione solo font e librerie, che non cambiano;
+   · news-feed.json va sempre in rete per primo: la cache serve solo offline. */
+var VERSION = 'aniqrc-v6';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
@@ -14,6 +22,8 @@ var CORE = [
   'icon-192.png', 'icon-512.png', 'icon-512-maskable.png', 'og-image.png',
   'og-journal.png', 'logo-pnj-512.png'
 ];
+/* altri domini che si possono tenere in cache: contenuti che non cambiano */
+var STATICI = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
 
 self.addEventListener('install', function(e){
   self.skipWaiting();
@@ -39,6 +49,11 @@ self.addEventListener('activate', function(e){
 self.addEventListener('fetch', function(e){
   var req = e.request;
   if(req.method !== 'GET') return;
+  var url = new URL(req.url);
+  var stesso = url.origin === self.location.origin;
+
+  // Altri siti: se ne occupa il browser, tranne font e librerie
+  if(!stesso && STATICI.indexOf(url.hostname) === -1) return;
 
   // Pagine: network-first, fallback alla cache, poi alla home
   if(req.mode === 'navigate'){
@@ -52,6 +67,21 @@ self.addEventListener('fetch', function(e){
           return r || caches.match('index.html') || caches.match('./');
         });
       })
+    );
+    return;
+  }
+
+  // Titoli delle testate: sempre dalla rete; una sola copia in cache per l'offline
+  if(stesso && /\/news-feed\.json$/.test(url.pathname)){
+    var chiave = new Request(url.origin + url.pathname);
+    e.respondWith(
+      fetch(req).then(function(res){
+        if(res && res.ok){
+          var copy = res.clone();
+          caches.open(VERSION).then(function(c){ c.put(chiave, copy); });
+        }
+        return res;
+      }).catch(function(){ return caches.match(chiave); })
     );
     return;
   }

@@ -34,6 +34,7 @@ collections_config:
     glob:
       - '*.html'
       - '!head-seo-aniqrc.html'      # frammento, non e' una pagina
+      - '!home.html'                 # solo un reindirizzo alla home (index.html)
       - '!email-rinnovo-tessera.html' # modello per la posta
       - '!tesserino.html'            # strumento interno
       - '!grazie.html'

@@ -1,15 +1,19 @@
 /* =========================================================
    ANIQRC — costruttore del newsfeed
    Legge i feed RSS/Atom delle testate infermieristiche e scrive
-   news-feed.json nella radice del sito. Lo esegue l'automazione
-   .github/workflows/newsfeed.yml; si può lanciare anche a mano:
+   news-feed.json nella radice del sito: è il file che alimenta
+   il riquadro news della home (aniqrc-newsfeed.js).
+   Lo esegue l'automazione .github/workflows/newsfeed.yml
+   (modello in tools/newsfeed-workflow.yml); si può lanciare
+   anche a mano:
 
        node tools/build-newsfeed.mjs
 
    Nessuna dipendenza: solo Node 20 o superiore.
 
    Per aggiungere o togliere una testata modifica TESTATE qui
-   sotto e l'elenco gemello in aniqrc-newsfeed.js.
+   sotto e l'elenco gemello in aniqrc-newsfeed.js: il campo
+   «nome» deve essere identico nei due file.
    ========================================================= */
 
 import { writeFile, readFile } from 'node:fs/promises';
@@ -35,20 +39,11 @@ const TESTATE = [
       'https://www.nurse24.it/rss',
     ],
   },
-  {
-    nome: 'InfermieriAttivi',
-    sito: 'https://www.infermieriattivi.it/',
-    feed: [
-      'https://www.infermieriattivi.it/feed',
-      'https://www.infermieriattivi.it/feed/',
-      'https://www.infermieriattivi.it/rss',
-      'https://www.infermieriattivi.it/index.php?format=feed&type=rss',
-    ],
-  },
 ];
 
-const PER_TESTATA = 5;   // voci prese da ciascuna testata
-const TOTALE = 12;       // voci scritte nel file finale
+const PER_TESTATA = 10;  // voci prese da ciascuna testata (il riquadro ne mostra 10)
+const TOTALE = 20;       // voci scritte nel file finale
+const SOMMARIO = 240;    // caratteri massimi del sommario sotto il titolo
 const OUT = 'news-feed.json';
 
 /* ---------- utilità ---------- */
@@ -69,6 +64,20 @@ function decodifica(t) {
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/* toglie le formule automatiche dei feed WordPress («L'articolo … sembra essere il primo su …») */
+function ripulisci(t) {
+  return String(t || '')
+    .replace(/\s*(L[’']articolo|The post)\s.*?\s(sembra essere il primo su|proviene da|appeared first on)\s.*$/i, '')
+    .replace(/\s*\[(…|\.\.\.)\]\s*$/, '…')
+    .trim();
+}
+
+function taglia(t, max) {
+  t = String(t || '').trim();
+  if (t.length <= max) return t;
+  return t.slice(0, max - 1).replace(/[\s,;:.–—-]+\S*$/, '') + '…';
 }
 
 function primo(xml, tag) {
@@ -94,7 +103,10 @@ function parseFeed(xml) {
     if (!titolo || !/^https?:\/\//i.test(link)) continue;
     const data = primo(b, 'pubDate') || primo(b, 'published') || primo(b, 'updated') || primo(b, 'dc:date');
     const t = Date.parse(data);
-    voci.push({ titolo, link, data: Number.isNaN(t) ? null : new Date(t).toISOString() });
+    const sommario = taglia(ripulisci(primo(b, 'description') || primo(b, 'summary') || primo(b, 'content:encoded') || primo(b, 'content')), SOMMARIO);
+    const voce = { titolo, link, data: Number.isNaN(t) ? null : new Date(t).toISOString() };
+    if (sommario) voce.sommario = sommario;
+    voci.push(voce);
   }
   return voci;
 }
@@ -135,7 +147,7 @@ async function leggiTestata(t) {
   return [];
 }
 
-/* alterna le testate, così la barra non è monopolizzata da una sola */
+/* alterna le testate nell'elenco finale */
 function intreccia(gruppi) {
   const out = [];
   for (let i = 0; out.length < TOTALE; i++) {
@@ -161,8 +173,9 @@ for (const t of TESTATE) {
 const voci = intreccia(gruppi);
 
 if (!voci.length) {
-  console.error('Nessuna voce raccolta: il file non viene toccato.');
-  process.exit(1);
+  // nessun errore bloccante: il riquadro della home ripiega da solo sui feed delle testate
+  console.log('::warning::Nessuna voce raccolta: news-feed.json non viene toccato.');
+  process.exit(0);
 }
 
 const nuovo = {

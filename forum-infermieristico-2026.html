@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="qualita.css">
+<link rel="stylesheet" href="qualita.css?v=20260921">
 <style>
 /* =========================================================
    FORUM INFERMIERISTICO — Bari, 30 ottobre 2026
@@ -50,7 +50,7 @@
 @media (prefers-reduced-motion: reduce){ ::view-transition-old(root),::view-transition-new(root){ animation:none; } }
 
 /* bottoni */
-.btn-e{ display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:100px;
+.btn-e{ display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:0;
   font-size:14.5px; font-weight:600; text-decoration:none; cursor:pointer; border:none;
   font-family:'Manrope',sans-serif; transition:all .3s cubic-bezier(0.16,1,0.3,1); }
 .btn-e.primary{ background:#9E3742; color:#FBF7F5; }
@@ -72,7 +72,7 @@
 
 .ev-badges{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px; animation:fadeUp .7s cubic-bezier(0.16,1,0.3,1) both; }
 .evb{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-  padding:5px 12px; border-radius:100px; display:inline-flex; align-items:center; gap:7px; }
+  padding:5px 12px; border-radius:0; display:inline-flex; align-items:center; gap:7px; }
 .evb.done{ background:#9E3742; color:#FBF7F5; }
 .evb.ed{ background:var(--bg-warm); color:var(--ink-soft); }
 .evb.tag{ border:1px solid var(--rule); color:var(--ink-mute); }
@@ -279,7 +279,7 @@
 
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="home.html">
+    <a class="nav-logo" href="/">
       <span class="nm">
         <img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%">
       </span>
@@ -301,7 +301,7 @@
 <!-- ============ HERO ============ -->
 <header class="ev-hero">
   <div class="wrap">
-    <div class="crumb"><a href="home.html">ANIQRC</a><span class="sep">/</span><a href="eventi.html">Eventi</a><span class="sep">/</span>Forum infermieristico — Bari 2026</div>
+    <div class="crumb"><a href="/">ANIQRC</a><span class="sep">/</span><a href="eventi.html">Eventi</a><span class="sep">/</span>Forum infermieristico — Bari 2026</div>
 
     <div class="ev-grid">
       <div>
@@ -472,7 +472,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-bottom" style="margin-top:0;border-top:none;padding-top:0;">
-      <span>© MMXXVI ANIQRC · <a href="home.html" style="color:inherit;">torna alla home</a></span>
+      <span>© MMXXVI ANIQRC · <a href="/" style="color:inherit;">torna alla home</a></span>
       <span>Associazione Nazionale Infermieri Qualità e Rischio Clinico · C.F. 93568220722 · Via Napoli 369/Q — 70132 Bari (BA)</span>
     </div>
   </div>
@@ -559,6 +559,6 @@ const escHtml = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/<
 </script>
 <script src="qualita-fx.js" defer></script>
 <script src="aniqrc-bg.js" defer></script>
-<script src="aniqrc-app.js" defer></script>
+<script src="aniqrc-app.js?v=20260921" defer></script>
 </body>
 </html>

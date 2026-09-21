@@ -12,7 +12,7 @@
   'html{-webkit-text-size-adjust:100%;}'+
   '*{-webkit-tap-highlight-color:transparent;}'+
   'img,svg,video,canvas{max-width:100%;}'+
-  '.am-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:10px;border:1px solid var(--rule,#D4D0C5);border-radius:11px;background:transparent;color:var(--ink,#0A0A0A);cursor:pointer;flex:0 0 auto;}'+
+  '.am-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-left:10px;border:1px solid var(--rule,#D4D0C5);border-radius:0;background:transparent;color:var(--ink,#0A0A0A);cursor:pointer;flex:0 0 auto;}'+
   '.am-burger span{position:relative;display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s ease,opacity .2s ease;}'+
   '.am-burger span::before,.am-burger span::after{content:"";position:absolute;left:0;display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s ease,top .25s ease;}'+
   '.am-burger span::before{top:-6px;} .am-burger span::after{top:6px;}'+
@@ -33,10 +33,10 @@
     'nav.am .nav-links .nav-search,nav.am .nav-links .nav-theme{width:42px;height:42px;margin-top:12px;border-bottom:0 !important;}'+
     'nav.am .nav-links .nl-short{display:inline !important;} nav.am .nav-links .nl-full{display:none !important;}'+
   '}'+
-  '.am-install{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:300;display:none;align-items:center;gap:12px;font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.03em;color:#fff;background:var(--accent,#E63946);border:0;border-radius:999px;padding:12px 16px 12px 18px;box-shadow:0 12px 30px rgba(230,57,70,.34);cursor:pointer;}'+
+  '.am-install{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:300;display:none;align-items:center;gap:12px;font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.03em;color:#fff;background:var(--accent,#E63946);border:0;border-radius:0;padding:12px 16px 12px 18px;box-shadow:0 12px 30px rgba(230,57,70,.34);cursor:pointer;}'+
   '.am-install.show{display:inline-flex;}'+
   '.am-install b{font-weight:600;}'+
-  '.am-install .x{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.22);font-size:13px;}';
+  '.am-install .x{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:0;background:rgba(255,255,255,.22);font-size:13px;}';
   var style=document.createElement('style'); style.id='aniqrc-app-css'; style.textContent=css;
   (document.head||document.documentElement).appendChild(style);
 
