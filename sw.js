@@ -8,8 +8,14 @@
    · le richieste verso ALTRI siti (servizi ponte delle notizie, YouTube, Spotify…)
      non passano più dalla cache: prima ci restavano per sempre e le notizie
      non si aggiornavano. Fanno eccezione solo font e librerie, che non cambiano;
-   · news-feed.json va sempre in rete per primo: la cache serve solo offline. */
-var VERSION = 'aniqrc-v6';
+   · news-feed.json va sempre in rete per primo: la cache serve solo offline.
+
+   v7 (25 settembre 2026)
+   · il journal ha cambiato nome: da «PNJ — Primum Nursing Journal» a
+     «RING — Risk International Nursing Group Journal». Cambiare VERSION svuota
+     le cache vecchie, così nessuno continua a vedere il nome e il marchio
+     precedenti; l'icona della testata ora è logo-ring-512.png. */
+var VERSION = 'aniqrc-v7';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
@@ -20,7 +26,7 @@ var CORE = [
   'site.webmanifest', 'favicon.svg', 'favicon-16.png', 'favicon-32.png',
   'apple-touch-icon.png', 'apple-touch-icon-152.png', 'apple-touch-icon-167.png',
   'icon-192.png', 'icon-512.png', 'icon-512-maskable.png', 'og-image.png',
-  'og-journal.png', 'logo-pnj-512.png'
+  'og-journal.png', 'logo-ring-512.png'
 ];
 /* altri domini che si possono tenere in cache: contenuti che non cambiano */
 var STATICI = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];

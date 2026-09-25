@@ -51,9 +51,9 @@ collections_config:
     path: documenti
     icon: picture_as_pdf
     description: >-
-      Statuto e atto costitutivo, informativa privacy, modulo di
-      adesione, workbook. Si sostituiscono caricando il PDF nuovo
-      con lo stesso nome.
+      Informativa privacy, modulo di adesione, verbale costitutivo,
+      workbook. Si sostituiscono caricando il PDF nuovo con lo
+      stesso nome.
     glob:
       - '*.pdf'
     _enabled_editors:
