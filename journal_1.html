@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>Il Journal — RING. Risk International Nursing Group Journal · ANIQRC</title>
+<meta name="description" content="RING — Risk International Nursing Group Journal (Clinical Governance, Procedures and Quality Review): la rivista scientifica diamond open access di ANIQRC. In costruzione: due numeri l'anno, peer review in doppio anonimato, nessun costo per autori e lettori.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="canonical" href="https://aniqrc.it/journal.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:title" content="RING. — Risk International Nursing Group Journal · il journal di ANIQRC">
+<meta property="og:description" content="Clinical Governance, Procedures and Quality Review · diamond open access · in costruzione. Due numeri l'anno, nessun costo per autori e lettori.">
+<meta property="og:image" content="https://aniqrc.it/og-journal.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RING. — Risk International Nursing Group Journal, il journal di ANIQRC">
+<meta property="og:url" content="https://aniqrc.it/journal.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="ANIQRC">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F2EC; --bg-warm:#EAE6DC; --ink:#0A0A0A; --ink-soft:#34332F; --mute:#75736B; --accent:#E63946; --rule:#D4D0C5; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--accent); color:var(--bg); }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  nav { border-bottom:1px solid var(--rule); background:var(--bg); position:sticky; top:0; z-index:50; }
+  .nav-inner { max-width:1240px; margin:0 auto; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo .nm { width:34px; height:34px; }
+  .nav-logo .nt { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; letter-spacing:-0.03em; color:var(--ink); }
+  .nav-logo .nt .q { color:var(--accent); }
+  .nav-links { display:flex; gap:26px; align-items:center; overflow-x:auto; scrollbar-width:none; }
+  .nav-links::-webkit-scrollbar{ display:none; }
+  .nav-links a { font-size:13.5px; font-weight:500; color:var(--ink-soft); text-decoration:none; white-space:nowrap; }
+  .nav-links a:hover, .nav-links a.active { color:var(--accent); }
+  .nav-cta { border:1.5px solid var(--ink); padding:8px 16px; color:var(--ink) !important; }
+  .nav-cta:hover { background:var(--ink); color:var(--bg) !important; }
+
+  .hero { padding:88px 0 64px; border-bottom:1px solid var(--rule); }
+  .hero-grid { display:grid; grid-template-columns:405px 1fr; gap:56px; align-items:center; }
+  /* costruzione geometrica: marchio grande + 4 varianti colore in proporzione aurea */
+  .hero-mark { width:405px; max-width:100%; }
+  .hero-mark svg { width:100%; height:auto; display:block; filter:drop-shadow(0 18px 40px rgba(10,10,10,.20)); }
+  .kicker { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+  .badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; border:1px solid var(--accent); color:var(--accent); padding:6px 12px; margin-left:14px; vertical-align:middle; }
+  h1 { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(38px,6vw,72px); letter-spacing:-0.035em; line-height:1.0; margin-bottom:14px; }
+  h1 .q { color:var(--accent); }
+  .hero-sub { font-family:'Bricolage Grotesque',sans-serif; font-weight:500; letter-spacing:.16em; text-transform:uppercase; font-size:clamp(12px,1.5vw,15px); color:var(--ink-soft); margin-bottom:8px; }
+  .hero-sub2 { font-family:'Bricolage Grotesque',sans-serif; font-weight:300; font-size:clamp(14px,1.7vw,18px); letter-spacing:-0.005em; color:#6E6C64; margin-bottom:22px; }
+  .hero-lead { font-size:clamp(16px,2vw,20px); font-weight:300; color:var(--ink-soft); max-width:44em; margin-bottom:30px; }
+  .btn { display:inline-block; font-weight:600; font-size:14.5px; text-decoration:none; padding:13px 24px; transition:transform .2s, background .2s, color .2s; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-primary:hover { transform:translateY(-2px); }
+  .btn-ghost { border:1.5px solid var(--ink); color:var(--ink); margin-left:12px; }
+  .btn-ghost:hover { background:var(--ink); color:var(--bg); }
+  .arrow { display:inline-block; transition:transform .2s; }
+  .btn:hover .arrow { transform:translateX(4px); }
+  .hero-ids { margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; }
+  .idchip { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--rule); background:var(--bg-card,#FBFAF6); color:var(--ink-soft); padding:7px 13px; display:inline-flex; align-items:center; gap:9px; }
+  .idchip .st { color:var(--accent); }
+  .idchip .cit { color:var(--ink); font-weight:500; text-transform:none; letter-spacing:.02em; }
+  .idchip .sep { color:var(--rule); }
+
+  .sec { padding:72px 0; }
+  .sec-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+  .sec-title { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,40px); letter-spacing:-0.025em; line-height:1.1; margin-bottom:18px; }
+  .sec-intro { font-size:clamp(15px,1.8vw,18px); color:var(--ink-soft); max-width:46em; margin-bottom:36px; }
+
+  .feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .feat { background:var(--bg); padding:26px 24px; }
+  .feat .n { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; color:var(--accent); display:block; margin-bottom:12px; }
+  .feat h3 { font-size:16px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
+  .feat p { font-size:14px; color:var(--ink-soft); }
+
+  .dark { background:var(--ink); color:var(--bg); }
+  .dark .sec-title { color:var(--bg); }
+  .dark .sec-intro { color:rgba(244,242,236,.78); }
+  .tipi { display:grid; grid-template-columns:1fr 1fr; gap:0 44px; max-width:920px; }
+  .tipo { display:flex; gap:16px; padding:15px 0; border-bottom:1px solid rgba(244,242,236,.14); align-items:baseline; }
+  .tipo b { font-size:15px; letter-spacing:-0.005em; min-width:0; }
+  .tipo span { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:rgba(244,242,236,.55); margin-left:auto; text-align:right; white-space:nowrap; }
+  .tipo .dot { width:7px; height:7px; background:var(--accent); flex:0 0 auto; transform:translateY(-1px); }
+  .nota-tipi { margin-top:26px; font-size:14px; color:rgba(244,242,236,.66); max-width:56em; }
+
+  .road { max-width:760px; }
+  .step { display:grid; grid-template-columns:34px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--rule); }
+  .step:last-child { border-bottom:0; }
+  .step .st { width:24px; height:24px; border-radius:50%; border:2px solid var(--ink); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
+  .step.done .st { background:var(--ink); color:var(--bg); }
+  .step.now .st { border-color:var(--accent); color:var(--accent); }
+  .step h3 { font-size:16.5px; font-weight:700; margin-bottom:4px; letter-spacing:-0.01em; }
+  .step h3 em { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-left:10px; }
+  .step p { font-size:14.5px; color:var(--ink-soft); max-width:52em; }
+
+  .origine { background:var(--bg-warm); }
+  .origine blockquote { font-family:'Bricolage Grotesque',sans-serif; font-weight:500; font-size:clamp(22px,3vw,32px); letter-spacing:-0.02em; line-height:1.25; max-width:24em; }
+  .origine blockquote .q { color:var(--accent); }
+  .origine figcaption { margin-top:16px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); }
+  .origine p.expl { margin-top:22px; font-size:15.5px; color:var(--ink-soft); max-width:48em; }
+  .origine p.expl b { font-weight:700; color:#C0202E; }
+
+  .cta-final { text-align:center; padding:80px 0; }
+  .cta-final h2 { font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,40px); letter-spacing:-0.025em; margin-bottom:14px; }
+  .cta-final p { color:var(--ink-soft); max-width:40em; margin:0 auto 28px; }
+
+  footer { border-top:1px solid var(--rule); padding:34px 0 46px; }
+  .foot { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; }
+  .foot p { font-size:12.5px; color:var(--mute); }
+  .foot a { color:var(--ink-soft); text-decoration:none; font-size:13px; margin-left:18px; }
+  .foot a:hover { color:var(--accent); }
+
+  @media (max-width:860px){
+    .hero-grid { grid-template-columns:1fr; gap:34px; }
+    .hero-mark { width:min(340px,100%); height:auto; }
+    .feat-grid { grid-template-columns:1fr; }
+    .tipi { grid-template-columns:1fr; }
+    .btn-ghost { margin-left:0; margin-top:12px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://aniqrc.it/journal.html#webpage",
+      "url": "https://aniqrc.it/journal.html",
+      "name": "RING — Risk International Nursing Group Journal",
+      "inLanguage": "it-IT",
+      "isPartOf": { "@id": "https://aniqrc.it/#website" },
+      "about": { "@id": "https://aniqrc.it/#organization" },
+      "mainEntity": { "@id": "https://aniqrc.it/journal.html#periodical" },
+      "publisher": { "@id": "https://aniqrc.it/#organization" }
+    },
+    {
+      "@type": "Periodical",
+      "@id": "https://aniqrc.it/journal.html#periodical",
+      "name": "RING: Risk International Nursing Group Journal",
+      "alternateName": [
+        "RING",
+        "Risk International Nursing Group Journal",
+        "Risk Int. Nurs. Group J."
+      ],
+      "description": "Clinical Governance, Procedures and Quality Review — la rivista scientifica di ANIQRC su governo clinico, rischio clinico, procedure e qualità dell'assistenza infermieristica. Diamond open access, due numeri l'anno, peer review in doppio anonimato.",
+      "url": "https://aniqrc.it/journal.html",
+      "inLanguage": ["it-IT", "en"],
+      "isAccessibleForFree": true,
+      "image": "https://aniqrc.it/og-journal.png",
+      "publisher": { "@id": "https://aniqrc.it/#organization" },
+      "publishingPrinciples": "https://aniqrc.it/journal.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://aniqrc.it/journal.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ANIQRC", "item": "https://aniqrc.it/" },
+        { "@type": "ListItem", "position": 2, "name": "Il Journal" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nm"><img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%"></span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#manifesto">Manifesto</a>
+      <a href="/#ambiti">Ambiti</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="journal.html" class="active">Journal</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-mark"><svg viewBox="0 0 405 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RING. Risk International Nursing Group Journal — il marchio nelle varianti colore della testata">
+        <defs>
+          <path id="ring-l" d="M11.0 124.971V75.029H31.1406Q34.9061 75.029 38.0941 75.6389Q41.2821 76.2487 43.7954 77.4495Q46.3087 78.6503 48.0906 80.4142Q49.8724 82.178 50.7984 84.5184Q51.7245 86.8587 51.7245 89.7504Q51.7245 92.2529 50.9255 94.377Q50.1264 96.5012 48.4554 98.1434Q46.7844 99.7856 44.2053 100.8333Q41.6262 101.8809 38.0986 102.3061V103.1853Q42.3072 103.533 44.7367 105.0167Q47.1663 106.5004 48.5103 108.9416Q49.8544 111.3829 50.748 114.7141L53.5604 124.971H41.5237L39.4013 115.4943Q38.7888 112.617 37.6186 110.8712Q36.4484 109.1254 34.5107 108.3299Q32.573 107.5345 29.5768 107.5345H21.8981V124.971ZM21.8981 99.2055H30.1623Q35.1187 99.2055 37.7708 97.3246Q40.4229 95.4436 40.4229 91.507Q40.4229 87.4964 37.9537 85.5515Q35.4845 83.6066 30.4416 83.6066H21.8981Z M57.4612 124.971V75.029H68.507V124.971Z M75.0922 124.971V75.029H89.5215L110.855 110.5598H111.3955L110.9991 75.029H121.69V124.971H108.3723L85.9362 88.089H85.3885L85.7849 124.971Z M147.9458 126.0105Q141.7085 126.0105 136.9134 123.045Q132.1183 120.0795 129.4131 114.3754Q126.7079 108.6714 126.7079 100.4576Q126.7079 94.4527 128.2447 89.5945Q129.7815 84.7364 132.8506 81.2429Q135.9197 77.7495 140.4617 75.8695Q145.0037 73.9895 151.0626 73.9895Q155.7937 73.9895 159.4961 75.1696Q163.1985 76.3496 165.8046 78.5134Q168.4107 80.6772 169.761 83.6761Q171.1114 86.675 171.0952 90.354L160.8151 92.7303Q160.7808 89.4296 159.4485 87.2901Q158.1162 85.1506 155.8343 84.0696Q153.5525 82.9886 150.6374 82.9886Q146.8089 82.9886 143.9947 84.8326Q141.1805 86.6766 139.6553 90.4557Q138.1302 94.2347 138.1302 99.9892Q138.1302 104.3258 139.0176 107.5679Q139.9049 110.81 141.6003 112.9378Q143.2956 115.0656 145.7207 116.1222Q148.1457 117.1789 151.2176 117.1789Q154.5164 117.1789 156.8694 116.042Q159.2224 114.9052 160.5781 112.6873Q161.9339 110.4694 162.06 107.2156H153.0661V99.3425H172.4356V108.4318L172.4464 124.971H164.7876L164.9931 111.8188H163.8941Q163.0005 116.4365 161.0078 119.6056Q159.0152 122.7747 155.7866 124.3926Q152.558 126.0105 147.9458 126.0105Z"/>
+          <path id="ring-d" d="M181.8523 125.9295Q178.3397 125.9295 176.5894 124.4161Q174.8392 122.9027 174.8392 119.7375Q174.8392 116.5087 176.5918 114.998Q178.3445 113.4874 181.8547 113.4874Q185.4418 113.4874 187.2209 114.998Q189.0 116.5087 189.0 119.7408Q189.0 125.9295 181.8523 125.9295Z"/>
+        </defs>
+        <g transform="translate(0,0) scale(1.2500)"><rect width="200" height="200" fill="#0A0A0A"/><use href="#ring-l" fill="#F4F2EC"/><use href="#ring-d" fill="#E63946"/></g>
+        <g transform="translate(250,95) scale(0.7750)"><rect width="200" height="200" fill="#E63946"/><use href="#ring-l" fill="#F4F2EC"/><use href="#ring-d" fill="#0A0A0A"/></g>
+        <g transform="translate(310,0) scale(0.4750)"><rect width="200" height="200" fill="#F4F2EC" stroke="#D4D0C5" stroke-width="1" vector-effect="non-scaling-stroke"/><use href="#ring-l" fill="#0A0A0A"/><use href="#ring-d" fill="#E63946"/></g>
+        <g transform="translate(250,0) scale(0.3000)"><rect width="200" height="200" fill="#EAE6DC" stroke="#D4D0C5" stroke-width="1" vector-effect="non-scaling-stroke"/><use href="#ring-l" fill="#0A0A0A"/><use href="#ring-d" fill="#E63946"/></g>
+        <g transform="translate(250,60) scale(0.1750)"><rect width="200" height="200" fill="#C0202E"/><use href="#ring-l" fill="#F4F2EC"/><use href="#ring-d" fill="#E63946"/></g>
+      </svg></div>
+    <div>
+      <div class="kicker">Il journal di ANIQRC<span class="badge">In costruzione</span></div>
+      <h1 data-editable="source" data-path="/journal.html" data-key="ring">RING<span class="q">.</span></h1>
+      <div class="hero-sub">Risk International Nursing Group Journal</div>
+      <div class="hero-sub2">Clinical Governance, Procedures and Quality Review</div>
+      <p class="hero-lead" data-editable="source" data-path="/journal.html" data-key="la-rivista-scientifica-della-comunita-aniqrc">La rivista scientifica della comunità ANIQRC: governo clinico, rischio, procedure e qualità dell'assistenza. Ad accesso aperto <strong>diamante</strong>: nessun costo, mai — né per chi scrive né per chi legge.</p>
+      <div>
+        <a href="/#newsletter" class="btn btn-primary">Avvisami al lancio <span class="arrow">→</span></a>
+        <a href="adesione.html" class="btn btn-ghost">Entra in ANIQRC</a>
+      </div>
+      <div class="hero-ids" aria-label="Identificativi della rivista">
+        <span class="idchip">ISSN <span class="sep">·</span> <span class="st">In costruzione</span></span>
+        <span class="idchip">DOI — Crossref <span class="sep">·</span> <span class="st">In costruzione</span></span>
+        <span class="idchip">Citazione <span class="sep">·</span> <span class="cit">Risk Int. Nurs. Group J. (RING)</span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">Come sarà</div>
+    <h2 class="sec-title" data-editable="source" data-path="/journal.html" data-key="poche-regole-tutte-pubbliche">Poche regole, tutte pubbliche.</h2>
+    <p class="sec-intro" data-editable="source" data-path="/journal.html" data-key="il-journal-nasce-con-le-regole-scritte-prima">Il journal nasce con le regole scritte prima degli articoli: è la condizione per essere credibili dal primo numero e per il percorso di indicizzazione che segue.</p>
+    <div class="feat-grid">
+      <div class="feat"><span class="n">01</span><h3 data-editable="source" data-path="/journal.html" data-key="diamond-open-access">Diamond open access</h3><p data-editable="source" data-path="/journal.html" data-key="nessuna-apc-nessuna-submission-fee-nessun-ab">Nessuna APC, nessuna submission fee, nessun abbonamento. I costi vivi li sostiene l'associazione con le quote sociali.</p></div>
+      <div class="feat"><span class="n">02</span><h3 data-editable="source" data-path="/journal.html" data-key="due-numeri-l-anno">Due numeri l'anno</h3><p data-editable="source" data-path="/journal.html" data-key="maggio-e-novembre-meglio-due-uscite-rispetta">Maggio e novembre. Meglio due uscite rispettate che quattro promesse: la regolarità è il primo requisito degli indici.</p></div>
+      <div class="feat"><span class="n">03</span><h3 data-editable="source" data-path="/journal.html" data-key="doppio-anonimato">Doppio anonimato</h3><p data-editable="source" data-path="/journal.html" data-key="due-revisori-esterni-per-ogni-manoscritto-gr">Due revisori esterni per ogni manoscritto, griglia strutturata, tempi dichiarati. Le date di ricezione, accettazione e pubblicazione stampate su ogni articolo.</p></div>
+      <div class="feat"><span class="n">04</span><h3 data-editable="source" data-path="/journal.html" data-key="il-copyright-resta-agli-autori">Il copyright resta agli autori</h3><p data-editable="source" data-path="/journal.html" data-key="licenza-cc-by-4-0-su-tutti-gli-articoli-chiu">Licenza CC BY 4.0 su tutti gli articoli: chiunque può leggere, riusare e tradurre, citando la fonte.</p></div>
+      <div class="feat"><span class="n">05</span><h3 data-editable="source" data-path="/journal.html" data-key="italiano-e-inglese">Italiano e inglese</h3><p data-editable="source" data-path="/journal.html" data-key="ogni-articolo-con-titolo-abstract-e-parole-c">Ogni articolo con titolo, abstract e parole chiave in entrambe le lingue.</p></div>
+      <div class="feat"><span class="n">06</span><h3 data-editable="source" data-path="/journal.html" data-key="identificativi-permanenti">Identificativi permanenti</h3><p data-editable="source" data-path="/journal.html" data-key="issn-e-doi-registrati-via-crossref-arrivano-">ISSN e DOI (registrati via Crossref) arrivano subito dopo il primo numero — è la sequenza prevista per le pubblicazioni online — e si applicano a ritroso agli articoli già usciti.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap">
+    <div class="sec-label">Cosa pubblicherà</div>
+    <h2 class="sec-title" data-editable="source" data-path="/journal.html" data-key="ricerca-primaria-e-secondaria">Ricerca primaria e secondaria.</h2>
+    <p class="sec-intro" data-editable="source" data-path="/journal.html" data-key="studi-su-come-l-assistenza-e-organizzata-mis">Studi su come l'assistenza è organizzata, misurata e resa sicura — non il singolo gesto clinico, ma il sistema che lo rende possibile.</p>
+    <div class="tipi">
+      <div class="tipo"><span class="dot"></span><b>Ricerca originale</b><span>4.000 parole</span></div>
+      <div class="tipo"><span class="dot"></span><b>Quality improvement report</b><span>SQUIRE 2.0</span></div>
+      <div class="tipo"><span class="dot"></span><b>Analisi di evento</b><span>anonimizzata</span></div>
+      <div class="tipo"><span class="dot"></span><b>Scoping review</b><span>protocollo OSF</span></div>
+      <div class="tipo"><span class="dot"></span><b>Revisione sistematica</b><span>PRISMA</span></div>
+      <div class="tipo"><span class="dot"></span><b>Protocolli di studio</b><span>3.000 parole</span></div>
+      <div class="tipo"><span class="dot"></span><b>Revisione narrativa</b><span>su invito</span></div>
+      <div class="tipo"><span class="dot"></span><b>Commentary ed editoriali</b><span>su invito</span></div>
+    </div>
+    <p class="nota-tipi" data-editable="source" data-path="/journal.html" data-key="per-le-scoping-review-chiederemo-la-registra">Per le scoping review chiederemo la registrazione del protocollo su OSF prima della ricerca bibliografica e una valutazione della qualità delle fonti — usata per informare la discussione, non per escludere studi dalla mappatura.</p>
+  </div>
+</section>
+
+<section class="sec origine">
+  <div class="wrap">
+    <div class="sec-label">Perché «RING»</div>
+    <figure>
+      <blockquote>Il cerchio che si chiude<span class="q">.</span></blockquote>
+      <figcaption>Risk International Nursing Group</figcaption>
+    </figure>
+    <p class="expl" data-editable="source" data-path="/journal.html" data-key="ring-e-prima-di-tutto-un-acronimo">RING è prima di tutto un acronimo — <b>R</b>isk <b>I</b>nternational <b>N</b>ursing <b>G</b>roup — ma è anche una parola: l'anello. Il ciclo del governo clinico che si chiude, l'audit che torna al punto di partenza per verificare che il cambiamento abbia tenuto. E una catena non è mai più forte del suo anello più debole: è l'immagine con cui si descrive, da sempre, la sicurezza di un percorso di cura.</p>
+    <p class="expl" data-editable="source" data-path="/journal.html" data-key="in-inglese-to-ring-e-anche-il-suono">In inglese <em>to ring</em> è anche il suono che avverte: la segnalazione che arriva prima del danno. Il punto rosso che chiude il nostro marchio è lo stesso che chiude il marchio dell'associazione — la decisione, il ciclo che si conclude, l'errore che si ferma.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">A che punto siamo</div>
+    <h2 class="sec-title" data-editable="source" data-path="/journal.html" data-key="il-cantiere-alla-luce-del-sole">Il cantiere, alla luce del sole.</h2>
+    <div class="road">
+      <div class="step done"><div class="st">✓</div><div><h3 data-editable="source" data-path="/journal.html" data-key="identita-e-regole-editoriali">Identità e regole editoriali</h3><p data-editable="source" data-path="/journal.html" data-key="nome-marchio-ambito-e-le-dodici-policy-peer-">Nome, marchio, ambito e le dodici policy — peer review, etica, conflitti di interesse, accesso aperto, archiviazione — sono definiti e saranno pubblicati integralmente prima della call.</p></div></div>
+      <div class="step now"><div class="st">2</div><div><h3 data-editable="source" data-path="/journal.html" data-key="comitato-editoriale-in-corso">Comitato editoriale <em>in corso</em></h3><p data-editable="source" data-path="/journal.html" data-key="direzione-comitato-con-affiliazioni-verifica">Direzione, comitato con affiliazioni verificabili e ORCID, e la rete dei revisori. È la parte che decide la credibilità della rivista: la stiamo componendo con cura.</p></div></div>
+      <div class="step"><div class="st">3</div><div><h3 data-editable="source" data-path="/journal.html" data-key="prima-call-for-papers">Prima call for papers</h3><p data-editable="source" data-path="/journal.html" data-key="aperta-a-ricerca-originale-quality-improveme">Aperta a ricerca originale, quality improvement report e revisioni. La data sarà annunciata qui e nella newsletter.</p></div></div>
+      <div class="step"><div class="st">4</div><div><h3 data-editable="source" data-path="/journal.html" data-key="numero-1-poi-issn-e-doi">Numero 1 — poi ISSN e DOI</h3><p data-editable="source" data-path="/journal.html" data-key="per-le-riviste-online-l-issn-si-ottiene-dopo">Per le riviste online l'ISSN si ottiene dopo la prima uscita: pubblicheremo il numero inaugurale e registreremo subito ISSN, DOI su Crossref e metadati, applicandoli a ritroso agli articoli già pubblicati.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2 data-editable="source" data-path="/journal.html" data-key="vuoi-esserci-dal-numero-uno">Vuoi esserci dal numero uno?</h2>
+    <p data-editable="source" data-path="/journal.html" data-key="iscriviti-alla-newsletter-per-sapere-quando-">Iscriviti alla newsletter per sapere quando apre la call — o entra in ANIQRC e costruisci la rivista con noi, come autore, revisore o parte della redazione.</p>
+    <a href="/#newsletter" class="btn btn-primary">Avvisami al lancio <span class="arrow">→</span></a>
+    <a href="adesione.html" class="btn btn-ghost">Associati</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <p>© ANIQRC — Associazione Nazionale Infermieri Qualità e Rischio Clinico. RING · Risk International Nursing Group Journal è il journal ufficiale dell'associazione, in costruzione.<br>C.F. 93568220722 · Sede legale: Via Napoli 369/Q — 70132 Bari (BA)</p>
+    <div><a href="/">Home</a><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="aniqrc-bg.js" defer></script>
+<script src="aniqrc-app.js?v=20260921" defer></script>
+</body>
+</html>
