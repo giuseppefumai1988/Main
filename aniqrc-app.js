@@ -33,7 +33,7 @@
     'nav.am .nav-links .nav-search,nav.am .nav-links .nav-theme{width:42px;height:42px;margin-top:12px;border-bottom:0 !important;}'+
     'nav.am .nav-links .nl-short{display:inline !important;} nav.am .nav-links .nl-full{display:none !important;}'+
   '}'+
-  '.am-install{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:300;display:none;align-items:center;gap:12px;font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.03em;color:#fff;background:var(--accent,#E63946);border:0;border-radius:0;padding:12px 16px 12px 18px;box-shadow:0 12px 30px rgba(230,57,70,.34);cursor:pointer;}'+
+  '.am-install{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:300;display:none;align-items:center;gap:12px;font-family:"Roboto",sans-serif;font-size:12.5px;letter-spacing:.03em;color:#fff;background:var(--accent,#E63946);border:0;border-radius:0;padding:12px 16px 12px 18px;box-shadow:0 12px 30px rgba(230,57,70,.34);cursor:pointer;}'+
   '.am-install.show{display:inline-flex;}'+
   '.am-install b{font-weight:600;}'+
   '.am-install .x{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:0;background:rgba(255,255,255,.22);font-size:13px;}';
