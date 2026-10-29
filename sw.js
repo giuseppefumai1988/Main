@@ -19,8 +19,12 @@
    v8 (29 ottobre 2026)
    · il journal si chiama «VIGÍL — International Journal of Nursing Safety and
      Clinical Governance»: nuovo marchio, icona della testata logo-vigil-512.png;
-   · in Eventi è online PERSPECTIVES, il Book of Abstracts del Forum di Bari. */
-var VERSION = 'aniqrc-v8';
+   · in Eventi è online PERSPECTIVES, il Book of Abstracts del Forum di Bari.
+
+   v9 (29 ottobre 2026, sera)
+   · PDF di PERSPECTIVES corretto (autori dell'abstract A06): cambiare VERSION
+     evita che chi l'ha già aperto continui a vedere la copia in cache. */
+var VERSION = 'aniqrc-v9';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
