@@ -22,14 +22,14 @@
 
 window.ANIQRC_NEWS = [
 
-  { tag: "Call for abstract", testo: "Forum infermieristico di Bari — invia il tuo lavoro entro il 12 ottobre 2026", link: "forum-infermieristico-2026.html#lavori", nuovo: true },
+  { tag: "Book of Abstracts", testo: "Online PERSPECTIVES 1(1): i 17 lavori del Forum di Bari, con DOI su Zenodo", link: "eventi.html#book-of-abstracts", nuovo: true },
 
   { tag: "Evento", testo: "Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026", link: "forum-infermieristico-2026.html" },
 
   // Esempi già pronti — togli le // per attivarli:
   // { tag: "Eventi", testo: "Nuovi eventi", link: "eventi.html", nuovo: true },
   // { tag: "Lavori", testo: "Online il libro dei lavori del Forum di Bari", link: "forum-infermieristico-2026.html#lavori" },
-  // { tag: "Journal", testo: "È online il primo numero del Journal", link: "journal.html" },
+  // { tag: "Journal", testo: "È online il primo numero di VIGÍL", link: "journal.html" },
   // { tag: "Toolkit", testo: "Nuovo strumento nel Toolkit: calcolo del campione", link: "strumenti-campione.html" },
 
 ];
