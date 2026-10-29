@@ -23,8 +23,11 @@
 
    v9 (29 ottobre 2026, sera)
    · PDF di PERSPECTIVES corretto (autori dell'abstract A06): cambiare VERSION
-     evita che chi l'ha già aperto continui a vedere la copia in cache. */
-var VERSION = 'aniqrc-v9';
+     evita che chi l'ha già aperto continui a vedere la copia in cache.
+
+   v10 (29 ottobre 2026, sera)
+   · PDF di PERSPECTIVES corretto ancora (A07: Melania Totaro, con ORCID). */
+var VERSION = 'aniqrc-v10';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
