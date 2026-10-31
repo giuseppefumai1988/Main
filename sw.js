@@ -26,8 +26,12 @@
      evita che chi l'ha già aperto continui a vedere la copia in cache.
 
    v10 (29 ottobre 2026, sera)
-   · PDF di PERSPECTIVES corretto ancora (A07: Melania Totaro, con ORCID). */
-var VERSION = 'aniqrc-v10';
+   · PDF di PERSPECTIVES corretto ancora (A07: Melania Totaro, con ORCID).
+
+   v11 (31 ottobre 2026)
+   · A07 con tutti e sei gli autori; il PDF ora si chiama
+     PERSPECTIVES-1-1-Book-of-Abstracts-v3.pdf ed è nella cartella principale. */
+var VERSION = 'aniqrc-v11';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
