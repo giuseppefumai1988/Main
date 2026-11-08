@@ -30,8 +30,13 @@
 
    v11 (31 ottobre 2026)
    · A07 con tutti e sei gli autori; il PDF ora si chiama
-     PERSPECTIVES-1-1-Book-of-Abstracts-v3.pdf ed è nella cartella principale. */
-var VERSION = 'aniqrc-v11';
+     PERSPECTIVES-1-1-Book-of-Abstracts-v3.pdf ed è nella cartella principale.
+
+   v12 (8 novembre 2026)
+   · PERSPECTIVES con testo allineato a sinistra in tutto il volume e A15 con
+     due autori (Chiara De Meo, Maria Teresa Curci); il PDF ora si chiama
+     PERSPECTIVES-1-1-Book-of-Abstracts-v5.pdf. */
+var VERSION = 'aniqrc-v12';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
