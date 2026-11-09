@@ -41,8 +41,13 @@
    · nuova identità visiva con i colori di VIGIL: blu notte, bianco, rosso;
      caratteri Bricolage Grotesque (titoli) e Inter (testo), ospitati sul sito;
      logo ANIQRC a mosaico; icone, splash e anteprime social rigenerate;
-   · la pagina del journal è ora vigiljournal.html (journal.html reindirizza). */
-var VERSION = 'aniqrc-v13';
+   · la pagina del journal è ora vigiljournal.html (journal.html reindirizza).
+
+   v14 (9 novembre 2026)
+   · bianco ottico in tutto il sito (aniqrc-vigil.css: niente aloni in tema chiaro);
+   · vigiljournal.html con le politiche di etica, copyright, autoarchiviazione,
+     finanziamento, pubblicità e marketing diretto. */
+var VERSION = 'aniqrc-v14';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',

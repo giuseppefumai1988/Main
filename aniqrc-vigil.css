@@ -45,3 +45,15 @@ body{ font-family:var(--font-text); }
 button, input, select, textarea{ font-family:var(--font-text); }
 h1, h2, h3{ font-family:var(--font-display); letter-spacing:-0.015em; }
 ::selection{ background:rgba(230,57,70,.18); }
+
+/* --------------------------------------------------------------------------
+   Bianco ottico (9 novembre 2026): in tema chiaro tutto il sito usa la stessa
+   palette della pagina VIGIL — fondo bianco pieno, nessun alone né velatura.
+   -------------------------------------------------------------------------- */
+:root{ --bg-warm:#F7F9FC; --bg-card:#F7F9FC; }
+html:not([data-theme="dark"]) body{ background:#FFFFFF; }
+html:not([data-theme="dark"]) #aniqrc-aurora,
+html:not([data-theme="dark"]) .hero::after,
+html:not([data-theme="dark"]) .page-hero::after{ display:none !important; }
+/* barra di navigazione del tema scuro: blu notte invece del vecchio bruno */
+html[data-theme="dark"] nav{ background:rgba(12,26,42,.86); }
