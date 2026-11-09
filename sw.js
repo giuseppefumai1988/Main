@@ -35,19 +35,28 @@
    v12 (8 novembre 2026)
    · PERSPECTIVES con testo allineato a sinistra in tutto il volume e A15 con
      due autori (Chiara De Meo, Maria Teresa Curci); il PDF ora si chiama
-     PERSPECTIVES-1-1-Book-of-Abstracts-v5.pdf. */
-var VERSION = 'aniqrc-v12';
+     PERSPECTIVES-1-1-Book-of-Abstracts-v5.pdf.
+
+   v13 (9 novembre 2026)
+   · nuova identità visiva con i colori di VIGIL: blu notte, bianco, rosso;
+     caratteri Bricolage Grotesque (titoli) e Inter (testo), ospitati sul sito;
+     logo ANIQRC a mosaico; icone, splash e anteprime social rigenerate;
+   · la pagina del journal è ora vigiljournal.html (journal.html reindirizza). */
+var VERSION = 'aniqrc-v13';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
-  'adesione.html', 'privacy.html', 'grazie.html', 'journal.html',
+  'adesione.html', 'privacy.html', 'grazie.html', 'vigiljournal.html',
   'strumenti-campione.html', 'strumenti-kappa.html',
   'aniqrc-bg.js', 'aniqrc-app.js', 'qualita-fx.js',
   'qualita-data.json', 'toolkit-data.json',
   'site.webmanifest', 'favicon.svg', 'favicon-16.png', 'favicon-32.png',
   'apple-touch-icon.png', 'apple-touch-icon-152.png', 'apple-touch-icon-167.png',
   'icon-192.png', 'icon-512.png', 'icon-512-maskable.png', 'og-image.png',
-  'og-journal.png', 'logo-vigil-512.png'
+  'og-journal.png', 'logo-vigil-512.png',
+  'aniqrc-vigil.css', 'logo-aniqrc-mosaico.svg', 'logo-vigil.svg', 'vigil-texture.jpg',
+  'inter-latin-400-normal.woff2', 'inter-latin-600-normal.woff2',
+  'bricolage-grotesque-latin-700-normal.woff2', 'bricolage-grotesque-latin-800-normal.woff2'
 ];
 /* altri domini che si possono tenere in cache: contenuti che non cambiano */
 var STATICI = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
