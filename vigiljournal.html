@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>VIGIL — International Journal of Nursing Safety and Clinical Governance · Edito da ANIQRC</title>
+<meta name="description" content="VIGIL è la rivista scientifica di ANIQRC su sicurezza del paziente, rischio clinico, qualità e governo clinico nell’assistenza infermieristica: diamond open access, peer review in doppio cieco, tre numeri l’anno. Versione in inglese disponibile.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+<link rel="canonical" href="https://aniqrc.it/vigiljournal.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#12263A">
+<meta property="og:title" content="VIGIL — International Journal of Nursing Safety and Clinical Governance">
+<meta property="og:description" content="Diamond open access · peer review in doppio cieco · tre numeri l’anno. Edito da ANIQRC. Volume 1 · 2027.">
+<meta property="og:image" content="https://aniqrc.it/og-journal.png?v=4">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VIGIL — International Journal of Nursing Safety and Clinical Governance, published by ANIQRC">
+<meta property="og:url" content="https://aniqrc.it/vigiljournal.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="ANIQRC">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://aniqrc.it/vigiljournal.html#webpage",
+      "url": "https://aniqrc.it/vigiljournal.html",
+      "name": "VIGIL — International Journal of Nursing Safety and Clinical Governance",
+      "inLanguage": ["it-IT", "en"],
+      "isPartOf": { "@id": "https://aniqrc.it/#website" },
+      "mainEntity": { "@id": "https://aniqrc.it/vigiljournal.html#periodical" },
+      "publisher": { "@id": "https://aniqrc.it/#organization" }
+    },
+    {
+      "@type": "Periodical",
+      "@id": "https://aniqrc.it/vigiljournal.html#periodical",
+      "name": "VIGIL: International Journal of Nursing Safety and Clinical Governance",
+      "alternateName": ["VIGIL", "International Journal of Nursing Safety and Clinical Governance"],
+      "description": "Rivista scientifica online, diamond open access, su sicurezza del paziente, rischio clinico, qualità e governo clinico nell’assistenza infermieristica. Tre numeri l’anno, peer review in doppio cieco, linee guida COPE.",
+      "url": "https://aniqrc.it/vigiljournal.html",
+      "inLanguage": ["it-IT", "en"],
+      "isAccessibleForFree": true,
+      "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "image": "https://aniqrc.it/og-journal.png?v=4",
+      "publisher": { "@id": "https://aniqrc.it/#organization" },
+      "editor": { "@type": "Person", "name": "Giuseppe Fumai", "jobTitle": "Executive Editor", "identifier": "https://orcid.org/0009-0007-5931-4417" },
+      "publishingPrinciples": "https://aniqrc.it/vigiljournal.html#ethics"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ANIQRC", "item": "https://aniqrc.it/" },
+        { "@type": "ListItem", "position": 2, "name": "VIGIL Journal", "item": "https://aniqrc.it/vigiljournal.html" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preload" href="/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="aniqrc-vigil.css?v=1">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--text); font-family:var(--font-text); font-size:16px; line-height:1.65; }
+  html[data-theme="dark"] body{ color:var(--ink-soft); }
+  a{ color:var(--ink); }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  .skip{ position:absolute; left:-9999px; top:0; background:var(--navy); color:#fff; padding:10px 14px; z-index:200; }
+  .skip:focus{ left:12px; top:12px; }
+
+  /* ---------- barra ANIQRC ---------- */
+  .site{ border-bottom:1px solid var(--rule); background:var(--bg); }
+  .site .wrap{ display:flex; align-items:center; justify-content:space-between; gap:20px; height:60px; }
+  .site-logo{ display:flex; align-items:center; gap:11px; text-decoration:none; }
+  .site-logo img{ width:30px; height:30px; display:block; }
+  .site-logo b{ font-family:var(--font-display); font-weight:800; font-size:19px; letter-spacing:-.02em; color:var(--ink); }
+  .site-logo b i{ font-style:normal; color:var(--red); }
+  .site-links{ display:flex; gap:24px; align-items:center; }
+  .site-links a{ font-size:13.5px; font-weight:500; color:var(--ink-soft); text-decoration:none; white-space:nowrap; }
+  .site-links a:hover{ color:var(--red); }
+  .site-links .cta{ border:1.5px solid var(--ink); padding:7px 15px; color:var(--ink); font-weight:600; }
+  .site-links .cta:hover{ background:var(--ink); color:var(--bg); }
+  @media (max-width:720px){ .site-links a:not(.cta){ display:none; } }
+
+  /* ---------- testata (come nel PDF della call) ---------- */
+  .masthead{ padding:30px 0 36px; }
+  .mh-top{ display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--slate); }
+  html[data-theme="dark"] .mh-top{ color:var(--ink-mute); }
+  .mh-main{ display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-top:44px; }
+  .mh-title{ margin:0; line-height:0; }
+  .mh-title svg{ height:clamp(64px,10.5vw,124px); width:auto; display:block; }
+  .mh-title svg .l{ fill:var(--ink); }
+  .mh-sub{ text-align:right; padding-bottom:4px; }
+  .mh-sub p{ font-weight:600; font-size:clamp(16px,2.1vw,24px); line-height:1.3; color:var(--ink); letter-spacing:-.005em; }
+  .mh-sub small{ display:block; margin-top:8px; font-size:13px; color:var(--slate); }
+  html[data-theme="dark"] .mh-sub small{ color:var(--ink-mute); }
+  .mh-meta{ display:flex; justify-content:space-between; gap:14px 28px; flex-wrap:wrap; align-items:center; margin-top:30px; padding-top:16px; border-top:1px solid var(--rule); font-size:13.5px; color:var(--ink-soft); }
+  .mh-meta b{ color:var(--ink); font-weight:600; }
+  .pill{ display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#fff; background:var(--red); padding:6px 11px; }
+  .pill.ghost{ background:transparent; color:var(--red); border:1px solid var(--red); }
+  @media (max-width:760px){
+    .mh-main{ flex-direction:column; align-items:flex-start; gap:18px; margin-top:30px; }
+    .mh-sub{ text-align:left; }
+    .mh-top span:nth-child(2){ display:none; }
+  }
+
+  /* ---------- fascia call for abstracts ---------- */
+  .band{ position:relative; min-height:300px; display:flex; align-items:center; background:#1B3550 url('vigil-texture.jpg') center/cover no-repeat; overflow:hidden; }
+  .band::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(18,38,58,.30), rgba(18,38,58,0) 60%); }
+  .band-box{ position:relative; z-index:1; background:rgba(18,38,58,.94); color:#fff; padding:34px 40px 32px; margin:44px 0 44px 56px; max-width:620px; }
+  .band-box::before{ content:""; position:absolute; left:40px; top:-6px; width:84px; height:6px; background:var(--red); }
+  .band-k{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.9); }
+  .band-t{ font-family:var(--font-display); font-weight:800; font-size:clamp(30px,4.6vw,52px); line-height:1.02; letter-spacing:-.01em; margin:10px 0 12px; }
+  .band-s{ font-size:14px; color:rgba(255,255,255,.86); }
+  .band-a{ display:inline-flex; align-items:center; gap:10px; margin-top:20px; color:#fff; font-weight:600; font-size:14px; text-decoration:none; border-bottom:1.5px solid var(--red); padding-bottom:3px; }
+  .band-a:hover{ color:#fff; border-color:#fff; }
+  .band-flag{ position:absolute; right:0; top:0; z-index:1; }
+  @media (max-width:760px){ .band-box{ margin:28px 18px; padding:28px 24px; } .band-box::before{ left:24px; } }
+
+  /* ---------- menu a transizione ---------- */
+  .jnav{ position:sticky; top:0; z-index:60; background:color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid var(--rule); }
+  .jnav .wrap{ display:flex; align-items:center; gap:18px; }
+  .jnav-mark{ flex:0 0 auto; display:flex; align-items:center; opacity:0; width:0; overflow:hidden; transition:opacity .3s, width .3s; }
+  .jnav.stuck .jnav-mark{ opacity:1; width:72px; }
+  .jnav-mark svg{ height:18px; width:auto; }
+  .jnav-mark svg .l{ fill:var(--ink); }
+  .tabs{ position:relative; display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; flex:1 1 auto; scroll-behavior:smooth; }
+  .tabs::-webkit-scrollbar{ display:none; }
+  .tabs{ -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent); mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent); }
+  .tabs.end{ -webkit-mask-image:none; mask-image:none; }
+  .tab{ appearance:none; background:none; border:0; cursor:pointer; font-family:var(--font-text); font-size:13.5px; font-weight:500; color:var(--ink-soft); padding:17px 12px 16px; white-space:nowrap; transition:color .25s; }
+  .tab:hover{ color:var(--ink); }
+  .tab[aria-selected="true"]{ color:var(--ink); font-weight:600; }
+  .tab:focus-visible{ outline:2px solid var(--red); outline-offset:-4px; }
+  .ink{ position:absolute; bottom:0; left:0; height:3px; background:var(--red); width:0; transform:translateX(0); transition:transform .45s cubic-bezier(.22,1,.36,1), width .45s cubic-bezier(.22,1,.36,1); pointer-events:none; }
+  .allbtn{ flex:0 0 auto; appearance:none; background:none; border:1px solid var(--rule); color:var(--ink-soft); font-family:var(--font-text); font-size:12px; font-weight:600; letter-spacing:.02em; padding:7px 12px; cursor:pointer; white-space:nowrap; }
+  .allbtn:hover, .allbtn[aria-pressed="true"]{ border-color:var(--ink); color:var(--ink); }
+  @media (max-width:760px){ .allbtn span{ display:none; } }
+
+  /* ---------- pannelli ---------- */
+  main{ padding:56px 0 40px; min-height:60vh; }
+  .panel{ transition:opacity .38s ease, transform .45s cubic-bezier(.22,1,.36,1); }
+  .panel[hidden]{ display:none; }
+  .panel:focus{ outline:none; }
+  .panel{ scroll-margin-top:72px; }
+  .panel.from-right{ opacity:0; transform:translateX(34px); }
+  .panel.from-left{ opacity:0; transform:translateX(-34px); }
+  .panel.leave{ opacity:0; transition-duration:.16s; }
+  body.all .panel{ display:block !important; opacity:1 !important; transform:none !important; padding-bottom:56px; margin-bottom:56px; border-bottom:1px solid var(--rule); }
+  @media (prefers-reduced-motion:reduce){ .panel, .ink{ transition:none !important; } }
+
+  .p-head{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px; align-items:end; margin-bottom:30px; }
+  .p-k{ font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
+  .p-t{ font-family:var(--font-display); font-weight:800; font-size:clamp(28px,3.8vw,42px); line-height:1.06; letter-spacing:-.015em; color:var(--ink); }
+  .status{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:5px 10px; border:1px solid; white-space:nowrap; }
+  .status.ok{ color:#2C5C8A; border-color:#9DB6CF; background:var(--blue-soft); }
+  .status.wip{ color:var(--red-deep); border-color:#F1B2B8; background:#FDF1F2; }
+  html[data-theme="dark"] .status.ok{ color:#A9C4E0; background:transparent; border-color:#3B5A7A; }
+  html[data-theme="dark"] .status.wip{ color:#F7A1A9; background:transparent; border-color:#7A3A44; }
+  .lead{ font-size:clamp(17px,1.9vw,19.5px); line-height:1.6; color:var(--ink-soft); max-width:46em; margin-bottom:30px; }
+  .cols{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px 56px; }
+  @media (max-width:860px){ .cols{ grid-template-columns:1fr; gap:28px; } .p-head{ grid-template-columns:1fr; } }
+  h3{ font-family:var(--font-display); font-weight:700; font-size:20px; letter-spacing:-.01em; color:var(--ink); margin:0 0 10px; }
+  .panel p{ margin-bottom:12px; max-width:44em; }
+  .panel p + h3, .panel ul + h3, .panel table + h3{ margin-top:30px; }
+  ul.sq{ list-style:none; margin:4px 0 14px; }
+  ul.sq li{ position:relative; padding-left:22px; margin:7px 0; }
+  ul.sq li::before{ content:""; position:absolute; left:0; top:.55em; width:9px; height:9px; background:var(--red); }
+  strong{ color:var(--ink); font-weight:600; }
+  .note{ font-size:13.5px; color:var(--slate); font-style:italic; }
+  html[data-theme="dark"] .note{ color:var(--ink-mute); }
+
+  /* tabella dati essenziali */
+  .facts{ width:100%; border-collapse:collapse; font-size:14.5px; }
+  .facts th, .facts td{ text-align:left; vertical-align:top; padding:11px 14px; border-bottom:1px solid var(--rule); }
+  .facts th{ width:36%; font-weight:600; color:var(--ink); background:var(--bg-card); }
+  .facts tr:first-child th, .facts tr:first-child td{ border-top:1px solid var(--rule); }
+
+  /* panoramica: indice della trasparenza */
+  .grid-ov{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .ov{ background:var(--bg); padding:22px 22px 20px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:8px; transition:background .25s; min-height:150px; }
+  .ov:hover{ background:var(--bg-card); }
+  .ov .n{ font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--red); }
+  .ov b{ font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--ink); letter-spacing:-.01em; }
+  .ov span.d{ font-size:13.5px; color:var(--ink-soft); line-height:1.5; }
+  .ov .go{ margin-top:auto; font-size:12.5px; font-weight:600; color:var(--ink); }
+  .ov:hover .go{ color:var(--red); }
+  @media (max-width:900px){ .grid-ov{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:560px){ .grid-ov{ grid-template-columns:1fr; } }
+  .cope{ margin-top:36px; border:1px solid var(--rule); background:var(--bg-card); padding:24px 26px; }
+  .cope ol{ columns:2; column-gap:40px; padding-left:20px; font-size:14px; }
+  .cope li{ margin:5px 0; break-inside:avoid; }
+  .cope li a{ color:var(--ink); }
+  @media (max-width:760px){ .cope ol{ columns:1; } }
+
+  /* board */
+  .lead-board{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:34px; }
+  .person{ background:var(--bg); padding:22px 22px 20px; }
+  .person.exec{ grid-column:1 / -1; background:var(--navy); color:#fff; display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:center; padding:26px 28px; }
+  .person .role{ font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--red); margin-bottom:6px; }
+  .person .nm{ font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--ink); letter-spacing:-.01em; line-height:1.2; }
+  .person .af{ font-size:13.5px; color:var(--ink-soft); margin-top:6px; line-height:1.5; }
+  .person.exec .nm{ color:#fff; font-size:26px; }
+  .person.exec .af{ color:rgba(255,255,255,.82); }
+  .person.exec .role{ color:#FF8A93; }
+  .person.exec a{ color:#fff; }
+  .monogram{ width:64px; height:64px; background:#fff; color:var(--navy); display:grid; place-items:center; font-family:var(--font-display); font-weight:800; font-size:24px; position:relative; }
+  .monogram::after{ content:""; position:absolute; right:-5px; bottom:-5px; width:12px; height:12px; background:var(--red); }
+  @media (max-width:860px){ .lead-board{ grid-template-columns:1fr; } }
+  .names{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 32px; list-style:none; }
+  .names li{ padding:11px 0; border-bottom:1px solid var(--rule); font-weight:500; color:var(--ink); }
+  .names li small{ display:block; font-weight:400; font-size:12.5px; color:var(--slate); }
+  @media (max-width:760px){ .names{ grid-template-columns:1fr; } }
+
+  /* processo di revisione */
+  .flow{ display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; counter-reset:f; margin:8px 0 30px; }
+  .fl{ border-top:3px solid var(--navy); padding:16px 16px 0 0; position:relative; }
+  .fl::before{ counter-increment:f; content:counter(f, decimal-leading-zero); font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--red); display:block; margin-bottom:6px; }
+  .fl b{ display:block; color:var(--ink); font-weight:600; font-size:15px; margin-bottom:4px; }
+  .fl span{ font-size:13.5px; color:var(--ink-soft); line-height:1.5; display:block; }
+  html[data-theme="dark"] .fl{ border-top-color:#3B5A7A; }
+  @media (max-width:860px){ .flow{ grid-template-columns:1fr; gap:18px; } }
+
+  /* date */
+  .dates{ width:100%; max-width:560px; border-collapse:collapse; border-left:3px solid var(--red); font-size:14.5px; }
+  .dates td{ padding:11px 16px; background:var(--bg-card); border-bottom:2px solid var(--bg); }
+  .dates td:last-child{ font-weight:700; color:var(--ink); }
+
+  .contact-box{ background:var(--navy); color:#fff; padding:30px 32px; position:relative; }
+  .contact-box::before{ content:""; position:absolute; left:32px; top:-6px; width:84px; height:6px; background:var(--red); }
+  .contact-box h3{ color:#fff; }
+  .contact-box a{ color:#fff; }
+  .contact-box p{ color:rgba(255,255,255,.86); }
+
+  footer{ border-top:1px solid var(--rule); padding:30px 0 44px; font-size:12.5px; color:var(--slate); }
+  footer .wrap{ display:flex; justify-content:space-between; gap:16px 30px; flex-wrap:wrap; }
+  footer a{ color:var(--ink-soft); text-decoration:none; margin-left:16px; }
+  footer a:hover{ color:var(--red); }
+  html[data-theme="dark"] footer{ color:var(--ink-mute); }
+
+  @media print{
+    .site, .jnav, .band, footer{ display:none !important; }
+    .panel{ display:block !important; opacity:1 !important; transform:none !important; page-break-inside:avoid; margin-bottom:28px; }
+  }
+
+  /* lingua: italiano di default, inglese con la bandierina */
+  html:not([data-lang="en"]) [data-l="en"], html[data-lang="en"] [data-l="it"]{ display:none !important; }
+  .langbtn{ appearance:none; display:inline-flex; align-items:center; gap:9px; background:none; border:1px solid var(--rule); padding:6px 12px 6px 9px; cursor:pointer; font-family:var(--font-text); font-size:13px; font-weight:600; color:var(--ink); }
+  .langbtn:hover{ border-color:var(--ink); }
+  .langbtn span{ display:inline-flex; align-items:center; gap:9px; }
+  .langbtn svg{ width:22px; height:14px; display:block; box-shadow:0 0 0 1px rgba(18,38,58,.15); }
+  .langbtn b{ font-weight:600; }
+  /* riquadri vuoti: le voci previste, ancora senza contenuto */
+  .slots{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:28px; }
+  .slot{ border:1.5px dashed var(--rule); padding:18px 18px 16px; display:flex; flex-direction:column; gap:6px; min-height:92px; }
+  .slot b{ font-weight:600; color:var(--ink); font-size:15px; }
+  .slot em{ font-style:normal; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--slate); margin-top:auto; }
+  html[data-theme="dark"] .slot em{ color:var(--ink-mute); }
+  .lead-board{ grid-template-columns:1fr; margin-bottom:0; }
+</style>
+</head>
+<body>
+<a class="skip" href="#content"><span data-l="it">Vai al contenuto</span><span data-l="en" lang="en">Skip to content</span></a>
+
+<div class="site">
+  <div class="wrap">
+    <a href="/" class="site-logo" aria-label="ANIQRC — home"><img src="favicon.svg?v=3" alt=""><b>ANI<i>Q</i>RC</b></a>
+    <div class="site-links">
+      <a href="/">Home</a>
+      <a href="eventi.html"><span data-l="it">Eventi</span><span data-l="en" lang="en">Events</span></a>
+      <a href="ricerca.html"><span data-l="it">La ricerca</span><span data-l="en" lang="en">Research</span></a>
+      <button type="button" class="langbtn" id="langBtn"><span data-l="it"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="gbc"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="gbt"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#gbc)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#gbt)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg><b lang="en">English</b></span><span data-l="en"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg><b lang="it">Italiano</b></span></button>
+      <a href="adesione.html" class="cta"><span data-l="it">Associati</span><span data-l="en" lang="en">Join ANIQRC</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTATA: titolo a sinistra, sottotitolo a destra (come nella Call for Abstracts) -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="mh-top"><span>Published by ANIQRC</span><span>Diamond open access</span><span><span data-l="it">Quadrimestrale · Peer review in doppio cieco</span><span data-l="en" lang="en">Quadrimestral · Double-blind peer review</span></span></div>
+    <div class="mh-main">
+      <h1 class="mh-title" aria-label="VIGIL"><svg xmlns="http://www.w3.org/2000/svg" viewBox="1.40 -67.40 264.20 68.80" role="img" aria-label="VIGIL"><path class="l" fill="#12263A" d="M22.900000000000002 0.0 1.4000000000000001 -66.0H19.0L33.5 -13.5H34.9L49.400000000000006 -66.0H66.8L45.300000000000004 0.0ZM73.10000000000001 0.0V-66.0H89.5V0.0ZM127.6 1.4000000000000001Q119.5 1.4000000000000001 113.0 -2.3Q106.5 -6.0 102.75 -13.450000000000001Q99.0 -20.900000000000002 99.0 -32.2Q99.0 -40.5 101.15 -47.0Q103.3 -53.5 107.6 -58.05Q111.9 -62.6 118.15 -65.0Q124.4 -67.4 132.6 -67.4Q138.8 -67.4 143.85000000000002 -66.0Q148.9 -64.60000000000001 152.60000000000002 -62.00000000000001Q156.3 -59.400000000000006 158.35000000000002 -55.800000000000004Q160.4 -52.2 160.5 -47.7L145.3 -43.0Q145.2 -46.7 143.39999999999998 -49.2Q141.6 -51.7 138.6 -53.050000000000004Q135.6 -54.400000000000006 131.9 -54.400000000000006Q126.7 -54.400000000000006 123.15 -52.050000000000004Q119.6 -49.7 117.75 -44.900000000000006Q115.9 -40.1 115.9 -32.9Q115.9 -27.5 116.95 -23.450000000000003Q118.0 -19.400000000000002 120.1 -16.700000000000003Q122.2 -14.0 125.25 -12.65Q128.3 -11.3 132.5 -11.3Q136.7 -11.3 139.75 -12.600000000000001Q142.8 -13.9 144.60000000000002 -16.6Q146.4 -19.3 146.5 -23.5H134.8V-34.9H162.5V-22.1V0.0H151.5L151.3 -16.5H149.3Q147.6 -10.700000000000001 144.89999999999998 -6.700000000000001Q142.2 -2.7 138.0 -0.65Q133.8 1.4000000000000001 127.6 1.4000000000000001ZM172.3 0.0V-66.0H188.70000000000002V0.0ZM200.60000000000002 0.0V-66.0H216.70000000000002V0.0ZM203.50000000000003 0.0V-13.5H243.60000000000002V0.0Z"/><path fill="#E63946" d="M255.10000000000002 1.3Q249.90000000000003 1.3 247.35000000000002 -0.9Q244.8 -3.1 244.8 -7.7Q244.8 -12.4 247.35000000000002 -14.600000000000001Q249.90000000000003 -16.8 255.10000000000002 -16.8Q260.40000000000003 -16.8 263.0 -14.600000000000001Q265.6 -12.4 265.6 -7.7Q265.6 1.3 255.10000000000002 1.3Z"/></svg></h1>
+      <div class="mh-sub">
+        <p>International Journal of<br>Nursing Safety and Clinical Governance</p>
+        <small><span data-l="it">e-ISSN in corso di assegnazione</span><span data-l="en" lang="en">e-ISSN in the process of assignment</span></small>
+      </div>
+    </div>
+    <div class="mh-meta">
+      <span>Executive Editor: <b>Giuseppe Fumai</b></span>
+      <span>Volume 1 · 2027</span>
+      <span class="pill ghost"><span data-l="it">Rivista in preparazione</span><span data-l="en" lang="en">Journal in preparation</span></span>
+    </div>
+  </div>
+</header>
+
+<section class="band" aria-label="Call for abstracts">
+  <div class="wrap" style="padding:0;width:100%;">
+    <div class="band-box">
+      <div class="band-k"><span data-l="it">Volume 1 · 2027 · Aperta agli infermieri di tutto il mondo</span><span data-l="en" lang="en">Volume 1 · 2027 · Open to nurses worldwide</span></div>
+      <div class="band-t">Call for abstracts</div>
+      <div class="band-s"><span data-l="it">Sicurezza del paziente · Rischio clinico · Qualità · Governo clinico</span><span data-l="en" lang="en">Patient safety · Clinical risk · Quality · Clinical governance</span></div>
+      <a class="band-a" href="#call" data-tab-link="call"><span data-l="it">Date e modalità di invio</span><span data-l="en" lang="en">Key dates and how to submit</span> <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU A TRANSIZIONE: ogni voce è anche un indirizzo diretto (es. /vigiljournal.html#board) -->
+<nav class="jnav" id="jnav" aria-label="VIGIL">
+  <div class="wrap">
+    <div class="jnav-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="1.40 -67.40 264.20 68.80" aria-hidden="true" focusable="false"><path class="l" fill="#12263A" d="M22.900000000000002 0.0 1.4000000000000001 -66.0H19.0L33.5 -13.5H34.9L49.400000000000006 -66.0H66.8L45.300000000000004 0.0ZM73.10000000000001 0.0V-66.0H89.5V0.0ZM127.6 1.4000000000000001Q119.5 1.4000000000000001 113.0 -2.3Q106.5 -6.0 102.75 -13.450000000000001Q99.0 -20.900000000000002 99.0 -32.2Q99.0 -40.5 101.15 -47.0Q103.3 -53.5 107.6 -58.05Q111.9 -62.6 118.15 -65.0Q124.4 -67.4 132.6 -67.4Q138.8 -67.4 143.85000000000002 -66.0Q148.9 -64.60000000000001 152.60000000000002 -62.00000000000001Q156.3 -59.400000000000006 158.35000000000002 -55.800000000000004Q160.4 -52.2 160.5 -47.7L145.3 -43.0Q145.2 -46.7 143.39999999999998 -49.2Q141.6 -51.7 138.6 -53.050000000000004Q135.6 -54.400000000000006 131.9 -54.400000000000006Q126.7 -54.400000000000006 123.15 -52.050000000000004Q119.6 -49.7 117.75 -44.900000000000006Q115.9 -40.1 115.9 -32.9Q115.9 -27.5 116.95 -23.450000000000003Q118.0 -19.400000000000002 120.1 -16.700000000000003Q122.2 -14.0 125.25 -12.65Q128.3 -11.3 132.5 -11.3Q136.7 -11.3 139.75 -12.600000000000001Q142.8 -13.9 144.60000000000002 -16.6Q146.4 -19.3 146.5 -23.5H134.8V-34.9H162.5V-22.1V0.0H151.5L151.3 -16.5H149.3Q147.6 -10.700000000000001 144.89999999999998 -6.700000000000001Q142.2 -2.7 138.0 -0.65Q133.8 1.4000000000000001 127.6 1.4000000000000001ZM172.3 0.0V-66.0H188.70000000000002V0.0ZM200.60000000000002 0.0V-66.0H216.70000000000002V0.0ZM203.50000000000003 0.0V-13.5H243.60000000000002V0.0Z"/><path fill="#E63946" d="M255.10000000000002 1.3Q249.90000000000003 1.3 247.35000000000002 -0.9Q244.8 -3.1 244.8 -7.7Q244.8 -12.4 247.35000000000002 -14.600000000000001Q249.90000000000003 -16.8 255.10000000000002 -16.8Q260.40000000000003 -16.8 263.0 -14.600000000000001Q265.6 -12.4 265.6 -7.7Q265.6 1.3 255.10000000000002 1.3Z"/></svg></div>
+    <div class="tabs" role="tablist" aria-label="VIGIL">
+      <button class="tab" role="tab" id="t-overview" aria-controls="overview"><span data-l="it">Panoramica</span><span data-l="en" lang="en">Overview</span></button><button class="tab" role="tab" id="t-about" aria-controls="about"><span data-l="it">Il journal</span><span data-l="en" lang="en">About</span></button><button class="tab" role="tab" id="t-scope" aria-controls="scope"><span data-l="it">Obiettivi e ambiti</span><span data-l="en" lang="en">Aims &amp; scope</span></button><button class="tab" role="tab" id="t-board" aria-controls="board"><span data-l="it">Comitato editoriale</span><span data-l="en" lang="en">Editorial board</span></button><button class="tab" role="tab" id="t-review" aria-controls="review"><span data-l="it">Peer review</span><span data-l="en" lang="en">Peer review</span></button><button class="tab" role="tab" id="t-ethics" aria-controls="ethics"><span data-l="it">Etica e COPE</span><span data-l="en" lang="en">Ethics &amp; COPE</span></button><button class="tab" role="tab" id="t-access" aria-controls="access"><span data-l="it">Accesso aperto e licenza</span><span data-l="en" lang="en">Open access &amp; licence</span></button><button class="tab" role="tab" id="t-fees" aria-controls="fees"><span data-l="it">Costi e finanziamento</span><span data-l="en" lang="en">Fees &amp; funding</span></button><button class="tab" role="tab" id="t-authors" aria-controls="authors"><span data-l="it">Per gli autori</span><span data-l="en" lang="en">For authors</span></button><button class="tab" role="tab" id="t-call" aria-controls="call"><span data-l="it">Call 2027</span><span data-l="en" lang="en">Call 2027</span></button><button class="tab" role="tab" id="t-archiving" aria-controls="archiving"><span data-l="it">Archiviazione e indicizzazione</span><span data-l="en" lang="en">Archiving &amp; indexing</span></button><button class="tab" role="tab" id="t-contact" aria-controls="contact"><span data-l="it">Contatti</span><span data-l="en" lang="en">Contact</span></button>
+      <span class="ink" aria-hidden="true"></span>
+    </div>
+    <button class="allbtn" type="button" id="allBtn" aria-pressed="false">≡ <span><span data-l="it">Tutto in una pagina</span><span data-l="en" lang="en">All on one page</span></span></button>
+  </div>
+</nav>
+
+<main id="content">
+  <div class="wrap">
+<section class="panel" id="overview" role="tabpanel" aria-labelledby="t-overview" tabindex="-1"><div class="p-head"><div><div class="p-k"><span data-l="it">Panoramica</span><span data-l="en" lang="en">Overview</span></div><h2 class="p-t"><span data-l="it">Tutto sulla rivista, in un solo posto.</span><span data-l="en" lang="en">Everything about the journal, in one place.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><p class="lead" data-l="it">La rivista è in costruzione. Ogni informazione che la riguarda – chi la dirige, come vengono valutati i lavori, quanto costa pubblicare, come si possono riusare gli articoli – viene pubblicata qui, man mano che è definita.</p><p class="lead" data-l="en" lang="en">The journal is under construction. Every piece of information about it – who runs it, how manuscripts are assessed, what publishing costs, how articles may be reused – is published here as soon as it is defined.</p><div class="grid-ov"><a class="ov" href="#about" data-tab-link="about"><span class="n">01</span><b><span data-l="it">Il journal</span><span data-l="en" lang="en">About the journal</span></b><span class="d"><span data-l="it">Editore, proprietà, periodicità e identificativi.</span><span data-l="en" lang="en">Publisher, ownership, schedule and identifiers.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#scope" data-tab-link="scope"><span class="n">02</span><b><span data-l="it">Obiettivi e ambiti</span><span data-l="en" lang="en">Aims &amp; scope</span></b><span class="d"><span data-l="it">I dieci ambiti tematici della rivista.</span><span data-l="en" lang="en">The ten topic areas of the journal.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#board" data-tab-link="board"><span class="n">03</span><b><span data-l="it">Comitato editoriale</span><span data-l="en" lang="en">Editorial board</span></b><span class="d"><span data-l="it">Executive Editor e composizione del comitato.</span><span data-l="en" lang="en">Executive Editor and board composition.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#review" data-tab-link="review"><span class="n">04</span><b><span data-l="it">Peer review</span><span data-l="en" lang="en">Peer review</span></b><span class="d"><span data-l="it">Selezione degli abstract e revisione in doppio cieco.</span><span data-l="en" lang="en">Abstract selection and double-blind review.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#ethics" data-tab-link="ethics"><span class="n">05</span><b><span data-l="it">Etica e COPE</span><span data-l="en" lang="en">Ethics &amp; COPE</span></b><span class="d"><span data-l="it">Le politiche di etica della pubblicazione.</span><span data-l="en" lang="en">Publication ethics policies.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#access" data-tab-link="access"><span class="n">06</span><b><span data-l="it">Accesso aperto e licenza</span><span data-l="en" lang="en">Open access &amp; licence</span></b><span class="d"><span data-l="it">Diamond open access, licenza CC BY-NC-ND 4.0.</span><span data-l="en" lang="en">Diamond open access, CC BY-NC-ND 4.0 licence.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#fees" data-tab-link="fees"><span class="n">07</span><b><span data-l="it">Costi e finanziamento</span><span data-l="en" lang="en">Fees &amp; funding</span></b><span class="d"><span data-l="it">Nessun costo per gli autori.</span><span data-l="en" lang="en">No charges for authors.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#authors" data-tab-link="authors"><span class="n">08</span><b><span data-l="it">Per gli autori</span><span data-l="en" lang="en">For authors</span></b><span class="d"><span data-l="it">Tipologie di articolo e invio.</span><span data-l="en" lang="en">Article types and submission.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a><a class="ov" href="#archiving" data-tab-link="archiving"><span class="n">09</span><b><span data-l="it">Archiviazione e indicizzazione</span><span data-l="en" lang="en">Archiving &amp; indexing</span></b><span class="d"><span data-l="it">e-ISSN, DOI, conservazione, banche dati.</span><span data-l="en" lang="en">e-ISSN, DOI, preservation, databases.</span></span><span class="go"><span data-l="it">Apri →</span><span data-l="en" lang="en">Open →</span></span></a></div><div class="cope"><h3><span data-l="it">Principi di trasparenza e buone pratiche nell’editoria scientifica</span><span data-l="en" lang="en">Principles of Transparency and Best Practice in Scholarly Publishing</span></h3><p class="note" style="margin-bottom:14px;"><span data-l="it">I principi congiunti COPE · DOAJ · OASPA · WAME e la sezione di questa pagina che risponde a ciascuno.</span><span data-l="en" lang="en">The joint COPE · DOAJ · OASPA · WAME principles, and where each one is answered on this page.</span></p><ol><li><a href="#about" data-tab-link="about"><span data-l="it">Sito web</span><span data-l="en" lang="en">Website</span></a></li><li><a href="#about" data-tab-link="about"><span data-l="it">Nome della rivista</span><span data-l="en" lang="en">Name of journal</span></a></li><li><a href="#review" data-tab-link="review"><span data-l="it">Processo di peer review</span><span data-l="en" lang="en">Peer review process</span></a></li><li><a href="#about" data-tab-link="about"><span data-l="it">Proprietà e gestione</span><span data-l="en" lang="en">Ownership and management</span></a></li><li><a href="#board" data-tab-link="board"><span data-l="it">Organo di governo</span><span data-l="en" lang="en">Governing body</span></a></li><li><a href="#board" data-tab-link="board"><span data-l="it">Redazione e contatti</span><span data-l="en" lang="en">Editorial team and contact information</span></a></li><li><a href="#access" data-tab-link="access"><span data-l="it">Copyright e licenze</span><span data-l="en" lang="en">Copyright and licensing</span></a></li><li><a href="#fees" data-tab-link="fees"><span data-l="it">Costi per gli autori</span><span data-l="en" lang="en">Author fees</span></a></li><li><a href="#ethics" data-tab-link="ethics"><span data-l="it">Gestione delle segnalazioni di cattiva condotta</span><span data-l="en" lang="en">Process for identification of and dealing with allegations of research misconduct</span></a></li><li><a href="#ethics" data-tab-link="ethics"><span data-l="it">Etica della pubblicazione</span><span data-l="en" lang="en">Publication ethics</span></a></li><li><a href="#about" data-tab-link="about"><span data-l="it">Calendario di pubblicazione</span><span data-l="en" lang="en">Publishing schedule</span></a></li><li><a href="#access" data-tab-link="access"><span data-l="it">Accesso</span><span data-l="en" lang="en">Access</span></a></li><li><a href="#archiving" data-tab-link="archiving"><span data-l="it">Archiviazione</span><span data-l="en" lang="en">Archiving</span></a></li><li><a href="#fees" data-tab-link="fees"><span data-l="it">Fonti di finanziamento</span><span data-l="en" lang="en">Revenue sources</span></a></li><li><a href="#fees" data-tab-link="fees"><span data-l="it">Pubblicità</span><span data-l="en" lang="en">Advertising</span></a></li><li><a href="#fees" data-tab-link="fees"><span data-l="it">Marketing diretto</span><span data-l="en" lang="en">Direct marketing</span></a></li></ol></div></section>
+<section class="panel" id="about" role="tabpanel" aria-labelledby="t-about" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">01 · <span data-l="it">Il journal</span><span data-l="en" lang="en">About the journal</span></div><h2 class="p-t"><span data-l="it">Una rivista scientifica online su sicurezza e governo clinico.</span><span data-l="en" lang="en">A peer-reviewed e-journal on safety and governance in nursing.</span></h2></div><span class="status ok"><span data-l="it">Definito</span><span data-l="en" lang="en">Confirmed</span></span></div><p class="lead" data-l="it"><em>VIGIL – International Journal of Nursing Safety and Clinical Governance</em> è una rivista scientifica online con revisione tra pari, edita da ANIQRC (Associazione Nazionale Infermieri Qualità e Rischio Clinico). È aperta a infermieri, ostetriche, studenti, docenti, dirigenti e gruppi interprofessionali di ogni Paese.</p><p class="lead" data-l="en" lang="en"><em>VIGIL – International Journal of Nursing Safety and Clinical Governance</em> is a peer-reviewed e-journal published by ANIQRC (Italian National Association of Nurses for Quality and Clinical Risk). It is open to nurses, midwives, nursing students, educators, managers and interprofessional teams from every country.</p><table class="facts"><tr><th><span data-l="it">Titolo</span><span data-l="en" lang="en">Title</span></th><td>VIGIL – International Journal of Nursing Safety and Clinical Governance</td></tr><tr><th><span data-l="it">Editore</span><span data-l="en" lang="en">Publisher</span></th><td>ANIQRC – Associazione Nazionale Infermieri Qualità e Rischio Clinico</td></tr><tr><th><span data-l="it">Proprietà</span><span data-l="en" lang="en">Ownership</span></th><td><span data-l="it">La rivista è di proprietà di ANIQRC, associazione non riconosciuta ai sensi dell’art. 36 c.c. · Via Napoli 369/Q, 70132 Bari · C.F. 93568220722</span><span data-l="en" lang="en">The journal is owned by ANIQRC, a non-profit association under art. 36 of the Italian Civil Code · Via Napoli 369/Q, 70132 Bari, Italy · Tax code 93568220722</span></td></tr><tr><th><span data-l="it">Formato</span><span data-l="en" lang="en">Format</span></th><td><span data-l="it">Solo online (e-journal)</span><span data-l="en" lang="en">Online only (e-journal)</span></td></tr><tr><th><span data-l="it">Periodicità</span><span data-l="en" lang="en">Publishing schedule</span></th><td><span data-l="it">Quadrimestrale: tre numeri l’anno (gennaio–aprile, maggio–agosto, settembre–dicembre)</span><span data-l="en" lang="en">Three issues a year (January–April, May–August, September–December)</span></td></tr><tr><th><span data-l="it">Primo volume</span><span data-l="en" lang="en">First volume</span></th><td><span data-l="it">Volume 1 · 2027</span><span data-l="en" lang="en">Volume 1 · 2027</span></td></tr><tr><th><span data-l="it">Modello di accesso</span><span data-l="en" lang="en">Access model</span></th><td><span data-l="it">Diamond open access</span><span data-l="en" lang="en">Diamond open access</span></td></tr><tr><th><span data-l="it">Licenza</span><span data-l="en" lang="en">Licence</span></th><td><span data-l="it">CC BY-NC-ND 4.0</span><span data-l="en" lang="en">CC BY-NC-ND 4.0</span></td></tr><tr><th><span data-l="it">Peer review</span><span data-l="en" lang="en">Peer review</span></th><td><span data-l="it">In doppio cieco</span><span data-l="en" lang="en">Double-blind</span></td></tr><tr><th><span data-l="it">e-ISSN</span><span data-l="en" lang="en">e-ISSN</span></th><td><span data-l="it">In corso di assegnazione</span><span data-l="en" lang="en">In the process of assignment</span></td></tr><tr><th><span data-l="it">DOI</span><span data-l="en" lang="en">DOI</span></th><td><span data-l="it">Registrazione tramite Crossref (prevista)</span><span data-l="en" lang="en">Registration through Crossref (planned)</span></td></tr><tr><th><span data-l="it">Sito</span><span data-l="en" lang="en">Website</span></th><td><span data-l="it">aniqrc.it/vigiljournal</span><span data-l="en" lang="en">aniqrc.it/vigiljournal</span></td></tr></table></section>
+<section class="panel" id="scope" role="tabpanel" aria-labelledby="t-scope" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">02 · <span data-l="it">Obiettivi e ambiti</span><span data-l="en" lang="en">Aims &amp; scope</span></div><h2 class="p-t"><span data-l="it">Lavori che misurano il rischio e trasformano le evidenze in decisioni.</span><span data-l="en" lang="en">Work that measures risk and turns evidence into decisions.</span></h2></div><span class="status ok"><span data-l="it">Definito</span><span data-l="en" lang="en">Confirmed</span></span></div><p class="lead" data-l="it">La rivista accoglie studi che misurano il rischio, mettono alla prova modelli organizzativi e procedure e traducono le evidenze in decisioni a livello di reparti, servizi e sistemi sanitari.</p><p class="lead" data-l="en" lang="en">We welcome studies that measure risk, test organisational models and procedures, and turn evidence into decisions at the level of wards, services and health systems.</p><h3><span data-l="it">Ambiti tematici</span><span data-l="en" lang="en">Topics of interest</span></h3><div class="cols"><ul class="sq"><li><span data-l="it">Sicurezza del paziente, eventi avversi e near miss; sistemi di segnalazione e apprendimento</span><span data-l="en" lang="en">Patient safety, adverse events and near misses; incident reporting and learning systems</span></li><li><span data-l="it">Metodi di gestione del rischio clinico: FMEA/HFMEA, root cause analysis, audit di sicurezza</span><span data-l="en" lang="en">Clinical risk management methods: FMEA/HFMEA, root cause analysis, safety audits</span></li><li><span data-l="it">Miglioramento della qualità, accreditamento e norme di gestione (es. ISO 9001, ISO 7101)</span><span data-l="en" lang="en">Quality improvement, accreditation and management standards (e.g., ISO 9001, ISO 7101)</span></li><li><span data-l="it">Missed nursing care, dotazione sicura del personale ed esiti sensibili all’assistenza infermieristica</span><span data-l="en" lang="en">Missed nursing care, safe staffing and nurse-sensitive outcomes</span></li><li><span data-l="it">Misure di esito e di esperienza riferite dal paziente (PROMs/PREMs)</span><span data-l="en" lang="en">Patient-reported outcome and experience measures (PROMs/PREMs)</span></li></ul><ul class="sq"><li><span data-l="it">Linguaggi infermieristici standardizzati e documentazione (es. NANDA-I, NIC, NOC)</span><span data-l="en" lang="en">Standardised nursing languages and documentation (e.g., NANDA-I, NIC, NOC)</span></li><li><span data-l="it">Benessere del personale, just culture e clima di sicurezza</span><span data-l="en" lang="en">Workforce well-being, just culture and safety climate</span></li><li><span data-l="it">Simulazione e formazione per una pratica sicura</span><span data-l="en" lang="en">Simulation and education for safe practice</span></li><li><span data-l="it">Sicurezza della sanità digitale, della telemedicina e dell’intelligenza artificiale nell’assistenza infermieristica</span><span data-l="en" lang="en">Safety of digital health, telehealth and artificial intelligence in nursing</span></li><li><span data-l="it">Sicurezza e governo clinico nelle cure territoriali, primarie e di lungo periodo</span><span data-l="en" lang="en">Safety and governance in community, primary and long-term care</span></li></ul></div></section>
+<section class="panel" id="board" role="tabpanel" aria-labelledby="t-board" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">03 · <span data-l="it">Comitato editoriale</span><span data-l="en" lang="en">Editorial board</span></div><h2 class="p-t"><span data-l="it">Chi dirige la rivista.</span><span data-l="en" lang="en">Who runs the journal.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><div class="lead-board"><div class="person exec"><div class="monogram" aria-hidden="true">GF</div><div><div class="role">Executive Editor</div><div class="nm">Giuseppe Fumai</div><div class="af"><span data-l="it">Presidente ANIQRC · Bari</span><span data-l="en" lang="en">President, ANIQRC · Bari, Italy</span><br>ORCID <a href="https://orcid.org/0009-0007-5931-4417" rel="noopener" target="_blank">0009-0007-5931-4417</a> · <a href="mailto:giuseppe.fumai@aniqrc.it">giuseppe.fumai@aniqrc.it</a></div></div></div></div><div class="slots"><div class="slot"><b><span data-l="it">Direzione scientifica</span><span data-l="en" lang="en">Scientific direction</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Editor-in-Chief</span><span data-l="en" lang="en">Editors-in-Chief</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Editorial Board</span><span data-l="en" lang="en">Editorial Board</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Redazione</span><span data-l="en" lang="en">Editorial office</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="review" role="tabpanel" aria-labelledby="t-review" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">04 · <span data-l="it">Peer review</span><span data-l="en" lang="en">Peer review</span></div><h2 class="p-t"><span data-l="it">In doppio cieco, decisa solo dalla revisione.</span><span data-l="en" lang="en">Double-blind, and decided on review alone.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><p class="lead" data-l="it">La redazione valuta ogni abstract per pertinenza con gli ambiti della rivista, solidità metodologica e rilevanza per la pratica. Gli autori degli abstract selezionati sono invitati a inviare il manoscritto completo, che viene sottoposto a <strong>peer review in doppio cieco</strong>.</p><p class="lead" data-l="en" lang="en">The editorial team screens each abstract for fit with the journal’s scope, methodological soundness and relevance to practice. Authors of selected abstracts are invited to submit a full manuscript, which then undergoes <strong>double-blind peer review</strong>.</p><p data-l="it">L’invito a inviare il manoscritto non garantisce la pubblicazione: la decisione finale dipende soltanto dalla peer review, secondo le linee guida del Committee on Publication Ethics (COPE).</p><p data-l="en" lang="en">An invitation to submit does not guarantee publication: the final decision rests on peer review alone, under the guidelines of the Committee on Publication Ethics (COPE).</p><div class="slots"><div class="slot"><b><span data-l="it">Procedura di revisione</span><span data-l="en" lang="en">Review procedure</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Criteri di valutazione</span><span data-l="en" lang="en">Assessment criteria</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Manoscritti dei membri della redazione</span><span data-l="en" lang="en">Submissions by editors</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Come diventare revisori</span><span data-l="en" lang="en">Becoming a reviewer</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="ethics" role="tabpanel" aria-labelledby="t-ethics" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">05 · <span data-l="it">Etica della pubblicazione</span><span data-l="en" lang="en">Publication ethics</span></div><h2 class="p-t"><span data-l="it">Le linee guida COPE.</span><span data-l="en" lang="en">COPE guidelines.</span></h2></div><span class="status wip"><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></span></div><p class="lead" data-l="it">VIGIL segue le linee guida del Committee on Publication Ethics (COPE). Le singole politiche saranno pubblicate in questa sezione.</p><p class="lead" data-l="en" lang="en">VIGIL follows the guidelines of the Committee on Publication Ethics (COPE). Individual policies will be published in this section.</p><div class="slots"><div class="slot"><b><span data-l="it">Autorialità</span><span data-l="en" lang="en">Authorship</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Conflitti di interesse e finanziamenti</span><span data-l="en" lang="en">Conflicts of interest and funding</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Approvazione etica e consenso</span><span data-l="en" lang="en">Ethics approval and consent</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Segnalazioni di cattiva condotta</span><span data-l="en" lang="en">Allegations of misconduct</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Correzioni e ritrattazioni</span><span data-l="en" lang="en">Corrections and retractions</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Reclami e ricorsi</span><span data-l="en" lang="en">Complaints and appeals</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Intelligenza artificiale</span><span data-l="en" lang="en">Artificial intelligence</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Disponibilità dei dati</span><span data-l="en" lang="en">Data availability</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="access" role="tabpanel" aria-labelledby="t-access" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">06 · <span data-l="it">Accesso aperto e licenza</span><span data-l="en" lang="en">Open access &amp; licence</span></div><h2 class="p-t"><span data-l="it">Libera da leggere.</span><span data-l="en" lang="en">Free to read.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><p class="lead" data-l="it">VIGIL adotta il modello <strong>Diamond Open Access</strong>: ogni articolo è gratuito da leggere, con licenza <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it" rel="noopener" target="_blank">CC BY-NC-ND 4.0</a>.</p><p class="lead" data-l="en" lang="en">VIGIL follows a <strong>Diamond Open Access</strong> model: every article is free to read under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank">CC BY-NC-ND 4.0</a> licence.</p><div class="slots"><div class="slot"><b><span data-l="it">Copyright</span><span data-l="en" lang="en">Copyright</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Autoarchiviazione</span><span data-l="en" lang="en">Self-archiving</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="fees" role="tabpanel" aria-labelledby="t-fees" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">07 · <span data-l="it">Costi e finanziamento</span><span data-l="en" lang="en">Fees &amp; funding</span></div><h2 class="p-t"><span data-l="it">Nessun costo per gli autori, nessun paywall per i lettori.</span><span data-l="en" lang="en">No fees for authors, no paywall for readers.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><p class="lead" data-l="it">Non sono previsti <strong>costi di sottomissione né costi di pubblicazione</strong> (article processing charges) a carico degli autori.</p><p class="lead" data-l="en" lang="en">There are <strong>no submission or article processing charges</strong> for authors.</p><div class="slots"><div class="slot"><b><span data-l="it">Fonti di finanziamento</span><span data-l="en" lang="en">Revenue sources</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Pubblicità</span><span data-l="en" lang="en">Advertising</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Marketing diretto</span><span data-l="en" lang="en">Direct marketing</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="authors" role="tabpanel" aria-labelledby="t-authors" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">08 · <span data-l="it">Per gli autori</span><span data-l="en" lang="en">For authors</span></div><h2 class="p-t"><span data-l="it">Tipologie di articolo.</span><span data-l="en" lang="en">Article types.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><div class="cols"><div><h3><span data-l="it">Tipologie di articolo</span><span data-l="en" lang="en">Article types</span></h3><ul class="sq"><li><span data-l="it"><strong>Ricerca originale</strong> – metodi quantitativi, qualitativi e misti</span><span data-l="en" lang="en"><strong>Original research</strong> – quantitative, qualitative and mixed methods</span></li><li><span data-l="it"><strong>Report di miglioramento della qualità</strong></span><span data-l="en" lang="en"><strong>Quality improvement reports</strong></span></li><li><span data-l="it"><strong>Revisioni sistematiche e scoping review</strong> – per le scoping review sono richiesti un protocollo registrato su OSF e la valutazione della qualità delle fonti incluse</span><span data-l="en" lang="en"><strong>Systematic and scoping reviews</strong> – for scoping reviews, a protocol registered on OSF and a quality appraisal of the included sources are required</span></li><li><span data-l="it"><strong>Commentary, editoriali e revisioni narrative</strong> – solo su invito</span><span data-l="en" lang="en"><strong>Commentaries, editorials and narrative reviews</strong> – by invitation only</span></li></ul></div><div><h3><span data-l="it">Come inviare</span><span data-l="en" lang="en">How to submit</span></h3><p data-l="it">Gli abstract si inviano in formato Word alla redazione, all’indirizzo <a href="mailto:giuseppe.fumai@aniqrc.it">giuseppe.fumai@aniqrc.it</a>. Per il Volume 1 i manoscritti sono richiesti attraverso la <a href="#call" data-tab-link="call">call for abstracts</a>.</p><p data-l="en" lang="en">Abstracts are sent as Word files to the Editorial Office at <a href="mailto:giuseppe.fumai@aniqrc.it">giuseppe.fumai@aniqrc.it</a>. For Volume 1, manuscripts are invited through the <a href="#call" data-tab-link="call">call for abstracts</a>.</p></div></div><div class="slots"><div class="slot"><b><span data-l="it">Norme per gli autori</span><span data-l="en" lang="en">Author guidelines</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Modello Word del manoscritto</span><span data-l="en" lang="en">Manuscript template</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="call" role="tabpanel" aria-labelledby="t-call" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">09 · <span data-l="it">Call for abstracts</span><span data-l="en" lang="en">Call for abstracts</span></div><h2 class="p-t"><span data-l="it">Volume 1 · 2027 – aperta agli infermieri di tutto il mondo.</span><span data-l="en" lang="en">Volume 1 · 2027 – open to nurses worldwide.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><p class="lead" data-l="it">VIGIL invita infermieri, ostetriche, studenti, docenti, dirigenti e gruppi interprofessionali di ogni Paese a inviare abstract per il primo volume.</p><p class="lead" data-l="en" lang="en">VIGIL invites nurses, midwives, nursing students, educators, managers and interprofessional teams from every country to submit abstracts for its first volume.</p><div class="cols"><div><h3><span data-l="it">Date – Volume 1, numero 2 (maggio–agosto 2027)</span><span data-l="en" lang="en">Key dates – Volume 1, Issue 2 (May–August 2027)</span></h3><table class="dates"><tr><td><span data-l="it">Scadenza per l’invio degli abstract</span><span data-l="en" lang="en">Abstract submission deadline</span></td><td><span data-l="it">31 gennaio 2027</span><span data-l="en" lang="en">31 January 2027</span></td></tr><tr><td><span data-l="it">Comunicazione della selezione</span><span data-l="en" lang="en">Notification of selection</span></td><td><span data-l="it">28 febbraio 2027</span><span data-l="en" lang="en">28 February 2027</span></td></tr><tr><td><span data-l="it">Scadenza per il manoscritto completo</span><span data-l="en" lang="en">Full manuscript deadline</span></td><td><span data-l="it">30 aprile 2027</span><span data-l="en" lang="en">30 April 2027</span></td></tr><tr><td><span data-l="it">Peer review e revisioni</span><span data-l="en" lang="en">Peer review and revisions</span></td><td><span data-l="it">maggio–luglio 2027</span><span data-l="en" lang="en">May–July 2027</span></td></tr><tr><td><span data-l="it">Pubblicazione</span><span data-l="en" lang="en">Publication</span></td><td><span data-l="it">agosto 2027</span><span data-l="en" lang="en">August 2027</span></td></tr></table><p class="note" style="margin-top:10px;"><span data-l="it">Le date sono indicative e saranno confermate alla pubblicazione della call.</span><span data-l="en" lang="en">Dates are indicative and will be confirmed when the call is published.</span></p><h3><span data-l="it">Perché pubblicare su VIGIL</span><span data-l="en" lang="en">Why publish in VIGIL</span></h3><ul class="sq"><li><span data-l="it">Nessun costo per gli autori, nessun paywall per i lettori</span><span data-l="en" lang="en">No fees for authors, no paywall for readers</span></li><li><span data-l="it">Peer review in doppio cieco ed etica allineata a COPE</span><span data-l="en" lang="en">Double-blind peer review and COPE-aligned ethics</span></li><li><span data-l="it">Registrazione DOI tramite Crossref (prevista) ed e-ISSN permanente (in assegnazione)</span><span data-l="en" lang="en">DOI registration through Crossref (planned) and a permanent e-ISSN (being assigned)</span></li><li><span data-l="it">Lettori internazionali: infermieri che lavorano su qualità e sicurezza</span><span data-l="en" lang="en">An international readership of nurses working on quality and safety</span></li><li><span data-l="it">La possibilità di entrare nella rivista come revisori</span><span data-l="en" lang="en">Opportunities to join the journal as a peer reviewer</span></li></ul></div><div><h3><span data-l="it">Requisiti dell’abstract</span><span data-l="en" lang="en">Abstract requirements</span></h3><ul class="sq"><li><span data-l="it">In inglese; massimo <strong>300 parole</strong>, esclusi titolo e parole chiave</span><span data-l="en" lang="en">Written in English; maximum <strong>300 words</strong>, excluding title and keywords</span></li><li><span data-l="it">Strutturato: Background, Aim, Methods, Results, Conclusions / Implications for practice (revisioni e report di miglioramento possono adattare le voci)</span><span data-l="en" lang="en">Structured: Background, Aim, Methods, Results, Conclusions / Implications for practice (reviews and QI reports may adapt the headings)</span></li><li><span data-l="it">Titolo di massimo 20 parole e 3–5 parole chiave, preferibilmente termini MeSH</span><span data-l="en" lang="en">Title of up to 20 words and 3–5 keywords, preferably MeSH terms</span></li><li><span data-l="it">Tutti gli autori con le affiliazioni; ORCID iD dell’autore corrispondente</span><span data-l="en" lang="en">All authors with affiliations; ORCID iD of the corresponding author</span></li><li><span data-l="it">La linea guida di reporting che seguirà il manoscritto completo (es. STROBE, CONSORT, COREQ, PRISMA, PRISMA-ScR, SQUIRE 2.0)</span><span data-l="en" lang="en">The reporting guideline the full manuscript will follow (e.g., STROBE, CONSORT, COREQ, PRISMA, PRISMA-ScR, SQUIRE 2.0)</span></li><li><span data-l="it">Una dichiarazione che il lavoro è originale e non è in valutazione presso altre riviste</span><span data-l="en" lang="en">A statement that the work is original and not under consideration elsewhere</span></li></ul><h3><span data-l="it">Come inviare</span><span data-l="en" lang="en">How to submit</span></h3><p data-l="it">Inviare l’abstract in formato Word a <a href="mailto:giuseppe.fumai@aniqrc.it?subject=VIGIL%20CfA%202027%20%E2%80%93%20">giuseppe.fumai@aniqrc.it</a> con oggetto <em>«VIGIL CfA 2027 – [cognome dell’autore corrispondente]»</em>.</p><p data-l="en" lang="en">Send the abstract as a Word file to <a href="mailto:giuseppe.fumai@aniqrc.it?subject=VIGIL%20CfA%202027%20%E2%80%93%20">giuseppe.fumai@aniqrc.it</a> with the subject line <em>“VIGIL CfA 2027 – [corresponding author’s surname]”</em>.</p></div></div></section>
+<section class="panel" id="archiving" role="tabpanel" aria-labelledby="t-archiving" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">10 · <span data-l="it">Archiviazione e indicizzazione</span><span data-l="en" lang="en">Archiving &amp; indexing</span></div><h2 class="p-t"><span data-l="it">Identificativi permanenti.</span><span data-l="en" lang="en">Persistent identifiers.</span></h2></div><span class="status wip"><span data-l="it">In parte definito</span><span data-l="en" lang="en">Partly defined</span></span></div><table class="facts"><tr><th>e-ISSN</th><td><span data-l="it">In corso di assegnazione</span><span data-l="en" lang="en">In the process of assignment</span></td></tr><tr><th>DOI</th><td><span data-l="it">Registrazione tramite Crossref (prevista)</span><span data-l="en" lang="en">Registration through Crossref (planned)</span></td></tr></table><div class="slots"><div class="slot"><b><span data-l="it">Conservazione digitale a lungo termine</span><span data-l="en" lang="en">Long-term digital preservation</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div><div class="slot"><b><span data-l="it">Indicizzazione nelle banche dati</span><span data-l="en" lang="en">Indexing and directories</span></b><em><span data-l="it">In preparazione</span><span data-l="en" lang="en">In preparation</span></em></div></div></section>
+<section class="panel" id="contact" role="tabpanel" aria-labelledby="t-contact" tabindex="-1" hidden><div class="p-head"><div><div class="p-k">11 · <span data-l="it">Contatti</span><span data-l="en" lang="en">Contact</span></div><h2 class="p-t"><span data-l="it">Scrivere alla redazione di VIGIL.</span><span data-l="en" lang="en">Write to the VIGIL Editorial Office.</span></h2></div><span class="status ok"><span data-l="it">Definito</span><span data-l="en" lang="en">Confirmed</span></span></div><div class="cols"><div class="contact-box"><h3><span data-l="it">Redazione</span><span data-l="en" lang="en">Editorial Office</span></h3><p><a href="mailto:giuseppe.fumai@aniqrc.it">giuseppe.fumai@aniqrc.it</a></p><p>Executive Editor: Giuseppe Fumai</p></div><div><h3><span data-l="it">Editore</span><span data-l="en" lang="en">Publisher</span></h3><p>ANIQRC – Associazione Nazionale Infermieri Qualità e Rischio Clinico<br>Via Napoli 369/Q · 70132 Bari<span data-l="it"></span><span data-l="en" lang="en">, Italy</span><br>PEC: fondazione@pec.aniqrc.it<br><span data-l="it">C.F.</span><span data-l="en" lang="en">Tax code</span> 93568220722</p></div></div></section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>VIGIL – International Journal of Nursing Safety and Clinical Governance · Published by ANIQRC</span>
+    <span><a href="/">aniqrc.it</a><a href="privacy.html">Privacy</a><a href="adesione.html"><span data-l="it">Associati</span><span data-l="en" lang="en">Join ANIQRC</span></a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  try{ var t=localStorage.getItem('aniqrc-theme'); if(t==='dark') document.documentElement.setAttribute('data-theme','dark'); }catch(e){}
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var ids=tabs.map(function(t){ return t.getAttribute('aria-controls'); });
+  var ink=document.querySelector('.ink'), list=document.querySelector('.tabs');
+  var nav=document.getElementById('jnav'), allBtn=document.getElementById('allBtn');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var current=null;
+
+  function moveInk(tab){
+    if(!tab) return;
+    ink.style.width=tab.offsetWidth+'px';
+    ink.style.transform='translateX('+tab.offsetLeft+'px)';
+    var l=tab.offsetLeft-list.clientWidth/2+tab.offsetWidth/2;
+    list.scrollTo({left:Math.max(0,l), behavior: reduce?'auto':'smooth'});
+  }
+  function show(id, opts){
+    opts=opts||{};
+    if(ids.indexOf(id)<0) id='overview';
+    var next=document.getElementById(id), prev=current?document.getElementById(current):null;
+    tabs.forEach(function(t){ var on=t.getAttribute('aria-controls')===id; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; });
+    moveInk(tabs[ids.indexOf(id)]);
+    if(document.body.classList.contains('all')){
+      next.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); current=id; return;
+    }
+    if(prev===next){ return; }
+    var dir = prev && ids.indexOf(id) < ids.indexOf(current) ? 'from-left' : 'from-right';
+    function enter(){
+      if(prev){ prev.hidden=true; prev.classList.remove('leave'); }
+      next.hidden=false;
+      if(!reduce && prev){
+        next.classList.add(dir);
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ next.classList.remove(dir); }); });
+      }
+    }
+    if(prev && !reduce){ prev.classList.add('leave'); setTimeout(enter,160); } else enter();
+    current=id;
+    if(opts.scroll){
+      var y=nav.getBoundingClientRect().top+window.scrollY;
+      if(window.scrollY>y || opts.force) window.scrollTo({top:y, behavior: reduce?'auto':'smooth'});
+    }
+  }
+  function go(id, scroll){
+    if(history.replaceState) history.replaceState(null,'','#'+id); else location.hash=id;
+    show(id,{scroll:scroll, force:true});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ go(ids[i], true); });
+    t.addEventListener('keydown',function(e){
+      var k=e.key, j=null;
+      if(k==='ArrowRight') j=(i+1)%tabs.length; else if(k==='ArrowLeft') j=(i-1+tabs.length)%tabs.length;
+      else if(k==='Home') j=0; else if(k==='End') j=tabs.length-1;
+      if(j!==null){ e.preventDefault(); tabs[j].focus(); go(ids[j], false); }
+    });
+  });
+  document.querySelectorAll('[data-tab-link]').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); go(a.getAttribute('data-tab-link'), true); });
+  });
+  allBtn.addEventListener('click',function(){
+    var on=!document.body.classList.contains('all');
+    document.body.classList.toggle('all',on); allBtn.setAttribute('aria-pressed',on);
+    document.querySelectorAll('.panel').forEach(function(p){ p.hidden = on ? false : (p.id!==current); });
+  });
+  window.addEventListener('hashchange',function(){ show(location.hash.slice(1),{scroll:true}); });
+  window.addEventListener('resize',function(){ moveInk(tabs[ids.indexOf(current)]); });
+  function edge(){ list.classList.toggle('end', list.scrollLeft+list.clientWidth >= list.scrollWidth-4); }
+  list.addEventListener('scroll',edge,{passive:true}); window.addEventListener('resize',edge); edge();
+  if('IntersectionObserver' in window){
+    var s=document.createElement('div'); s.style.height='1px'; nav.parentNode.insertBefore(s,nav);
+    new IntersectionObserver(function(en){ nav.classList.toggle('stuck', !en[0].isIntersecting); }).observe(s);
+  }
+  window.addEventListener('beforeprint',function(){ document.querySelectorAll('.panel').forEach(function(p){ p.hidden=false; }); });
+  window.addEventListener('afterprint',function(){ if(!document.body.classList.contains('all')) document.querySelectorAll('.panel').forEach(function(p){ p.hidden=(p.id!==current); }); });
+  // lingua
+  var langBtn=document.getElementById('langBtn');
+  function setLang(l, save){
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    document.title = l==='en' ? 'VIGIL — International Journal of Nursing Safety and Clinical Governance · Published by ANIQRC'
+                              : 'VIGIL — International Journal of Nursing Safety and Clinical Governance · Edito da ANIQRC';
+    if(save){ try{ localStorage.setItem('vigil-lang', l); }catch(e){} }
+    requestAnimationFrame(function(){ moveInk(tabs[ids.indexOf(current)]); edge(); });
+  }
+  langBtn.addEventListener('click', function(){ setLang(document.documentElement.getAttribute('data-lang')==='en' ? 'it' : 'en', true); });
+  var q=(location.search.match(/[?&]lang=(it|en)/)||[])[1], saved=null;
+  try{ saved=localStorage.getItem('vigil-lang'); }catch(e){}
+  setLang(q || saved || 'it', !!q);
+  var start=location.hash.slice(1);
+  show(start, {scroll: !!start && ids.indexOf(start)>=0});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ moveInk(tabs[ids.indexOf(current)]); });
+})();
+</script>
+</body>
+</html>
