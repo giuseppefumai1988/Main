@@ -1,0 +1,47 @@
+/* ==========================================================================
+   ANIQRC — identità visiva «VIGIL» (dal 9 novembre 2026)
+   Palette: blu notte #12263A · bianco #FFFFFF · rosso #E63946
+   Caratteri: Bricolage Grotesque (titoli) · Inter (sottotitoli e testo)
+   I font sono ospitati sul sito (nessuna chiamata a Google Fonts).
+   Questo foglio va incluso DOPO gli stili della pagina: ne sovrascrive le variabili.
+   ========================================================================== */
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/bricolage-grotesque-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/bricolage-grotesque-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/bricolage-grotesque-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/bricolage-grotesque-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(/inter-latin-300-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(/inter-latin-ext-300-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/inter-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/inter-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/inter-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/inter-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/inter-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:italic;font-weight:400;font-display:swap;src:url(/inter-latin-400-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+:root{
+  --navy:#12263A; --navy-2:#1B3550; --blue:#2C5C8A; --blue-soft:#E8EEF5;
+  --white:#FFFFFF; --red:#E63946; --red-deep:#C0202E;
+  --text:#22272E; --slate:#5A6573;
+  --font-display:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  --font-text:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  --bg:#FFFFFF; --bg-warm:#EEF2F7; --bg-card:#F7F9FC;
+  --ink:#12263A; --ink-soft:#2B3645; --ink-mute:#5A6573;
+  --accent:#E63946; --accent-deep:#C0202E;
+  --rule:#D6D9DE; --rule-soft:#E6EAF0; --shadow:rgba(18,38,58,.08);
+}
+html[data-theme="dark"]{
+  --bg:#0C1A2A; --bg-warm:#112236; --bg-card:#15283E;
+  --ink:#F2F5F9; --ink-soft:#C9D3DF; --ink-mute:#8C9AAB;
+  --rule:#24384F; --rule-soft:#1C3046; --shadow:rgba(0,0,0,.5);
+  --accent:#F2616E; --accent-deep:#E63946;
+}
+
+html{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body{ font-family:var(--font-text); }
+button, input, select, textarea{ font-family:var(--font-text); }
+h1, h2, h3{ font-family:var(--font-display); letter-spacing:-0.015em; }
+::selection{ background:rgba(230,57,70,.18); }

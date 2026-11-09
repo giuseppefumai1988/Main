@@ -29,7 +29,7 @@ window.ANIQRC_NEWS = [
   // Esempi già pronti — togli le // per attivarli:
   // { tag: "Eventi", testo: "Nuovi eventi", link: "eventi.html", nuovo: true },
   // { tag: "Lavori", testo: "Online il libro dei lavori del Forum di Bari", link: "forum-infermieristico-2026.html#lavori" },
-  // { tag: "Journal", testo: "È online il primo numero di VIGÍL", link: "journal.html" },
+  // { tag: "Journal", testo: "È online il primo numero di VIGIL", link: "vigiljournal.html" },
   // { tag: "Toolkit", testo: "Nuovo strumento nel Toolkit: calcolo del campione", link: "strumenti-campione.html" },
 
 ];
