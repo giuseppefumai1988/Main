@@ -77,7 +77,7 @@
 
    v22 (12 novembre 2026)
    · VIGIL: Methodological Editor (Papapicco), Language Editor (Loseto), Editorial Office Manager (Rizzo). */
-var VERSION = 'aniqrc-v24';
+var VERSION = 'aniqrc-v26';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
@@ -153,6 +153,20 @@ self.addEventListener('fetch', function(e){
         }
         return res;
       }).catch(function(){ return caches.match(chiave); })
+    );
+    return;
+  }
+
+  // PDF: sempre dalla rete, così un PDF sostituito su GitHub arriva subito; copia in cache solo per l'offline
+  if(stesso && /\.pdf$/i.test(url.pathname)){
+    e.respondWith(
+      fetch(req).then(function(res){
+        if(res && res.ok){
+          var copy = res.clone();
+          caches.open(VERSION).then(function(c){ c.put(req, copy); });
+        }
+        return res;
+      }).catch(function(){ return caches.match(req); })
     );
     return;
   }
