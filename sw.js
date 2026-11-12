@@ -46,8 +46,12 @@
    v14 (9 novembre 2026)
    · bianco ottico in tutto il sito (aniqrc-vigil.css: niente aloni in tema chiaro);
    · vigiljournal.html con le politiche di etica, copyright, autoarchiviazione,
-     finanziamento, pubblicità e marketing diretto. */
-var VERSION = 'aniqrc-v14';
+     finanziamento, pubblicità e marketing diretto.
+
+   v15 (12 novembre 2026)
+   · vigiljournal.html: loghi DOAS e OJS (logo-doas.png, logo-ojs.png, logo-ojs-bianco.png);
+     comitato editoriale con Editor-in-Chief, Deputy Editor ed Early Career Editorial Board. */
+var VERSION = 'aniqrc-v15';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
