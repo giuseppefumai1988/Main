@@ -59,8 +59,14 @@
    · comitato editoriale in ordine di funzione; International Editorial Board (Furkan Karahüseyinoğlu).
 
    v18 (12 novembre 2026)
-   · comitato editoriale senza pubblicazioni; titoli MSc, RN; Sigma e INKA (NANDA-I) per l'Executive Editor. */
-var VERSION = 'aniqrc-v18';
+   · comitato editoriale senza pubblicazioni; titoli MSc, RN; Sigma e INKA (NANDA-I) per l'Executive Editor.
+
+   v19 (12 novembre 2026)
+   · Associate Editor: Vincenzo Abbasciano (Area Wound Care); International Editorial Board: Enkeleda Gjini.
+
+   v20 (12 novembre 2026)
+   · ORCID di Vincenzo Abbasciano ed Enkeleda Gjini. */
+var VERSION = 'aniqrc-v20';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
