@@ -50,8 +50,14 @@
 
    v15 (12 novembre 2026)
    · vigiljournal.html: loghi DOAS e OJS (logo-doas.png, logo-ojs.png, logo-ojs-bianco.png);
-     comitato editoriale con Editor-in-Chief, Deputy Editor ed Early Career Editorial Board. */
-var VERSION = 'aniqrc-v15';
+     comitato editoriale con Editor-in-Chief, Deputy Editor ed Early Career Editorial Board.
+
+   v16 (12 novembre 2026)
+   · comitato editoriale: iniziali per tutti, titoli professionali, ORCID e DOI delle pubblicazioni.
+
+   v17 (12 novembre 2026)
+   · comitato editoriale in ordine di funzione; International Editorial Board (Furkan Karahüseyinoğlu). */
+var VERSION = 'aniqrc-v17';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
