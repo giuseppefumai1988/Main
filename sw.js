@@ -56,8 +56,11 @@
    · comitato editoriale: iniziali per tutti, titoli professionali, ORCID e DOI delle pubblicazioni.
 
    v17 (12 novembre 2026)
-   · comitato editoriale in ordine di funzione; International Editorial Board (Furkan Karahüseyinoğlu). */
-var VERSION = 'aniqrc-v17';
+   · comitato editoriale in ordine di funzione; International Editorial Board (Furkan Karahüseyinoğlu).
+
+   v18 (12 novembre 2026)
+   · comitato editoriale senza pubblicazioni; titoli MSc, RN; Sigma e INKA (NANDA-I) per l'Executive Editor. */
+var VERSION = 'aniqrc-v18';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
