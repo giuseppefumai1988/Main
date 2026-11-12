@@ -73,8 +73,11 @@
    · Tolto il tema giorno/notte; selettore Italiano / English su tutte le pagine
      (aniqrc-i18n.js + dizionario i18n-en.json).
    · VIGIL: «Call for papers»; Associate Editor Galasso (Rischio clinico) e Gnazzi
-     (Governance sanità privata e Ostetricia). */
-var VERSION = 'aniqrc-v21';
+     (Governance sanità privata e Ostetricia).
+
+   v22 (12 novembre 2026)
+   · VIGIL: Methodological Editor (Papapicco), Language Editor (Loseto), Editorial Office Manager (Rizzo). */
+var VERSION = 'aniqrc-v22';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
