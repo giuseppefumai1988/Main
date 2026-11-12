@@ -33,12 +33,6 @@
   --accent:#E63946; --accent-deep:#C0202E;
   --rule:#D6D9DE; --rule-soft:#E6EAF0; --shadow:rgba(18,38,58,.08);
 }
-html[data-theme="dark"]{
-  --bg:#0C1A2A; --bg-warm:#112236; --bg-card:#15283E;
-  --ink:#F2F5F9; --ink-soft:#C9D3DF; --ink-mute:#8C9AAB;
-  --rule:#24384F; --rule-soft:#1C3046; --shadow:rgba(0,0,0,.5);
-  --accent:#F2616E; --accent-deep:#E63946;
-}
 
 html{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 body{ font-family:var(--font-text); }
@@ -55,5 +49,112 @@ html:not([data-theme="dark"]) body{ background:#FFFFFF; }
 html:not([data-theme="dark"]) #aniqrc-aurora,
 html:not([data-theme="dark"]) .hero::after,
 html:not([data-theme="dark"]) .page-hero::after{ display:none !important; }
-/* barra di navigazione del tema scuro: blu notte invece del vecchio bruno */
-html[data-theme="dark"] nav{ background:rgba(12,26,42,.86); }
+
+/* ==========================================================================
+   STILE SOBRIO DEL SITO (12 novembre 2026)
+   Richiesta di Giuseppe: tutto il sito come la pagina VIGIL — fondo bianco,
+   blu notte per testi e pulsanti, il rosso solo come accento minimo
+   (occhielli, puntini, linee sottili). Niente parole rosse nei titoli,
+   niente pulsanti o riquadri pieni di rosso. Tema scuro eliminato.
+   ========================================================================== */
+.nav-theme{ display:none !important; }
+
+/* titoli e citazioni: le parole evidenziate restano nel colore del testo */
+.page-title .accent, .ev-title .accent, h1 .q, .sec-title .accent, h1 .accent, h2 .accent, h3 .accent, .accent-word,
+.hero-name .q, .hero-acronym .q, .mcard-quote .hl, .manifesto-quote .hl{ color:inherit !important; }
+.sec-title.wipe::after{ background:var(--navy) !important; }
+.mcard-mail span, .manifesto-mail .q{ color:inherit !important; }
+
+/* pulsanti: blu notte pieno o contorno, mai rosso pieno */
+.btn-primary, .nl-form button, .ask-bar button, .btn-calc, .btn-alle.primary,
+.lit-search button, .btn-pdf, a.primary, .btn.primary, .manifesto-doc{
+  background:var(--navy) !important; color:#fff !important; border-color:var(--navy) !important; box-shadow:none !important; }
+.btn-primary:hover, .nl-form button:hover, .ask-bar button:hover, .btn-calc:hover, .btn-alle.primary:hover,
+.lit-search button:hover, .btn-pdf:hover, a.primary:hover, .btn.primary:hover, .manifesto-doc:hover{
+  background:var(--navy-2) !important; color:#fff !important; }
+.btn-outline:hover, .btn-dark:hover{ background:var(--navy) !important; color:#fff !important; border-color:var(--navy) !important; }
+/* sui fondi blu notte il pulsante principale diventa bianco */
+.manifesto .btn-primary, .jrn .btn-primary, .nl-card .btn-primary, .join-card .btn-primary,
+.manifesto .manifesto-doc, .nl-card .nl-form button, .join-card .btn{
+  background:#fff !important; color:var(--navy) !important; border-color:#fff !important; }
+.manifesto .manifesto-doc:hover, .jrn .btn-primary:hover, .nl-card .nl-form button:hover, .join-card .btn-primary:hover{ background:#E8EEF5 !important; color:var(--navy) !important; }
+
+/* riquadri: angoli vivi e nessun alone rosso, come nella pagina VIGIL */
+.tool-card::after, .result-box::after, .scrolly-card::after, .story-card::after, .page-hero::after, .fx-lens{ display:none !important; }
+.tool-card, .result-box, .scrolly-card, .story-card, .ev-card, .card, .kpi{ border-radius:0 !important; }
+form .btn, button.btn[type="submit"]{ background:var(--navy) !important; color:#fff !important; box-shadow:none !important; }
+form .btn:hover, button.btn[type="submit"]:hover{ background:var(--navy-2) !important; }
+
+/* pulsanti a contorno: blu notte */
+.btn-outline{ color:var(--navy) !important; border-color:var(--navy) !important; background:transparent !important; }
+.btn-outline:hover, .btn-ghost:hover{ box-shadow:none !important; }
+.hero-pride .q, .hero-lead .q{ color:inherit !important; }
+
+/* menu: «Newsletter» e «Associati» a contorno, come nella pagina VIGIL */
+nav .nav-cta, nav .nav-cta.nav-news{
+  background:transparent !important; color:var(--navy) !important;
+  border:1.5px solid var(--navy) !important; box-shadow:none !important; }
+nav .nav-cta:hover, nav .nav-cta.nav-news:hover{ background:var(--navy) !important; color:#fff !important; }
+
+/* nastro news sotto il menu: chiaro, non più rosso */
+.newsbar{ --nb-bg:#F7F9FC !important; --nb-ink:#12263A !important; background:#F7F9FC !important; color:#12263A !important;
+  border-top:1px solid var(--rule) !important; border-bottom:1px solid var(--rule) !important; box-shadow:none !important; }
+.newsbar a, .newsbar .nb-txt, .newsbar .newsbar-label{ color:#12263A !important; }
+.newsbar .nb-tag{ background:transparent !important; color:var(--red) !important; border:1px solid currentColor !important; }
+.newsbar .nb-dot{ background:var(--red) !important; }
+.newsbar .newsbar-label{ background:#fff !important; border-right:1px solid var(--rule) !important; }
+
+/* etichette, icone e segni: blu notte al posto del rosso pieno */
+.doc-ico{ background:transparent !important; color:var(--navy) !important; border:1.5px solid var(--navy) !important; }
+.ctx-link{ background:transparent !important; color:var(--navy) !important; border:0 !important; border-bottom:1.5px solid var(--red) !important; padding-left:0 !important; padding-right:0 !important; }
+.ctx-link:hover{ color:var(--red) !important; }
+.ctx-tag{ color:var(--slate) !important; border-color:var(--rule) !important; background:transparent !important; }
+.dir-card.pres .dir-avatar, .dir-avatar{ background:var(--navy) !important; color:#fff !important; }
+.vc-flag, .nfb-nuovo, .databanner .ic{ background:var(--navy) !important; color:#fff !important; }
+.mo-num{ color:var(--navy) !important; }
+.doc-card[style*="accent"]{ border-color:var(--navy) !important; }
+.kpi::before, .ev-card::before, .story-h::before, .scrolly-step h3::before{ background:var(--navy) !important; }
+
+/* ==========================================================================
+   ZONA LOGO SUL MARE (home)
+   ========================================================================== */
+.hero{ padding-bottom:96px !important; }
+.hero-eyebrow{ margin-bottom:34px !important; }
+.hero-eyebrow .dot{ background:var(--red); }
+.hero-mare{ position:relative; background:#1B3550 url('vigil-texture.jpg') center/cover no-repeat; padding:72px 0; margin:0 0 72px; overflow:hidden; }
+.hero-mare::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(18,38,58,.30), rgba(18,38,58,0) 60%); pointer-events:none; }
+.hero-mare-inner{ position:relative; z-index:1; }
+.hm-block{ display:flex; align-items:stretch; max-width:940px; box-shadow:0 24px 60px rgba(8,18,30,.28); }
+.hm-card{ position:relative; flex:0 0 auto; background:var(--navy); padding:48px 52px 46px; display:flex; align-items:center; }
+.hm-card::before{ content:""; position:absolute; left:52px; top:-6px; width:84px; height:6px; background:var(--red); }
+.hm-card img{ display:block; width:clamp(190px,22vw,268px); height:auto; }
+.hm-info{ flex:1 1 auto; background:#fff; padding:40px 46px; display:flex; flex-direction:column; justify-content:center; border-left:3px solid var(--red); }
+.hm-info .hero-name{ font-size:clamp(14px,1.45vw,18px) !important; letter-spacing:.15em !important; color:var(--ink) !important; margin:0; opacity:1 !important; animation:none !important; }
+.hm-info .hero-social{ margin-top:24px; opacity:1 !important; animation:none !important; }
+.hm-info .hs-btn:hover svg{ color:#fff !important; }
+@media (max-width:760px){
+  .hero-mare{ padding:40px 0; margin-bottom:48px; }
+  .hm-block{ flex-direction:column; }
+  .hm-card{ padding:40px 30px 36px; justify-content:flex-start; }
+  .hm-card::before{ left:30px; }
+  .hm-card img{ width:min(62vw,240px); }
+  .hm-info{ border-left:0; border-top:3px solid var(--red); padding:30px 28px; }
+}
+
+/* ==========================================================================
+   SELETTORE DI LINGUA (italiano / inglese) — sostituisce il tema chiaro/scuro
+   ========================================================================== */
+.langbtn{ appearance:none; display:inline-flex; align-items:center; gap:9px; background:#fff; border:1px solid var(--rule);
+  padding:7px 12px 7px 9px; margin-left:14px; cursor:pointer; font-family:var(--font-text); font-size:13px; font-weight:600;
+  color:var(--navy); line-height:1; white-space:nowrap; border-radius:0; }
+.langbtn:hover{ border-color:var(--navy); }
+.langbtn svg{ width:22px; height:14px; display:block; box-shadow:0 0 0 1px rgba(18,38,58,.15); }
+.langbtn .lb-en, html[lang="en"] .langbtn .lb-it{ display:none; }
+html[lang="en"] .langbtn .lb-en{ display:inline-flex; align-items:center; gap:9px; }
+.langbtn .lb-it{ display:inline-flex; align-items:center; gap:9px; }
+.langbtn.float{ position:fixed; top:14px; right:14px; z-index:400; margin:0; }
+@media (max-width:860px){ .langbtn{ margin-left:auto; margin-right:4px; padding:7px 9px; } .langbtn b{ display:none; } }
+html.i18n-wait body{ visibility:hidden; }
+
+nav .nav-logo{ flex-shrink:0; margin-right:18px; }
+@media (max-width:1280px){ nav .langbtn b{ display:none; } nav .langbtn{ padding:7px 9px; margin-left:10px; } }

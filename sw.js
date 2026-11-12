@@ -65,8 +65,16 @@
    · Associate Editor: Vincenzo Abbasciano (Area Wound Care); International Editorial Board: Enkeleda Gjini.
 
    v20 (12 novembre 2026)
-   · ORCID di Vincenzo Abbasciano ed Enkeleda Gjini. */
-var VERSION = 'aniqrc-v20';
+   · ORCID di Vincenzo Abbasciano ed Enkeleda Gjini.
+
+   v21 (12 novembre 2026)
+   · Stile sobrio in tutto il sito (come la pagina VIGIL): meno rosso, niente riquadri accesi.
+   · Home: zona logo sul mare con il marchio ANI/QRC bianco su blu notte.
+   · Tolto il tema giorno/notte; selettore Italiano / English su tutte le pagine
+     (aniqrc-i18n.js + dizionario i18n-en.json).
+   · VIGIL: «Call for papers»; Associate Editor Galasso (Rischio clinico) e Gnazzi
+     (Governance sanità privata e Ostetricia). */
+var VERSION = 'aniqrc-v21';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',
@@ -78,7 +86,7 @@ var CORE = [
   'apple-touch-icon.png', 'apple-touch-icon-152.png', 'apple-touch-icon-167.png',
   'icon-192.png', 'icon-512.png', 'icon-512-maskable.png', 'og-image.png',
   'og-journal.png', 'logo-vigil-512.png',
-  'aniqrc-vigil.css', 'logo-aniqrc-mosaico.svg', 'logo-vigil.svg', 'vigil-texture.jpg',
+  'aniqrc-vigil.css', 'aniqrc-i18n.js', 'i18n-en.json', 'logo-aniqrc-bianco.svg', 'logo-aniqrc-mosaico.svg', 'logo-vigil.svg', 'vigil-texture.jpg',
   'inter-latin-400-normal.woff2', 'inter-latin-600-normal.woff2',
   'bricolage-grotesque-latin-700-normal.woff2', 'bricolage-grotesque-latin-800-normal.woff2'
 ];
