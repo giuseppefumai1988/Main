@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Eventi — ANIQRC</title>
-<meta name="description" content="Gli eventi seguiti da ANIQRC: il Forum infermieristico di Bari del 30 ottobre 2026 e PERSPECTIVES, il Book of Abstracts dell'edizione 1(1), con DOI su Zenodo. Convegni e appuntamenti su qualità dell'assistenza e rischio clinico.">
+<meta name="description" content="Gli eventi seguiti da ANIQRC: il convegno «Da C.Or.O a C.Or.O» del 18 dicembre 2026 all’Istituto Tumori IRCCS di Bari, il Forum infermieristico di Bari del 30 ottobre 2026 e PERSPECTIVES, il Book of Abstracts dell’edizione 1(1), con DOI su Zenodo.">
 <meta name="theme-color" content="#12263A">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://aniqrc.it/eventi.html">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="ANIQRC">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Eventi — ANIQRC · PERSPECTIVES, Book of Abstracts 1(1)">
-<meta property="og:description" content="Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026. Il Book of Abstracts con 17 lavori, DOI 10.5281/zenodo.23641370.">
+<meta property="og:description" content="Prossimo evento: Da C.Or.O a C.Or.O — Bari, 18 dicembre 2026. Concluso: Forum infermieristico, Bari, 30 ottobre 2026, con il Book of Abstracts PERSPECTIVES 1(1).">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://aniqrc.it/og-perspectives-1-1.jpg">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 <meta property="og:image:alt" content="PERSPECTIVES — Book of Abstracts, Edizione 1(1): 9 studi originali, 4 revisioni, 3 protocolli, 1 percorso clinico-assistenziale">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Eventi — ANIQRC">
-<meta name="twitter:description" content="Il Forum infermieristico di Bari e PERSPECTIVES, il Book of Abstracts dell'edizione 1(1).">
+<meta name="twitter:description" content="Da C.Or.O a C.Or.O (Bari, 18 dicembre 2026), il Forum infermieristico di Bari e PERSPECTIVES, il Book of Abstracts dell’edizione 1(1).">
 <meta name="twitter:image" content="https://aniqrc.it/og-perspectives-1-1.jpg">
 <style>
 /* =========================================================
@@ -439,7 +439,56 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 .boa-pg{ font-family: var(--font-text); color:var(--ink-mute); margin-left:10px; white-space:nowrap; }
 .boa-rights{ font-size:12.5px; line-height:1.6; color:var(--ink-mute); margin-top:30px; max-width:90ch; }
 
+
+/* ===== Scheda evento C.Or.O (20 nov 2026) ===== */
+.ev-pill.done{ background:var(--bg-warm); color:var(--ink-mute); border:1px solid var(--rule); }
+.coro{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr); gap:clamp(28px,4vw,56px); align-items:start; margin:64px 0 72px; padding-top:48px; border-top:1px solid var(--rule); scroll-margin-top:120px; }
+.coro-poster{ display:block; position:sticky; top:110px; box-shadow:0 22px 50px rgba(18,38,58,.18); }
+.coro-poster img{ display:block; width:100%; height:auto; }
+.coro-kick{ font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute); }
+.coro-title{ font-family:var(--font-display); font-weight:800; font-size:clamp(34px,5vw,58px); line-height:1; letter-spacing:-.025em; color:var(--ink); margin:12px 0 10px; }
+.coro-sub{ font-family:var(--font-display); font-weight:600; font-size:clamp(18px,2vw,22px); line-height:1.3; color:var(--ink); margin:0 0 16px; }
+.coro-lead{ font-size:16px; line-height:1.65; color:var(--ink-soft); max-width:62ch; margin:0 0 26px; }
+.coro-facts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); }
+.coro-facts > div{ padding:16px 18px 18px 0; }
+.coro-facts > div + div{ padding-left:18px; border-left:1px solid var(--rule); }
+.coro-facts .l{ display:block; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:6px; }
+.coro-facts b{ display:block; font-family:var(--font-display); font-size:16px; line-height:1.3; color:var(--ink); }
+.coro-facts small{ display:block; font-size:13px; line-height:1.5; color:var(--ink-soft); margin-top:4px; }
+.coro-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+.coro-btn{ display:inline-flex; align-items:center; gap:10px; height:52px; padding:0 26px; background:var(--ink); color:#fff; font-weight:600; font-size:15.5px; text-decoration:none; border:1.5px solid var(--ink); }
+.coro-btn:hover{ background:#0b1a29; }
+.coro-btn.ghost{ background:transparent; color:var(--ink); }
+.coro-btn.ghost:hover{ background:var(--ink); color:#fff; }
+.coro-note{ font-size:13px; color:var(--ink-mute); margin-top:10px; }
+.coro-h{ font-family:var(--font-display); font-weight:700; font-size:22px; color:var(--ink); margin:38px 0 8px; }
+.coro-prog{ list-style:none; margin:0; padding:0; }
+.coro-prog li{ display:grid; grid-template-columns:64px 1fr; gap:14px; padding:13px 0; border-bottom:1px solid var(--rule); font-size:15px; line-height:1.5; color:var(--ink); }
+.coro-prog li b{ font-family:var(--font-display); font-weight:700; }
+.coro-prog li small{ display:block; font-size:13.5px; font-style:italic; color:var(--ink-mute); margin-top:3px; }
+.coro-prog li.cr-sess{ display:block; padding:20px 0 8px; border-bottom:none; }
+.coro-prog li.cr-sess span{ font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); }
+.coro-prog li.cr-sess small{ font-style:normal; margin-top:2px; }
+.coro-credits{ font-size:13.5px; line-height:1.65; color:var(--ink-soft); margin-top:22px; }
+@media (max-width:900px){ .coro{ grid-template-columns:1fr; } .coro-poster{ position:static; max-width:420px; } .coro-facts{ grid-template-columns:1fr; } .coro-facts > div + div{ padding-left:0; border-left:none; border-top:1px solid var(--rule); } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Da C.Or.O a C.Or.O — Il ruolo dell'infermiere: da case manager a nurse pathways manager della patologia oncologica",
+  "startDate": "2026-12-18T08:00:00+01:00",
+  "endDate": "2026-12-18T14:00:00+01:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {"@type": "Place", "name": "Istituto Tumori IRCCS «Giovanni Paolo II» — Sala Tommasino", "address": {"@type": "PostalAddress", "addressLocality": "Bari", "addressRegion": "BA", "addressCountry": "IT"}},
+  "image": "https://aniqrc.it/locandina-coro-2026.jpg",
+  "description": "Convegno della rete dei Centri di Orientamento Oncologico della Puglia sul ruolo dell'infermiere. Massimo 60 partecipanti.",
+  "organizer": {"@type": "Organization", "name": "Istituto Tumori IRCCS «Giovanni Paolo II» — Bari"},
+  "sponsor": {"@type": "Organization", "name": "ANIQRC", "url": "https://aniqrc.it/"},
+  "url": "https://aniqrc.it/eventi.html#coro-2026"
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -557,6 +606,31 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
 
     <div class="ev-list">
 
+      <!-- ===== EVENTO: Da C.Or.O a C.Or.O — Bari, 18 dicembre 2026 ===== -->
+      <a class="ev-card reveal fx-card" href="#coro-2026">
+        <span class="fx-lens" aria-hidden="true"></span>
+        <div class="ev-date">
+          <div class="ev-d">18</div>
+          <div class="ev-m">Dicembre</div>
+          <div class="ev-y">2026</div>
+        </div>
+        <div class="ev-body">
+          <div class="ev-pills">
+            <span class="ev-pill live">Prossimo evento</span>
+            <span class="ev-pill type">Bari</span>
+            <span class="ev-pill call">Iscrizioni aperte</span>
+          </div>
+          <h3 class="ev-t">Da C.Or.O a C.Or.O: <span class="accent">il ruolo dell’infermiere</span></h3>
+          <div class="ev-meta">
+            <span>◷ Venerdì 18 dicembre 2026 · 08:00 — 14:00</span>
+            <span>⌖ Sala Tommasino, Istituto Tumori IRCCS «Giovanni Paolo II»</span>
+            <span>◇ Con il patrocinio di ANIQRC</span>
+          </div>
+          <p class="ev-desc">Convegno della rete dei Centri di Orientamento Oncologico della Puglia: dal case manager al nurse pathways manager della patologia oncologica. Massimo 60 partecipanti, selezionati dal comitato scientifico.</p>
+        </div>
+        <span class="ev-go" aria-hidden="true">→</span>
+      </a>
+
       <!-- ===== EVENTO: Forum infermieristico — Bari, 30 ottobre 2026 ===== -->
       <a class="ev-card reveal fx-card" href="forum-infermieristico-2026.html">
         <span class="fx-lens" aria-hidden="true"></span>
@@ -567,7 +641,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
         </div>
         <div class="ev-body">
           <div class="ev-pills">
-            <span class="ev-pill live">In programma</span>
+            <span class="ev-pill done">Concluso</span>
             <span class="ev-pill type">Bari</span>
             <span class="ev-pill call">Book of Abstracts online</span>
           </div>
@@ -577,7 +651,7 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
             <span>⌖ Sala consiliare del Comune di Bari</span>
             <span>◇ IRCCS Istituto Tumori «Giovanni Paolo II»</span>
           </div>
-          <p class="ev-desc" data-editable="source" data-path="/eventi.html" data-key="pathway-ricerca-eccellenza-una-giornata-su-q">Pathway, ricerca, eccellenza. Una giornata su qualità dell'assistenza, sicurezza delle cure e rischio clinico, con i lavori selezionati presentati nelle sessioni del pomeriggio. Nella pagina dell'evento il programma e le aree tematiche; qui sotto PERSPECTIVES, il Book of Abstracts con i 17 lavori dell'edizione.</p>
+          <p class="ev-desc" data-editable="source" data-path="/eventi.html" data-key="pathway-ricerca-eccellenza-una-giornata-su-q">Pathway, ricerca, eccellenza. Una giornata su qualità dell'assistenza, sicurezza delle cure e rischio clinico, con i lavori selezionati presentati nelle sessioni del pomeriggio. Nella pagina dell'evento il programma e le aree tematiche; qui sotto PERSPECTIVES, il Book of Abstracts con i 17 lavori presentati.</p>
         </div>
         <span class="ev-go" aria-hidden="true">→</span>
       </a>
@@ -588,6 +662,47 @@ footer { background: var(--ink); color: var(--bg); padding: 70px 0 36px; positio
       </div>
 
     </div>
+
+
+    <!-- ===== SCHEDA: Da C.Or.O a C.Or.O — 18 dicembre 2026 ===== -->
+    <article class="coro reveal" id="coro-2026">
+      <a class="coro-poster" href="locandina-coro-2026.jpg" target="_blank" rel="noopener">
+        <img src="locandina-coro-2026.jpg" alt="Locandina del convegno Da C.Or.O a C.Or.O — Il ruolo dell’infermiere: da case manager a nurse pathways manager della patologia oncologica. Bari, Istituto Tumori IRCCS Giovanni Paolo II, 18 dicembre 2026" width="1100" height="1558" loading="lazy" decoding="async">
+      </a>
+      <div class="coro-body">
+        <div class="coro-kick">Convegno · Rete dei Centri di Orientamento Oncologico della Puglia</div>
+        <h2 class="coro-title">Da C.Or.O a C.Or.O</h2>
+        <p class="coro-sub">Il ruolo dell’infermiere: da case manager a nurse pathways manager della patologia oncologica</p>
+        <p class="coro-lead">I Centri di Orientamento Oncologico (C.Or.O) sono la porta d’accesso alla rete oncologica pugliese: è qui che la persona con una diagnosi di tumore viene accolta, orientata e presa in carico lungo il percorso di cura. Il convegno mette a confronto i modelli dei centri della regione e lavora a una proposta comune sul ruolo dell’infermiere nella rete.</p>
+        <div class="coro-facts">
+          <div><span class="l">Quando</span><b>Venerdì 18 dicembre 2026</b><small>ore 08:00 — 14:00</small></div>
+          <div><span class="l">Dove</span><b>Istituto Tumori IRCCS «Giovanni Paolo II»</b><small>Sala Tommasino · Bari</small></div>
+          <div><span class="l">Posti</span><b>Massimo 60 partecipanti</b><small>selezionati dal comitato scientifico in base all’attività lavorativa, con precedenza a chi opera in contesti oncologici o correlati</small></div>
+        </div>
+        <div class="coro-actions">
+          <a class="coro-btn" href="https://docs.google.com/forms/d/1pTZ725JaAqx98gdV1DCZKGCXsZEl4bJYnEbtbuiJ29U/viewform" target="_blank" rel="noopener">Iscriviti al convegno <span aria-hidden="true">→</span></a>
+          <a class="coro-btn ghost" href="locandina-coro-2026.jpg" download>Scarica la locandina</a>
+        </div>
+        <p class="coro-note">L’iscrizione si fa con il modulo online, lo stesso del QR code della locandina.</p>
+        <h3 class="coro-h">Il programma</h3>
+        <ol class="coro-prog">
+          <li><b>08:00</b><div><span>Registrazione dei partecipanti</span></div></li>
+          <li><b>08:15</b><div><span>Saluti istituzionali</span></div></li>
+          <li class="cr-sess"><span>Prima sessione</span><small>Moderano: Angelica Mastandrea, Modesta Longobucco</small></li>
+          <li><b>08:40</b><div><span>Introduzione — Da C.Or.O a C.Or.O: obiettivi della giornata</span><small>Giuseppe Colonna</small></div></li>
+          <li><b>09:00</b><div><span>Normativa regionale C.Or.O</span><small>Brigida Matera, Felicetta Quattromini</small></div></li>
+          <li><b>09:30</b><div><span>Oncologia, dalla malattia acuta alla cronicizzazione. Differenza e ruolo del nurse pathways manager e del case manager. Quale ruolo nei centri C.Or.O?</span><small>Giorgia Chetta</small></div></li>
+          <li><b>10:00</b><div><span>Il ruolo infermieristico all’interno dei C.Or.O: modello omogeneo vs disomogeneo, modello chiuso vs rete regionale</span><small>Modelli C.Or.O a confronto: Istituto Tumori IRCCS (Maria Cessa) · ASL Bari (Gaetana De Candia) · Miulli (Tania Fersurella) · BAT (Letizia Marcone) · Salento (Maria Luigia Beda) · Policlinico di Bari (Nicoletta Cafagno) — Giuseppe Colonna, Elsa Vitale</small></div></li>
+          <li><b>11:30</b><div><span>Pausa e networking</span></div></li>
+          <li class="cr-sess"><span>Seconda sessione</span><small>Moderano: Vito Carnicelli, Carmela Patruno</small></li>
+          <li><b>11:50</b><div><span>Valutazione SWOT: ruolo infermieristico all’interno dei C.Or.O</span><small>Giuseppe Fumai</small></div></li>
+          <li><b>12:10</b><div><span>Tavola rotonda — Infermiere esperto nella rete oncologica: quale modello per la Puglia? Redazione della bozza di job description dell’infermiere dei C.Or.O</span><small>Maria Antonietta Berio, Lucia Palmiotto, Maria Cessa, Giuseppe Colonna, Letizia Marcone, Nicolangelo Calvi, Gennaro Cormio, rappresentante dei pazienti</small></div></li>
+          <li><b>13:20</b><div><span>Consegna della Borsa di studio ACTO Puglia «in memoria di Adele Leone»</span></div></li>
+          <li><b>13:40</b><div><span>Conclusioni e proposta di nuovi incontri tematici</span></div></li>
+        </ol>
+        <p class="coro-credits"><b>Comitato scientifico:</b> Anna Colantoni, Giuseppe Colonna, Brigida Matera, Giorgia Chetta, Giuseppe Fumai.<br><b>Ente organizzatore e promotore:</b> Istituto Tumori IRCCS «Giovanni Paolo II» di Bari. <b>Con il patrocinio di</b> AIIAO, ACTO Puglia, ANIQRC, AITUaC e OPI Bari.</p>
+      </div>
+    </article>
 
     <!-- ===== BOOK OF ABSTRACTS — PERSPECTIVES 1(1) ===== -->
     <div class="boa reveal" id="book-of-abstracts">

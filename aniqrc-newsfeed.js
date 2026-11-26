@@ -36,8 +36,10 @@
    ========================================================= */
 
 window.ANIQRC_TESTATE = [
-  { nome: 'Nurse Times', sito: 'https://www.nursetimes.org/', feed: 'https://nursetimes.org/feed/' },
-  { nome: 'Nurse24',     sito: 'https://www.nurse24.it/',     feed: 'https://www.nurse24.it/feed.html' },
+  { nome: 'Nurse Times', sito: 'https://www.nursetimes.org/',
+    feed: ['https://www.nursetimes.org/feed', 'https://nursetimes.org/feed/'] },
+  { nome: 'Nurse24',     sito: 'https://www.nurse24.it/',
+    feed: ['https://www.nurse24.it/feed.html', 'https://www.nurse24.it/rss.xml', 'https://www.nurse24.it/feed'] },
 ];
 
 /* Notizie mostrate per ciascuna testata. */
@@ -63,10 +65,15 @@ window.ANIQRC_FEED_ALTERNANZA = 10;
   var MAX = Math.max(1, Number(window.ANIQRC_FEED_MAX) || 10);
   var DURATA = Math.max(4, Number(window.ANIQRC_FEED_ALTERNANZA) || 10) * 1000;
   var VECCHIO = 72 * 3600 * 1000;           /* oltre tre giorni il file è «vecchio» */
+  /* servizi ponte, provati in ordine (20 nov 2026: aggiunti rss2json e allorigins «get», più stabili) */
   var PONTI = [
-    function (u) { return 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u); },
-    function (u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
+    { tipo: 'rss2json', url: function (u) { return 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(u); } },
+    { tipo: 'allorigins', url: function (u) { return 'https://api.allorigins.win/get?url=' + encodeURIComponent(u); } },
+    { tipo: 'xml', url: function (u) { return 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u); } },
   ];
+  var MAX_TENTATIVI = 6;                       /* tetto ai tentativi per testata */
+  var CACHE = 'aniqrc-newsfeed-v2';            /* ultimi titoli buoni, per non restare a mani vuote */
+  var CACHE_DURATA = 48 * 3600 * 1000;
   var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   var tabsEl = box.querySelector('.nfb-tabs');
@@ -181,18 +188,54 @@ window.ANIQRC_FEED_ALTERNANZA = 10;
       };
     }).filter(function (v) { return v.titolo && /^https?:\/\//i.test(v.link); });
   }
+  function leggiRss2json(d) {
+    if (!d || d.status !== 'ok' || !Array.isArray(d.items)) return [];
+    return d.items.map(function (it) {
+      var t = Date.parse(String(it.pubDate || '').replace(' ', 'T') + (/[zZ+]/.test(it.pubDate || '') ? '' : 'Z'));
+      return {
+        titolo: testo(it.title),
+        link: String(it.link || '').trim(),
+        data: isNaN(t) ? null : new Date(t).toISOString(),
+        sommario: taglia(ripulisci(testo(it.description || it.content)), 240),
+      };
+    }).filter(function (v) { return v.titolo && /^https?:\/\//i.test(v.link); });
+  }
   function daPonte(ts) {
+    var feeds = [].concat(ts.feed || []).filter(Boolean);
+    var tentativi = [];
+    feeds.forEach(function (f) { PONTI.forEach(function (p) { tentativi.push({ p: p, f: f }); }); });
+    tentativi = tentativi.slice(0, MAX_TENTATIVI);
     var i = 0;
     function prova() {
-      if (!ts.feed || i >= PONTI.length) return Promise.resolve([]);
-      return prendi(PONTI[i++](ts.feed), 8000, true)
-        .then(function (xml) {
-          var voci = (xml && xml.indexOf('<') !== -1) ? leggiRSS(xml) : [];
+      if (i >= tentativi.length) return Promise.resolve([]);
+      var t = tentativi[i++];
+      return prendi(t.p.url(t.f), 7000, t.p.tipo === 'xml')
+        .then(function (r) {
+          var voci = [];
+          if (t.p.tipo === 'rss2json') voci = leggiRss2json(r);
+          else if (t.p.tipo === 'allorigins') voci = (r && r.contents && r.contents.indexOf('<') !== -1) ? leggiRSS(r.contents) : [];
+          else voci = (r && r.indexOf('<') !== -1) ? leggiRSS(r) : [];
           return voci.length ? voci.slice(0, MAX) : prova();
         })
         .catch(prova);
     }
     return prova();
+  }
+
+  /* ---------- 3. memoria locale degli ultimi titoli ---------- */
+  function leggiCache(k) {
+    try {
+      var c = JSON.parse(localStorage.getItem(CACHE) || '{}')[TESTATE[k].nome];
+      if (c && c.voci && c.voci.length && Date.now() - c.t < CACHE_DURATA) return { voci: c.voci, quando: new Date(c.t) };
+    } catch (e) {}
+    return null;
+  }
+  function scriviCache(k, r) {
+    try {
+      var all = JSON.parse(localStorage.getItem(CACHE) || '{}');
+      all[TESTATE[k].nome] = { t: (r.quando || new Date()).getTime(), voci: r.voci.slice(0, MAX) };
+      localStorage.setItem(CACHE, JSON.stringify(all));
+    } catch (e) {}
   }
 
   /* ---------- disegno ---------- */
@@ -380,7 +423,10 @@ window.ANIQRC_FEED_ALTERNANZA = 10;
   costruisciSchede();
   ferma(fermo);
   segna();
+  /* se ci sono titoli recenti in memoria, si vedono subito; poi arrivano quelli nuovi */
+  TESTATE.forEach(function (ts, k) { var c = leggiCache(k); if (c) dati[k] = c; });
   mostra(false);
+  if (dati[0]) { pronto = true; trascorso = 0; moto(); }
 
   daFile().then(function (f) {
     var fresco = !!(f && f.quando && Date.now() - f.quando.getTime() < VECCHIO);
@@ -390,9 +436,11 @@ window.ANIQRC_FEED_ALTERNANZA = 10;
         ? Promise.resolve({ voci: dalFile, quando: f.quando })
         : daPonte(ts).then(function (voci) {
             if (voci.length) return { voci: voci, quando: new Date() };
-            return { voci: dalFile, quando: f ? f.quando : null };   /* meglio titoli datati che niente, con la data in vista */
+            if (dalFile.length) return { voci: dalFile, quando: f.quando };   /* meglio titoli datati che niente, con la data in vista */
+            return leggiCache(k) || { voci: [], quando: null };
           });
       return p.then(function (r) {
+        if (r.voci.length) scriviCache(k, r);
         dati[k] = r;
         if (k === cur) mostra(false);
         if (k === 0 && !pronto) { pronto = true; trascorso = 0; moto(); }

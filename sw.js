@@ -77,7 +77,7 @@
 
    v22 (12 novembre 2026)
    · VIGIL: Methodological Editor (Papapicco), Language Editor (Loseto), Editorial Office Manager (Rizzo). */
-var VERSION = 'aniqrc-v26';
+var VERSION = 'aniqrc-v27';
 var CORE = [
   './', 'index.html',
   'osservatorio.html', 'toolkit.html', 'ricerca.html', 'eventi.html',

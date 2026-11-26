@@ -95,6 +95,12 @@ nav .nav-cta, nav .nav-cta.nav-news{
   background:transparent !important; color:var(--navy) !important;
   border:1.5px solid var(--navy) !important; box-shadow:none !important; }
 nav .nav-cta:hover, nav .nav-cta.nav-news:hover{ background:var(--navy) !important; color:#fff !important; }
+/* pulsanti del menu più grandi e tutti uguali (Newsletter/Iscriviti, Associati) — 20 nov 2026 */
+nav .nav-cta{ display:inline-flex !important; align-items:center; justify-content:center; box-sizing:border-box;
+  height:48px; min-width:156px; padding:0 24px !important; font-size:15.5px !important; font-weight:600 !important;
+  letter-spacing:.01em; line-height:1; white-space:nowrap; transform:none !important; }
+@media (max-width:1280px){ nav .nav-cta{ height:44px; min-width:118px; padding:0 16px !important; font-size:14.5px !important; } }
+@media (max-width:640px){ nav .nav-cta{ height:42px; min-width:0; padding:0 16px !important; font-size:14px !important; } }
 
 /* nastro news sotto il menu: chiaro, non più rosso */
 .newsbar{ --nb-bg:#F7F9FC !important; --nb-ink:#12263A !important; background:#F7F9FC !important; color:#12263A !important;
@@ -157,4 +163,7 @@ html[lang="en"] .langbtn .lb-en{ display:inline-flex; align-items:center; gap:9p
 html.i18n-wait body{ visibility:hidden; }
 
 nav .nav-logo{ flex-shrink:0; margin-right:18px; }
-@media (max-width:1280px){ nav .langbtn b{ display:none; } nav .langbtn{ padding:7px 9px; margin-left:10px; } }
+@media (max-width:1599px){ nav .langbtn b{ display:none; } nav .langbtn{ padding:7px 9px; margin-left:10px; } }
+@media (min-width:1400px){ nav .nav-inner{ max-width:1480px !important; } }
+/* pagine interne: tra 861 e 1100 px le voci del menu non entrano più accanto ai pulsanti → restano logo, pulsanti e lingua (come su telefono) */
+@media (max-width:1100px){ nav .nav-inner:not(:has(a[href="#manifesto"])) .nav-links a:not(.nav-cta){ display:none !important; } }

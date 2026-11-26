@@ -14,6 +14,8 @@
      tag    →  etichetta a pillola davanti al testo     (facoltativo)
      nuovo  →  true per il pallino lampeggiante         (facoltativo)
      esterno → true se il link va aperto in nuova scheda (facoltativo)
+     tag_en, testo_en → le stesse voci per la versione inglese del sito
+                        (facoltative: se mancano resta l'italiano)
 
    Per AGGIUNGERE una news: copia una riga e cambiala.
    Per TOGLIERE una news: cancella la sua riga, oppure mettici // davanti.
@@ -22,9 +24,14 @@
 
 window.ANIQRC_NEWS = [
 
-  { tag: "Book of Abstracts", testo: "Online PERSPECTIVES 1(1): i 17 lavori del Forum di Bari, con DOI su Zenodo", link: "eventi.html#book-of-abstracts", nuovo: true },
+  { tag: "Prossimo evento", testo: "Da C.Or.O a C.Or.O: il ruolo dell'infermiere nella rete oncologica — Bari, Istituto Tumori IRCCS, 18 dicembre 2026 · iscrizioni aperte", link: "eventi.html#coro-2026", nuovo: true,
+    tag_en: "Next event", testo_en: "From C.Or.O to C.Or.O: the nurse's role in the oncology network — Bari, Istituto Tumori IRCCS, 18 December 2026 · registration open" },
 
-  { tag: "Evento", testo: "Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026", link: "forum-infermieristico-2026.html" },
+  { tag: "Concluso", testo: "Forum infermieristico: Qualità, sicurezza e rischio clinico — Bari, 30 ottobre 2026", link: "forum-infermieristico-2026.html",
+    tag_en: "Concluded", testo_en: "Nursing Forum: Quality, Safety and Clinical Risk — Bari, 30 October 2026" },
+
+  { tag: "Book of Abstracts", testo: "Online PERSPECTIVES 1(1): i 17 lavori del Forum di Bari, con DOI su Zenodo", link: "eventi.html#book-of-abstracts",
+    testo_en: "PERSPECTIVES 1(1) is online: the 17 papers of the Bari Forum, with DOIs on Zenodo" },
 
   // Esempi già pronti — togli le // per attivarli:
   // { tag: "Eventi", testo: "Nuovi eventi", link: "eventi.html", nuovo: true },
@@ -51,11 +58,16 @@ window.ANIQRC_NEWS_SPEED = 60;
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  function inglese() { return (document.documentElement.getAttribute('lang') || '').slice(0, 2) === 'en'; }
+
   function itemHTML(it) {
+    var en = inglese();
+    var tag = en && it.tag_en ? it.tag_en : it.tag;
+    var txt = en && it.testo_en ? it.testo_en : it.testo;
     var inner = '';
     if (it.nuovo) inner += '<span class="nb-new" aria-hidden="true"></span>';
-    if (it.tag) inner += '<span class="nb-tag">' + esc(it.tag) + '</span>';
-    inner += '<span class="nb-txt">' + esc(it.testo) + '</span>';
+    if (tag) inner += '<span class="nb-tag">' + esc(tag) + '</span>';
+    inner += '<span class="nb-txt">' + esc(txt) + '</span>';
 
     var html;
     if (it.link) {
@@ -73,6 +85,7 @@ window.ANIQRC_NEWS_SPEED = 60;
     var track = document.getElementById('newsbarTrack');
     var view = bar && bar.querySelector('.newsbar-viewport');
     if (!bar || !track || !view) return;
+    track.setAttribute('data-noi18n', '');   /* la traduzione la fa questo file (tag_en, testo_en) */
 
     var news = Array.isArray(window.ANIQRC_NEWS) ? window.ANIQRC_NEWS.filter(function (n) {
       return n && n.testo;
@@ -113,6 +126,11 @@ window.ANIQRC_NEWS_SPEED = 60;
     });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(build).catch(function () {});
+    }
+    /* cambio di lingua (pulsante Italiano / English): il nastro si ricostruisce */
+    if (window.MutationObserver) {
+      new MutationObserver(function () { build(); })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
     }
   }
 
