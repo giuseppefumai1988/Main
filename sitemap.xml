@@ -31,8 +31,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aniqrc.it/visione.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://aniqrc.it/eventi.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

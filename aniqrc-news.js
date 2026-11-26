@@ -24,6 +24,9 @@
 
 window.ANIQRC_NEWS = [
 
+  { tag: "Novità", testo: "È online VISIONE, la newsletter mensile di ANIQRC: sfoglia il N. 1 di novembre o scarica il PDF", link: "visione.html", nuovo: true,
+    tag_en: "New", testo_en: "VISIONE, ANIQRC's monthly newsletter, is online: browse issue 1 (November) or download the PDF" },
+
   { tag: "Prossimo evento", testo: "Da C.Or.O a C.Or.O: il ruolo dell'infermiere nella rete oncologica — Bari, Istituto Tumori IRCCS, 18 dicembre 2026 · iscrizioni aperte", link: "eventi.html#coro-2026", nuovo: true,
     tag_en: "Next event", testo_en: "From C.Or.O to C.Or.O: the nurse's role in the oncology network — Bari, Istituto Tumori IRCCS, 18 December 2026 · registration open" },
 

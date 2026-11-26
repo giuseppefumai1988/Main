@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ANIQRC">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>VISIONE — la newsletter mensile di ANIQRC</title>
+<meta name="description" content="VISIONE è il periodico mensile di ANIQRC su qualità, sicurezza delle cure e rischio clinico: una notizia istituzionale, quattro lavori indicizzati su PubMed e un articolo della stampa, letti in chiave organizzativa. Sfoglia online o scarica il PDF.">
+<meta name="theme-color" content="#04080F">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://aniqrc.it/visione.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:url" content="https://aniqrc.it/visione.html">
+<meta property="og:site_name" content="ANIQRC">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="VISIONE · N. 1 · Novembre 2026 — la newsletter mensile di ANIQRC">
+<meta property="og:description" content="Qualità, sicurezza delle cure e rischio clinico, ogni mese. Sfoglia online il primo numero o scarica il PDF.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aniqrc.it/og-visione.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VISIONE, la newsletter mensile di ANIQRC — Numero 1, Novembre 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VISIONE — la newsletter mensile di ANIQRC">
+<meta name="twitter:description" content="Sfoglia online il primo numero di VISIONE o scarica il PDF.">
+<meta name="twitter:image" content="https://aniqrc.it/og-visione.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Periodical",
+      "@id": "https://aniqrc.it/visione.html#periodico",
+      "name": "VISIONE",
+      "alternateName": "VISIONE — Newsletter ANIQRC",
+      "description": "Periodico mensile di ANIQRC su qualità, sicurezza delle cure e rischio clinico.",
+      "inLanguage": "it",
+      "publisher": {"@type": "Organization", "name": "ANIQRC – Associazione Nazionale Infermieri Qualità e Rischio Clinico", "url": "https://aniqrc.it/"},
+      "url": "https://aniqrc.it/visione.html"
+    },
+    {
+      "@type": "PublicationIssue",
+      "issueNumber": "1",
+      "datePublished": "2026-11",
+      "name": "VISIONE · N. 1 · Novembre 2026",
+      "isPartOf": {"@id": "https://aniqrc.it/visione.html#periodico"},
+      "image": "https://aniqrc.it/visione-n1-copertina.jpg",
+      "url": "https://aniqrc.it/VISIONE-N1-Novembre-2026.pdf",
+      "copyrightHolder": {"@type": "Organization", "name": "ANIQRC"},
+      "copyrightYear": 2026
+    }
+  ]
+}
+</script>
+<link rel="preload" href="/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="aniqrc-vigil.css?v=1">
+<style>
+/* =========================================================
+   VISIONE — pagina del periodico mensile di ANIQRC (26 nov 2026)
+   Stile notturno e «futuristico» ripreso dalla copertina del N. 1
+   (incrocio di Shibuya di notte: blu notte, ciano neon, ambra).
+   Viene dopo aniqrc-vigil.css e ne sovrascrive i colori di base.
+   ========================================================= */
+:root{
+  --v-bg:#04080F; --v-bg2:#07101C; --v-panel:rgba(12,26,42,.62); --v-line:rgba(120,200,255,.16);
+  --v-ink:#EAF1F8; --v-soft:#B8C6D6; --v-mute:#7F93A8;
+  --v-cyan:#3EE0F2; --v-amber:#FF9B4A; --v-red:#E63946;
+  --v-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; background:var(--v-bg); }
+body.vis{ background:var(--v-bg) !important; color:var(--v-ink); font-family:var(--font-text, Inter, sans-serif); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+body.vis::before{ /* griglia di fondo */
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:linear-gradient(var(--v-line) 1px, transparent 1px), linear-gradient(90deg, var(--v-line) 1px, transparent 1px);
+  background-size:64px 64px; opacity:.28;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%); mask-image:radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%);
+}
+.vis a{ color:inherit; }
+.wrap{ max-width:1240px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+.hud{ font-family:var(--v-mono); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--v-cyan); }
+.hud .sep{ color:var(--v-mute); margin:0 .6em; }
+
+/* ---------- menu ---------- */
+body.vis nav{ position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(4,8,15,.55); backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid rgba(255,255,255,.06); transition:background .3s; }
+body.vis nav.scrolled{ background:rgba(4,8,15,.86); }
+body.vis .nav-inner{ max-width:1240px; margin:0 auto; padding:14px 32px; display:flex; justify-content:space-between; align-items:center; }
+body.vis .nav-logo{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+body.vis .nav-logo .nm{ width:34px; height:34px; }
+body.vis .nav-logo .nt{ font-family:var(--font-display); font-weight:700; font-size:20px; letter-spacing:-.0165em; color:#fff; }
+body.vis .nav-logo .nt .q{ color:var(--v-red); }
+body.vis .nav-links{ display:flex; gap:30px; align-items:center; }
+body.vis .nav-links a{ font-size:13.5px; font-weight:500; color:var(--v-soft); text-decoration:none; position:relative; }
+body.vis .nav-links a:not(.nav-cta):hover, body.vis .nav-links a.active{ color:#fff; }
+body.vis .nav-links a.active::after{ content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--v-cyan); box-shadow:0 0 12px var(--v-cyan); }
+body.vis nav .nav-cta{ background:transparent !important; color:#fff !important; border:1.5px solid rgba(255,255,255,.55) !important; }
+body.vis nav .nav-cta:hover{ background:#fff !important; color:var(--v-bg) !important; }
+body.vis nav .langbtn{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#fff; }
+@media (max-width:1100px){ body.vis .nav-links a:not(.nav-cta){ display:none; } }
+
+/* ---------- hero ---------- */
+.v-hero{ position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:flex-end; padding:140px 0 70px; overflow:hidden; isolation:isolate; }
+.v-hero > .wrap{ width:100%; }
+.v-hero .bg{ position:absolute; inset:0; z-index:-2; background:#04080F url('visione-hero.jpg') center 40%/cover no-repeat; transform:scale(1.06); animation:vZoom 22s ease-out forwards; }
+@media (max-width:760px){ .v-hero .bg{ background-image:url('visione-hero-m.jpg'); background-position:center 30%; } }
+.v-hero::before{ content:''; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg, rgba(4,8,15,.55) 0%, rgba(4,8,15,.15) 30%, rgba(4,8,15,.55) 62%, #04080F 100%),
+             linear-gradient(90deg, rgba(4,8,15,.85) 0%, rgba(4,8,15,.25) 55%, rgba(4,8,15,0) 100%); }
+.v-hero::after{ /* linea di scansione */
+  content:''; position:absolute; left:0; right:0; top:-20%; height:20%; z-index:-1; pointer-events:none;
+  background:linear-gradient(180deg, transparent, rgba(62,224,242,.08), transparent); animation:vScan 7s linear infinite; }
+@keyframes vZoom{ to{ transform:scale(1); } }
+@keyframes vScan{ to{ top:110%; } }
+.v-mark{ font-family:var(--font-text, Inter, sans-serif); font-weight:700; font-size:clamp(68px, 13.5vw, 196px); line-height:.86; letter-spacing:-.045em; color:#fff; margin:22px 0 20px; text-shadow:0 0 60px rgba(62,224,242,.18); }
+.v-mark .dot{ display:inline-block; width:.17em; height:.17em; background:var(--v-red); border-radius:.035em; margin-left:.04em; box-shadow:0 0 26px rgba(230,57,70,.85); animation:vPulse 2.6s ease-in-out infinite; }
+@keyframes vPulse{ 50%{ box-shadow:0 0 6px rgba(230,57,70,.6); } }
+.v-sub{ font-size:clamp(18px, 2.1vw, 25px); line-height:1.35; color:var(--v-ink); max-width:30ch; font-weight:400; }
+.v-chips{ display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 30px; }
+.v-chip{ font-family:var(--v-mono); font-size:12px; letter-spacing:.08em; color:var(--v-soft); border:1px solid rgba(255,255,255,.18); background:rgba(4,8,15,.45); backdrop-filter:blur(8px); padding:7px 12px; }
+.v-chip b{ color:#fff; font-weight:600; }
+.v-btns{ display:flex; flex-wrap:wrap; gap:12px; }
+.v-btn{ display:inline-flex; align-items:center; gap:10px; height:52px; padding:0 26px; font-weight:600; font-size:15.5px; text-decoration:none; border:1.5px solid var(--v-cyan); color:var(--v-bg) !important; background:var(--v-cyan); box-shadow:0 0 0 rgba(62,224,242,0); transition:box-shadow .3s, transform .3s, background .3s; }
+.v-btn:hover{ box-shadow:0 0 34px rgba(62,224,242,.45); transform:translateY(-1px); }
+.v-btn.ghost{ background:rgba(4,8,15,.4); color:#fff !important; border-color:rgba(255,255,255,.6); backdrop-filter:blur(8px); }
+.v-btn.ghost:hover{ border-color:#fff; box-shadow:0 0 26px rgba(255,255,255,.18); }
+.v-btn svg{ width:18px; height:18px; }
+.v-quote{ display:flex; gap:12px; align-items:flex-start; margin-top:44px; max-width:640px; font-size:17px; color:var(--v-ink); }
+.v-quote::before{ content:''; flex:0 0 11px; height:11px; margin-top:7px; background:var(--v-red); border-radius:2px; box-shadow:0 0 14px rgba(230,57,70,.8); }
+.v-credit{ position:absolute; right:32px; bottom:22px; font-size:11.5px; color:var(--v-mute); z-index:1; }
+.v-credit a{ text-decoration:underline; text-underline-offset:2px; }
+.v-hero-side{ position:absolute; right:32px; top:50%; transform:translateY(-30%); display:flex; flex-direction:column; gap:10px; text-align:right; z-index:1; }
+.v-hero-side span{ font-family:var(--v-mono); font-size:11px; letter-spacing:.2em; color:rgba(255,255,255,.55); }
+.v-hero-side b{ font-family:var(--v-mono); font-size:44px; line-height:1; color:#fff; font-weight:500; letter-spacing:-.02em; }
+@media (max-width:900px){ .v-hero-side{ display:none; } }
+
+/* ---------- sezioni ---------- */
+.v-sec{ position:relative; padding:110px 0; z-index:1; scroll-margin-top:60px; }
+.v-h2{ font-family:var(--font-display); font-weight:800; font-size:clamp(32px, 4.4vw, 56px); line-height:1.02; letter-spacing:-.025em; color:#fff; margin:14px 0 18px; }
+.v-h2 em{ font-style:normal; color:var(--v-cyan); text-shadow:0 0 30px rgba(62,224,242,.35); }
+.v-lead{ font-size:17px; color:var(--v-soft); max-width:62ch; }
+
+/* riquadri con angoli «HUD» */
+.frame{ position:relative; border:1px solid var(--v-line); background:var(--v-panel); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+.frame::before, .frame::after{ content:''; position:absolute; width:14px; height:14px; border:2px solid var(--v-cyan); pointer-events:none; transition:width .35s, height .35s; }
+.frame::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+.frame::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+.frame:hover::before, .frame:hover::after{ width:28px; height:28px; }
+
+.v-trio{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:22px; margin-top:48px; }
+.v-card{ padding:30px 28px 28px; }
+.v-card .num{ font-family:var(--v-mono); font-size:52px; line-height:1; color:#fff; font-weight:500; }
+.v-card .num small{ font-size:15px; color:var(--v-cyan); margin-left:8px; letter-spacing:.1em; }
+.v-card h3{ font-size:18px; font-weight:600; color:#fff; margin:16px 0 8px; }
+.v-card p{ font-size:14.5px; color:var(--v-soft); }
+.v-method{ margin-top:22px; padding:24px 28px; display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start; }
+.v-method p{ font-size:15px; color:var(--v-soft); }
+.v-method p b{ color:#fff; font-weight:600; }
+
+/* numero */
+.v-issue{ display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr); gap:clamp(30px,5vw,72px); align-items:start; margin-top:44px; }
+.v-cover{ display:block; position:relative; padding:14px; }
+.v-cover img{ display:block; width:100%; height:auto; box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(62,224,242,.12); transition:transform .5s cubic-bezier(.16,1,.3,1); }
+.v-cover:hover img{ transform:translateY(-4px) rotate(-.4deg); }
+.v-cover .tag{ position:absolute; top:26px; right:26px; font-family:var(--v-mono); font-size:11px; letter-spacing:.16em; background:var(--v-red); color:#fff; padding:5px 9px; }
+.v-toc{ list-style:none; border-top:1px solid var(--v-line); }
+.v-toc li{ border-bottom:1px solid var(--v-line); }
+.v-toc button{ all:unset; box-sizing:border-box; cursor:pointer; width:100%; display:grid; grid-template-columns:1fr auto; gap:6px 24px; padding:18px 4px; transition:background .25s, padding .25s; }
+.v-toc button:hover, .v-toc button:focus-visible{ background:rgba(62,224,242,.06); padding-left:14px; }
+.v-toc button:focus-visible{ outline:2px solid var(--v-cyan); outline-offset:2px; }
+.v-toc .cat{ grid-column:1; font-family:var(--v-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--v-amber); }
+.v-toc .tt{ grid-column:1; font-size:17px; font-weight:500; color:#fff; line-height:1.35; }
+.v-toc .pg{ grid-column:2; grid-row:1 / span 2; align-self:center; font-family:var(--v-mono); font-size:13px; color:var(--v-cyan); }
+.v-issue-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+
+/* lettore */
+.v-reader{ margin-top:40px; padding:20px; }
+.v-bar{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:2px 4px 16px; }
+.v-bar .hud{ color:var(--v-soft); }
+.v-tools{ display:flex; gap:8px; flex-wrap:wrap; }
+.v-tool{ all:unset; cursor:pointer; display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,255,255,.22); color:#fff; font-size:13.5px; font-weight:500; text-decoration:none; transition:border-color .25s, background .25s; }
+.v-tool:hover, .v-tool:focus-visible{ border-color:var(--v-cyan); background:rgba(62,224,242,.08); }
+.v-tool svg{ width:16px; height:16px; }
+.v-stage{ position:relative; display:flex; align-items:center; justify-content:center; background:#020509; min-height:300px; overflow:hidden; touch-action:pan-y; }
+.v-stage img{ display:block; max-width:100%; max-height:84vh; width:auto; height:auto; box-shadow:0 20px 60px rgba(0,0,0,.6); transition:opacity .25s; user-select:none; -webkit-user-drag:none; }
+.v-stage img.loading{ opacity:.25; }
+.v-nav{ all:unset; cursor:pointer; position:absolute; top:50%; transform:translateY(-50%); width:56px; height:56px; display:flex; align-items:center; justify-content:center; background:rgba(4,8,15,.7); border:1px solid rgba(255,255,255,.25); color:#fff; transition:background .25s, border-color .25s, opacity .25s; z-index:2; }
+.v-nav:hover, .v-nav:focus-visible{ border-color:var(--v-cyan); background:rgba(62,224,242,.18); }
+.v-nav[disabled]{ opacity:.25; cursor:default; }
+.v-nav.prev{ left:14px; } .v-nav.next{ right:14px; }
+.v-nav svg{ width:22px; height:22px; }
+.v-progress{ height:3px; background:rgba(255,255,255,.1); margin-top:16px; }
+.v-progress i{ display:block; height:100%; width:0; background:linear-gradient(90deg, var(--v-cyan), var(--v-amber)); box-shadow:0 0 12px var(--v-cyan); transition:width .35s; }
+.v-dots{ display:flex; gap:6px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+.v-dots button{ all:unset; cursor:pointer; width:30px; height:30px; display:flex; align-items:center; justify-content:center; font-family:var(--v-mono); font-size:11.5px; color:var(--v-mute); border:1px solid transparent; }
+.v-dots button:hover{ color:#fff; }
+.v-dots button[aria-current="true"]{ color:var(--v-bg); background:var(--v-cyan); }
+.v-reader:fullscreen{ background:#020509; padding:16px; overflow:auto; }
+.v-reader:fullscreen .v-stage img{ max-height:calc(100vh - 150px); }
+.v-hint{ font-size:12.5px; color:var(--v-mute); text-align:center; margin-top:10px; }
+
+/* comitato */
+.v-team{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-top:44px; }
+.v-person{ display:flex; gap:16px; align-items:center; padding:20px 22px; }
+.v-person .in{ flex:0 0 52px; height:52px; display:flex; align-items:center; justify-content:center; font-family:var(--v-mono); font-size:15px; font-weight:600; color:var(--v-cyan); border:1px solid rgba(62,224,242,.45); background:rgba(62,224,242,.06); }
+.v-person b{ display:block; font-size:16.5px; font-weight:600; color:#fff; line-height:1.25; }
+.v-person span{ display:block; font-size:13.5px; color:var(--v-soft); margin-top:3px; }
+
+/* archivio */
+.v-arch{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:16px; margin-top:44px; }
+.v-ish{ display:block; padding:22px; text-decoration:none; min-height:150px; }
+.v-ish .hud{ font-size:11px; }
+.v-ish b{ display:block; font-size:22px; font-weight:700; color:#fff; margin-top:18px; letter-spacing:-.01em; }
+.v-ish span{ display:block; font-size:13.5px; color:var(--v-soft); margin-top:4px; }
+.v-ish.soon{ opacity:.55; border-style:dashed; }
+.v-ish.soon .hud{ color:var(--v-mute); }
+
+.v-legal{ padding:56px 0 70px; border-top:1px solid var(--v-line); font-size:13px; color:var(--v-mute); line-height:1.7; position:relative; z-index:1; }
+.v-legal p + p{ margin-top:10px; }
+.v-legal a{ color:var(--v-soft); }
+
+body.vis footer{ background:#020509 !important; color:#fff; padding:36px 0; position:relative; z-index:2; border-top:1px solid rgba(255,255,255,.06); }
+body.vis .foot-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12px; color:rgba(255,255,255,.5); }
+
+.reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal.in{ opacity:1; transform:none; }
+html:not(.js) .reveal{ opacity:1; transform:none; }
+
+@media (max-width:980px){
+  .v-trio, .v-team{ grid-template-columns:1fr 1fr; }
+  .v-arch{ grid-template-columns:1fr 1fr; }
+  .v-issue{ grid-template-columns:1fr; }
+  .v-cover{ max-width:420px; }
+}
+@media (max-width:640px){
+  .wrap, body.vis .nav-inner{ padding-left:20px; padding-right:20px; }
+  .v-sec{ padding:80px 0; }
+  .v-trio, .v-team{ grid-template-columns:1fr; }
+  .v-method{ grid-template-columns:1fr; }
+  .v-reader{ padding:10px; }
+  .v-nav{ width:44px; height:44px; }
+  .v-nav.prev{ left:6px; } .v-nav.next{ right:6px; }
+  .v-credit{ right:20px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .v-hero .bg, .v-hero::after, .v-mark .dot{ animation:none !important; }
+  .v-hero .bg{ transform:none; }
+  .reveal{ transition:none; opacity:1; transform:none; }
+}
+</style>
+<script>try{var q=location.search;if(/[?&]lang=en/.test(q)||(localStorage.getItem('aniqrc-lang')==='en'&&!/[?&]lang=it/.test(q))){document.documentElement.classList.add('i18n-wait');setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},2500);}}catch(e){}</script>
+<script src="aniqrc-i18n.js?v=2" defer></script>
+</head>
+<body class="vis">
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <span class="nm">
+        <img src="favicon.svg?v=2" alt="" style="display:block;width:100%;height:100%">
+      </span>
+      <span class="nt">ANI<span class="q">Q</span>RC</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#manifesto">Manifesto</a>
+      <a href="osservatorio.html">Osservatorio</a>
+      <a href="toolkit.html">Toolkit</a>
+      <a href="ricerca.html">La ricerca</a>
+      <a href="eventi.html">Eventi</a>
+      <a href="vigiljournal.html">Journal</a>
+      <a href="visione.html" class="active" aria-current="page">VISIONE</a>
+      <a href="adesione.html" class="nav-cta">Associati</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ===== HERO ===== -->
+<header class="v-hero">
+  <div class="bg" role="img" aria-label="Incrocio di Shibuya, Tokyo, visto dall'alto di notte"></div>
+  <div class="v-hero-side" aria-hidden="true"><span>N.</span><b>01</b><span>11 · 2026</span></div>
+  <div class="wrap">
+    <div class="hud">ANIQRC<span class="sep">/</span>Periodico mensile<span class="sep">/</span>Anno I</div>
+    <h1 class="v-mark">VISIONE<span class="dot" aria-hidden="true"></span></h1>
+    <p class="v-sub">La newsletter mensile di ANIQRC su qualità, sicurezza delle cure e rischio clinico.</p>
+    <div class="v-chips">
+      <span class="v-chip"><b>N. 1</b> · Novembre 2026</span>
+      <span class="v-chip">Mensile · Lettura divulgativa</span>
+      <span class="v-chip">PDF · 9 pagine</span>
+    </div>
+    <div class="v-btns">
+      <a class="v-btn" href="#sfoglia">Sfoglia il numero
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="v-btn ghost" href="VISIONE-N1-Novembre-2026.pdf" download>Scarica il PDF
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+    </div>
+    <p class="v-quote">Flussi, carichi di lavoro, regole condivise: la sicurezza si progetta.</p>
+  </div>
+  <p class="v-credit">Foto di Sarmat Batagov su Unsplash</p>
+</header>
+
+<!-- ===== CHE COS'È ===== -->
+<section class="v-sec" id="cose">
+  <div class="wrap">
+    <div class="hud reveal">01<span class="sep">/</span>Il formato</div>
+    <h2 class="v-h2 reveal">Ogni mese, <em>sei letture</em> per chi governa la qualità.</h2>
+    <p class="v-lead reveal">VISIONE seleziona ogni mese ciò che conta per chi lavora su qualità, sicurezza delle cure e rischio clinico in nefrologia, oncologia, emergenza, riabilitazione e organizzazione del lavoro, e lo legge in chiave organizzativa: procedure, ruoli, indicatori.</p>
+    <div class="v-trio">
+      <div class="v-card frame reveal">
+        <div class="num">1<small>ISS · NORME</small></div>
+        <h3>Una notizia istituzionale</h3>
+        <p>Linee guida, raccomandazioni e buone pratiche dall’Istituto Superiore di Sanità e dalle istituzioni sanitarie.</p>
+      </div>
+      <div class="v-card frame reveal">
+        <div class="num">4<small>PUBMED</small></div>
+        <h3>Quattro lavori scientifici</h3>
+        <p>Studi indicizzati su PubMed, sintetizzati in modo semplice, con una lettura critica e le ricadute organizzative.</p>
+      </div>
+      <div class="v-card frame reveal">
+        <div class="num">1<small>STAMPA</small></div>
+        <h3>Un articolo dalla stampa</h3>
+        <p>Una notizia dei quotidiani sul mondo della sanità, con testata, autore, data e collegamento all’originale.</p>
+      </div>
+    </div>
+    <div class="v-method frame reveal">
+      <div class="hud">Metodo</div>
+      <p><b>Come leggiamo i lavori.</b> Per ogni lavoro la redazione scrive una sintesi divulgativa con una lettura critica e le possibili ricadute organizzative. Non riproduciamo abstract né testi degli articoli: sotto ogni contributo sono indicati autori, rivista, DOI e PMID, a cui rimandiamo per la lettura integrale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IL NUMERO ===== -->
+<section class="v-sec" id="numero" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="hud reveal">02<span class="sep">/</span>In questo numero</div>
+    <h2 class="v-h2 reveal">Numero 1 · <em>Novembre 2026</em></h2>
+    <div class="v-issue">
+      <a class="v-cover frame reveal" href="#sfoglia" data-page="1" aria-label="Sfoglia il numero 1 di VISIONE dalla copertina">
+        <span class="tag">N. 01</span>
+        <img src="visione-n1-copertina.jpg" alt="Copertina di VISIONE, numero 1, novembre 2026" width="560" height="790" loading="lazy" decoding="async">
+      </a>
+      <div class="reveal">
+        <ol class="v-toc">
+          <li><button type="button" data-page="3"><span class="cat">In apertura · ISS</span><span class="tt">Buone pratiche organizzative: l’ISS fissa il metodo</span><span class="pg">p. 03</span></button></li>
+          <li><button type="button" data-page="4"><span class="cat">Oncologia</span><span class="tt">Terapie antitumorali a domicilio guidate da infermieri: quanto sono sicure?</span><span class="pg">p. 04</span></button></li>
+          <li><button type="button" data-page="5"><span class="cat">Nefrologia · Stress lavoro-correlato</span><span class="tt">Dialisi: la pressione del tempo pesa sulla sicurezza attraverso lo stress</span><span class="pg">p. 05</span></button></li>
+          <li><button type="button" data-page="6"><span class="cat">Emergenza · Triage</span><span class="tt">Infermieri con competenze avanzate in Pronto Soccorso: che cosa cambia per i pazienti</span><span class="pg">p. 06</span></button></li>
+          <li><button type="button" data-page="7"><span class="cat">Burnout · Risk management</span><span class="tt">Rapporto infermiere/pazienti: un paziente in più costa in burnout e in sicurezza</span><span class="pg">p. 07</span></button></li>
+          <li><button type="button" data-page="8"><span class="cat">Dalla stampa</span><span class="tt">Violenza contro i sanitari: quasi 18mila episodi nel 2025, il Pronto Soccorso resta il luogo più esposto</span><span class="pg">p. 08</span></button></li>
+        </ol>
+        <div class="v-issue-actions">
+          <a class="v-btn" href="#sfoglia" data-page="1">Sfoglia online</a>
+          <a class="v-btn ghost" href="VISIONE-N1-Novembre-2026.pdf" download>Scarica il PDF · 2,3 MB</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LETTORE ===== -->
+<section class="v-sec" id="sfoglia" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="hud reveal">03<span class="sep">/</span>Sfoglia online</div>
+    <h2 class="v-h2 reveal">Leggi <em>qui</em>, pagina per pagina.</h2>
+    <div class="v-reader frame reveal" id="reader">
+      <div class="v-bar">
+        <span class="hud" id="vCount" aria-live="polite" data-noi18n>Pagina 01 / 09</span>
+        <div class="v-tools">
+          <button type="button" class="v-tool" id="vFull"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Schermo intero</button>
+          <a class="v-tool" href="VISIONE-N1-Novembre-2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>Apri il PDF</a>
+          <a class="v-tool" href="VISIONE-N1-Novembre-2026.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Scarica</a>
+        </div>
+      </div>
+      <div class="v-stage" id="vStage" data-noi18n>
+        <button type="button" class="v-nav prev" id="vPrev" aria-label="Pagina precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <img id="vImg" src="visione-n1-p1.jpg" alt="VISIONE N. 1, pagina 1 di 9" width="1200" height="1693">
+        <button type="button" class="v-nav next" id="vNext" aria-label="Pagina successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="v-progress" aria-hidden="true"><i id="vProg"></i></div>
+      <div class="v-dots" id="vDots" role="group" aria-label="Vai alla pagina" data-noi18n></div>
+      <p class="v-hint">Usa le frecce della tastiera o scorri col dito per cambiare pagina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMITATO ===== -->
+<section class="v-sec" id="comitato" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="hud reveal">04<span class="sep">/</span>Comitato scientifico</div>
+    <h2 class="v-h2 reveal">Chi cura <em>VISIONE</em>.</h2>
+    <p class="v-lead reveal">A cura del Presidente e del Consiglio Direttivo di ANIQRC, con l’Associate Editor e l’Ufficio stampa dell’associazione.</p>
+    <div class="v-team">
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">GF</span><div><b>Giuseppe Fumai</b><span>Presidente ANIQRC</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">CM</span><div><b>Claudio Morelli</b><span>Vicepresidente</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">GC</span><div><b>Giuseppe Colonna</b><span>Segretario-Tesoriere</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">FM</span><div><b>Francesco Menolascina</b><span>Consiglio Direttivo</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">SR</span><div><b>Sara Rizzo</b><span>Segreteria scientifica</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">AS</span><div><b>Adriana Saracino</b><span>Consiglio Direttivo</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">NC</span><div><b>Nunzia Cappucci</b><span>Consiglio Direttivo</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">MFG</span><div><b>Mario Francesco Galasso</b><span>Associate Editor</span></div></div>
+      <div class="v-person frame reveal"><span class="in" aria-hidden="true">AGG</span><div><b>Antonio Gabriele Guido</b><span>Ufficio stampa ANIQRC</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARCHIVIO ===== -->
+<section class="v-sec" id="archivio" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="hud reveal">05<span class="sep">/</span>Archivio</div>
+    <h2 class="v-h2 reveal">I numeri.</h2>
+    <div class="v-arch">
+      <a class="v-ish frame reveal" href="#numero"><span class="hud">N. 01 · Online</span><b>Novembre 2026</b><span>Sicurezza progettata: ISS, oncologia, dialisi, Pronto Soccorso, staffing.</span></a>
+      <div class="v-ish frame soon reveal"><span class="hud">N. 02 · In arrivo</span><b>Dicembre 2026</b><span>Il prossimo numero.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="v-legal">
+  <div class="wrap">
+    <p>© 2026 ANIQRC – Associazione Nazionale Infermieri Qualità e Rischio Clinico, Via Napoli 369/Q, 70132 Bari. Tutti i diritti riservati: la consultazione e il download sono per uso personale; non è consentito riprodurre, modificare o ridistribuire la pubblicazione senza autorizzazione scritta di ANIQRC (L. 633/1941). Restano dei rispettivi titolari i diritti sugli articoli scientifici, giornalistici e sulle fotografie citati.</p>
+    <p>Le sintesi hanno finalità divulgative e non costituiscono indicazioni cliniche. Copertina del N. 1: foto di Sarmat Batagov su Unsplash. Vuoi ricevere VISIONE via e-mail? <a href="/#newsletter">Iscriviti alla newsletter</a> o <a href="adesione.html">associati ad ANIQRC</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© MMXXVI ANIQRC · <a href="/" style="color:inherit;">torna alla home</a></span>
+      <span>Associazione Nazionale Infermieri Qualità e Rischio Clinico · C.F. 93568220722 · Via Napoli 369/Q — 70132 Bari (BA)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Lettore di VISIONE. Per un nuovo numero: aggiungere le immagini delle pagine
+   (visione-nX-p1.jpg …) e cambiare qui prefisso e numero di pagine. */
+(function(){
+  document.documentElement.classList.add('js');
+  var NUM = { prefisso: 'visione-n1-p', pagine: 9, nome: 'VISIONE N. 1' };
+  var cur = 1;
+  var img = document.getElementById('vImg'), cnt = document.getElementById('vCount'),
+      prog = document.getElementById('vProg'), prev = document.getElementById('vPrev'),
+      next = document.getElementById('vNext'), dots = document.getElementById('vDots'),
+      stage = document.getElementById('vStage'), reader = document.getElementById('reader');
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  /* testi del lettore in italiano o in inglese (il resto della pagina passa da aniqrc-i18n.js) */
+  function en(){ return (document.documentElement.getAttribute('lang') || '').slice(0, 2) === 'en'; }
+  function T(k){ var d = en() ? { p: 'Page', di: 'of', prev: 'Previous page', next: 'Next page', nome: 'VISIONE issue 1' }
+                              : { p: 'Pagina', di: 'di', prev: 'Pagina precedente', next: 'Pagina successiva', nome: NUM.nome }; return d[k]; }
+  function etichette(){
+    prev.setAttribute('aria-label', T('prev')); next.setAttribute('aria-label', T('next'));
+    cnt.textContent = T('p') + ' ' + pad(cur) + ' / ' + pad(NUM.pagine);
+    img.alt = T('nome') + ', ' + T('p').toLowerCase() + ' ' + cur + ' ' + T('di') + ' ' + NUM.pagine;
+    [].forEach.call(dots.children, function(d){ d.setAttribute('aria-label', T('p') + ' ' + d.dataset.p); });
+  }
+  for (var i = 1; i <= NUM.pagine; i++) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = pad(i);
+    b.setAttribute('aria-label', 'Pagina ' + i); b.dataset.p = i;
+    b.addEventListener('click', function(){ go(+this.dataset.p); });
+    dots.appendChild(b);
+  }
+  function preload(n){ if (n >= 1 && n <= NUM.pagine) { var im = new Image(); im.src = NUM.prefisso + n + '.jpg'; } }
+  function go(n){
+    n = Math.max(1, Math.min(NUM.pagine, n)); if (n === cur && img.dataset.ok) return; cur = n;
+    img.classList.add('loading');
+    var src = NUM.prefisso + n + '.jpg';
+    var tmp = new Image();
+    tmp.onload = tmp.onerror = function(){ img.src = src; img.classList.remove('loading'); img.dataset.ok = 1; etichette(); };
+    tmp.src = src;
+    etichette();
+    prog.style.width = (n / NUM.pagine * 100) + '%';
+    prev.disabled = n === 1; next.disabled = n === NUM.pagine;
+    [].forEach.call(dots.children, function(d){ d.setAttribute('aria-current', +d.dataset.p === n ? 'true' : 'false'); });
+    preload(n + 1); preload(n - 1);
+  }
+  prev.addEventListener('click', function(){ go(cur - 1); });
+  next.addEventListener('click', function(){ go(cur + 1); });
+  document.addEventListener('keydown', function(e){
+    var r = reader.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    if (e.target.closest && e.target.closest('input,textarea')) return;
+    if (e.key === 'ArrowRight') { go(cur + 1); } else if (e.key === 'ArrowLeft') { go(cur - 1); }
+  });
+  var x0 = null;
+  stage.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function(e){ if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+  var full = document.getElementById('vFull');
+  if (!reader.requestFullscreen) full.style.display = 'none';
+  full.addEventListener('click', function(){ if (document.fullscreenElement) document.exitFullscreen(); else reader.requestFullscreen(); });
+  /* indice e copertina: aprono il lettore alla pagina giusta */
+  [].forEach.call(document.querySelectorAll('[data-page]'), function(el){
+    el.addEventListener('click', function(e){ e.preventDefault(); go(+el.dataset.page); document.getElementById('sfoglia').scrollIntoView({ behavior: 'smooth' }); });
+  });
+  go(1);
+  if (window.MutationObserver) new MutationObserver(etichette).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  /* menu e animazioni */
+  var nav = document.querySelector('nav');
+  if (nav) addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 20); }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .08 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2500);
+})();
+</script>
+<script src="aniqrc-app.js?v=20260921" defer></script>
+</body>
+</html>
