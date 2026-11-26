@@ -1,0 +1,56 @@
+# =============================================================
+# ANIQRC — aggiornamento automatico dei titoli del riquadro news
+# -------------------------------------------------------------
+# QUESTO FILE È UN MODELLO. Per attivarlo va creato a mano su
+# GitHub (il caricamento via «Add files» nella cartella
+# .github/workflows viene rifiutato):
+#
+#   1. repository giuseppefumai1988/Main → «Add file» →
+#      «Create new file»
+#   2. come nome scrivi:  .github/workflows/newsfeed.yml
+#   3. incolla tutto il contenuto di questo file → «Commit changes»
+#   4. scheda «Actions» → «Newsfeed testate» → «Run workflow»
+#      per il primo giro; poi riparte da solo ogni tre ore.
+#
+# Ogni giro esegue tools/build-newsfeed.mjs e, solo se i titoli
+# sono cambiati, salva news-feed.json nel repository.
+# =============================================================
+name: Newsfeed testate
+
+on:
+  schedule:
+    - cron: '23 */3 * * *'   # ogni tre ore, al minuto 23 (orario UTC)
+  workflow_dispatch:          # pulsante «Run workflow» per lanciarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsfeed
+  cancel-in-progress: true
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Raccogli i titoli delle testate
+        run: node tools/build-newsfeed.mjs
+
+      - name: Salva news-feed.json se è cambiato
+        run: |
+          if [ -z "$(git status --porcelain -- news-feed.json)" ]; then
+            echo "Nessuna novità."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news-feed.json
+          git commit -m "Newsfeed: titoli aggiornati"
+          git push
