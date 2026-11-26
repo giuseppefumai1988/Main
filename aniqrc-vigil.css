@@ -147,6 +147,38 @@ nav .nav-cta{ display:inline-flex !important; align-items:center; justify-conten
   .hm-info{ border-left:0; border-top:3px solid var(--red); padding:30px 28px; }
 }
 
+/* Tre riquadri accanto al logo: Journal, VISIONE, eventi (26 nov 2026) */
+.hero-mare-inner{ display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,300px); gap:18px; align-items:stretch; }
+.hm-block{ max-width:none; }
+.hm-tiles{ display:grid; grid-template-rows:repeat(3,1fr); gap:12px; }
+.hm-tile{ position:relative; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:16px 44px 16px 20px; background:#fff; color:var(--ink); text-decoration:none; box-shadow:0 18px 44px rgba(8,18,30,.26); border-left:3px solid var(--red); transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
+.hm-tile:hover, .hm-tile:focus-visible{ transform:translateX(4px); box-shadow:0 22px 52px rgba(8,18,30,.34); }
+.hm-tile:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+.ht-k{ font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-mute, #5A6573); }
+.ht-mark{ font-family:var(--font-display); font-weight:800; font-size:26px; line-height:1.05; letter-spacing:-.02em; color:var(--ink); }
+.ht-mark i{ font-style:normal; color:var(--red); }
+.ht-d{ font-size:12.5px; line-height:1.4; color:var(--ink-soft, #2B3645); }
+.ht-go{ position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--ink); transition:transform .3s; }
+.hm-tile:hover .ht-go{ transform:translate(4px,-50%); }
+.t-vis{ background:#04080F; color:#EAF1F8; border-left-color:#3EE0F2; }
+.t-vis .ht-k{ color:#3EE0F2; font-family:ui-monospace, Menlo, Consolas, monospace; letter-spacing:.2em; }
+.t-vis .ht-mark{ font-family:var(--font-text); font-weight:700; color:#fff; letter-spacing:-.035em; }
+.t-vis .ht-mark i{ display:inline-block; width:.2em; height:.2em; background:var(--red); border-radius:2px; margin-left:.05em; box-shadow:0 0 12px rgba(230,57,70,.8); }
+.t-vis .ht-d{ color:#B8C6D6; }
+.t-vis .ht-go{ color:#3EE0F2; }
+.ht-date{ font-size:24px; }
+@media (max-width:1100px){
+  .hero-mare-inner{ grid-template-columns:1fr; }
+  .hm-tiles{ grid-template-rows:none; grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media (max-width:760px){ .hm-tiles{ grid-template-columns:1fr; } .hm-tile{ padding:16px 44px 16px 18px; } }
+
+/* VISIONE nel menu e pulsante Associati più grande (26 nov 2026) */
+nav .nav-links a.nav-vis span{ color:var(--ink-mute, #5A6573); font-weight:400; }
+nav .nav-cta{ height:52px; min-width:178px; font-size:16.5px !important; padding:0 30px !important; }
+@media (max-width:1280px){ nav .nav-cta{ height:46px; min-width:132px; font-size:15px !important; padding:0 20px !important; } }
+@media (max-width:640px){ nav .nav-cta{ height:42px; min-width:0; padding:0 16px !important; font-size:14px !important; } }
+
 /* ==========================================================================
    SELETTORE DI LINGUA (italiano / inglese) — sostituisce il tema chiaro/scuro
    ========================================================================== */
