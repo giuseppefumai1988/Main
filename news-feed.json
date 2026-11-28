@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-27T16:47:19.140Z",
+  "aggiornato": "2026-11-28T01:29:20.710Z",
   "fonti": [
     {
       "nome": "Nurse Times",
@@ -11,6 +11,20 @@
     }
   ],
   "voci": [
+    {
+      "titolo": "Titoli sanitari esteri, l’Europa vuole riconoscimenti più rapidi. La Camera dice sì, ma chiede controlli rigorosi",
+      "link": "https://nursetimes.org/titoli-sanitari-esteri-leuropa-vuole-riconoscimenti-piu-rapidi-la-camera-dice-si-ma-chiede-controlli-rigorosi",
+      "data": "2026-11-27T18:00:00.000Z",
+      "sommario": "La Commissione Politiche Ue della Camera ha giudicato conformi al principio di sussidiarietà tre proposte europee sul riconoscimento e la portabilità delle qualifiche, anche per i cittadini di Paesi terzi. Il via libera arriva con…",
+      "fonte": "Nurse Times"
+    },
+    {
+      "titolo": "Stati Uniti, stop alla corsia rapida per la Green Card degli infermieri. Washington: “La carenza non è più dimostrata”",
+      "link": "https://nursetimes.org/stati-uniti-stop-alla-corsia-rapida-per-la-green-card-degli-infermieri-washington-la-carenza-non-e-piu-dimostrata",
+      "data": "2026-11-27T17:00:00.000Z",
+      "sommario": "Il Dipartimento del Lavoro propone di eliminare la Schedule A, la procedura che da oltre trent’anni permette agli ospedali di sponsorizzare infermieri stranieri, senza dimostrare prima l’assenza di candidati americani. Ospedali e…",
+      "fonte": "Nurse Times"
+    },
     {
       "titolo": "ECM, il credito non basta",
       "link": "https://nursetimes.org/ecm-il-credito-non-basta",
@@ -65,20 +79,6 @@
       "link": "https://nursetimes.org/oss-insufficienti-e-infermieri-demansionati-nursind-chieti-chiede-lintervento-di-nas-e-prefetto",
       "data": "2026-11-27T09:00:00.000Z",
       "sommario": "Nursind Chieti denuncia le porecarie condizioni assistenziali e organizzative che a suo dire caratterizzano l’Asl Lanciano-Vasto-Chieti e invoca un deciso cambio di rotta. Sotto accusa, il demansionamento degli infermieri e i turni degli…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "Scorporo Sant’Anna – Regina Margherita, sindacati denunciano tempi ristretti e confronto insufficiente",
-      "link": "https://nursetimes.org/scorporo-santanna-regina-margherita-sindacati-denunciano-tempi-ristretti-e-confronto-insufficiente",
-      "data": "2026-11-27T08:00:00.000Z",
-      "sommario": "Riceviamo e pubblichiamo un comunicato stampa di Nursing Up Piemonte e Valle d’Aosta. Si è tenuto mercoledì, presso il Grattacielo della Regione Piemonte, l’incontro tra Direzione regionale e organizzazioni sindacali firmatarie di…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "Violenza sulle donne: i segnali che il medico non deve ignorare. AME: “Anche il silenzio della paziente può fare la differenza”",
-      "link": "https://nursetimes.org/violenza-sulle-donne-i-segnali-che-il-medico-non-deve-ignorare-ame-anche-il-silenzio-della-paziente-puo-fare-la-differenza",
-      "data": "2026-11-27T07:03:15.000Z",
-      "sommario": "In occasione della recente Giornata a tema (25 novembre), l’Associazione Medici Endocrinologi richiama l’attenzione sull’importanza di riconoscere le situazioni di violenza anche quando la donna non riesce a parlarne. Un vademecum aiuta i…",
       "fonte": "Nurse Times"
     }
   ]
