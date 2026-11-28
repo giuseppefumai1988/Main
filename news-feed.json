@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-28T01:29:20.710Z",
+  "aggiornato": "2026-11-28T11:56:30.300Z",
   "fonti": [
     {
       "nome": "Nurse Times",
@@ -11,6 +11,34 @@
     }
   ],
   "voci": [
+    {
+      "titolo": "Terapie CAR-T, rischi sottovalutati online: cosa rivela un nuovo studio",
+      "link": "https://nursetimes.org/terapie-car-t-rischi-sottovalutati-online",
+      "data": "2026-11-28T11:00:00.000Z",
+      "sommario": "Una revisione scientifica di 51 siti web evidenzia una comunicazione troppo ottimistica e la necessità di migliorare l’informazione ai pazienti. Le informazioni disponibili online sulle terapie CAR-T tendono a enfatizzare i successi…",
+      "fonte": "Nurse Times"
+    },
+    {
+      "titolo": "Qualifiche extra-UE, FNOPI: «Semplificare con rigore, stop alle deroghe»",
+      "link": "https://nursetimes.org/qualifiche-extra-ue-fnopi-semplificare-con-rigore-stop-alle-deroghe",
+      "data": "2026-11-28T09:13:15.000Z",
+      "sommario": "Qualifiche extra-UE e mobilità sanitaria, FNOPI: «Sì a semplificazione, ma verifiche rigorose, lingua certificata e stop alle deroghe» La Federazione Nazionale degli Ordini delle Professioni Infermieristiche (FNOPI), che rappresenta gli…",
+      "fonte": "Nurse Times"
+    },
+    {
+      "titolo": "Manovra, tra i segnalati della maggioranza il personale occupa poche righe. Sul pronto soccorso si discute di chi abbia diritto all’indennità",
+      "link": "https://nursetimes.org/manovra-tra-i-segnalati-della-maggioranza-il-personale-occupa-poche-righe-sul-pronto-soccorso-si-discute-di-chi-abbia-diritto-allindennita",
+      "data": "2026-11-28T09:04:16.000Z",
+      "sommario": "Scaduto il termine per i 700 emendamenti segnalati alla Camera, il capitolo sul personale sanitario si restringe: un taglio fiscale sugli straordinari per tecnici, riabilitazione e prevenzione, una norma sulle Case della Comunità e una…",
+      "fonte": "Nurse Times"
+    },
+    {
+      "titolo": "Inghilterra, le cure escono dall’ospedale ma gli infermieri restano dentro. Il King’s Fund: in sedici anni la forza lavoro di comunità è cresciuta del 12%",
+      "link": "https://nursetimes.org/inghilterra-le-cure-escono-dallospedale-ma-gli-infermieri-restano-dentro-il-kings-fund-in-sedici-anni-la-forza-lavoro-di-comunita-e-cresciuta-del-12",
+      "data": "2026-11-28T08:54:15.000Z",
+      "sommario": "Un’analisi del King’s Fund, anticipata dal Times e ripresa da Nursing Times, misura quanto il personale del NHS abbia seguito la promessa di spostare l’assistenza sul territorio. Il risultato è un divario di quasi quattro a uno. Il tema è…",
+      "fonte": "Nurse Times"
+    },
     {
       "titolo": "Titoli sanitari esteri, l’Europa vuole riconoscimenti più rapidi. La Camera dice sì, ma chiede controlli rigorosi",
       "link": "https://nursetimes.org/titoli-sanitari-esteri-leuropa-vuole-riconoscimenti-piu-rapidi-la-camera-dice-si-ma-chiede-controlli-rigorosi",
@@ -51,34 +79,6 @@
       "link": "https://nursetimes.org/il-trasporto-del-paziente-pediatrico-in-ecmo-competenze-infermieristiche-sicurezza-del-circuito-e-gestione-della-ventilazione-meccanica",
       "data": "2026-11-27T13:00:00.000Z",
       "sommario": "L’ossigenazione extracorporea a membrana (ECMO) è una forma di supporto vitale temporaneo utilizzata in pazienti con insufficienza respiratoria e/o cardiocircolatoria grave, potenzialmente reversibile, quando le terapie convenzionali…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "Un anno di “Briciole al cielo”: oltre 210mila spettatori in tutti i continenti per il corto piacentino sulla donazione degli organi",
-      "link": "https://nursetimes.org/un-anno-di-briciole-al-cielo-oltre-210mila-spettatori-in-tutti-i-continenti-per-il-corto-piacentino-sulla-donazione-degli-organi",
-      "data": "2026-11-27T12:00:00.000Z",
-      "sommario": "Esattamente un anno fa, a Piacenza, veniva presentato in anteprima nazionale Briciole al cielo, cortometraggio di Gian Francesco Tiramani prodotto dal Cineclub Piacenza G. Cattivelli. Da lì è iniziato un percorso che ha portato il film…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "Covid, Milano: il racconto dell’infermiera Elisea Ferrante per non dimenticare",
-      "link": "https://nursetimes.org/covid-infermieri-elisea-ferrante-maggio-2020",
-      "data": "2026-11-27T11:16:52.000Z",
-      "sommario": "La testimonianza del maggio 2020 restituisce la solitudine dei pazienti e il peso emotivo dell’assistenza durante la pandemia a Milano La sofferenza più difficile da sostenere era vedere i pazienti affrontare la malattia senza i propri…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "Concorso per 274 posti da oss in Liguria: attesa la sentenza del Consiglio di Stato",
-      "link": "https://nursetimes.org/concorso-per-274-posti-da-oss-in-liguria-attesa-la-sentenza-del-consiglio-di-stato",
-      "data": "2026-11-27T10:30:00.000Z",
-      "sommario": "Lo scorso 23 settembre il Consiglio di Stato si è riunito per esaminare gli appelli proposti da Alisa e da circa 200 candidati che hanno superato la prova pratica del concorso per 274 posti a tempo indeterminato da oss in Liguria. Il Tar…",
-      "fonte": "Nurse Times"
-    },
-    {
-      "titolo": "“Oss insufficienti e infermieri demansionati”. Nursind Chieti chiede l’intervento di Nas e prefetto",
-      "link": "https://nursetimes.org/oss-insufficienti-e-infermieri-demansionati-nursind-chieti-chiede-lintervento-di-nas-e-prefetto",
-      "data": "2026-11-27T09:00:00.000Z",
-      "sommario": "Nursind Chieti denuncia le porecarie condizioni assistenziali e organizzative che a suo dire caratterizzano l’Asl Lanciano-Vasto-Chieti e invoca un deciso cambio di rotta. Sotto accusa, il demansionamento degli infermieri e i turni degli…",
       "fonte": "Nurse Times"
     }
   ]
