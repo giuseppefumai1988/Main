@@ -8,7 +8,7 @@
    link diretto con ?lang=en. © ANIQRC */
 (function(){
   if(window.__aniqrcI18n) return;
-  var ROOT=document.documentElement, KEY='aniqrc-lang', DICT_URL='i18n-en.json?v=4';
+  var ROOT=document.documentElement, KEY='aniqrc-lang', DICT_URL='i18n-en.json?v=6';
   var INLINE={A:1,ABBR:1,B:1,BDI:1,BDO:1,BR:1,CITE:1,DFN:1,EM:1,I:1,KBD:1,MARK:1,Q:1,S:1,SAMP:1,SMALL:1,SPAN:1,STRONG:1,SUB:1,SUP:1,TIME:1,U:1,VAR:1,WBR:1,DEL:1,INS:1};
   var SKIP={SCRIPT:1,STYLE:1,NOSCRIPT:1,CODE:1,PRE:1,TEXTAREA:1,TEMPLATE:1,IFRAME:1,svg:1,SVG:1,CANVAS:1,VIDEO:1,AUDIO:1,SELECT:1,OPTION:0};
   var ATTRS=['placeholder','title','aria-label','alt'];

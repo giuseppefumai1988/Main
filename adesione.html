@@ -79,6 +79,17 @@
   footer { background:var(--ink); color:var(--bg); padding:40px 0; }
   .foot-inner { max-width:1240px; margin:0 auto; padding:0 28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-family: var(--font-text); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
   .foot-inner .q { color:var(--accent); }
+  .pv-box { display:flex; gap:14px; align-items:flex-start; background:var(--bg-card); border:1px solid var(--rule); border-left:3px solid var(--accent); padding:16px 18px; margin:6px 0 18px; }
+  .pv-ic { width:30px; height:30px; flex:none; color:var(--ink); margin-top:2px; }
+  .pv-txt { display:flex; flex-direction:column; gap:3px; font-size:13.5px; color:var(--soft); line-height:1.45; }
+  .pv-txt strong { color:var(--ink); font-size:15px; }
+  .pv-links { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:8px; }
+  .pv-links a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1.5px solid currentColor; padding-bottom:1px; }
+  .pv-links a:hover { color:var(--accent-deep); }
+  .pv-check { display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:14px; line-height:1.5; color:var(--soft); margin:0 0 14px; cursor:pointer; }
+  .pv-check input { margin-top:4px; flex:none; width:17px; height:17px; accent-color:var(--accent); }
+  .pv-check a { color:var(--ink); }
+  .pv-check .req { color:var(--accent); }
 </style>
 <script type="application/ld+json">
 {
@@ -129,7 +140,7 @@
   <div class="wrap">
     <div class="eyebrow">Diventa socio</div>
     <h1>Domanda di <span class="q">adesione</span></h1>
-    <p class="lead">Compila il modulo per richiedere l'adesione ad ANIQRC. La domanda sarà valutata dal Consiglio Direttivo. I campi contrassegnati con <span style="color:var(--accent)">*</span> sono obbligatori.</p>
+    <p class="lead">Compila il modulo per richiedere l'adesione ad ANIQRC. I campi contrassegnati con <span style="color:var(--accent)">*</span> sono obbligatori.</p>
   </div>
 </header>
 
@@ -197,15 +208,22 @@
     </fieldset>
 
     <fieldset>
-        <legend>Consensi Obbligatori</legend>
-        <label>
-            <input type="checkbox" name="Accettazione_Privacy" value="Accettato" required> 
-            Ho letto l'Informativa sulla privacy e acconsento al trattamento dei miei dati personali per le finalità associative. *
+        <legend>Informativa e consensi</legend>
+        <div class="pv-box">
+            <svg class="pv-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 2v5h5M9 13h7M9 17h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            <div class="pv-txt">
+                <strong>Informativa sul trattamento dei dati personali</strong>
+                <span>Art. 13 GDPR · versione 2.0 del 28 novembre 2026 · PDF, 3 pagine</span>
+                <span class="pv-links"><a href="informativa-privacy-aniqrc.pdf" target="_blank" rel="noopener">Leggi l'informativa (PDF) <span aria-hidden="true">↗</span></a><a href="informativa-privacy-aniqrc.pdf" download="Informativa-privacy-ANIQRC.pdf">Scarica</a></span>
+            </div>
+        </div>
+        <label class="pv-check">
+            <input type="checkbox" name="Accettazione_Privacy" value="Accettato" required>
+            <span>Dichiaro di aver letto l'<a href="informativa-privacy-aniqrc.pdf" target="_blank" rel="noopener">informativa sul trattamento dei dati personali</a> e prendo atto che i miei dati saranno trattati per la gestione della domanda e del rapporto associativo. <b class="req">*</b></span>
         </label>
-        <br><br>
-        <label>
-            <input type="checkbox" name="Iscrizione_Newsletter" value="Accettato"> 
-            Acconsento a ricevere la newsletter e le comunicazioni di ANIQRC (facoltativo).
+        <label class="pv-check">
+            <input type="checkbox" name="Iscrizione_Newsletter" value="Accettato">
+            <span>Acconsento a ricevere via e-mail comunicazioni su eventi, iniziative e opportunità di ANIQRC (facoltativo, revocabile in ogni momento).</span>
         </label>
     </fieldset>
 
